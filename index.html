@@ -1,0 +1,1511 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>织毯学土库曼语</title>
+<meta name="description" content="零基础土库曼语学习游戏：从 30 个字母（相当于拼音）开始，经过元音和谐、词缀、句型、动词，到日常与旅行会话，一关织一个地毯纹样。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700;800&family=Unbounded:wght@500;700&display=swap">
+<style>
+/* ============ Tokens ============ */
+:root{
+  --ground:#EEF0F3;          /* Ashgabat marble white */
+  --surface:#FFFFFF;
+  --surface-2:#F6F7F9;
+  --ink:#171A2B;
+  --ink-2:#4F556C;
+  --ink-3:#868CA3;
+  --line:#D9DCE4;
+  --madder:#9E1B32;          /* carpet red */
+  --madder-2:#7C1426;
+  --on-madder:#FFFFFF;
+  --vb:#2A3D8F;              /* back / ýogyn vowels */
+  --vf:#B35F00;              /* front / inçe vowels */
+  --ok:#1F7A4D;
+  --bad:#B42318;
+  --ok-soft:#E3F2EA;
+  --bad-soft:#FBE7E5;
+  --shadow:0 1px 2px rgba(23,26,43,.06),0 8px 24px rgba(23,26,43,.07);
+  /* the carpet is an object: its wool colours stay put in both themes */
+  --rug:#8C1A2B;
+  --rug-deep:#6F1322;
+  --rug-ink:#1C2346;
+  --rug-ivory:#F2E8D5;
+  --rug-saffron:#E0A030;
+  --rug-green:#2F7D57;
+  --rug-indigo:#2B3A78;
+  --f-display:"Unbounded","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Noto Sans","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif;
+  --f-ipa:"Noto Sans","Charis SIL","Doulos SIL","Lucida Grande","Segoe UI",system-ui,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#10121B; --surface:#191C29; --surface-2:#1F2332; --ink:#ECEBF3; --ink-2:#B0B3C6; --ink-3:#7C8198; --line:#2D3246;
+    --madder:#C6394F; --madder-2:#A42A3F; --vb:#97A8FF; --vf:#FFB548; --ok:#46B981; --bad:#FF7A6E;
+    --ok-soft:#173327; --bad-soft:#3A1A1C; --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#10121B; --surface:#191C29; --surface-2:#1F2332; --ink:#ECEBF3; --ink-2:#B0B3C6; --ink-3:#7C8198; --line:#2D3246;
+  --madder:#C6394F; --madder-2:#A42A3F; --vb:#97A8FF; --vf:#FFB548; --ok:#46B981; --bad:#FF7A6E;
+  --ok-soft:#173327; --bad-soft:#3A1A1C; --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+  color-scheme:dark;
+}
+
+/* ============ Base ============ */
+*,*::before,*::after{box-sizing:border-box}
+html,body{min-height:100%}
+body{margin:0;background:var(--ground);color:var(--ink);font:16px/1.65 var(--f-body);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid var(--vb);outline-offset:2px}
+h1,h2,h3{text-wrap:balance;line-height:1.25;margin:0}
+p{margin:0}
+.wrap{max-width:1060px;margin:0 auto;padding-inline:16px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* Turkmen text + vowel tint */
+.tk{font-weight:600;letter-spacing:.005em}
+.vb{color:var(--vb)}
+.vf{color:var(--vf)}
+.plain .vb,.plain .vf{color:inherit}
+.ipa{font-family:var(--f-ipa);color:var(--ink-2);font-weight:400;white-space:nowrap}
+.nm{font-weight:700}
+.muted{color:var(--ink-2)}
+.tiny{font-size:12.5px;color:var(--ink-3)}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:12px;padding:12px 20px;font-weight:700;font-size:16px;background:var(--madder);color:var(--on-madder);min-height:48px;transition:transform .08s ease,background .2s}
+.btn:hover{background:var(--madder-2)}
+.btn:active{transform:translateY(1px)}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn.ghost:hover{background:var(--surface-2)}
+.btn.ok{background:var(--ok)}
+.btn.bad{background:var(--bad)}
+.btn.sm{min-height:38px;padding:8px 14px;font-size:14px;border-radius:10px}
+.link{background:none;border:0;padding:6px 8px;border-radius:8px;color:var(--ink-2);font-weight:600;font-size:14px}
+.link:hover{background:var(--surface-2);color:var(--ink)}
+.chip{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:2px 10px;font-size:12.5px;font-weight:700;letter-spacing:.02em;background:var(--surface-2);color:var(--ink-2);border:1px solid var(--line)}
+
+/* ============ Home ============ */
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:16px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px}
+.brand svg{width:46px;height:31px;flex:none}
+.brand h1{font-size:20px;font-weight:800;letter-spacing:.01em}
+.brand p{font-size:12.5px;color:var(--ink-3);letter-spacing:.04em}
+.nav{display:flex;gap:2px;flex-wrap:wrap}
+.nav .badge{display:inline-grid;place-items:center;min-width:18px;height:18px;border-radius:9px;background:var(--madder);color:var(--on-madder);font-size:11px;padding:0 5px;margin-left:4px}
+
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:20px;align-items:end;padding-block:8px 20px}
+.thesis{font-size:clamp(22px,3.4vw,34px);font-weight:800;line-height:1.3;letter-spacing:-.005em}
+.thesis em{font-style:normal;color:var(--madder);white-space:nowrap}
+.hero-sub{margin-top:10px;color:var(--ink-2);max-width:40em}
+.hero-side{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.meter{display:flex;gap:18px;font-variant-numeric:tabular-nums}
+.meter div{display:flex;flex-direction:column}
+.meter b{font-size:26px;line-height:1.1;font-family:var(--f-display);font-weight:700}
+.meter span{font-size:12.5px;color:var(--ink-3)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--ink-2);padding-block:6px 14px}
+.legend i{font-style:normal;font-weight:800}
+
+/* Carpet */
+.rug-frame{padding:12px;border-radius:4px;box-shadow:var(--shadow);
+  background:
+    linear-gradient(135deg,var(--rug-saffron) 25%,transparent 25%) -9px 0/18px 18px,
+    linear-gradient(225deg,var(--rug-saffron) 25%,transparent 25%) -9px 0/18px 18px,
+    linear-gradient(315deg,var(--rug-saffron) 25%,transparent 25%) 0 0/18px 18px,
+    linear-gradient(45deg,var(--rug-saffron) 25%,transparent 25%) 0 0/18px 18px,
+    var(--rug-ink);}
+.rug-inner{border:3px solid var(--rug-ivory);background:var(--rug);position:relative;
+  background-image:repeating-linear-gradient(90deg,rgba(0,0,0,.07) 0 1px,transparent 1px 5px),repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,transparent 1px 3px);
+  padding:6px 18px}
+.rug-row{display:grid;grid-template-columns:168px 1fr;gap:14px;align-items:center;padding-block:14px;color:var(--rug-ivory)}
+.rug-row+.rug-row{border-top:2px dotted rgba(242,232,213,.28)}
+.row-label{display:flex;flex-direction:column;gap:2px}
+.row-label .n{font-family:var(--f-display);font-size:12px;letter-spacing:.14em;color:var(--rug-saffron)}
+.row-label b{font-size:17px;line-height:1.3}
+.row-label span{font-size:12.5px;opacity:.78}
+.row-label .lk{font-size:12px;opacity:.7;margin-top:2px}
+.guls{display:flex;flex-wrap:wrap;gap:6px 4px}
+.gbtn{width:112px;background:none;border:0;border-radius:8px;padding:6px 4px;color:var(--rug-ivory);display:flex;flex-direction:column;align-items:center;gap:3px;text-align:center}
+.gbtn:hover:not([disabled]){background:rgba(242,232,213,.08)}
+.gbtn svg{width:92px;height:62px;display:block}
+.gbtn .code{font-family:var(--f-display);font-size:10.5px;letter-spacing:.1em;opacity:.8}
+.gbtn .nm2{font-size:12.5px;line-height:1.25;font-weight:600}
+.gbtn .st{font-size:11px;letter-spacing:.2em;color:var(--rug-saffron);min-height:14px;line-height:14px}
+.gbtn[disabled]{opacity:.42;cursor:not-allowed}
+.gbtn.next svg{animation:breathe 2.4s ease-in-out infinite}
+@keyframes breathe{50%{transform:scale(1.06)}}
+.home-foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:18px 36px;color:var(--ink-3);font-size:13px}
+.proverb{font-size:13.5px;color:var(--ink-2)}
+
+/* ============ Level ============ */
+.lv-head{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--ground);padding-block:10px 12px;border-bottom:1px solid var(--line)}
+.lv-row{display:flex;align-items:center;gap:10px}
+.lv-title{flex:1;min-width:0}
+.lv-title b{display:block;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lv-title span{font-size:12.5px;color:var(--ink-3)}
+.band{height:10px;border-radius:3px;background:var(--line);overflow:hidden;margin-top:10px}
+.band i{display:block;height:100%;width:0;transition:width .45s ease;background:repeating-linear-gradient(135deg,var(--madder) 0 7px,var(--rug-saffron) 7px 9px,var(--madder) 9px 16px)}
+.stage{max-width:720px;margin:0 auto;padding:20px 16px 190px}
+.phase{font-size:12.5px;font-weight:700;letter-spacing:.12em;color:var(--madder);text-transform:uppercase;margin-bottom:8px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--shadow)}
+.card h2{font-size:21px;margin-bottom:12px}
+.card .body{color:var(--ink);font-size:16.5px}
+.card .body p+p{margin-top:10px}
+.dots{display:flex;gap:6px;justify-content:center;margin-top:14px;flex-wrap:wrap}
+.dots i{width:7px;height:7px;border-radius:50%;background:var(--line)}
+.dots i.on{background:var(--madder)}
+
+/* letter card */
+.lc{display:grid;grid-template-columns:auto 1fr;gap:18px 22px;align-items:start}
+.lc-big{font-family:var(--f-display);font-weight:700;font-size:78px;line-height:1;letter-spacing:-.02em;min-width:1.6em}
+.lc-meta{display:flex;flex-direction:column;gap:8px}
+.lc-meta .ipa{font-size:22px}
+.lc-zh{font-size:18px;font-weight:700}
+.lc-tip{color:var(--ink-2)}
+.lc-word{grid-column:1/-1;display:flex;align-items:center;gap:14px;padding:12px 14px;border-radius:12px;background:var(--surface-2)}
+.lc-word .em{font-size:34px;line-height:1}
+.lc-word .tk{font-size:22px}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag-friend{background:var(--ok-soft);color:var(--ok);border-color:transparent}
+.tag-hat{background:var(--surface-2);color:var(--vb)}
+.tag-trap{background:var(--bad-soft);color:var(--bad);border-color:transparent}
+
+/* grids of items */
+.lgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-top:14px}
+.lgrid div{border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--surface-2)}
+.lgrid b{font-family:var(--f-display);font-size:22px}
+.lgrid .tk{display:block;font-size:15px}
+.pairs{display:flex;flex-direction:column;margin-top:12px;border-top:1px solid var(--line)}
+.pairs div{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:12px;padding:10px 2px;border-bottom:1px solid var(--line);align-items:baseline}
+.pairs .tk{font-size:17.5px}
+.pairs span:last-child{color:var(--ink-2)}
+.tbl-wrap{overflow-x:auto;margin-top:12px}
+table.tbl{border-collapse:collapse;width:100%;min-width:420px;font-variant-numeric:tabular-nums}
+.tbl th,.tbl td{border-bottom:1px solid var(--line);padding:9px 10px;text-align:left;font-size:15.5px}
+.tbl th{font-size:13px;color:var(--ink-3);font-weight:700}
+.tbl td:first-child{color:var(--ink-2);white-space:nowrap}
+.chart{display:grid;grid-template-columns:auto 1fr 1fr;gap:6px;margin-top:14px}
+.chart div{padding:10px;border-radius:10px;background:var(--surface-2);text-align:center}
+.chart .h{background:none;font-size:13px;color:var(--ink-3);font-weight:700;padding:4px}
+.chart .v{font-family:var(--f-display);font-size:24px;font-weight:700;letter-spacing:.12em}
+.blend{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.blend>div{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.blend .lt{display:inline-grid;place-items:center;min-width:40px;height:44px;padding:0 8px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface-2);font-family:var(--f-display);font-size:20px}
+.blend .arrow{color:var(--ink-3)}
+.blend .res{font-family:var(--f-display);font-size:22px}
+.chain{display:flex;flex-wrap:wrap;gap:6px;align-items:stretch;margin-top:14px}
+.chain div{display:flex;flex-direction:column;align-items:center;border-radius:10px;padding:8px 12px;background:var(--surface-2);border:1.5px solid var(--line)}
+.chain div.root{border-color:var(--vb)}
+.chain b{font-family:var(--f-display);font-size:19px}
+.chain span{font-size:12.5px;color:var(--ink-3)}
+.dlg{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.say{max-width:88%;padding:10px 14px;border-radius:14px;background:var(--surface-2);border:1px solid var(--line)}
+.say.me{align-self:flex-end;background:color-mix(in srgb,var(--madder) 9%,var(--surface));border-color:color-mix(in srgb,var(--madder) 30%,var(--line))}
+.say small{display:block;font-size:12px;color:var(--ink-3);font-weight:700;letter-spacing:.03em}
+.say .tk{font-size:17px}
+.say .zh{display:block;font-size:14px;color:var(--ink-2)}
+.name-in{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.name-in input{flex:1;min-width:0;font:inherit;padding:10px 12px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink)}
+
+/* ============ Questions ============ */
+.q-prompt{font-size:19px;font-weight:700;margin-bottom:6px}
+.q-hint{color:var(--ink-2);margin-bottom:14px}
+.q-big{font-size:clamp(34px,7vw,52px);line-height:1.15;margin:8px 0 14px;font-family:var(--f-display);font-weight:700;word-break:break-word}
+.q-emoji{font-size:64px;line-height:1.1;margin:4px 0 8px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.opts.one{grid-template-columns:1fr}
+.opt{position:relative;display:flex;align-items:center;gap:12px;text-align:left;border:2px solid var(--line);background:var(--surface);border-radius:14px;padding:14px 14px 14px 12px;min-height:58px;font-size:17px;line-height:1.35;transition:border-color .15s,background .15s,transform .08s}
+.opt:hover:not([disabled]){border-color:var(--ink-3)}
+.opt:active:not([disabled]){transform:translateY(1px)}
+.opt .k{flex:none;display:inline-grid;place-items:center;width:24px;height:24px;border-radius:7px;border:1.5px solid var(--line);font-size:12px;font-weight:700;color:var(--ink-3)}
+.opt .tk{font-size:18px}
+.opt.ok{border-color:var(--ok);background:var(--ok-soft)}
+.opt.bad{border-color:var(--bad);background:var(--bad-soft)}
+.opt[disabled]{cursor:default}
+.shake{animation:shake .32s}
+@keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+
+.match{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mcol{display:flex;flex-direction:column;gap:8px}
+.mt{border:2px solid var(--line);background:var(--surface);border-radius:12px;padding:12px;min-height:54px;font-size:16.5px;text-align:center;transition:border-color .15s,opacity .3s,background .15s}
+.mt.sel{border-color:var(--vb);background:color-mix(in srgb,var(--vb) 10%,var(--surface))}
+.mt.done{opacity:.35;border-style:dashed;cursor:default}
+.mt.bad{border-color:var(--bad);background:var(--bad-soft)}
+
+.sort-cur{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:120px;border:2px dashed var(--line);border-radius:16px;margin:8px 0 14px;padding:12px;text-align:center}
+.sort-cur .tk{font-family:var(--f-display);font-size:34px;font-weight:700}
+.sort-cur .note{font-size:14px;margin-top:6px}
+.bins{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.bin{border:2px solid var(--line);background:var(--surface);border-radius:14px;padding:12px;min-height:110px;display:flex;flex-direction:column;gap:8px;align-items:stretch;text-align:left}
+.bin:hover:not([disabled]){border-color:var(--ink-3)}
+.bin b{font-size:15px}
+.bin .got{display:flex;flex-wrap:wrap;gap:4px}
+.bin .got > span{font-size:13.5px;padding:1px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line)}
+.bin.flash-ok{border-color:var(--ok)}
+.bin.flash-bad{border-color:var(--bad)}
+
+.slots{display:flex;flex-wrap:wrap;gap:6px;min-height:64px;align-items:center;justify-content:center;padding:10px;border-radius:14px;border:2px dashed var(--line);margin:6px 0 14px}
+.slots .ph{color:var(--ink-3);font-size:14px}
+.tiles{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.tile{min-width:48px;height:52px;padding:0 12px;border-radius:12px;border:2px solid var(--line);background:var(--surface);font-family:var(--f-display);font-size:21px;font-weight:700;box-shadow:0 2px 0 var(--line)}
+.tile:hover:not([disabled]){border-color:var(--ink-3)}
+.tile[disabled]{opacity:.25;cursor:default;box-shadow:none}
+.tile.word{font-family:var(--f-body);font-size:18px;height:auto;min-height:48px;padding:8px 14px}
+.slot{min-width:40px;height:48px;padding:0 10px;border-radius:10px;border:2px solid var(--vb);background:color-mix(in srgb,var(--vb) 7%,var(--surface));font-family:var(--f-display);font-size:20px;font-weight:700}
+.slot.word{font-family:var(--f-body);font-size:18px;height:auto;min-height:44px;padding:6px 12px}
+.slot.root{border-color:var(--ink-3);background:var(--surface-2);cursor:default}
+.slot.sfx{border-color:var(--vf);background:color-mix(in srgb,var(--vf) 8%,var(--surface))}
+.q-tools{display:flex;justify-content:center;gap:8px;margin-top:10px}
+
+.npc{display:flex;gap:10px;align-items:flex-start;margin:6px 0 14px}
+.npc .av{flex:none;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--rug);color:var(--rug-ivory);font-weight:800;font-size:15px}
+.npc .say{max-width:100%}
+
+/* Feedback / action bar */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--surface);border-top:1px solid var(--line);padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));transition:background .2s}
+.bar-in{max-width:720px;margin:0 auto;display:flex;gap:12px;align-items:center;justify-content:space-between}
+.bar.ok{background:var(--ok-soft);border-top-color:var(--ok)}
+.bar.bad{background:var(--bad-soft);border-top-color:var(--bad)}
+.fb{flex:1;min-width:0}
+.fb b{display:block;font-size:18px}
+.bar.ok .fb b{color:var(--ok)}
+.bar.bad .fb b{color:var(--bad)}
+.fb .why{font-size:14.5px;color:var(--ink);margin-top:2px}
+.fb .ans{font-size:15px;margin-top:2px}
+.bar-in .btn{flex:none}
+
+/* Result */
+.result{text-align:center;padding-top:10px}
+.result .gul-big{width:min(300px,78vw);height:auto;margin:6px auto 10px;display:block}
+.result h2{font-size:26px}
+.stars{font-size:34px;letter-spacing:.18em;color:var(--rug-saffron);margin:6px 0}
+.stars .off{color:var(--line)}
+.result .stat{color:var(--ink-2);font-variant-numeric:tabular-nums}
+.result .acts{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px}
+.weave path.o{stroke-dasharray:420;stroke-dashoffset:420;animation:draw 1.1s ease forwards}
+.weave .fillin{opacity:0;animation:fadein .6s ease .9s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes fadein{to{opacity:1}}
+
+/* Modal / sheets */
+.scrim{position:fixed;inset:0;z-index:40;background:rgba(10,12,22,.45);display:grid;place-items:center;padding:16px}
+.sheet{width:min(640px,100%);max-height:88vh;overflow:auto;background:var(--surface);border-radius:18px;padding:22px;box-shadow:var(--shadow);border:1px solid var(--line)}
+.sheet-h{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px}
+.sheet-h h2{font-size:20px}
+.field{display:flex;flex-direction:column;gap:6px;padding-block:12px;border-bottom:1px solid var(--line)}
+.field label{font-weight:700}
+.field input[type=text]{font:inherit;padding:10px 12px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink)}
+.switch{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.switch input{width:44px;height:26px;accent-color:var(--madder)}
+
+/* Page (alphabet / words) */
+.page-head{display:flex;align-items:center;gap:10px;padding-block:14px}
+.page-head h2{font-size:22px;flex:1}
+.abc{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+.lt2{position:relative;border:1.5px solid var(--line);background:var(--surface);border-radius:12px;padding:10px 4px 8px;display:flex;flex-direction:column;align-items:center;gap:2px;min-height:96px}
+.lt2:hover{border-color:var(--ink-3)}
+.lt2 b{font-family:var(--f-display);font-size:26px;line-height:1.2}
+.lt2 .ipa{font-size:14px}
+.lt2 .g{font-size:11px;color:var(--ink-3)}
+.lt2.trap{border-color:color-mix(in srgb,var(--bad) 45%,var(--line))}
+.lt2.trap::after{content:"";position:absolute;top:0;right:0;border-style:solid;border-width:0 14px 14px 0;border-color:transparent var(--bad) transparent transparent;border-top-right-radius:10px}
+.lt2.hat{border-color:color-mix(in srgb,var(--vb) 40%,var(--line))}
+.abc-legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13.5px;color:var(--ink-2);padding-block:12px}
+.search{width:100%;font:inherit;padding:12px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);margin-bottom:12px}
+.wl{display:flex;flex-direction:column;margin-bottom:22px}
+.wl h3{font-size:14px;color:var(--ink-3);letter-spacing:.06em;margin:10px 0 4px}
+.wrow{display:grid;grid-template-columns:32px minmax(0,1.2fr) minmax(0,1fr) minmax(0,1.1fr);gap:10px;align-items:baseline;padding:9px 2px;border-bottom:1px solid var(--line)}
+.wrow .em{font-size:20px}
+.wrow .tk{font-size:17px}
+.empty{padding:28px;text-align:center;color:var(--ink-2);background:var(--surface);border:1px dashed var(--line);border-radius:14px}
+
+/* ============ Responsive ============ */
+@media (max-width:760px){
+  .hero{grid-template-columns:1fr}
+  .rug-row{grid-template-columns:1fr;gap:8px}
+  .rug-inner{padding:4px 10px}
+  .gbtn{width:calc(33.333% - 3px)}
+  .gbtn svg{width:100%;max-width:88px;height:auto}
+  .abc{grid-template-columns:repeat(5,minmax(0,1fr))}
+  .wrow{grid-template-columns:28px minmax(0,1fr) minmax(0,1fr)}
+  .wrow .ipa{display:none}
+}
+@media (max-width:520px){
+  .opts{grid-template-columns:1fr}
+  .lc{grid-template-columns:1fr}
+  .lc-big{font-size:64px}
+  .card{padding:18px}
+  .stage{padding-top:14px}
+  .bar-in{flex-wrap:wrap}
+  .bar-in .btn{width:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .weave path.o{stroke-dashoffset:0}
+  .weave .fillin{opacity:1}
+}
+
+</style>
+</head>
+<body>
+<div id="app"><p style="padding:24px;font-family:sans-serif">正在铺开地毯……</p></div>
+<noscript><p style="padding:24px">这个游戏需要开启 JavaScript。</p></noscript>
+<script>
+/* ================= DATA =================
+   Markup inside strings:
+   {word}  -> Turkmen text, vowels tinted (blue = ýogyn/back, orange = inçe/front)
+   [ipa]   -> IPA styling
+   {NAME}  -> the player's name
+*/
+
+// u, l, kind (v/c), group (friend/hat/trap), harmony (b/f), rounded, ipa, zh, tip, [word, meaning, emoji]
+const LETTERS = [
+  ['A','a','v','friend','b',false,'ɑ','拼音 a（啊）','嘴张大，舌头放低、靠后。',['alma','苹果','🍎']],
+  ['B','b','c','friend','',false,'b','拼音 b，但声带要振动','夹在两个元音中间时会变软，接近很轻的 w。',['balyk','鱼','🐟']],
+  ['Ç','ç','c','hat','',false,'tʃ','英语 church 的 ch','介于拼音 q 和 ch 之间，舌尖不卷。',['çaý','茶','🍵']],
+  ['D','d','c','friend','',false,'d','拼音 d','比拼音 d 更“浊”，声带振动。',['düýe','骆驼','🐫']],
+  ['E','e','v','trap','f',false,'e','像“诶”，英语 bed 的 e','不是拼音 e（饿）！嘴角微微向两边拉，舌头靠前。{e} 永远读短音。',['et','肉','🥩']],
+  ['Ä','ä','v','hat','f',false,'æː','英语 cat 的 a，读长一点','嘴比 {e} 张得更大，嘴角向两边拉，通常读长音：{bäş} = [bæːʃ]。',['bäş','五','5️⃣']],
+  ['F','f','c','friend','',false,'f','拼音 f','多出现在外来词里，本族词里常用 p。',['futbol','足球','⚽']],
+  ['G','g','c','friend','',false,'g','拼音 g','碰上粗元音（如 {gyz}、{gawun}）时发音部位更靠后，从喉咙深处发出；夹在元音间会变成摩擦音。',['gawun','甜瓜','🍈']],
+  ['H','h','c','friend','',false,'h ~ x','拼音 h（喝）','常像拼音 h 那样带一点摩擦。',['haly','地毯','🧶']],
+  ['I','i','v','friend','f',false,'i','拼音 i（衣）','大写是不带点的 I，和小写 i 是同一个字母。',['it','狗','🐕']],
+  ['J','j','c','trap','',false,'dʒ','英语 jeep 的 j','别按拼音读！拼音 ju 是“居”，土库曼语 {ju} 是 [dʒu]。',['jaý','房屋、建筑','🏢']],
+  ['Ž','ž','c','hat','',false,'ʒ','英语 measure 里的 s','接近拼音 r（日），但舌尖不翘。只出现在外来词里。',['žurnal','杂志','📰']],
+  ['K','k','c','friend','',false,'k','拼音 k','碰上粗元音（如 {balyk} 的 k）时部位更靠后，接近阿拉伯语的 q。',['kitap','书','📖']],
+  ['L','l','c','friend','',false,'l','拼音 l','粗元音词里的 l 更“暗”，舌根微微抬起。',['limon','柠檬','🍋']],
+  ['M','m','c','friend','',false,'m','拼音 m','和拼音一样。',['maşyn','汽车','🚗']],
+  ['N','n','c','friend','',false,'n','拼音 n','和拼音一样。',['nahar','饭菜','🍲']],
+  ['Ň','ň','c','hat','',false,'ŋ','拼音 ng（“昂”的尾音）','从不出现在词首，只在词中、词尾：{deňiz}（海）、{meniň}（我的）。',['deňiz','海','🌊']],
+  ['O','o','v','friend','b',true,'o','拼音 o（哦）','嘴唇收圆，比汉语“哦”更纯，不滑向 u。',['oba','村庄','🏘️']],
+  ['Ö','ö','v','hat','f',true,'ø','圆唇的“诶”，像德语 ö','先摆好发“诶”的舌位，再把嘴唇收圆。',['öý','家、房子','🏠']],
+  ['P','p','c','friend','',false,'p','拼音 p','词尾的 p 挂上元音开头的词缀常变 b：{kitap} → {kitabym}。',['palaw','抓饭','🍛']],
+  ['R','r','c','trap','',false,'r','大舌音（舌尖颤音）','舌尖抵住上齿龈颤动，像西班牙语 rr、俄语 р；不是拼音 r（日）。一时颤不出来，舌尖轻弹一下也能听懂。',['garpyz','西瓜','🍉']],
+  ['S','s','c','trap','',false,'θ','英语 think 的 th','咬舌音！舌尖轻放在上下门牙之间送气。这是土库曼语的“招牌音”，土耳其语里没有。',['suw','水','💧']],
+  ['Ş','ş','c','hat','',false,'ʃ','英语 she 的 sh','介于拼音 x 和 sh 之间，嘴唇微微前突。',['şäher','城市','🏙️']],
+  ['T','t','c','friend','',false,'t','拼音 t','和拼音 t 一样。',['tüwi','米饭','🍚']],
+  ['U','u','v','friend','b',true,'u','拼音 u（乌）','嘴唇收圆，向前突出。',['uçar','飞机','✈️']],
+  ['Ü','ü','v','friend','f',true,'y','就是拼音 ü（鱼、绿）','舌位像“衣”，嘴唇收圆。土库曼语里 ü 的两点永远要写。',['üzüm','葡萄','🍇']],
+  ['W','w','c','friend','',false,'w ~ β','拼音 w','嘴唇不必太圆，有时像很轻的 v。',['wagt','时间','⏰']],
+  ['Y','y','v','trap','b',false,'ɯ','介于“衣”和“饿”之间，像俄语 ы','在土库曼语里 {y} 永远是元音！嘴唇放平像发“衣”，舌头却往后缩。辅音“呀”要写成 {ý}。',['gyz','女孩','👧']],
+  ['Ý','ý','c','hat','',false,'j','拼音 y（呀、哟）','这才是辅音 y：{ýa} = “呀”，{ýo} = “哟”。',['ýyldyz','星星','⭐']],
+  ['Z','z','c','trap','',false,'ð','英语 this 的 th','浊咬舌音：舌尖放在上下门牙之间，声带振动。不是拼音 z（资）。',['göz','眼睛','👁️']]
+].map(a => ({u:a[0], l:a[1], kind:a[2], grp:a[3], h:a[4], r:a[5], ipa:a[6], zh:a[7], tip:a[8], w:a[9]}));
+
+const GROUP_NAME = {friend:'老朋友', hat:'戴帽子', trap:'伪装者'};
+const GROUP_DESC = {friend:'读法和拼音或英语基本一样', hat:'新面孔，带附加符号', trap:'长得眼熟，读法不同'};
+
+const LAYERS = [
+{ n:1, name:'字母与发音', analog:'≈ 拼音', tkname:'Harplar we sesler', pal:['#2B3A78','#F2E8D5','#E0A030'],
+  levels:[
+  { id:'1-1', title:'元音九兄弟', sub:'9 个元音，你已经认识 5 个',
+    words:[['alma','苹果','🍎'],['et','肉','🥩'],['bäş','五','5️⃣'],['it','狗','🐕'],['gyz','女孩','👧'],['oba','村庄','🏘️'],['öý','家、房子','🏠'],['uçar','飞机','✈️'],['üzüm','葡萄','🍇']],
+    learn:[
+      {t:'intro', h:'9 个元音，你已经认识 5 个', b:'<p>土库曼语有 9 个元音字母：{a} {e} {ä} {i} {y} {o} {ö} {u} {ü}。</p><p>其中 {a} {o} {i} {u} {ü} 的读法和汉语拼音基本一样。真正要新学的只有 4 个：{e}（不读“饿”）、{ä}、{ö}、{y}。</p>'},
+      {t:'chart', h:'两大派：粗元音和细元音', b:'<p>土库曼语法把舌头靠后的元音叫 {ýogyn}（粗），舌头靠前的叫 {inçe}（细）。</p><p>游戏里所有土库曼语单词的元音都会上色：<b class="vb">蓝色 = 粗</b>，<b class="vf">橙色 = 细</b>。第 2 层会讲它为什么是整门语言的“声调”。</p>'},
+      {t:'letter', k:'a'},{t:'letter', k:'e'},{t:'letter', k:'ä'},{t:'letter', k:'i'},{t:'letter', k:'y'},
+      {t:'letter', k:'o'},{t:'letter', k:'ö'},{t:'letter', k:'u'},{t:'letter', k:'ü'}
+    ],
+    quiz:[
+      {q:'choice', p:'哪个字母的读音就是拼音里的 ü（鱼）？', o:['ü','u','y','i'], tk:true, x:'{ü} 和拼音 ü 完全一样。{y} 不是 ü，也不是辅音。'},
+      {q:'choice', p:'土库曼语的 {y} 是什么音？', o:['元音，介于“衣”和“饿”之间','辅音，像拼音 y（呀）','和 i 读法一样','不发音'], x:'土库曼语里 {y} 永远是元音 [ɯ]。辅音“呀”要写成 {ý}。'},
+      {q:'choice', p:'{et}（肉）里的 {e} 应该怎么读？', o:['像“诶”，英语 bed 的 e','像拼音 e（饿）','像“啊”','像“衣”'], x:'土库曼语的 {e} 是 [e]，千万别按拼音读成“饿”。'},
+      {q:'choice', p:'{ä} 最像哪个英语单词里的元音？', o:['cat','bed','cup','see'], x:'{ä} = [æ]，像 cat 的 a，而且通常读得长一些。'},
+      {q:'choice', p:'{ö} 的发音方法是？', o:['舌位像“诶”，嘴唇收圆','舌位像“衣”，嘴唇收圆','和拼音 o 一样','嘴巴张大发“啊”'], x:'舌位像“诶”+ 圆唇 = {ö}；舌位像“衣”+ 圆唇 = {ü}。'},
+      {q:'sort', p:'把元音分进两派', bins:['粗元音（靠后）','细元音（靠前）'], items:[['a',0],['e',1],['o',0],['ü',1],['y',0],['ä',1],['u',0],['i',1],['ö',1]], tk:true, x:'粗元音：a o u y；细元音：e ä i ö ü。'},
+      {q:'match', p:'配对：字母 ↔ 近似音', pairs:[['a','啊'],['i','衣'],['u','乌'],['ü','鱼（ü）'],['o','哦']]},
+      {q:'choice', p:'下面哪个是圆唇元音？', o:['ö','ä','e','y'], tk:true, x:'圆唇元音有 4 个：{o} {ö} {u} {ü}。'},
+      {q:'choice', p:'看图选词：葡萄', emoji:'🍇', o:['üzüm','uzum','yzym','özöm'], tk:true, x:'{üzüm}：两个都是 {ü}。'}
+    ]},
+  { id:'1-2', title:'辅音老朋友', sub:'12 个辅音，和拼音几乎一样',
+    words:[['balyk','鱼','🐟'],['düýe','骆驼','🐫'],['futbol','足球','⚽'],['gawun','甜瓜','🍈'],['haly','地毯','🧶'],['kitap','书','📖'],['limon','柠檬','🍋'],['maşyn','汽车','🚗'],['nahar','饭菜','🍲'],['palaw','抓饭','🍛'],['tüwi','米饭','🍚'],['wagt','时间','⏰']],
+    learn:[
+      {t:'intro', h:'12 个老朋友', b:'<p>{b} {d} {f} {g} {h} {k} {l} {m} {n} {p} {t} {w}——这 12 个辅音和拼音（或英语）的读法基本一样，几乎不用花力气。</p>'},
+      {t:'grid', h:'老朋友和它们的例词', letters:['b','d','f','g','h','k','l','m','n','p','t','w']},
+      {t:'intro', h:'老朋友的两个小脾气', b:'<p>① {g}、{k} 碰上粗元音（a o u y）时，发音部位更靠后，从喉咙深处出来：{gawun}、{balyk}。</p><p>② {b}、{g} 夹在两个元音之间会变“软”：{b} 接近很轻的 w，{g} 变成摩擦音。初学时按拼音读，对方也能听懂。</p>'}
+    ],
+    quiz:[
+      {q:'choice', p:'看图选词：鱼', emoji:'🐟', o:['balyk','palyk','baluk','balyg'], tk:true, x:'{balyk}：b-a-l-y-k。'},
+      {q:'choice', p:'看图选词：甜瓜', emoji:'🍈', o:['gawun','kawun','gawyn','gowun'], tk:true, x:'{gawun}。土库曼斯坦的甜瓜很出名，还有专门的“甜瓜节”。'},
+      {q:'spell', hint:'🍋 柠檬', a:'limon', extra:'enr'},
+      {q:'choice', p:'看图选词：汽车', emoji:'🚗', o:['maşyn','masyn','maşin','maçyn'], tk:true, x:'{maşyn}：中间是 {ş}（sh），元音是 {y}。'},
+      {q:'spell', hint:'🍛 抓饭', a:'palaw', extra:'bou'},
+      {q:'match', p:'配对：单词 ↔ 意思', pairs:[['düýe','骆驼 🐫'],['tüwi','米饭 🍚'],['haly','地毯 🧶'],['wagt','时间 ⏰'],['kitap','书 📖']]},
+      {q:'choice', p:'哪个字母多出现在外来词里？', o:['f','b','d','m'], tk:true, x:'{f} 多见于外来词，比如 {futbol}（足球）。'},
+      {q:'choice', p:'{gawun} 里的 {g} 为什么发得更靠后？', o:['因为旁边是粗元音 a','因为它在词首','因为 g 永远靠后','因为后面有 w'], x:'{g}、{k} 碰上粗元音（a o u y）就往后缩。'},
+      {q:'spell', hint:'📖 书', a:'kitap', extra:'bgy'}
+    ]},
+  { id:'1-3', title:'戴帽子的辅音', sub:'ç ş ž ň ý：帽子一戴，读音就变',
+    words:[['çaý','茶','🍵'],['çörek','馕、面包','🫓'],['deňiz','海','🌊'],['şäher','城市','🏙️'],['ýyldyz','星星','⭐'],['žurnal','杂志','📰'],['meniň','我的','']],
+    learn:[
+      {t:'intro', h:'字母表里没有 c、q、v、x', b:'<p>土库曼语的字母表没有 c、q、v、x，却有 5 个“戴帽子”的辅音：{ç} {ş} {ž} {ň} {ý}。帽子一戴，读音就变了。</p>'},
+      {t:'letter', k:'ç'},{t:'letter', k:'ş'},{t:'letter', k:'ž'},{t:'letter', k:'ň'},{t:'letter', k:'ý'},
+      {t:'intro', h:'ý 和 y：最容易混的一对', b:'<p>{ý}（带尖帽）= 辅音，像拼音 y：{ýa} 呀、{ýo} 哟。</p><p>{y}（不带帽）= 元音 [ɯ]。</p><p>一个词里可以两个都有：{ýyldyz}（星星）= ý + y + l + d + y + z。注意上色：元音 {y} 会变蓝，辅音 {ý} 不上色。</p>'}
+    ],
+    quiz:[
+      {q:'choice', p:'看图选词：茶', emoji:'🍵', o:['çaý','çay','caý','şaý'], tk:true, x:'{çaý}：{ç} 读 ch，结尾的 {ý} 是辅音。'},
+      {q:'choice', p:'哪个字母读作英语 she 里的 sh？', o:['ş','s','ç','ž'], tk:true, x:'{ş} = sh；{s} 是咬舌音；{ç} = ch；{ž} = measure 里的 s。'},
+      {q:'choice', p:'{ň} 会出现在词首吗？', o:['不会，只在词中或词尾','会，而且很常见','只出现在外来词开头','只出现在问句里'], x:'{ň} 从不打头：{deňiz}（海）、{meniň}（我的）。'},
+      {q:'choice', p:'看图选词：星星', emoji:'⭐', o:['ýyldyz','yýldyz','ýildiz','yyldyz'], tk:true, x:'{ýyldyz}：开头的 {ý} 是辅音，后面的 {y} 是元音。'},
+      {q:'spell', hint:'🏙️ 城市', a:'şäher', extra:'sea'},
+      {q:'match', p:'配对：字母 ↔ 发音', pairs:[['ç','ch（church）'],['ş','sh（she）'],['ž','s（measure）'],['ň','ng（sing）'],['ý','y（yes）']]},
+      {q:'choice', p:'{ý} 和 {y}，哪个是辅音？', o:['{ý}','{y}','两个都是','两个都不是'], x:'带尖帽的 {ý} 是辅音，{y} 是元音。'},
+      {q:'spell', hint:'🌊 海', a:'deňiz', extra:'ng'},
+      {q:'choice', p:'看图选词：馕、面包', emoji:'🫓', o:['çörek','çorek','şörek','çörük'], tk:true, x:'{çörek}。馕在土库曼人心中很神圣，不能随意丢弃。'}
+    ]},
+  { id:'1-4', title:'伪装者', sub:'s z r j e y：长得眼熟，读法不同',
+    words:[['suw','水','💧'],['salam','你好','👋'],['göz','眼睛','👁️'],['jaý','房屋、建筑','🏢'],['garpyz','西瓜','🍉'],['sary','黄色','🟡'],['duz','盐','🧂'],['şeker','糖','🍬']],
+    learn:[
+      {t:'intro', h:'6 个伪装者', b:'<p>它们和拼音长得一模一样，读法却不同，是最容易出错的一组：辅音 {s} {z} {r} {j}，以及上一关见过的元音 {e} {y}。</p>'},
+      {t:'letter', k:'s'},{t:'letter', k:'z'},{t:'letter', k:'r'},{t:'letter', k:'j'},
+      {t:'intro', h:'咬舌音是土库曼语的招牌', b:'<p>{salam}（你好）开口第一个音就是咬舌的 [θ]：[θɑlɑm]。</p><p>同属乌古斯语支，土耳其语、阿塞拜疆语都读 [s]，只有土库曼语咬舌。说对这个音，一开口就像土库曼人。</p>'},
+      {t:'intro', h:'回顾：e 和 y', b:'<p>{e} 读“诶”，不读“饿”。</p><p>{y} 是元音 [ɯ]，不是辅音；辅音“呀”写作 {ý}。</p>'}
+    ],
+    quiz:[
+      {q:'choice', p:'{suw}（水）的 {s} 怎么读？', o:['舌尖放在上下齿之间送气，像 think 的 th','和拼音 s 一样','像英语 she 的 sh','不发音'], x:'{s} = [θ]，所以 {suw} 读作 [θuw]。'},
+      {q:'choice', p:'{göz}（眼睛）的 {z} 怎么读？', o:['像英语 this 的 th','像拼音 z（资）','像英语 zoo 的 z','像拼音 r（日）'], x:'{z} = [ð]，浊咬舌音。{göz} 读作 [gøð]。'},
+      {q:'choice', p:'哪个词的第一个音是咬舌音 [θ]？', o:['salam','şeker','çaý','jaý'], tk:true, x:'{salam} 的 {s} 是咬舌音；{ş} 读 sh。'},
+      {q:'choice', p:'土库曼语的 {r} 应该怎么发？', o:['舌尖颤动的大舌音','拼音 r（日）','英语 red 的 r','不发音'], x:'{r} 是颤音：舌尖抵住上齿龈颤动。'},
+      {q:'choice', p:'{jaý}（房屋）的 {j} 怎么读？', o:['英语 jeep 的 j [dʒ]','英语 yes 的 y','法语 bonjour 的 j','拼音 q'], x:'{j} = [dʒ]。别和 {ž}（[ʒ]）、{ý}（[j]）搞混。'},
+      {q:'sort', p:'它读咬舌音吗？', bins:['读咬舌音（s / z）','不读咬舌音'], items:[['suw',0],['şäher',1],['sary',0],['çaý',1],['duz',0],['jaý',1]], tk:true, x:'只有 {s} 和 {z} 读咬舌音；{ş} {ç} {j} 都不是。'},
+      {q:'match', p:'配对：伪装者 ↔ 真实读音', pairs:[['s','[θ] think'],['z','[ð] this'],['j','[dʒ] jeep'],['r','大舌颤音'],['y','[ɯ] 元音']]},
+      {q:'choice', p:'{e} 的正确读法：', o:['[e]，像“诶”','[ɤ]，像“饿”','[a]，像“啊”','[i]，像“衣”'], x:'拼音 e 是“饿”，土库曼语的 {e} 是“诶”。'},
+      {q:'choice', p:'看图选词：西瓜', emoji:'🍉', o:['garpyz','karpyz','garpiz','garbyz'], tk:true, x:'{garpyz}：{r} 要颤，结尾的 {z} 咬舌。'}
+    ]},
+  { id:'1-5', title:'拼读', sub:'一字一音，像拼拼音一样',
+    words:[['suw','水','💧'],['gyz','女孩','👧'],['öý','家','🏠'],['üzüm','葡萄','🍇'],['alma','苹果','🍎']],
+    learn:[
+      {t:'intro', h:'一字一音，像拼拼音', b:'<p>土库曼语的拼读和拼音一样：把每个字母的音连起来读就行。</p><p>{s} + {u} + {w} → {suw}（水）[θuw]</p>'},
+      {t:'blend', h:'连起来读', items:[[['s','u','w'],'suw','💧','水'],[['ç','a','ý'],'çaý','🍵','茶'],[['g','y','z'],'gyz','👧','女孩'],[['ö','ý'],'öý','🏠','家'],[['a','l','m','a'],'alma','🍎','苹果']]},
+      {t:'intro', h:'有几个元音，就有几个音节', b:'<p>元音是音节的核心，一个元音一拍：{al-ma}、{ü-züm}、{sa-lam}、{gar-pyz}、{ýyl-dyz}。</p><p>分不清怎么断开时，先数元音。</p>'}
+    ],
+    quiz:[
+      {q:'spell', hint:'💧 水', a:'suw', extra:'ş'},
+      {q:'spell', hint:'👧 女孩', a:'gyz', extra:'iý'},
+      {q:'spell', hint:'🏠 家、房子', a:'öý', extra:'oy'},
+      {q:'choice', p:'“{sa}” + “{lam}” 拼起来读作？', o:['[θɑlɑm]','[sɑlɑm]','[ʃɑlɑm]','[θɑlɯm]'], x:'{s} 咬舌：[θɑlɑm]。'},
+      {q:'choice', p:'{göz}（眼睛）的读音是？', o:['[gøð]','[goz]','[gøz]','[køθ]'], x:'g-ö-z：[g] + [ø] + [ð]。'},
+      {q:'choice', p:'{garpyz}（西瓜）有几个音节？', o:['2','3','1','4'], x:'有几个元音就有几个音节：{gar-pyz}。'},
+      {q:'spell', hint:'🍇 葡萄', a:'üzüm', extra:'uy'},
+      {q:'spell', hint:'🍎 苹果', a:'alma', extra:'e'},
+      {q:'choice', p:'{ýyldyz}（星星）有几个音节？', o:['2','3','1','4'], x:'{ýyl-dyz}：两个元音 {y}，两个音节。'}
+    ]},
+  { id:'1-6', title:'长短音与重音', sub:'写不出来的区别，就像声调',
+    words:[['at','马（短音）','🐎'],['at','名字（长音）','🏷️'],['ot','草（短音）','🌿'],['ot','火（长音）','🔥'],['ak','白色（长音）','⚪']],
+    learn:[
+      {t:'intro', h:'看不见的长短音', b:'<p>土库曼语的元音有长有短，意思会跟着变，但拼写完全一样——就像汉字不标声调。</p><p>这是古突厥语长元音的遗存，土耳其语早已丢失。</p>'},
+      {t:'pairs', h:'最经典的两对', items:[['at [ɑt]','马（短音）🐎'],['at [ɑːt]','名字（长音）🏷️'],['ot [ot]','草（短音）🌿'],['ot [oːt]','火（长音）🔥']], b:'<p>怎么记？像记声调一样，跟着单词一起记。好消息：放进句子里基本不会误会，比如 {Meniň adym…}（我的名字……）。</p>'},
+      {t:'intro', h:'两条小规律', b:'<p>① {e} 永远是短音。</p><p>② {ä} 通常读长音：{bäş} [bæːʃ]（五）。</p>'},
+      {t:'intro', h:'重音：一般在最后一个音节', b:'<p>{sa-LAM}、{ki-TAP}。</p><p>加上词缀后，重音跟着往后挪：{kitap-LAR}、{kitaplar-DA}。</p><p>例外：问句小尾巴 {-my}/{-mi}（第 2 层会学）不抢重音。</p>'}
+    ],
+    quiz:[
+      {q:'choice', p:'{at} 读长音 [ɑːt] 时是什么意思？', o:['名字','马','火','草'], x:'短 [ɑt] = 马，长 [ɑːt] = 名字。'},
+      {q:'choice', p:'{ot} 读短音 [ot] 时是什么意思？', o:['草','火','马','名字'], x:'短 [ot] = 草，长 [oːt] = 火。'},
+      {q:'choice', p:'长短元音在拼写上怎么区分？', o:['不区分，要跟着单词一起记','长音写成双字母','长音加一顶帽子','长音用大写'], x:'现行拼写不标长短，就像汉字不标声调。'},
+      {q:'choice', p:'{salam} 的重音在哪？', o:['sa-LAM（最后一个音节）','SA-lam（第一个音节）','两个音节一样重','没有重音'], x:'土库曼语重音一般落在最后一个音节。'},
+      {q:'choice', p:'加上词缀后，{kitaplar} 的重音在？', o:['kitap-LAR','KI-taplar','ki-TAP-lar','没有重音'], x:'重音随词缀后移，落在最后一个音节。'},
+      {q:'choice', p:'哪个元音永远是短音？', o:['e','ä','a','o'], tk:true, x:'{e} 永远短；{ä} 通常长。'},
+      {q:'choice', p:'“火”怎么读？', emoji:'🔥', o:['[oːt]（长音）','[ot]（短音）','[ɑːt]（长音）','[ɑt]（短音）'], x:'火 = {ot} [oːt]，长音。'},
+      {q:'choice', p:'“马”怎么读？', emoji:'🐎', o:['[ɑt]（短音）','[ɑːt]（长音）','[ot]（短音）','[oːt]（长音）'], x:'马 = {at} [ɑt]，短音。'}
+    ]}
+  ]},
+
+{ n:2, name:'元音和谐', analog:'≈ 声调', tkname:'Ýogyn we inçe', pal:['#F2E8D5','#2B3A78','#2F7D57'],
+  levels:[
+  { id:'2-1', title:'粗细两派', sub:'一个词里的元音穿同一种颜色',
+    words:[['iki','二',''],['alty','六',''],['ýedi','七',''],['sekiz','八',''],['dokuz','九',''],['on','十',''],['ak','白色','⚪'],['gara','黑色','⚫'],['gyzyl','红色','🔴'],['sary','黄色','🟡'],['ýaşyl','绿色','🟢'],['gök','蓝色、青色','🔵'],['ýogyn','粗（后元音）',''],['inçe','细（前元音）','']],
+    learn:[
+      {t:'intro', h:'一家人穿同一种颜色', b:'<p>土库曼语的本族词里，元音要么全是粗元音，要么全是细元音：</p><p>粗：{balyk} {gyzyl} {dokuz} {alty}<br>细：{üzüm} {şäher} {sekiz} {ýedi}</p><p>这就是<b>元音和谐</b>。它像汉语的声调：不懂就会说错，懂了一通百通。</p>'},
+      {t:'intro', h:'为什么它像“声调”', b:'<p>后面要学的每个词缀——复数、“我的”、“在”、“从”、问句——都有粗、细两个版本，挂哪个由词里的元音决定。</p><p>所以先练会一眼分辨粗细，后面的语法就顺了。</p>'},
+      {t:'pairs', h:'数字里的和谐', items:[['iki','二（细）'],['alty','六（粗）'],['ýedi','七（细）'],['sekiz','八（细）'],['dokuz','九（粗）'],['on','十（粗）']]},
+      {t:'pairs', h:'颜色里的和谐', items:[['ak','白'],['gara','黑'],['gyzyl','红'],['sary','黄'],['ýaşyl','绿'],['gök','蓝、青（绿茶叫 gök çaý）']]}
+    ],
+    quiz:[
+      {q:'sort', p:'这个词属于哪一派？', bins:['粗元音词','细元音词'], items:[['balyk',0],['üzüm',1],['dokuz',0],['sekiz',1],['gyzyl',0],['ýedi',1],['alty',0],['şäher',1]], tk:true, x:'看元音：a o u y 是粗，e ä i ö ü 是细。'},
+      {q:'choice', p:'下面哪个词里全是细元音？', o:['ýedi','alty','dokuz','gara'], tk:true, x:'{ýedi}：e、i 都是细元音。'},
+      {q:'choice', p:'{gyzyl}（红色）属于哪一派？', o:['粗元音词','细元音词','混合词','没有元音'], x:'两个 {y} 都是粗元音。'},
+      {q:'match', p:'配对：数字', pairs:[['iki','2'],['alty','6'],['ýedi','7'],['sekiz','8'],['dokuz','9']]},
+      {q:'match', p:'配对：颜色', pairs:[['ak','白'],['gara','黑'],['gyzyl','红'],['sary','黄'],['ýaşyl','绿']]},
+      {q:'choice', p:'{gök}（蓝色）属于哪一派？', o:['细元音词','粗元音词'], x:'{ö} 是细元音（舌头靠前）。'},
+      {q:'choice', p:'土库曼人把前元音（细元音）叫作？', o:['inçe','ýogyn','uly','kiçi'], tk:true, x:'{inçe} = 细，{ýogyn} = 粗。{uly} 是“大”，{kiçi} 是“小”。'}
+    ]},
+  { id:'2-2', title:'复数 -lar / -ler', sub:'第一个会变身的词缀',
+    words:[['kitaplar','书（复数）','📚'],['itler','狗（复数）',''],['gyzlar','女孩们',''],['öýler','房子（复数）',''],['gözler','眼睛（复数）','👀'],['üç','三','']],
+    learn:[
+      {t:'intro', h:'复数只有两个版本', b:'<p>粗元音词 + {-lar}，细元音词 + {-ler}：</p><p>{kitap} → {kitaplar}（书）<br>{gyz} → {gyzlar}（女孩们）<br>{it} → {itler}（狗）<br>{öý} → {öýler}（房子）</p>'},
+      {t:'intro', h:'有数字就不加复数', b:'<p>{iki kitap}（两本书）、{bäş alma}（五个苹果）——前面有数字，名词保持原形，不说 iki kitaplar。</p><p>这点和汉语的“两本书”一样。</p>'}
+    ],
+    quiz:[
+      {q:'choice', p:'{at}（马）的复数是？', o:['atlar','atler','atlär','atlyr'], tk:true, x:'{a} 是粗元音 → {-lar}。'},
+      {q:'choice', p:'{it}（狗）的复数是？', o:['itler','itlar','itlir','itlär'], tk:true, x:'{i} 是细元音 → {-ler}。'},
+      {q:'sort', p:'该挂 -lar 还是 -ler？', bins:['-lar','-ler'], items:[['alma',0],['üzüm',1],['oba',0],['şäher',1],['balyk',0],['düýe',1]], tk:true, x:'看元音：粗 → {-lar}，细 → {-ler}。'},
+      {q:'choice', p:'{göz}（眼睛）的复数是？', o:['gözler','gözlar','gözlör','gözlür'], tk:true, x:'{ö} 是细元音 → {gözler}。'},
+      {q:'choice', p:'“三本书”怎么说？', o:['üç kitap','üç kitaplar','kitaplar üç','üç kitaply'], tk:true, x:'有数字时名词不加复数：{üç kitap}。'},
+      {q:'build', p:'拼出“女孩们”', root:'gyz', blocks:['lar','ler'], a:['lar'], forms:['gyzlar'], x:'{gyz} 的 {y} 是粗元音 → {gyzlar}。'},
+      {q:'build', p:'拼出“房子（复数）”', root:'öý', blocks:['lar','ler'], a:['ler'], forms:['öýler'], x:'{ö} 是细元音 → {öýler}。'},
+      {q:'choice', p:'{düýe}（骆驼）的复数？', o:['düýeler','düýelar','düýler','düýalar'], tk:true, x:'{ü}、{e} 都是细元音 → {düýeler}。'}
+    ]},
+  { id:'2-3', title:'看最后一个元音', sub:'外来词混搭时的万能规则',
+    words:[['telefon','电话','📱'],['kompýuter','电脑','💻'],['restoran','餐厅','🍽️'],['inžener','工程师','👷'],['muzeý','博物馆','🏛️'],['mugallym','老师','🧑‍🏫'],['Türkmenistan','土库曼斯坦','']],
+    learn:[
+      {t:'intro', h:'外来词会“混搭”', b:'<p>从阿拉伯语、波斯语、俄语借来的词常常粗细混搭：{kitap} 里既有细的 {i}，也有粗的 {a}。</p><p>怎么办？<b>只看最后一个元音。</b></p>'},
+      {t:'pairs', h:'看最后一个元音', items:[['kitap → kitaplar','最后是 a → -lar'],['telefon → telefonlar','最后是 o → -lar'],['kompýuter → kompýuterler','最后是 e → -ler'],['inžener → inženerler','最后是 e → -ler'],['restoran → restoranlar','最后是 a → -lar']]},
+      {t:'intro', h:'这条规则管所有词缀', b:'<p>不止复数，后面学的“在、从、到、我的”等词缀，统统看最后一个元音。</p><p>{Türkmenistan} 最后是 {a} → {Türkmenistanda}（在土库曼斯坦）。</p>'}
+    ],
+    quiz:[
+      {q:'choice', p:'决定词缀用 a 还是 e 的，是词里的哪个元音？', o:['最后一个元音','第一个元音','最长的元音','重读的元音'], x:'只看最后一个元音。'},
+      {q:'choice', p:'{telefon}（电话）的复数？', o:['telefonlar','telefonler'], tk:true, x:'最后一个元音 {o} 是粗元音 → {-lar}。'},
+      {q:'choice', p:'{kompýuter}（电脑）的复数？', o:['kompýuterler','kompýuterlar'], tk:true, x:'最后一个元音 {e} 是细元音 → {-ler}。'},
+      {q:'sort', p:'挂 -lar 还是 -ler？', bins:['-lar','-ler'], items:[['restoran',0],['inžener',1],['kitap',0],['muzeý',1],['mugallym',0],['kompýuter',1]], tk:true, x:'只看最后一个元音。'},
+      {q:'choice', p:'“在土库曼斯坦”', o:['Türkmenistanda','Türkmenistande'], tk:true, x:'{Türkmenistan} 最后一个元音是 {a} → {-da}。'},
+      {q:'build', p:'拼出“老师们”', root:'mugallym', blocks:['lar','ler'], a:['lar'], forms:['mugallymlar'], x:'{mugallym} 最后一个元音是 {y} → {-lar}。'},
+      {q:'choice', p:'{inžener}（工程师）的复数？', o:['inženerler','inženerlar'], tk:true, x:'最后一个元音 {e} → {-ler}。'}
+    ]},
+  { id:'2-4', title:'问号小尾巴 -my / -mi', sub:'挂上它，就成了“……吗？”',
+    words:[['bu','这',''],['hawa','是',''],['ýok','不、没有',''],['talyp','大学生','🎓']],
+    learn:[
+      {t:'intro', h:'变问句：挂个小尾巴', b:'<p>陈述句的末尾挂上 {-my}（粗）或 {-mi}（细），就变成“……吗？”，语序不用动：</p><p>{Bu çaý.} 这是茶。→ {Bu çaýmy?} 这是茶吗？<br>{Bu et.} 这是肉。→ {Bu etmi?} 这是肉吗？</p>'},
+      {t:'pairs', h:'怎么回答', items:[['Hawa.','是。'],['Ýok.','不。'],['Hawa, bu çaý.','是的，这是茶。'],['Ýok, bu çaý däl.','不，这不是茶。']]},
+      {t:'intro', h:'小尾巴也讲和谐', b:'<p>{-my} 里的 {y} 是粗元音，{-mi} 里的 {i} 是细元音——还是看最后一个元音：</p><p>{suwmy?} {kitapmy?} {üzümmi?}</p>'}
+    ],
+    quiz:[
+      {q:'choice', p:'“这是书吗？”', o:['Bu kitapmy?','Bu kitapmi?','Bu my kitap?','My bu kitap?'], tk:true, x:'{kitap} 最后是 {a} → {-my}，挂在词尾。'},
+      {q:'choice', p:'“这是肉吗？”', o:['Bu etmi?','Bu etmy?','Bu mi et?','Mi bu et?'], tk:true, x:'{e} 是细元音 → {-mi}。'},
+      {q:'sort', p:'挂 -my 还是 -mi？', bins:['-my','-mi'], items:[['suw',0],['üzüm',1],['çaý',0],['öý',1],['gawun',0],['şäher',1]], tk:true, x:'看最后一个元音：粗 → {-my}，细 → {-mi}。'},
+      {q:'choice', p:'“你是学生吗？”', o:['Sen talypmy?','Sen talypmi?','Talyp senmi?','Sen my talyp?'], tk:true, x:'{talyp} 最后是 {y} → {-my}。'},
+      {q:'dialog', who:'Aýna', line:'Bu çaýmy?', lineZh:'这是茶吗？', p:'是的，回答：', o:['Hawa, bu çaý.','Ýok.','Salam!','Sag bol!'], tk:true, x:'{Hawa} = 是。'},
+      {q:'choice', p:'{Ýok} 在回答里的意思是？', o:['不','是','谢谢','你好'], x:'{Ýok} = 不、没有。'},
+      {q:'choice', p:'“这是葡萄吗？”', o:['Bu üzümmi?','Bu üzümmy?','Bu mi üzüm?','Üzüm bumy?'], tk:true, x:'{ü} 是细元音 → {-mi}。'}
+    ]}
+  ]},
+
+{ n:3, name:'词缀积木', analog:'≈ 偏旁部首', tkname:'Goşulmalar', pal:['#E0A030','#2B3A78','#F2E8D5'],
+  levels:[
+  { id:'3-1', title:'我的、你的', sub:'把“的”挂在词尾',
+    words:[['adym','我的名字',''],['adyň','你的名字',''],['kitabym','我的书',''],['maşynym','我的车',''],['kaka','爸爸',''],['kakam','我的爸爸',''],['eje','妈妈',''],['ejäm','我的妈妈',''],['agaç','树','🌳'],['näme','什么','']],
+    learn:[
+      {t:'intro', h:'“我的”“你的”挂在词尾', b:'<p>“我的”= {-ym}/{-im}（元音结尾只挂 {-m}）<br>“你的”= {-yň}/{-iň}（元音结尾只挂 {-ň}）</p><p>{maşyn} → {maşynym} 我的车 · {maşynyň} 你的车<br>{kaka}（爸爸）→ {kakam} 我的爸爸 · {kakaň} 你的爸爸</p>'},
+      {t:'table', h:'物主词尾一览', head:['','辅音结尾：maşyn（车）','元音结尾：kaka（爸爸）'], rows:[['我的','maşynym','kakam'],['你的','maşynyň','kakaň'],['他 / 她的','maşyny','kakasy'],['我们的','maşynymyz','kakamyz'],['您的 / 你们的','maşynyňyz','kakaňyz']]},
+      {t:'intro', h:'辅音变身：p→b，t→d，k→g，ç→j', b:'<p>词尾的 {p} {t} {k} {ç} 碰上元音开头的词缀，常会变成浊音：</p><p>{kitap} → {kitabym}（我的书）<br>{at}（名字）→ {adym}（我的名字）<br>{çörek}（馕）→ {çöregim}（我的馕）<br>{agaç}（树）→ {agajym}（我的树）</p><p>短元音的单音节词通常不变：{it} → {itim}（我的狗）。</p>'},
+      {t:'intro', h:'e 结尾要变 ä', b:'<p>{eje}（妈妈）→ {ejäm}（我的妈妈）。</p><p>晚安 {Gijäňiz rahat bolsun!} 里的 {gijäňiz}（您的夜晚），也是 {gije} + {ňiz}。</p>'}
+    ],
+    quiz:[
+      {q:'build', p:'拼出“我的名字”', root:'at', blocks:['ym','im','yň','m'], a:['ym'], forms:['adym'], x:'{at}（名字，长音）+ {ym} → {adym}，t 变 d。'},
+      {q:'build', p:'拼出“我的书”', root:'kitap', blocks:['ym','im','yň','iň'], a:['ym'], forms:['kitabym'], x:'最后一个元音 {a} → {-ym}；p 变 b：{kitabym}。'},
+      {q:'choice', p:'“我的车”', o:['maşynym','maşynim','maşynm','maşyňym'], tk:true, x:'{maşyn} 辅音结尾、粗元音 → {-ym}。'},
+      {q:'choice', p:'“你的名字”（对朋友说）', o:['adyň','adym','atyň','adyn'], tk:true, x:'“你的”= {-yň}，t 同样变 d：{adyň}。'},
+      {q:'choice', p:'“我的爸爸”', o:['kakam','kakaym','kakym','kakamy'], tk:true, x:'{kaka} 元音结尾，只挂 {-m}。'},
+      {q:'choice', p:'“我的妈妈”', o:['ejäm','ejeym','ejim','ejeme'], tk:true, x:'{eje} 词尾的 e 变 ä：{ejäm}。'},
+      {q:'choice', p:'{çörek}（馕）+“我的”=？', o:['çöregim','çörekim','çöregym','çörekym'], tk:true, x:'k 变 g，细元音 → {çöregim}。'},
+      {q:'choice', p:'“您叫什么名字？”（礼貌）', o:['Adyňyz näme?','Adym näme?','Adyň kim?','Näme adyňyzmy?'], tk:true, x:'{adyňyz} = 您的名字；{näme} = 什么。'}
+    ]},
+  { id:'3-2', title:'在哪儿：-da / -de', sub:'“在……”也挂在词尾',
+    words:[['öýde','在家',''],['bazar','巴扎、市场','🛒'],['bazarda','在巴扎',''],['mekdep','学校','🏫'],['mekdepde','在学校',''],['Aşgabat','阿什哈巴德（首都）',''],['Hytaý','中国',''],['Pekin','北京',''],['dükan','商店','🏪']],
+    learn:[
+      {t:'intro', h:'“在……” = -da / -de', b:'<p>{öý} → {öýde} 在家<br>{bazar} → {bazarda} 在巴扎<br>{mekdep} → {mekdepde} 在学校<br>{Aşgabat} → {Aşgabatda} 在阿什哈巴德</p>'},
+      {t:'intro', h:'-da / -de 不让辅音变身', b:'<p>{-da}/{-de} 以辅音开头，所以 {p} {t} {k} {ç} 保持原样：写 {mekdepde}，不写 mekdebde。</p><p>对比：{mekdebe}（去学校）就会变——第 3-4 关见。</p>'},
+      {t:'pairs', h:'常用地点', items:[['Aşgabat','阿什哈巴德（首都）'],['Hytaý','中国'],['Pekin','北京'],['Türkmenistan','土库曼斯坦'],['bazar','巴扎、市场'],['mekdep','学校'],['dükan','商店']]}
+    ],
+    quiz:[
+      {q:'choice', p:'“在家”', o:['öýde','öýda','öýden','öýe'], tk:true, x:'{ö} 是细元音 → {-de}。'},
+      {q:'choice', p:'“在巴扎”', o:['bazarda','bazarde','bazara','bazardan'], tk:true, x:'{a} 是粗元音 → {-da}。'},
+      {q:'choice', p:'“在学校”', o:['mekdepde','mekdebde','mekdepda','mekdebe'], tk:true, x:'{-de} 以辅音开头，p 不变：{mekdepde}。'},
+      {q:'sort', p:'挂 -da 还是 -de？', bins:['-da','-de'], items:[['bazar',0],['öý',1],['Aşgabat',0],['şäher',1],['Hytaý',0],['mekdep',1]], tk:true, x:'{Hytaý} 的元音 y、a 都是粗元音 → {Hytaýda}。'},
+      {q:'choice', p:'{Men Aşgabatda.} 的意思是？', o:['我在阿什哈巴德。','我从阿什哈巴德来。','我去阿什哈巴德。','我爱阿什哈巴德。'], x:'{-da} = 在。'},
+      {q:'build', p:'拼出“在我的车里”', root:'maşyn', blocks:['ym','im','da','de'], a:['ym','da'], forms:['maşynym','maşynymda'], x:'{maşyn} + {ym}（我的）+ {da}（在）= {maşynymda}。'},
+      {q:'choice', p:'“在中国”', o:['Hytaýda','Hytaýde','Hytaýdan','Hytaýa'], tk:true, x:'{Hytaý} 是粗元音词 → {Hytaýda}。'}
+    ]},
+  { id:'3-3', title:'从哪儿：-dan / -den', sub:'自我介绍的神器',
+    words:[['Hytaýdan','从中国',''],['öýden','从家里',''],['Pekinden','从北京',''],['nireden','从哪里','']],
+    learn:[
+      {t:'intro', h:'“从……” = -dan / -den', b:'<p>{Hytaý} → {Hytaýdan} 从中国<br>{öý} → {öýden} 从家里<br>{Pekin} → {Pekinden} 从北京</p>'},
+      {t:'intro', h:'自我介绍神器', b:'<p>{Men Hytaýdan.} = 我来自中国。（字面：我 从中国）</p><p>问别人：{Siz nireden?} 您从哪里来？（对朋友：{Sen nireden?}）</p>'},
+      {t:'pairs', h:'三兄弟对照', items:[['Aşgabatda','在阿什哈巴德'],['Aşgabatdan','从阿什哈巴德'],['Aşgabada','去阿什哈巴德（下一关）']]}
+    ],
+    quiz:[
+      {q:'choice', p:'“我来自中国。”', o:['Men Hytaýdan.','Men Hytaýda.','Men Hytaýa.','Men Hytaýden.'], tk:true, x:'{-dan} = 从；{Hytaý} 是粗元音词。'},
+      {q:'choice', p:'{Siz nireden?} 的意思是？', o:['您从哪里来？','您在哪里？','您去哪里？','您是谁？'], x:'{nire}（哪里）+ {-den}（从）。'},
+      {q:'sort', p:'挂 -dan 还是 -den？', bins:['-dan','-den'], items:[['Hytaý',0],['öý',1],['bazar',0],['Pekin',1],['oba',0],['mekdep',1]], tk:true, x:'粗 → {-dan}，细 → {-den}。'},
+      {q:'choice', p:'“从家里”', o:['öýden','öýdan','öýde','öýe'], tk:true, x:'{ö} 是细元音 → {öýden}。'},
+      {q:'choice', p:'“从北京”', o:['Pekinden','Pekindan','Pekinde','Pekine'], tk:true, x:'{Pekin} 最后是 {i} → {-den}。'},
+      {q:'build', p:'拼出“从那些村庄”', root:'oba', blocks:['lar','ler','dan','den'], a:['lar','dan'], forms:['obalar','obalardan'], x:'{oba} + {lar} + {dan} = {obalardan}。'},
+      {q:'dialog', who:'Aýna', line:'Siz nireden?', lineZh:'您从哪里来？', p:'回答你来自中国：', o:['Men Hytaýdan.','Men Hytaýda.','Meniň adym Hytaý.','Hawa, men.'], tk:true, x:'{Men Hytaýdan.} = 我来自中国。'}
+    ]},
+  { id:'3-4', title:'到哪儿：-a / -e', sub:'“去……”“给……”',
+    words:[['bazara','去巴扎',''],['mekdebe','去学校',''],['Aşgabada','去阿什哈巴德',''],['öýe','回家',''],['maňa','给我',''],['saňa','给你',''],['Hoş geldiňiz!','欢迎！','']],
+    learn:[
+      {t:'intro', h:'“到……去、给……” = -a / -e', b:'<p>{bazar} → {bazara} 去巴扎<br>{öý} → {öýe} 回家<br>{şäher} → {şähere} 进城</p>'},
+      {t:'intro', h:'元音开头 → 辅音会变身', b:'<p>{-a}/{-e} 以元音开头，{p} {t} {k} {ç} 就会变浊：</p><p>{mekdep} → {mekdebe}（去学校）<br>{Aşgabat} → {Aşgabada}（去阿什哈巴德）</p><p>入境时你会看到：{Türkmenistana hoş geldiňiz!}（欢迎来到土库曼斯坦！）</p>'},
+      {t:'pairs', h:'代词的“给”是不规则的', items:[['maňa','给我、对我'],['saňa','给你'],['oňa','给他 / 她'],['bize','给我们'],['size','给您 / 你们']]}
+    ],
+    quiz:[
+      {q:'choice', p:'“去巴扎”里的“巴扎”要写成？', o:['bazara','bazare','bazarda','bazardan'], tk:true, x:'{a} 粗 → {-a}：{bazara}。'},
+      {q:'choice', p:'“去学校”', o:['mekdebe','mekdepe','mekdepa','mekdepde'], tk:true, x:'p 变 b：{mekdebe}。'},
+      {q:'choice', p:'“欢迎来到土库曼斯坦！”', o:['Türkmenistana hoş geldiňiz!','Türkmenistanda hoş geldiňiz!','Türkmenistandan hoş geldiňiz!','Türkmenistan hoş geldiňiz!'], tk:true, x:'“来到”用 {-a}：{Türkmenistana}。'},
+      {q:'choice', p:'{Aşgabat} +“到”=？', o:['Aşgabada','Aşgabata','Aşgabade','Aşgabatda'], tk:true, x:'t 变 d：{Aşgabada}。'},
+      {q:'match', p:'配对：词缀 ↔ 意思', pairs:[['-da / -de','在'],['-dan / -den','从'],['-a / -e','到、给'],['-lar / -ler','复数'],['-ym / -im','我的']]},
+      {q:'choice', p:'“给我”', o:['maňa','mene','mana','meňe'], tk:true, x:'{men} 的“给”形式不规则：{maňa}。'},
+      {q:'choice', p:'“回家”里的“家”要写成？', o:['öýe','öýa','öýde','öýden'], tk:true, x:'{ö} 是细元音 → {öýe}。'}
+    ]},
+  { id:'3-5', title:'积木连连看', sub:'词根 + 复数 + 物主 + 格',
+    words:[['kitaplarym','我的书（复数）',''],['kitaplarymda','在我的书里',''],['obalardan','从那些村庄',''],['öýlerde','在那些房子里',''],['şäherlerden','从那些城市','']],
+    learn:[
+      {t:'intro', h:'词缀有固定顺序', b:'<p>词根 + 复数 + 物主 + 格：</p><p>{kitap} → {kitaplar} → {kitaplarym} → {kitaplarymda}<br>书 → 书们 → 我的书们 → 在我的书里</p>'},
+      {t:'chain', h:'拆开看看', parts:[['kitap','书'],['lar','复数'],['ym','我的'],['da','在']], result:'kitaplarymda', zh:'在我的书里'},
+      {t:'intro', h:'和汉语刚好相反', b:'<p>汉语把“在”“我的”放在前面：在 我的 书 里。</p><p>土库曼语全都挂在后面，而且顺序固定：先“们”，再“我的”，最后“在 / 从 / 到”。</p>'}
+    ],
+    quiz:[
+      {q:'build', p:'拼出“在我的书里（很多本）”', root:'kitap', blocks:['lar','ler','ym','im','da','de'], a:['lar','ym','da'], forms:['kitaplar','kitaplarym','kitaplarymda'], x:'复数 → 物主 → 格：{kitaplarymda}。'},
+      {q:'build', p:'拼出“从那些城市”', root:'şäher', blocks:['lar','ler','dan','den'], a:['ler','den'], forms:['şäherler','şäherlerden'], x:'{şäher} 是细元音词：{şäherlerden}。'},
+      {q:'build', p:'拼出“在那些房子里”', root:'öý', blocks:['lar','ler','da','de'], a:['ler','de'], forms:['öýler','öýlerde'], x:'{öý} + {ler} + {de} = {öýlerde}。'},
+      {q:'choice', p:'{kitaplarymda} 应该怎么拆？', o:['kitap + lar + ym + da','kitap + ym + lar + da','kitap + da + lar + ym','kita + plar + ymda'], tk:true, x:'词根 + 复数 + 物主 + 格。'},
+      {q:'choice', p:'{obalardan} 的意思是？', o:['从那些村庄','在那些村庄','去那些村庄','我的村庄'], x:'{oba}（村庄）+ {lar}（复数）+ {dan}（从）。'},
+      {q:'choice', p:'下面哪个顺序正确？', o:['词根 → 复数 → 物主 → 格','词根 → 格 → 复数 → 物主','格 → 词根 → 复数','物主 → 复数 → 词根'], x:'先“们”，再“我的”，最后“在 / 从 / 到”。'},
+      {q:'build', p:'拼出“从我的车里”', root:'maşyn', blocks:['ym','im','dan','den'], a:['ym','dan'], forms:['maşynym','maşynymdan'], x:'{maşyn} + {ym} + {dan} = {maşynymdan}。'}
+    ]}
+  ]},
+
+{ n:4, name:'句型骨架', analog:'SOV 主宾谓', tkname:'Sözlemler', pal:['#2F7D57','#F2E8D5','#2B3A78'],
+  levels:[
+  { id:'4-1', title:'我是…… / 不是……', sub:'没有“是”这个词',
+    words:[['men','我',''],['sen','你（熟人）',''],['ol','他、她、它',''],['biz','我们',''],['siz','您；你们',''],['olar','他们',''],['däl','不是',''],['lukman','医生','🩺'],['inžener','工程师','👷'],['syýahatçy','游客','🧳']],
+    learn:[
+      {t:'intro', h:'没有“是”这个词', b:'<p>{Men talyp.} 我（是）学生。<br>{Ol mugallym.} 他（是）老师。<br>{Bu çaý.} 这（是）茶。</p><p>直接把两个词放在一起就行。</p>'},
+      {t:'pairs', h:'人称代词', items:[['men','我'],['sen','你（熟人、晚辈）'],['ol','他、她、它'],['biz','我们'],['siz','您；你们'],['olar','他们']]},
+      {t:'intro', h:'否定：句尾加 däl', b:'<p>{Men talyp däl.} 我不是学生。<br>{Bu çaý däl.} 这不是茶。</p><p>书面语有时在后面加 {-dyr}/{-dir} 表示断定：{Aşgabat ulydyr!}（阿什哈巴德很大！）</p>'},
+      {t:'pairs', h:'身份', items:[['talyp','大学生'],['mugallym','老师'],['lukman','医生'],['inžener','工程师'],['syýahatçy','游客']]}
+    ],
+    quiz:[
+      {q:'choice', p:'“他是医生。”', o:['Ol lukman.','Men lukman.','Ol lukman däl.','Sen lukman.'], tk:true, x:'{ol} = 他；不需要“是”。'},
+      {q:'choice', p:'{Men mugallym däl.} 的意思是？', o:['我不是老师。','我是老师。','他不是老师。','我没有老师。'], x:'{däl} = 不是，放在句尾。'},
+      {q:'order', p:'排出：我不是学生。', w:['Men','talyp','däl'], end:'.'},
+      {q:'choice', p:'对长辈或陌生人说“您”，用？', o:['siz','sen','ol','biz'], tk:true, x:'{siz} 表示尊敬，也表示“你们”。'},
+      {q:'match', p:'配对：代词', pairs:[['men','我'],['sen','你'],['ol','他 / 她'],['biz','我们'],['olar','他们']]},
+      {q:'order', p:'排出：这不是茶。', w:['Bu','çaý','däl'], end:'.'},
+      {q:'choice', p:'“我是游客。”', o:['Men syýahatçy.','Men syýahatçy däl.','Sen syýahatçy.','Men syýahatçydan.'], tk:true, x:'{Men syýahatçy.}'}
+    ]},
+  { id:'4-2', title:'有 / 没有：bar / ýok', sub:'放在句尾',
+    words:[['bar','有',''],['ýok','没有',''],['mende','我这儿',''],['wagt','时间','⏰'],['manat','马纳特（货币）','']],
+    learn:[
+      {t:'intro', h:'有 = bar，没有 = ýok', b:'<p>{Meniň kitabym bar.} 我有书。（字面：我的 书 有）<br>{Onuň maşyny ýok.} 他没有车。</p><p>另一种说法：{Mende çörek bar.} 我这儿有馕。</p>'},
+      {t:'intro', h:'变成问句', b:'<p>{bar} + {-my} → {barmy?}</p><p>{Suw barmy?} 有水吗？<br>回答：{Hawa, bar.} 有。/ {Ýok.} 没有。</p>'},
+      {t:'pairs', h:'马上能用', items:[['Meniň wagtym ýok.','我没时间。'],['Çaý barmy?','有茶吗？'],['Mende manat bar.','我有马纳特（钱）。']]}
+    ],
+    quiz:[
+      {q:'choice', p:'“我有车。”', o:['Meniň maşynym bar.','Meniň maşynym ýok.','Men maşyn bar.','Meniň maşyn barmy.'], tk:true, x:'{Meniň maşynym bar.}：我的车 + 有。'},
+      {q:'choice', p:'{Onuň maşyny ýok.} 的意思是？', o:['他没有车。','他有车。','我没有车。','他的车在哪？'], x:'{onuň} 他的，{ýok} 没有。'},
+      {q:'choice', p:'“有水吗？”', o:['Suw barmy?','Suw ýokmy?','Suw bar.','Suwmy bar?'], tk:true, x:'{bar} + {-my}：{barmy?}'},
+      {q:'order', p:'排出：我这儿有馕。', w:['Mende','çörek','bar'], end:'.'},
+      {q:'choice', p:'“我没时间。”', o:['Meniň wagtym ýok.','Meniň wagtym bar.','Men wagt däl.','Wagtym barmy?'], tk:true, x:'{wagtym} 我的时间 + {ýok}。'},
+      {q:'dialog', who:'Merdan', line:'Seniň maşynyň barmy?', lineZh:'你有车吗？', p:'你没有车，回答：', o:['Ýok, meniň maşynym ýok.','Hawa, bar.','Men maşyn.','Sag bol, bar.'], tk:true, x:'{Ýok} 既是“不”，也是“没有”。'},
+      {q:'choice', p:'{ýok} 可以表示？', o:['“没有”，也可以回答“不”','只表示“不”','只表示“有”','“谢谢”'], x:'{ýok} 一词两用。'}
+    ]},
+  { id:'4-3', title:'问句', sub:'疑问词放在答案的位置',
+    words:[['kim','谁',''],['nirede','在哪里',''],['näçe','多少',''],['haçan','什么时候',''],['nähili','怎么样',''],['hajathana','厕所','🚻']],
+    learn:[
+      {t:'pairs', h:'疑问词', items:[['näme','什么'],['kim','谁'],['nirede','在哪里'],['nireden','从哪里'],['näçe','多少'],['haçan','什么时候'],['nähili','怎么样']]},
+      {t:'intro', h:'答案在哪，疑问词就在哪', b:'<p>语序不用变，把答案换成疑问词：</p><p>{Bu çaý.} → {Bu näme?} 这是什么？<br>{Ol Merdan.} → {Ol kim?} 他是谁？</p><p>有疑问词的句子，不再挂 {-my}/{-mi}。</p>'},
+      {t:'pairs', h:'高频问句', items:[['Bu näme?','这是什么？'],['Ol kim?','他是谁？'],['Bazar nirede?','巴扎在哪儿？'],['Bu näçe?','这个多少钱？'],['Ýagdaýlaryňyz nähili?','您好吗？（您的情况怎么样？）']]}
+    ],
+    quiz:[
+      {q:'match', p:'配对：疑问词', pairs:[['näme','什么'],['kim','谁'],['nirede','在哪里'],['näçe','多少'],['haçan','什么时候']]},
+      {q:'choice', p:'“这是什么？”', o:['Bu näme?','Bu nämemi?','Näme bumy?','Bu kim?'], tk:true, x:'有疑问词就不加 {-mi}。'},
+      {q:'choice', p:'“巴扎在哪儿？”', o:['Bazar nirede?','Bazar nireden?','Bazarda nirede?','Nirede bazarmy?'], tk:true, x:'{nirede} = 在哪里。'},
+      {q:'dialog', who:'Aýna', line:'Siz nireden?', lineZh:'您从哪里来？', p:'最合适的回答：', o:['Men Hytaýdan.','Men talyp.','Hawa.','Bu çaý.'], tk:true, x:'问“从哪里”，答“从中国”。'},
+      {q:'choice', p:'带疑问词的问句，还要挂 -my / -mi 吗？', o:['不用','要','只在句首挂','只对长辈挂'], x:'疑问词本身已经表示提问。'},
+      {q:'order', p:'排出：厕所在哪儿？', w:['Hajathana','nirede'], end:'?'},
+      {q:'choice', p:'{Ol kim?} 的意思是？', o:['他是谁？','他在哪？','他怎么样？','他从哪来？'], x:'{kim} = 谁。'}
+    ]},
+  { id:'4-4', title:'主宾谓：动词压轴', sub:'我 茶 喝',
+    words:[['içýärin','我喝',''],['okaýaryn','我读',''],['ýaşaýaryn','我住',''],['iýýär','他吃',''],['türkmençe','用土库曼语',''],['uly','大','']],
+    learn:[
+      {t:'intro', h:'动词永远在句尾', b:'<p>汉语：我 喝 茶（主谓宾）<br>土库曼语：{Men çaý içýärin.} 我 茶 喝（主宾谓）</p><p>口诀：<b>动词压轴</b>。</p>'},
+      {t:'intro', h:'地点放中间，形容词放前面', b:'<p>{Men Aşgabatda ýaşaýaryn.} 我 在阿什哈巴德 住。</p><p>形容词放在名词前：{gyzyl alma} 红苹果、{uly şäher} 大城市。</p>'},
+      {t:'pairs', h:'例句（动词变位第 5 层细讲）', items:[['Men çaý içýärin.','我喝茶。'],['Men kitap okaýaryn.','我读书。'],['Ol palaw iýýär.','他吃抓饭。'],['Biz türkmençe gürleýäris.','我们说土库曼语。']]}
+    ],
+    quiz:[
+      {q:'order', p:'排出：我喝茶。', w:['Men','çaý','içýärin'], end:'.'},
+      {q:'order', p:'排出：我读书。', w:['Men','kitap','okaýaryn'], end:'.'},
+      {q:'order', p:'排出：我住在阿什哈巴德。', w:['Men','Aşgabatda','ýaşaýaryn'], end:'.'},
+      {q:'choice', p:'{gyzyl alma} 的意思是？', o:['红苹果','苹果是红的','红色和苹果','很多苹果'], x:'形容词放在名词前面。'},
+      {q:'order', p:'排出：他吃抓饭。', w:['Ol','palaw','iýýär'], end:'.'},
+      {q:'choice', p:'土库曼语句子里，动词通常放在？', o:['句尾','句首','主语后面','哪里都行'], x:'主语—宾语—动词。'},
+      {q:'order', p:'排出：我们说土库曼语。', w:['Biz','türkmençe','gürleýäris'], end:'.'}
+    ]}
+  ]},
+
+{ n:5, name:'动词时态', analog:'现在 / 过去', tkname:'Işlikler', pal:['#2B3A78','#E0A030','#F2E8D5'],
+  levels:[
+  { id:'5-1', title:'动词原形 -mak / -mek', sub:'词典里的样子',
+    words:[['okamak','读、学习',''],['ýazmak','写','✍️'],['içmek','喝',''],['iýmek','吃',''],['gelmek','来',''],['gitmek','去',''],['bilmek','知道、会',''],['görmek','看见',''],['gürlemek','说话',''],['ýaşamak','生活、住',''],['işlemek','工作',''],['öwrenmek','学习、学会',''],['halamak','喜欢',''],['düşünmek','明白','']],
+    learn:[
+      {t:'intro', h:'动词都带 -mak / -mek', b:'<p>{-mak}（粗）/ {-mek}（细）相当于动词的“原形标签”。去掉它，就是可以挂词缀的词干：</p><p>{okamak} → {oka-} 读<br>{gelmek} → {gel-} 来</p>'},
+      {t:'pairs', h:'14 个高频动词', items:[['okamak','读、学习'],['ýazmak','写'],['içmek','喝'],['iýmek','吃'],['gelmek','来'],['gitmek','去'],['bilmek','知道、会'],['görmek','看见'],['gürlemek','说话'],['ýaşamak','生活、住'],['işlemek','工作'],['öwrenmek','学习、学会'],['halamak','喜欢'],['düşünmek','明白']]}
+    ],
+    quiz:[
+      {q:'sort', p:'这个词干挂 -mak 还是 -mek？', bins:['-mak','-mek'], items:[['oka',0],['gel',1],['ýaz',0],['iç',1],['ýaşa',0],['gör',1]], tk:true, x:'还是看最后一个元音。'},
+      {q:'match', p:'配对：动词', pairs:[['içmek','喝'],['iýmek','吃'],['gelmek','来'],['gitmek','去'],['ýazmak','写']]},
+      {q:'choice', p:'“写”的原形？', o:['ýazmak','ýazmek','ýazma','ýazýar'], tk:true, x:'{ýaz-} 是粗元音 → {ýazmak}。'},
+      {q:'choice', p:'{gitmek} 的词干是？', o:['git-','gitm-','gi-','gitme-'], tk:true, x:'去掉 {-mek}，剩下 {git-}。'},
+      {q:'match', p:'配对：动词', pairs:[['okamak','读、学习'],['bilmek','知道、会'],['görmek','看见'],['işlemek','工作'],['öwrenmek','学会']]},
+      {q:'choice', p:'“明白、理解”', o:['düşünmek','düşünmak','düşmek','diňlemek'], tk:true, x:'{düşünmek}；{diňlemek} 是“听”。'},
+      {q:'choice', p:'“喜欢”的原形是？', o:['halamak','halamek','hala','halamyş'], tk:true, x:'{hala-} + {mak}。'}
+    ]},
+  { id:'5-2', title:'现在时', sub:'词干 + ýar / ýär + 人称',
+    words:[['gelýärin','我来',''],['gidýärin','我去',''],['iýýärin','我吃',''],['iňlisçe','用英语',''],['türkmen dili','土库曼语','']],
+    learn:[
+      {t:'intro', h:'现在时 = 词干 + ýar / ýär + 人称', b:'<p>粗元音动词挂 {-ýar}，细元音动词挂 {-ýär}，再加上表示“谁”的人称词尾。</p>'},
+      {t:'table', h:'现在时变位', head:['','okamak 读','gelmek 来'], rows:[['men 我','okaýaryn','gelýärin'],['sen 你','okaýarsyň','gelýärsiň'],['ol 他 / 她','okaýar','gelýär'],['biz 我们','okaýarys','gelýäris'],['siz 您 / 你们','okaýarsyňyz','gelýärsiňiz'],['olar 他们','okaýarlar','gelýärler']]},
+      {t:'intro', h:'三个小心', b:'<p>① {gitmek}（去）的 t 在 ý 前变 d：{gidýärin} 我去。</p><p>② {iýmek}（吃）变成 {iýýärin}，两个 ý 都要写。</p><p>③ 问句把 {-my}/{-mi} 挂在最后：{gelýärsiňmi?} 你来吗？</p>'}
+    ],
+    quiz:[
+      {q:'choice', p:'“我读”', o:['okaýaryn','okaýarin','okaýarys','okaýar'], tk:true, x:'粗元音：{oka} + {ýar} + {yn}。'},
+      {q:'choice', p:'“你来”（对朋友说）', o:['gelýärsiň','gelýärin','gelýäris','gelýärler'], tk:true, x:'sen → {-siň}。'},
+      {q:'choice', p:'“我们喝”', o:['içýäris','içýärin','içýärler','içýärsiň'], tk:true, x:'biz → {-is}。'},
+      {q:'build', p:'拼出“我来”', root:'gel', blocks:['ýar','ýär','yn','in','siň'], a:['ýär','in'], forms:['gelýär','gelýärin'], x:'{gel} + {ýär} + {in} = {gelýärin}。'},
+      {q:'choice', p:'“他们工作”', o:['işleýärler','işleýärlar','işleýär','işleýäris'], tk:true, x:'olar → {-ler}（细）。'},
+      {q:'choice', p:'“我去学校。”', o:['Men mekdebe gidýärin.','Men mekdepde gidýärin.','Men mekdebe gitýärin.','Men mekdepden gidýärin.'], tk:true, x:'“到学校”用 {mekdebe}；{gitmek} 的 t 变 d：{gidýärin}。'},
+      {q:'choice', p:'“您说英语吗？”', o:['Siz iňlisçe gürleýärsiňizmi?','Siz iňlisçe gürleýärmi?','Sen iňlisçe gürleýärinmi?','Siz iňlisçe gürleýäris?'], tk:true, x:'siz → {-siňiz}，再挂 {-mi}。'},
+      {q:'order', p:'排出：我在学土库曼语。', w:['Men','türkmen','dilini','öwrenýärin'], end:'.'}
+    ]},
+  { id:'5-3', title:'过去时', sub:'词干 + dy / di + 人称',
+    words:[['geldim','我来了',''],['okadym','我读了',''],['düşündim','我明白了',''],['ýadadym','我累了',''],['gördüm','我看见了','']],
+    learn:[
+      {t:'intro', h:'过去时 = 词干 + dy / di + 人称', b:'<p>{okadym} 我读了 · {geldim} 我来了</p>'},
+      {t:'table', h:'过去时变位', head:['','okamak 读','gelmek 来'], rows:[['men 我','okadym','geldim'],['sen 你','okadyň','geldiň'],['ol 他 / 她','okady','geldi'],['biz 我们','okadyk','geldik'],['siz 您 / 你们','okadyňyz','geldiňiz'],['olar 他们','okadylar','geldiler']]},
+      {t:'pairs', h:'马上能用', items:[['Men Hytaýdan geldim.','我是从中国来的。'],['Düşündim.','我明白了。'],['Men ýadadym.','我累了。'],['Gördüm.','我看见了。（ö 让词尾变圆：-düm）']]}
+    ],
+    quiz:[
+      {q:'choice', p:'“我来了”', o:['geldim','geldym','geldik','geldiň'], tk:true, x:'{gel} + {di} + {m}。'},
+      {q:'choice', p:'“我们读了”', o:['okadyk','okadym','okadyňyz','okadylar'], tk:true, x:'biz → {-k}：{okadyk}。'},
+      {q:'choice', p:'{Men ýadadym.} 的意思是？', o:['我累了。','我读了。','我走了。','我明白了。'], x:'{ýadamak} 累 → {ýadadym}。'},
+      {q:'build', p:'拼出“我读了”', root:'oka', blocks:['dy','di','m','k'], a:['dy','m'], forms:['okady','okadym'], x:'{oka} + {dy} + {m} = {okadym}。'},
+      {q:'choice', p:'“你来了”（对朋友说）', o:['geldiň','geldim','geldi','geldiňiz'], tk:true, x:'sen → {-ň}。'},
+      {q:'order', p:'排出：我是从中国来的。', w:['Men','Hytaýdan','geldim'], end:'.'},
+      {q:'choice', p:'“我明白了。”', o:['Düşündim.','Düşünýärin.','Düşünmedim.','Düşündik.'], tk:true, x:'{Düşünýärin} 是“我明白”（现在），“明白了”用过去时 {Düşündim}。'}
+    ]},
+  { id:'5-4', title:'否定与礼貌请求', sub:'-ma / -me 与 -yň / -iň',
+    words:[['gelmeýärin','我不来',''],['düşünemok','我不懂（口语）',''],['bilemok','我不知道（口语）',''],['Gaýtalaň!','请再说一遍',''],['Haýal aýdyň!','请说慢点',''],['Oturyň!','请坐','']],
+    learn:[
+      {t:'intro', h:'否定：词干后插 -ma / -me', b:'<p>{okamaýaryn} 我不读 · {gelmeýärin} 我不来<br>{okamadym} 我没读 · {gelmedim} 我没来</p>'},
+      {t:'intro', h:'两句救命口语', b:'<p>{Düşünemok.} 我不懂。{Bilemok.} 我不知道。</p><p>这是口语里的简短否定，书面语分别是 {düşünmeýärin}、{bilmeýärin}。</p>'},
+      {t:'intro', h:'礼貌请求：词干 + -yň / -iň', b:'<p>对“您”或多人说：{Gaýtalaň!} 请再说一遍 · {Haýal aýdyň!} 请说慢点 · {Oturyň!} 请坐 · {Geliň!} 请来</p><p>对朋友直接用词干：{Otur!} 坐！{Gel!} 来！</p>'}
+    ],
+    quiz:[
+      {q:'choice', p:'“我不喝”', o:['içmeýärin','içýärin däl','içmedim','içmeýäris'], tk:true, x:'{iç} + {me} + {ýär} + {in}。'},
+      {q:'choice', p:'“我没看见”', o:['görmedim','görmeýärin','gördüm','görmedik'], tk:true, x:'过去否定：{gör} + {me} + {dim}。'},
+      {q:'choice', p:'礼貌地说“请再说一遍”', o:['Gaýtalaň!','Gaýtalaýaryn.','Gaýtaladym.','Gaýtalamaýaryn.'], tk:true, x:'{gaýtala-} + {ň}。'},
+      {q:'choice', p:'“请说慢一点”', o:['Haýal aýdyň!','Tiz aýdyň!','Haýal aýtdym.','Haýal däl.'], tk:true, x:'{haýal} 慢，{tiz} 快。'},
+      {q:'choice', p:'{Düşünemok.} 的意思是？', o:['我不懂。','我懂了。','我不知道。','我累了。'], x:'“我不知道”是 {Bilemok}。'},
+      {q:'build', p:'拼出“我不来”', root:'gel', blocks:['me','ma','ýär','ýar','in'], a:['me','ýär','in'], forms:['gelme','gelmeýär','gelmeýärin'], x:'词干 + 否定 + 时态 + 人称。'},
+      {q:'choice', p:'请客人坐下（礼貌）', o:['Oturyň!','Otur!','Oturýaryn.','Oturdym.'], tk:true, x:'对朋友说 {Otur!}，对客人说 {Oturyň!}。'}
+    ]}
+  ]},
+
+{ n:6, name:'场景会话', analog:'日常与旅行', tkname:'Gündelik gürrüň', pal:['#F2E8D5','#2F7D57','#E0A030'],
+  levels:[
+  { id:'6-1', title:'打招呼', sub:'Salam! 和一天里的问候',
+    words:[['Salam!','你好！','👋'],['Ýagdaýlaryňyz nähili?','您好吗？',''],['gowy','好',''],['Sag boluň!','谢谢！/ 再见！',''],['Köp sag boluň!','非常感谢！',''],['Ertiriňiz haýyrly bolsun!','早上好！',''],['Agşamyňyz haýyrly bolsun!','晚上好！',''],['Gijäňiz rahat bolsun!','晚安！',''],['Bagyşlaň!','劳驾 / 对不起',''],['Ertir duşuşarys!','明天见！','']],
+    learn:[
+      {t:'pairs', h:'见面', items:[['Salam!','你好！（万能）'],['Ýagdaýlaryňyz nähili?','您好吗？（礼貌）'],['Nähili?','怎么样？（随意）'],['Gowy, sag boluň. Siz nähili?','很好，谢谢。您呢？']]},
+      {t:'pairs', h:'一天里的问候', items:[['Ertiriňiz haýyrly bolsun!','早上好！'],['Agşamyňyz haýyrly bolsun!','晚上好！'],['Gijäňiz rahat bolsun!','晚安！']]},
+      {t:'pairs', h:'感谢与告别', items:[['Sag boluň!','谢谢！也可以当“再见”'],['Köp sag boluň!','非常感谢！'],['Ertir duşuşarys!','明天见！'],['Bagyşlaň!','劳驾 / 对不起'],['Hoş geldiňiz!','欢迎！']]},
+      {t:'intro', h:'一个词，两个意思', b:'<p>{sag} 本义是“健康”（也指“右边”）。{Sag boluň} 字面是“祝您健康”，所以既能道谢，也能道别。</p><p>对朋友说 {Sag bol!}。</p>'}
+    ],
+    quiz:[
+      {q:'dialog', who:'Aýna', line:'Salam! Ýagdaýlaryňyz nähili?', lineZh:'你好！您好吗？', p:'回答：', o:['Gowy, sag boluň. Siz nähili?','Hoş geldiňiz!','Gijäňiz rahat bolsun!','Bagyşlaň!'], tk:true, x:'很好，谢谢。您呢？'},
+      {q:'choice', p:'早上遇到邻居，说：', o:['Ertiriňiz haýyrly bolsun!','Gijäňiz rahat bolsun!','Agşamyňyz haýyrly bolsun!','Hoş geldiňiz!'], tk:true, x:'{ertir} = 早上。'},
+      {q:'choice', p:'{Sag boluň!} 可以表示？', o:['谢谢，也可以是再见','只能表示谢谢','你好','对不起'], x:'字面是“祝您健康”。'},
+      {q:'match', p:'配对：常用语', pairs:[['Salam!','你好！'],['Hawa.','是。'],['Ýok.','不。'],['Bagyşlaň!','劳驾 / 对不起'],['Hoş geldiňiz!','欢迎！']]},
+      {q:'choice', p:'睡前说“晚安”', o:['Gijäňiz rahat bolsun!','Ertiriňiz haýyrly bolsun!','Sag boluň!','Salam!'], tk:true, x:'{gije} = 夜晚。'},
+      {q:'dialog', who:'Merdan', line:'Hoş geldiňiz!', lineZh:'欢迎！', p:'你到朋友家做客，回应：', o:['Sag boluň!','Hoş geldiňiz!','Bagyşlaň!','Ýok.'], tk:true, x:'道一声谢最自然。'},
+      {q:'choice', p:'向长辈郑重道谢', o:['Köp sag boluň!','Sag bol!','Salam!','Ýok!'], tk:true, x:'{köp} = 很多；对长辈用礼貌形 {boluň}。'}
+    ]},
+  { id:'6-2', title:'自我介绍', sub:'Meniň adym…',
+    words:[['Adyňyz näme?','您叫什么名字？',''],['Meniň adym …','我叫……',''],['Siz nireden?','您从哪里来？',''],['Tanyşanyma şat!','很高兴认识您！','🤝'],['Men hem şat!','我也很高兴！',''],['öwrenmek','学习','']],
+    learn:[
+      {t:'name'},
+      {t:'dialog', h:'初次见面', lines:[['Aýna','Salam! Meniň adym Aýna. Adyňyz näme?','你好！我叫阿依娜。您叫什么名字？'],['ME','Salam! Meniň adym {NAME}.','你好！我叫{NAME}。'],['Aýna','Siz nireden?','您从哪里来？'],['ME','Men Hytaýdan. Men syýahatçy.','我来自中国。我是游客。'],['Aýna','Tanyşanyma şat!','很高兴认识您！'],['ME','Men hem şat!','我也很高兴！']]},
+      {t:'pairs', h:'再多说一句', items:[['Men türkmen dilini öwrenýärin.','我在学土库曼语。'],['Men Pekinde ýaşaýaryn.','我住在北京。'],['Men talyp.','我是大学生。']]}
+    ],
+    quiz:[
+      {q:'dialog', who:'Aýna', line:'Adyňyz näme?', lineZh:'您叫什么名字？', p:'回答：', o:['Meniň adym {NAME}.','Men Hytaýdan.','Hawa, men.','Gowy, sag boluň.'], tk:true, x:'{Meniň adym …} = 我的名字是……'},
+      {q:'dialog', who:'Aýna', line:'Siz nireden?', lineZh:'您从哪里来？', p:'回答：', o:['Men Hytaýdan.','Men Hytaýda.','Meniň adym Hytaý.','Men Hytaýa.'], tk:true, x:'“从”用 {-dan}。'},
+      {q:'choice', p:'“很高兴认识您！”', o:['Tanyşanyma şat!','Hoş geldiňiz!','Sag boluň!','Gijäňiz rahat bolsun!'], tk:true, x:'{şat} = 高兴。'},
+      {q:'order', p:'排出：我叫{NAME}。', w:['Meniň','adym','{NAME}'], end:'.'},
+      {q:'choice', p:'“我是游客。”', o:['Men syýahatçy.','Men syýahatçy däl.','Sen syýahatçy.','Men syýahatçydan.'], tk:true, x:'身份句不需要“是”。'},
+      {q:'order', p:'排出：我在学土库曼语。', w:['Men','türkmen','dilini','öwrenýärin'], end:'.'},
+      {q:'dialog', who:'Aýna', line:'Tanyşanyma şat!', lineZh:'很高兴认识您！', p:'回应：', o:['Men hem şat!','Men hem ýok!','Hoş geldiňiz!','Bagyşlaň!'], tk:true, x:'{hem} = 也。'}
+    ]},
+  { id:'6-3', title:'数字与钱', sub:'像汉语一样拼数字',
+    words:[['bir','一',''],['dört','四',''],['bäş','五',''],['ýigrimi','二十',''],['otuz','三十',''],['kyrk','四十',''],['elli','五十',''],['altmyş','六十',''],['ýetmiş','七十',''],['segsen','八十',''],['togsan','九十',''],['ýüz','一百',''],['müň','一千',''],['manat','马纳特','💵']],
+    learn:[
+      {t:'pairs', h:'1 – 10', items:[['bir','1'],['iki','2'],['üç','3'],['dört','4'],['bäş','5'],['alty','6'],['ýedi','7'],['sekiz','8'],['dokuz','9'],['on','10']]},
+      {t:'pairs', h:'整十、百、千', items:[['ýigrimi','20'],['otuz','30'],['kyrk','40'],['elli','50'],['altmyş','60'],['ýetmiş','70'],['segsen','80'],['togsan','90'],['ýüz','100'],['müň','1000']]},
+      {t:'intro', h:'像汉语一样拼', b:'<p>十一 = {on bir}（十 一）<br>二十五 = {ýigrimi bäş}<br>一百五十 = {ýüz elli}<br>两百 = {iki ýüz} · 三千 = {üç müň}</p><p>钱的单位是 {manat}（马纳特）。</p>'}
+    ],
+    quiz:[
+      {q:'match', p:'配对：数字', pairs:[['bir','1'],['üç','3'],['bäş','5'],['ýedi','7'],['dokuz','9']]},
+      {q:'choice', p:'{on bäş} = ?', o:['15','50','5','105'], x:'{on}（10）+ {bäş}（5）。'},
+      {q:'choice', p:'“二十”', o:['ýigrimi','otuz','kyrk','elli'], tk:true, x:'{ýigrimi} = 20。'},
+      {q:'choice', p:'{ýüz elli} = ?', o:['150','105','1500','50'], x:'{ýüz}（100）+ {elli}（50）。'},
+      {q:'match', p:'配对：整十', pairs:[['otuz','30'],['kyrk','40'],['elli','50'],['segsen','80'],['togsan','90']]},
+      {q:'spell', hint:'7 七', a:'ýedi', extra:'y'},
+      {q:'choice', p:'“一千”', o:['müň','ýüz','on','million'], tk:true, x:'{müň} = 1000。'},
+      {q:'choice', p:'{iki ýüz} = ?', o:['200','102','12','2000'], x:'{iki}（2）× {ýüz}（100）。'}
+    ]},
+  { id:'6-4', title:'巴扎购物', sub:'Bu näçe? Gymmat!',
+    words:[['Bu näçe?','这个多少钱？',''],['Näçeden?','多少钱一个（一公斤）？',''],['gymmat','贵',''],['arzan','便宜',''],['Bolýar.','好的、行。',''],['beriň','请给',''],['satyjy','卖家','']],
+    learn:[
+      {t:'dialog', h:'在巴扎买甜瓜', lines:[['Satyjy','Salam! Size näme gerek?','你好！您要什么？'],['ME','Salam! Bu gawun näçe?','你好！这个甜瓜多少钱？'],['Satyjy','On manat.','十马纳特。'],['ME','Gymmat!','太贵了！'],['Satyjy','Bolýar, sekiz manat.','好吧，八马纳特。'],['ME','Bolýar. Iki gawun beriň.','好的。请给我两个甜瓜。'],['Satyjy','Alyň!','拿好！'],['ME','Sag boluň!','谢谢！']]},
+      {t:'pairs', h:'巴扎词汇', items:[['Bu näçe?','这个多少钱？'],['Näçeden?','多少钱一个（一公斤）？'],['gymmat','贵'],['arzan','便宜'],['Bolýar.','好的、行。'],['… beriň.','请给我……'],['satyjy','卖家']]},
+      {t:'intro', h:'讲价很正常', b:'<p>在土库曼斯坦的巴扎，讲价是交易的一部分。笑着说一句 {Gymmat!}，就是开始。</p><p>买几个就说几个，数字后面的名词不加复数：{iki gawun}。</p>'}
+    ],
+    quiz:[
+      {q:'dialog', who:'Satyjy', line:'Salam! Size näme gerek?', lineZh:'你好！您要什么？', p:'你想问这个多少钱：', o:['Bu näçe?','Bu näme?','Bu kim?','Bu nirede?'], tk:true, x:'{näçe} = 多少。'},
+      {q:'choice', p:'“太贵了！”', o:['Gymmat!','Arzan!','Tagamly!','Bolýar!'], tk:true, x:'{gymmat} 贵，{arzan} 便宜。'},
+      {q:'choice', p:'{arzan} 的意思是？', o:['便宜','贵','好吃','好的'], x:'{arzan} = 便宜。'},
+      {q:'dialog', who:'Satyjy', line:'On manat.', lineZh:'十马纳特。', p:'你觉得贵：', o:['Gymmat!','Arzan!','Sag boluň!','Hoş geldiňiz!'], tk:true, x:'开始讲价。'},
+      {q:'choice', p:'“请给我两个甜瓜。”', o:['Iki gawun beriň.','Iki gawunlar beriň.','Iki gawun alyň.','Iki gawun berdim.'], tk:true, x:'有数字不加复数；{beriň} = 请给。'},
+      {q:'order', p:'排出：这个甜瓜多少钱？', w:['Bu','gawun','näçe'], end:'?'},
+      {q:'dialog', who:'Satyjy', line:'Bolýar, sekiz manat.', lineZh:'好吧，八马纳特。', p:'你同意了：', o:['Bolýar. Sag boluň!','Gymmat!','Ýok, on manat!','Bagyşlaň!'], tk:true, x:'{Bolýar} = 好的。'}
+    ]},
+  { id:'6-5', title:'餐桌', sub:'Işdäňiz açyk bolsun!',
+    words:[['Işdäňiz açyk bolsun!','祝您好胃口！',''],['Tagamly!','好吃！','😋'],['süýt','奶','🥛'],['gök çaý','绿茶',''],['gara çaý','红茶',''],['dograma','碎馕羊肉汤（节日菜）',''],['çal','发酵驼奶',''],['saçak','餐布','']],
+    learn:[
+      {t:'pairs', h:'餐桌词汇', items:[['palaw','抓饭'],['çörek','馕、面包'],['et','肉'],['süýt','奶'],['suw','水'],['gök çaý','绿茶（字面：青茶）'],['gara çaý','红茶（字面：黑茶）'],['gawun','甜瓜'],['dograma','碎馕羊肉汤（节日菜）'],['çal','发酵驼奶']]},
+      {t:'pairs', h:'饭桌上的话', items:[['Işdäňiz açyk bolsun!','祝您好胃口！（开饭时说）'],['Tagamly!','好吃！'],['Maňa gök çaý beriň.','请给我绿茶。'],['Men et iýmeýärin.','我不吃肉。']]},
+      {t:'intro', h:'餐桌礼仪', b:'<p>土库曼人常围坐在铺开的餐布 {saçak} 旁用餐。{çörek}（馕）被视为神圣的食物，不要随意丢弃。</p><p>在中亚，主人常只给你倒半杯茶，意思是“我想多为你添几次”。</p>'}
+    ],
+    quiz:[
+      {q:'dialog', who:'Aýna', line:'Işdäňiz açyk bolsun!', lineZh:'祝您好胃口！', p:'回应：', o:['Sag boluň!','Gymmat!','Bagyşlaň!','Ertir duşuşarys!'], tk:true, x:'道谢即可。'},
+      {q:'choice', p:'“好吃！”', o:['Tagamly!','Gymmat!','Arzan!','Gowy däl!'], tk:true, x:'{tagamly} = 美味的。'},
+      {q:'choice', p:'“请给我绿茶。”', o:['Maňa gök çaý beriň.','Maňa gara çaý beriň.','Men gök çaý.','Maňa gök çaý berdim.'], tk:true, x:'{maňa} 给我 + {gök çaý} 绿茶 + {beriň} 请给。'},
+      {q:'match', p:'配对：食物', pairs:[['palaw','抓饭'],['çörek','馕'],['süýt','奶'],['et','肉'],['gawun','甜瓜']]},
+      {q:'choice', p:'“我不吃肉。”', o:['Men et iýmeýärin.','Men et iýýärin.','Men et däl.','Men et ýok.'], tk:true, x:'动词否定：{iý} + {me} + {ýär} + {in}。'},
+      {q:'order', p:'排出：请给我绿茶。', w:['Maňa','gök','çaý','beriň'], end:'.'},
+      {q:'choice', p:'{gara çaý} 是？', o:['红茶（字面：黑茶）','绿茶','奶茶','咖啡'], x:'{gara} = 黑。'}
+    ]},
+  { id:'6-6', title:'问路与救急', sub:'Bazar nirede?',
+    words:[['sag','右；健康',''],['çep','左',''],['göni','直走',''],['sagda','在右边',''],['çepde','在左边',''],['myhmanhana','宾馆','🏨'],['howa menzili','机场','✈️'],['muzeý','博物馆','🏛️'],['Men düşünemok.','我听不懂。',''],['Kömek ediň!','救命！/ 请帮忙！','🆘']],
+    learn:[
+      {t:'pairs', h:'方向', items:[['sag / sagda','右 / 在右边'],['çep / çepde','左 / 在左边'],['göni','直走'],['Bagyşlaň, bazar nirede?','劳驾，巴扎在哪儿？']]},
+      {t:'pairs', h:'地点', items:[['myhmanhana','宾馆'],['howa menzili','机场'],['hajathana','厕所'],['dükan','商店'],['muzeý','博物馆'],['bazar','巴扎']]},
+      {t:'pairs', h:'救急句', items:[['Men düşünemok.','我听不懂。'],['Gaýtalaň!','请再说一遍。'],['Haýal aýdyň!','请说慢点。'],['Siz iňlisçe gürleýärsiňizmi?','您说英语吗？'],['Kömek ediň!','救命！/ 请帮忙！']]}
+    ],
+    quiz:[
+      {q:'choice', p:'你想找厕所，问路人：', o:['Bagyşlaň, hajathana nirede?','Hajathana näçe?','Hajathana kim?','Men hajathana.'], tk:true, x:'{Bagyşlaň} 劳驾 + {nirede} 在哪。'},
+      {q:'choice', p:'{Sagda.} 的意思是？', o:['在右边','在左边','直走','谢谢'], x:'{sag} + {da}（在）。'},
+      {q:'choice', p:'“在左边”', o:['Çepde.','Sagda.','Göni.','Çepden.'], tk:true, x:'{çep} 左 + {de} 在。'},
+      {q:'dialog', who:'Adam', line:'Muzeý sagda.', lineZh:'（路人说得很快）博物馆在右边。', p:'你没听清，请他说慢点：', o:['Haýal aýdyň!','Tiz aýdyň!','Sag boluň!','Salam!'], tk:true, x:'{haýal} = 慢。'},
+      {q:'choice', p:'紧急情况下求助：', o:['Kömek ediň!','Bagyşlaň!','Hoş geldiňiz!','Tagamly!'], tk:true, x:'{kömek} = 帮助。'},
+      {q:'choice', p:'{howa menzili} 是？', o:['机场','火车站','宾馆','商店'], x:'字面意思是“空中驿站”。'},
+      {q:'choice', p:'对方说得太快，你没听懂，说：', o:['Men düşünemok.','Men ýadadym.','Men Hytaýdan.','Men talyp.'], tk:true, x:'{Men düşünemok.} 我听不懂。'},
+      {q:'order', p:'排出：劳驾，巴扎在哪儿？', w:['Bagyşlaň,','bazar','nirede'], end:'?'}
+    ]}
+  ]}
+];
+
+const PROVERB = {tk:'Okan ozar, okamadyk tozar.', zh:'学习的人向前走，不学的人落在后头。（土库曼谚语）'};
+
+</script>
+<script>
+/* ================= ENGINE ================= */
+(function(){
+'use strict';
+
+/* ---------- persistence (per-viewer convenience only) ---------- */
+const KEY = 'haly-tk-v1';
+const P = {stars:{}, review:[], name:'', color:true, free:false};
+function load(){
+  try{ const raw = localStorage.getItem(KEY); if(raw){ Object.assign(P, JSON.parse(raw)); } }catch(e){}
+  if(!P.stars || typeof P.stars !== 'object') P.stars = {};
+  if(!Array.isArray(P.review)) P.review = [];
+}
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(P)); }catch(e){} }
+
+/* ---------- helpers ---------- */
+const $app = () => document.getElementById('app');
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const BACK = 'aouyAOUY', FRONT = 'eäiöüEÄIÖÜ';
+const playerName = () => (P.name && P.name.trim()) ? P.name.trim() : 'Li Hua';
+function tkColor(s){
+  let out = '';
+  for(const ch of String(s)){
+    if(BACK.includes(ch)) out += '<span class="vb">'+ch+'</span>';
+    else if(FRONT.includes(ch)) out += '<span class="vf">'+ch+'</span>';
+    else out += esc(ch);
+  }
+  return out;
+}
+const NAME_MARK = '\u0001NAME\u0001';
+function withName(html){ return html.split(NAME_MARK).join('<span class="nm">'+esc(playerName())+'</span>'); }
+// Turkmen string that may contain {NAME} and [ipa]
+function tk(s){
+  const parts = String(s).replace(/\{NAME\}/g, NAME_MARK).split(/(\[[^\]]+\])/);
+  const html = parts.map(p => /^\[.*\]$/.test(p) ? '<span class="ipa">'+esc(p)+'</span>' : tkColor(p)).join('');
+  return withName('<span class="tk">'+html+'</span>');
+}
+// mixed Chinese/HTML text with {turkmen} and [ipa]
+function fmt(s){
+  if(s == null) return '';
+  let t = String(s).replace(/\{NAME\}/g, NAME_MARK);
+  t = t.replace(/\{([^{}]+)\}/g, (_, w) => '<span class="tk">'+tkColor(w)+'</span>');
+  t = t.replace(/\[([^\]<>]+)\]/g, (_, w) => '<span class="ipa">['+w+']</span>');
+  return withName(t);
+}
+const G2P = {a:'ɑ',b:'b',ç:'tʃ',d:'d',e:'e',ä:'æː',f:'f',g:'g',h:'h',i:'i',j:'dʒ',ž:'ʒ',k:'k',l:'l',m:'m',n:'n',ň:'ŋ',o:'o',ö:'ø',p:'p',r:'r',s:'θ',ş:'ʃ',t:'t',u:'u',ü:'y',w:'w',y:'ɯ',ý:'j',z:'ð'};
+function ipaOf(word){
+  const w = word.toLowerCase();
+  if(!/^[a-zäçňöşüýž]+$/.test(w)) return '';
+  return '/' + [...w].map(c => G2P[c] || '').join('') + '/';
+}
+function shuffle(a){ const b = a.slice(); for(let i=b.length-1;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); [b[i],b[j]]=[b[j],b[i]]; } return b; }
+function shuffleNot(a, orig){ // shuffle, avoid returning the original order when possible
+  if(a.length < 2) return a.slice();
+  for(let t=0;t<8;t++){ const s = shuffle(a); if(s.some((x,i)=>x!==orig[i])) return s; }
+  return shuffle(a);
+}
+const LETTER = Object.fromEntries(LETTERS.map(l => [l.l, l]));
+const ALL = [];
+LAYERS.forEach((L, li) => L.levels.forEach((lv, i) => ALL.push(Object.assign(lv, {layer:L, li, idx:ALL.length}))));
+const LV = id => ALL.find(l => l.id === id);
+const isDone = lv => (P.stars[lv.id] || 0) > 0;
+const isOpen = lv => P.free || lv.idx === 0 || isDone(ALL[lv.idx-1]) || isDone(lv);
+const nextLevel = () => ALL.find(l => !isDone(l) && isOpen(l)) || null;
+const totalStars = () => ALL.reduce((s,l) => s + (P.stars[l.id]||0), 0);
+const doneCount = () => ALL.filter(isDone).length;
+const WHO = {'Aýna':'Aýna · 阿依娜','Merdan':'Merdan · 梅尔丹','Satyjy':'Satyjy · 卖家','Adam':'Adam · 路人','ME':'你'};
+const PRAISE = ['Dogry!','Örän gowy!','Dogry!','Berekella!'];
+const SHORT = {'2-2':'复数词缀','2-4':'问句小尾巴','3-2':'在哪儿','3-3':'从哪儿来','3-4':'到哪儿去','4-1':'我是 / 不是','4-2':'有 / 没有','4-4':'动词压轴','5-1':'动词原形','5-4':'否定与请求'};
+const shortOf = lv => SHORT[lv.id] || lv.title;
+
+/* ---------- gul (carpet medallion) ---------- */
+const INK = '#1C2346';
+const OCT = 'M26 3 H94 L117 22 V58 L94 77 H26 L3 58 V22 Z';
+function gul(pal, state, cls){
+  cls = cls || '';
+  if(state !== 'done'){
+    const op = state === 'open' ? 0.95 : 0.55;
+    return '<svg viewBox="0 0 120 80" class="'+cls+'" aria-hidden="true">'+
+      '<path d="'+OCT+'" fill="none" stroke="#F2E8D5" stroke-opacity="'+op+'" stroke-width="2" stroke-dasharray="'+(state==='open'?'0':'5 4')+'"/>'+
+      '<path d="M60 8 V72 M8 40 H112" fill="none" stroke="#F2E8D5" stroke-opacity="'+(op*0.6)+'" stroke-width="1.2" stroke-dasharray="3 4"/>'+
+      '<path d="M60 28 L72 40 L60 52 L48 40 Z" fill="none" stroke="#F2E8D5" stroke-opacity="'+(op*0.7)+'" stroke-width="1.2" stroke-dasharray="3 3"/>'+
+    '</svg>';
+  }
+  const [A,B,C] = pal;
+  const dia = (x,y,f) => '<path d="M'+x+' '+(y-7)+' L'+(x+7)+' '+y+' L'+x+' '+(y+7)+' L'+(x-7)+' '+y+' Z" fill="'+f+'" stroke="'+INK+'" stroke-width="1"/>';
+  return '<svg viewBox="0 0 120 80" class="'+cls+'" aria-hidden="true">'+
+    '<g class="fillin">'+
+      '<path d="'+OCT+'" fill="'+A+'"/>'+
+      '<path d="M26 3 H60 V40 H3 V22 Z" fill="'+B+'"/>'+
+      '<path d="M60 40 H117 V58 L94 77 H60 Z" fill="'+B+'"/>'+
+      dia(32,22,A)+dia(88,22,B)+dia(32,58,B)+dia(88,58,A)+
+      '<path d="M60 24 L76 40 L60 56 L44 40 Z" fill="'+C+'" stroke="'+INK+'" stroke-width="2"/>'+
+      '<path d="M60 33 L67 40 L60 47 L53 40 Z" fill="'+INK+'"/>'+
+    '</g>'+
+    '<path class="o" d="'+OCT+'" fill="none" stroke="'+INK+'" stroke-width="3.2" stroke-linejoin="round"/>'+
+    '<path class="o" d="M60 3 V77 M3 40 H117" fill="none" stroke="'+INK+'" stroke-width="1.4" stroke-opacity=".55"/>'+
+  '</svg>';
+}
+
+/* ---------- state ---------- */
+let VIEW = 'home';          // home | level | abc | words
+let SES = null;             // current session
+let QS = null;              // current question state
+let MODAL = null;           // {type, ...}
+let RESET_ARMED = false;
+
+/* ---------- render root ---------- */
+function render(){
+  document.documentElement.classList.toggle('plain', !P.color);
+  let html = '';
+  if(VIEW === 'home') html = viewHome();
+  else if(VIEW === 'level') html = viewLevel();
+  else if(VIEW === 'abc') html = viewAbc();
+  else if(VIEW === 'words') html = viewWords();
+  if(MODAL) html += viewModal();
+  $app().innerHTML = html;
+  const auto = document.querySelector('[data-autofocus]');
+  if(auto) try{ auto.focus({preventScroll:true}); }catch(e){}
+}
+function go(view){ VIEW = view; MODAL = null; render(); window.scrollTo(0,0); }
+
+/* ---------- HOME ---------- */
+function viewHome(){
+  const nx = nextLevel();
+  const done = doneCount(), stars = totalStars();
+  const cta = nx ? (done === 0 ? '开始第 1 关：'+esc(shortOf(nx)) : '继续 '+nx.id+'：'+esc(shortOf(nx))) : '全部织完！再逛逛';
+  const rows = LAYERS.map(L => {
+    const allDone = L.levels.every(isDone);
+    const guls = L.levels.map(lv => {
+      const open = isOpen(lv), d = isDone(lv), st = P.stars[lv.id]||0;
+      const state = d ? 'done' : (open ? 'open' : 'locked');
+      const isNext = nx && nx.id === lv.id;
+      return '<button class="gbtn'+(isNext?' next':'')+'" data-act="open" data-id="'+lv.id+'" '+(open?'':'disabled')+' aria-label="'+lv.id+' '+esc(lv.title)+(d?'，'+st+' 星':open?'，可以开始':'，未解锁')+'">'+
+        gul(L.pal, state)+
+        '<span class="code">'+lv.id+'</span><span class="nm2">'+esc(shortOf(lv))+'</span>'+
+        '<span class="st">'+(d ? '★'.repeat(st) : '')+'</span></button>';
+    }).join('');
+    return '<div class="rug-row"><div class="row-label"><span class="n">LAYER '+L.n+'</span><b>'+esc(L.name)+'</b><span>'+esc(L.analog)+' · <span class="tk">'+esc(L.tkname)+'</span></span>'+(allDone?'<span class="lk">本行已织完</span>':'')+'</div><div class="guls">'+guls+'</div></div>';
+  }).join('');
+  const rv = P.review.length;
+  return '<div class="wrap">'+
+    '<header class="top"><div class="brand">'+gul(LAYERS[0].pal,'done')+'<div><h1>织毯学土库曼语</h1><p>Haly · Türkmen dili · 零基础</p></div></div>'+
+      '<nav class="nav" aria-label="工具"><button class="link" data-act="go-abc">字母表</button><button class="link" data-act="go-words">词库</button><button class="link" data-act="review">复习篮'+(rv?'<span class="badge">'+rv+'</span>':'')+'</button><button class="link" data-act="settings">设置</button></nav></header>'+
+    '<section class="hero"><div><p class="thesis">土库曼语的“拼音”，就是它的 <em>30 个字母</em>。<br>一层一层学，一行一行织。</p>'+
+      '<p class="hero-sub">6 层 29 关：字母发音 → 元音和谐 → 词缀积木 → 句型骨架 → 动词时态 → 场景会话。每过一关，地毯上就织出一个纹样（göl）。</p></div>'+
+      '<div class="hero-side"><div class="meter"><div><b>'+done+'<small style="font-size:14px;color:var(--ink-3)"> / '+ALL.length+'</small></b><span>已织纹样</span></div><div><b>'+stars+'</b><span>星星</span></div><div><b>'+rv+'</b><span>复习篮</span></div></div>'+
+      (nx ? '<button class="btn" data-act="open" data-id="'+nx.id+'">'+cta+' →</button>' : '<button class="btn" data-act="go-words">'+cta+'</button>')+'</div></section>'+
+    '<p class="legend"><span><i class="vb">a o u y</i> 蓝色 = 粗元音（ýogyn）</span><span><i class="vf">e ä i ö ü</i> 橙色 = 细元音（inçe）</span>'+(P.free?'<span>· 试玩模式：全部关卡已解锁</span>':'')+'</p>'+
+    '<section class="rug-frame" aria-label="学习地毯"><div class="rug-inner">'+rows+'</div></section>'+
+    '<footer class="home-foot"><p class="proverb">'+tk(PROVERB.tk)+' <span class="muted">—— '+esc(PROVERB.zh)+'</span></p><p>进度只保存在这台设备的浏览器里。</p></footer>'+
+  '</div>';
+}
+
+/* ---------- LEARN CARDS ---------- */
+function letterCard(k, compact){
+  const L = LETTER[k];
+  const big = '<span class="'+(L.kind==='v' ? (L.h==='b'?'vb':'vf') : '')+'">'+L.u+L.l+'</span>';
+  const tags = '<div class="tags"><span class="chip tag-'+L.grp+'">'+GROUP_NAME[L.grp]+'</span><span class="chip">'+(L.kind==='v' ? (L.h==='b'?'粗元音 · 舌头靠后':'细元音 · 舌头靠前')+(L.r?' · 圆唇':'') : '辅音')+'</span></div>';
+  return '<div class="lc"><div class="lc-big" aria-label="字母 '+L.u+'">'+big+'</div>'+
+    '<div class="lc-meta">'+tags+'<span class="ipa">['+esc(L.ipa)+']</span><span class="lc-zh">'+esc(L.zh)+'</span><span class="lc-tip">'+fmt(L.tip)+'</span></div>'+
+    '<div class="lc-word">'+(L.w[2]?'<span class="em" aria-hidden="true">'+L.w[2]+'</span>':'')+'<div>'+tk(L.w[0])+' <span class="ipa">'+ipaOf(L.w[0])+'</span><div class="muted">'+esc(L.w[1])+'</div></div></div></div>';
+}
+function tkWithIpa(s){ return tk(s); }
+function viewCard(c){
+  switch(c.t){
+    case 'letter': return '<div class="card">'+letterCard(c.k)+'</div>';
+    case 'intro': return '<div class="card"><h2>'+fmt(c.h)+'</h2><div class="body">'+fmt(c.b)+'</div></div>';
+    case 'chart':
+      return '<div class="card"><h2>'+fmt(c.h)+'</h2><div class="body">'+fmt(c.b)+'</div>'+
+        '<div class="chart"><div class="h"></div><div class="h">不圆唇</div><div class="h">圆唇</div>'+
+        '<div class="h">粗 ýogyn<br>舌头靠后</div><div class="v">'+tkColor('a y')+'</div><div class="v">'+tkColor('o u')+'</div>'+
+        '<div class="h">细 inçe<br>舌头靠前</div><div class="v">'+tkColor('e ä i')+'</div><div class="v">'+tkColor('ö ü')+'</div></div></div>';
+    case 'grid':
+      return '<div class="card"><h2>'+fmt(c.h)+'</h2><div class="lgrid">'+c.letters.map(k => { const L = LETTER[k]; return '<div><b>'+L.u+L.l+'</b> <span class="ipa">['+esc(L.ipa)+']</span>'+tk(L.w[0])+'<span class="tiny">'+(L.w[2]||'')+' '+esc(L.w[1])+'</span></div>'; }).join('')+'</div></div>';
+    case 'pairs':
+      return '<div class="card"><h2>'+fmt(c.h)+'</h2>'+(c.b?'<div class="body">'+fmt(c.b)+'</div>':'')+'<div class="pairs">'+c.items.map(it => '<div>'+tkWithIpa(it[0])+'<span>'+fmt(it[1])+'</span></div>').join('')+'</div></div>';
+    case 'table':
+      return '<div class="card"><h2>'+fmt(c.h)+'</h2>'+(c.b?'<div class="body">'+fmt(c.b)+'</div>':'')+'<div class="tbl-wrap"><table class="tbl"><thead><tr>'+c.head.map(h => '<th>'+fmt(h)+'</th>').join('')+'</tr></thead><tbody>'+c.rows.map(r => '<tr>'+r.map((v,i) => '<td>'+(i===0?esc(v):tk(v))+'</td>').join('')+'</tr>').join('')+'</tbody></table></div></div>';
+    case 'blend':
+      return '<div class="card"><h2>'+fmt(c.h)+'</h2><div class="blend">'+c.items.map(it => '<div>'+it[0].map(ch => '<span class="lt">'+tkColor(ch)+'</span>').join('<span class="arrow">+</span>')+'<span class="arrow">→</span><span class="res tk">'+tkColor(it[1])+'</span> <span class="ipa">'+ipaOf(it[1])+'</span> <span class="muted">'+it[2]+' '+esc(it[3])+'</span></div>').join('')+'</div></div>';
+    case 'chain':
+      return '<div class="card"><h2>'+fmt(c.h)+'</h2><div class="chain">'+c.parts.map((p,i) => '<div class="'+(i===0?'root':'')+'"><b class="tk">'+tkColor(p[0])+'</b><span>'+esc(p[1])+'</span></div>').join('<div style="border:0;background:none;justify-content:center;padding:0 2px">+</div>')+'</div><p class="body" style="margin-top:14px">= '+tk(c.result)+' <span class="muted">'+esc(c.zh)+'</span></p></div>';
+    case 'dialog':
+      return '<div class="card"><h2>'+fmt(c.h)+'</h2><div class="dlg">'+c.lines.map(l => '<div class="say'+(l[0]==='ME'?' me':'')+'"><small>'+esc(WHO[l[0]]||l[0])+'</small>'+tk(l[1])+'<span class="zh">'+fmt(l[2].replace(/\{NAME\}/g,'{NAME}'))+'</span></div>').join('')+'</div></div>';
+    case 'name':
+      return '<div class="card"><h2>先告诉我你的名字</h2><div class="body"><p>下面的对话和练习会用上它。不填就用“'+esc('Li Hua')+'”（没错，就是那位李华）。</p></div>'+
+        '<div class="name-in"><label class="sr" for="name-card">你的名字</label><input id="name-card" type="text" maxlength="24" placeholder="例如：Li Hua" value="'+esc(P.name||'')+'"><button class="btn sm" data-act="save-name-card">保存</button></div>'+
+        '<p class="tiny" style="margin-top:8px">当前：'+esc(playerName())+'</p></div>';
+  }
+  return '';
+}
+
+/* ---------- LEVEL ---------- */
+function startLevel(id, skipLearn){
+  const lv = LV(id);
+  SES = {mode:'level', lv, phase: skipLearn ? 'quiz' : 'learn', card:0};
+  if(skipLearn) initQuiz();
+  go('level');
+}
+function initQuiz(){
+  const lv = SES.lv;
+  SES.phase = 'quiz';
+  SES.queue = lv.quiz.map((q,i) => ({lid:lv.id, qi:i}));
+  prepSession();
+}
+function startReview(){
+  if(!P.review.length){ MODAL = {type:'msg', h:'复习篮是空的', b:'答错的题会自动放进复习篮。先去地毯上玩几关吧。'}; render(); return; }
+  const picks = shuffle(P.review).slice(0,10).map(k => { const [lid,qi] = k.split('#'); return {lid, qi:+qi}; }).filter(it => LV(it.lid) && LV(it.lid).quiz[it.qi]);
+  SES = {mode:'review', lv:null, phase:'quiz', queue:picks};
+  prepSession();
+  go('level');
+}
+function prepSession(){
+  SES.pos = 0; SES.first = {}; SES.done = new Set(); SES.requeued = {};
+  SES.total = new Set(SES.queue.map(k => k.lid+'#'+k.qi)).size;
+  startQ();
+}
+const curItem = () => SES.queue[SES.pos];
+const curQ = () => { const it = curItem(); return LV(it.lid).quiz[it.qi]; };
+const keyOf = it => it.lid+'#'+it.qi;
+function nameSub(s){ return String(s).replace(/\{NAME\}/g, playerName()); }
+
+function startQ(){
+  const q = curQ();
+  QS = {state:null};
+  if(q.q === 'choice' || q.q === 'dialog'){
+    QS.opts = shuffle(q.o.map((o,i) => ({o, ok:i===0})));
+    QS.picked = null;
+  } else if(q.q === 'match'){
+    const n = q.pairs.length;
+    QS.L = shuffle([...Array(n).keys()]); QS.R = shuffleNot([...Array(n).keys()], QS.L);
+    QS.sel = null; QS.done = new Set(); QS.mist = 0; QS.bad = null;
+  } else if(q.q === 'sort'){
+    QS.order = shuffle([...q.items.keys()]); QS.k = 0; QS.placed = [[],[]]; QS.mist = 0; QS.note = '';
+  } else if(q.q === 'spell'){
+    const letters = [...q.a].concat([...(q.extra||'')]);
+    QS.tiles = shuffle(letters); QS.seq = [];
+  } else if(q.q === 'build'){
+    QS.seq = [];
+  } else if(q.q === 'order'){
+    const toks = q.w.map(nameSub).concat(q.extra||[]);
+    QS.pool = shuffleNot(toks, toks); QS.seq = [];
+  }
+}
+
+function viewLevel(){
+  const s = SES;
+  const isReview = s.mode === 'review';
+  const title = isReview ? '复习篮' : s.lv.id+' · '+s.lv.title;
+  const sub = isReview ? '把答错过的题再做一遍' : s.lv.layer.name+'（'+s.lv.layer.analog+'）';
+  let pct = 0;
+  if(s.phase === 'quiz') pct = Math.round(100 * s.done.size / Math.max(1,s.total));
+  if(s.phase === 'result') pct = 100;
+  const skip = (!isReview && s.phase === 'learn') ? '<button class="link" data-act="skip-learn">跳到练习 →</button>' : '';
+  let head = '<div class="lv-head"><div class="wrap"><div class="lv-row"><button class="link" data-act="home" aria-label="回到地毯">← 地毯</button><div class="lv-title"><b>'+esc(title)+'</b><span>'+esc(sub)+'</span></div>'+skip+'</div>'+
+    (s.phase !== 'learn' ? '<div class="band" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="'+pct+'"><i style="width:'+pct+'%"></i></div>' : '')+'</div></div>';
+  let body = '', bar = '';
+  if(s.phase === 'learn'){
+    const cards = s.lv.learn, i = s.card;
+    body = '<p class="phase">学 · '+(i+1)+' / '+cards.length+'</p>'+viewCard(cards[i])+
+      '<div class="dots" aria-hidden="true">'+cards.map((_,j) => '<i class="'+(j===i?'on':'')+'"></i>').join('')+'</div>';
+    bar = '<div class="bar"><div class="bar-in">'+
+      '<button class="btn ghost" data-act="prev-card" '+(i===0?'disabled':'')+'>上一张</button>'+
+      (i < cards.length-1 ? '<button class="btn" data-act="next-card">下一张</button>' : '<button class="btn" data-act="start-quiz">开始练习 →</button>')+
+      '</div></div>';
+  } else if(s.phase === 'quiz'){
+    body = '<p class="phase">'+(isReview ? '复习 · 来自 '+esc(curItem().lid) : '练')+' · 第 '+(s.pos+1)+' 题'+(s.pos >= s.total ? '（回炉）' : '')+'</p><div class="card">'+viewQ()+'</div>';
+    bar = viewBar();
+  } else if(s.phase === 'result'){
+    body = viewResult();
+  }
+  return head+'<main class="stage">'+body+'</main>'+bar;
+}
+
+/* ---------- QUESTIONS ---------- */
+function optHTML(q, o){ return q.tk ? tk(o) : fmt(o); }
+function tokHTML(t){ return t === playerName() ? '<span class="nm">'+esc(t)+'</span>' : tk(t); }
+function viewQ(){
+  const q = curQ(), st = QS.state;
+  if(q.q === 'choice' || q.q === 'dialog'){
+    const long = QS.opts.some(o => String(o.o).replace(/[{}]/g,'').length > 16);
+    let top = '';
+    if(q.q === 'dialog'){
+      top = '<div class="npc"><div class="av" aria-hidden="true">'+esc((q.who||'?')[0])+'</div><div class="say"><small>'+esc(WHO[q.who]||q.who)+'</small>'+tk(q.line)+'<span class="zh">'+esc(q.lineZh||'')+'</span></div></div><p class="q-prompt">'+fmt(q.p)+'</p>';
+    } else {
+      top = '<p class="q-prompt">'+fmt(q.p)+'</p>'+(q.emoji?'<div class="q-emoji" aria-hidden="true">'+q.emoji+'</div>':'');
+    }
+    return top+'<div class="opts'+(long?' one':'')+'">'+QS.opts.map((o,i) => {
+      let cls = '';
+      if(st){ if(o.ok) cls = ' ok'; else if(QS.picked === i) cls = ' bad'; }
+      return '<button class="opt'+cls+'" data-act="pick" data-i="'+i+'" '+(st?'disabled':'')+'><span class="k">'+(i+1)+'</span><span>'+optHTML(q,o.o)+'</span></button>';
+    }).join('')+'</div>';
+  }
+  if(q.q === 'match'){
+    const tile = (side, idx) => {
+      const done = QS.done.has(idx);
+      const sel = QS.sel && QS.sel.side === side && QS.sel.i === idx;
+      const bad = QS.bad && QS.bad[side] === idx;
+      const label = side === 'l' ? tk(q.pairs[idx][0]) : fmt(q.pairs[idx][1]);
+      return '<button class="mt'+(done?' done':'')+(sel?' sel':'')+(bad?' bad':'')+'" data-act="mt" data-side="'+side+'" data-i="'+idx+'" '+(done||st?'disabled':'')+'>'+label+'</button>';
+    };
+    return '<p class="q-prompt">'+fmt(q.p)+'</p><p class="q-hint">先点左边，再点右边。</p><div class="match"><div class="mcol">'+QS.L.map(i => tile('l',i)).join('')+'</div><div class="mcol">'+QS.R.map(i => tile('r',i)).join('')+'</div></div>';
+  }
+  if(q.q === 'sort'){
+    const cur = QS.k < q.items.length ? q.items[QS.order[QS.k]] : null;
+    const curHTML = cur ? (q.tk ? '<span class="tk">'+tkColor(cur[0])+'</span>' : '<span class="tk">'+fmt(cur[0])+'</span>') : '<span class="muted">分完了！</span>';
+    return '<p class="q-prompt">'+fmt(q.p)+'</p><p class="q-hint">第 '+Math.min(QS.k+1,q.items.length)+' / '+q.items.length+' 个</p>'+
+      '<div class="sort-cur">'+curHTML+(QS.note?'<div class="note">'+QS.note+'</div>':'')+'</div>'+
+      '<div class="bins">'+q.bins.map((b,bi) => '<button class="bin" data-act="bin" data-b="'+bi+'" '+(cur&&!st?'':'disabled')+'><b>'+fmt(b)+'</b><div class="got">'+QS.placed[bi].map(it => '<span>'+(q.tk?tk(it):fmt(it))+'</span>').join('')+'</div></button>').join('')+'</div>';
+  }
+  if(q.q === 'spell'){
+    const slots = QS.seq.length ? QS.seq.map((ti,j) => '<button class="slot" data-act="unslot" data-j="'+j+'" '+(st?'disabled':'')+' aria-label="移除 '+esc(QS.tiles[ti])+'">'+tkColor(QS.tiles[ti])+'</button>').join('') : '<span class="ph">点下面的字母拼出单词</span>';
+    const used = new Set(QS.seq);
+    return '<p class="q-prompt">拼出这个词</p><div class="q-emoji" aria-hidden="true">'+esc(q.hint.split(' ')[0])+'</div><p class="q-hint">'+esc(q.hint.split(' ').slice(1).join(' '))+'</p>'+
+      '<div class="slots" aria-live="polite">'+slots+'</div>'+
+      '<div class="tiles">'+QS.tiles.map((t,i) => '<button class="tile" data-act="tile" data-i="'+i+'" '+(used.has(i)||st?'disabled':'')+'>'+esc(t)+'</button>').join('')+'</div>'+
+      '<div class="q-tools"><button class="link" data-act="back" '+(st?'disabled':'')+'>⌫ 删一个</button><button class="link" data-act="clear" '+(st?'disabled':'')+'>清空</button></div>';
+  }
+  if(q.q === 'build'){
+    const line = '<span class="slot root">'+tkColor(q.root)+'</span>'+QS.seq.map((b,j) => '<span class="arrow" aria-hidden="true">+</span><button class="slot sfx" data-act="unbuild" data-j="'+j+'" '+(st?'disabled':'')+'>'+tkColor(b)+'</button>').join('');
+    return '<p class="q-prompt">'+fmt(q.p)+'</p><p class="q-hint">按顺序点词缀，挂到词根后面。点已挂上的词缀可以取下。</p>'+
+      '<div class="slots">'+line+'</div>'+
+      '<div class="tiles">'+q.blocks.map((b,i) => '<button class="tile word" data-act="block" data-i="'+i+'" '+(st?'disabled':'')+'>+'+tkColor(b)+'</button>').join('')+'</div>';
+  }
+  if(q.q === 'order'){
+    const used = new Set(QS.seq);
+    const slots = QS.seq.length ? QS.seq.map((pi,j) => '<button class="slot word" data-act="unorder" data-j="'+j+'" '+(st?'disabled':'')+'>'+tokHTML(QS.pool[pi])+'</button>').join('')+(st?'<span class="tk" style="font-size:20px">'+esc(q.end||'')+'</span>':'') : '<span class="ph">按顺序点下面的词</span>';
+    return '<p class="q-prompt">'+fmt(q.p)+'</p><p class="q-hint">记住：动词压轴。</p><div class="slots">'+slots+'</div>'+
+      '<div class="tiles">'+QS.pool.map((w,i) => '<button class="tile word" data-act="ord" data-i="'+i+'" '+(used.has(i)||st?'disabled':'')+'>'+tokHTML(w)+'</button>').join('')+'</div>';
+  }
+  return '';
+}
+function answerText(q){
+  if(q.q === 'choice' || q.q === 'dialog') return q.tk ? tk(q.o[0]) : fmt(q.o[0]);
+  if(q.q === 'spell') return tk(q.a)+' <span class="ipa">'+ipaOf(q.a)+'</span>';
+  if(q.q === 'build') return tk(q.root)+' + '+q.a.map(tkColor).join(' + ')+' → '+tk(q.forms[q.forms.length-1]);
+  if(q.q === 'order') return tk(q.w.map(nameSub).join(' ')+(q.end||''));
+  return '';
+}
+function viewBar(){
+  const q = curQ(), st = QS.state;
+  if(!st){
+    const need = (q.q === 'spell' && QS.seq.length === q.a.length) || (q.q === 'build' && QS.seq.length > 0) || (q.q === 'order' && QS.seq.length === QS.pool.length);
+    const checkable = ['spell','build','order'].includes(q.q);
+    return '<div class="bar"><div class="bar-in"><span class="tiny">'+(checkable?'完成后点“检查”':'选一个答案（也可以按数字键）')+'</span>'+(checkable?'<button class="btn" data-act="check" '+(need?'':'disabled')+'>检查</button>':'')+'</div></div>';
+  }
+  let title, why = '';
+  if(st === 'ok'){ title = PRAISE[Math.floor(Math.random()*PRAISE.length)]; if(q.x) why = '<div class="why">'+fmt(q.x)+'</div>'; if(q.q==='build') why = '<div class="ans">'+answerText(q)+'</div>'+why; }
+  else {
+    title = (q.q === 'match' || q.q === 'sort') ? '完成了，但出错 '+QS.mist+' 次' : 'Ýalňyş · 不对';
+    const at = answerText(q);
+    why = (at ? '<div class="ans">正确答案：'+at+'</div>' : '')+(q.x ? '<div class="why">'+fmt(q.x)+'</div>' : '')+((q.q==='match'||q.q==='sort')?'<div class="why tiny">这题已放进复习篮。</div>':'');
+  }
+  if(st === 'ok' && (q.q === 'match' || q.q === 'sort') && !q.x) why = '<div class="why">全部正确。</div>';
+  return '<div class="bar '+st+'" role="status"><div class="bar-in"><div class="fb"><b>'+title+'</b>'+why+'</div><button class="btn '+(st==='ok'?'ok':'bad')+'" data-act="continue">继续</button></div></div>';
+}
+function settle(ok){
+  QS.state = ok ? 'ok' : 'bad';
+  render();
+}
+function onContinue(){
+  const q = curQ(), it = curItem(), k = keyOf(it);
+  const ok = QS.state === 'ok';
+  if(!(k in SES.first)) SES.first[k] = ok;
+  const requeueable = !['match','sort'].includes(q.q);
+  if(ok || !requeueable){ SES.done.add(k); }
+  else {
+    SES.requeued[k] = (SES.requeued[k]||0) + 1;
+    if(SES.requeued[k] <= 2) SES.queue.push(it); else SES.done.add(k);
+  }
+  SES.pos++;
+  if(SES.pos >= SES.queue.length) finish();
+  else { startQ(); render(); window.scrollTo(0,0); }
+}
+function finish(){
+  const keys = Object.keys(SES.first);
+  const good = keys.filter(k => SES.first[k]).length;
+  SES.good = good; SES.n = keys.length;
+  if(SES.mode === 'level'){
+    const ratio = good / Math.max(1, keys.length);
+    const stars = ratio >= 0.9 ? 3 : ratio >= 0.7 ? 2 : 1;
+    const prev = P.stars[SES.lv.id] || 0;
+    SES.stars = stars; SES.best = Math.max(prev, stars); SES.firstTime = prev === 0;
+    P.stars[SES.lv.id] = SES.best;
+    keys.forEach(k => { if(!SES.first[k] && !P.review.includes(k)) P.review.push(k); });
+  } else {
+    keys.forEach(k => { if(SES.first[k]) P.review = P.review.filter(x => x !== k); });
+  }
+  save();
+  SES.phase = 'result';
+  render(); window.scrollTo(0,0);
+}
+function viewResult(){
+  if(SES.mode === 'review'){
+    return '<div class="result"><h2>复习完成</h2><p class="stat">首次答对 '+SES.good+' / '+SES.n+'，复习篮还剩 '+P.review.length+' 题。</p>'+
+      '<div class="acts">'+(P.review.length?'<button class="btn" data-act="review">再复习一轮</button>':'')+'<button class="btn ghost" data-act="home">回到地毯</button></div></div>';
+  }
+  const lv = SES.lv, L = lv.layer;
+  const nx = ALL[lv.idx+1];
+  const layerDone = L.levels.every(isDone);
+  const allDone = ALL.every(isDone);
+  const starHTML = [1,2,3].map(i => i <= SES.stars ? '★' : '<span class="off">★</span>').join('');
+  let extra = '';
+  if(allDone) extra = '<p class="body" style="margin-top:14px">29 个纹样全部织完，这张地毯是你的了。<br>'+tk(PROVERB.tk)+'<br><span class="muted">'+esc(PROVERB.zh)+'</span></p>';
+  else if(layerDone && lv.idx === L.levels[L.levels.length-1].idx && nx) extra = '<p class="body" style="margin-top:14px">第 '+L.n+' 层织完！下一层：<b>'+esc(nx.layer.name)+'</b>（'+esc(nx.layer.analog)+'）</p>';
+  return '<div class="result"><p class="phase">'+lv.id+'</p><h2>'+(SES.firstTime ? '织好了一个纹样' : '又织了一遍')+'</h2>'+
+    '<div class="weave">'+gul(L.pal,'done','gul-big')+'</div>'+
+    '<div class="stars" aria-label="'+SES.stars+' 颗星">'+starHTML+'</div>'+
+    '<p class="stat">首次答对 '+SES.good+' / '+SES.n+(SES.best > SES.stars ? '（最好成绩 '+SES.best+' 星）' : '')+'</p>'+extra+
+    '<div class="acts">'+(nx ? '<button class="btn" data-act="open" data-id="'+nx.id+'">下一关：'+esc(shortOf(nx))+' →</button>' : '')+
+    '<button class="btn ghost" data-act="retry">再练一次</button><button class="btn ghost" data-act="home">回到地毯</button></div></div>';
+}
+
+/* ---------- ALPHABET ---------- */
+function viewAbc(){
+  const tiles = LETTERS.map(L => '<button class="lt2 '+L.grp+'" data-act="letter" data-k="'+L.l+'" aria-label="字母 '+L.u+'，'+GROUP_NAME[L.grp]+'"><b><span class="'+(L.kind==='v'?(L.h==='b'?'vb':'vf'):'')+'">'+L.u+L.l+'</span></b><span class="ipa">['+esc(L.ipa)+']</span><span class="g">'+GROUP_NAME[L.grp]+'</span></button>').join('');
+  const cnt = g => LETTERS.filter(l => l.grp === g).length;
+  return '<div class="wrap"><div class="page-head"><button class="link" data-act="home">← 地毯</button><h2>30 个字母</h2></div>'+
+    '<p class="muted">土库曼语字母表按这个顺序排列：'+tk(LETTERS.map(l=>l.l).join(' '))+'。点任意字母看读法。</p>'+
+    '<div class="abc-legend"><span><span class="chip tag-friend">老朋友 '+cnt('friend')+'</span> 读法和拼音 / 英语基本一样</span><span><span class="chip tag-hat">戴帽子 '+cnt('hat')+'</span> 新面孔</span><span><span class="chip tag-trap">伪装者 '+cnt('trap')+'</span> 长得眼熟、读法不同（右上角红角）</span></div>'+
+    '<div class="abc">'+tiles+'</div><p class="tiny" style="padding-block:16px 30px">元音按颜色区分：蓝 = 粗元音，橙 = 细元音；辅音不上色。音标为宽式标音。</p></div>';
+}
+
+/* ---------- WORD BANK ---------- */
+let WQUERY = '', WALL = false;
+function viewWords(){
+  const seen = new Set();
+  let total = 0, got = 0;
+  const groups = LAYERS.map(L => {
+    const rows = [];
+    L.levels.forEach(lv => {
+      lv.words.forEach(w => {
+        const key = w[0]+'|'+w[1];
+        if(seen.has(key)) return; seen.add(key); total++;
+        const have = isDone(lv);
+        if(have) got++;
+        if(!have && !WALL) return;
+        const q = WQUERY.trim().toLowerCase();
+        if(q && !(w[0].toLowerCase().includes(q) || w[1].includes(q))) return;
+        rows.push('<div class="wrow"><span class="em" aria-hidden="true">'+(w[2]||'')+'</span>'+tk(w[0])+'<span class="ipa">'+ipaOf(w[0])+'</span><span class="muted">'+esc(w[1])+'<span class="tiny"> · '+lv.id+'</span></span></div>');
+      });
+    });
+    return rows.length ? '<div class="wl"><h3>第 '+L.n+' 层 · '+esc(L.name)+'</h3>'+rows.join('')+'</div>' : '';
+  }).join('');
+  return '<div class="wrap"><div class="page-head"><button class="link" data-act="home">← 地毯</button><h2>词库</h2><span class="tiny">已收集 '+got+' / '+total+'</span></div>'+
+    '<label class="sr" for="wq">搜索单词</label><input id="wq" class="search" type="search" placeholder="搜土库曼语或中文，如 suw、茶" value="'+esc(WQUERY)+'">'+
+    '<div class="switch" style="margin-bottom:12px"><label for="wall" class="muted">显示还没学到的词</label><input id="wall" type="checkbox" '+(WALL?'checked':'')+'></div>'+
+    (groups || '<div class="empty">'+(got ? '没有找到匹配的词。' : '完成关卡后，学过的词会收进这里。也可以打开上面的开关先看看全部。')+'</div>')+
+    '<p class="tiny" style="padding-block:10px 30px">斜线里的音标按字母直读生成，不标长短音。</p></div>';
+}
+
+/* ---------- MODALS ---------- */
+function viewModal(){
+  const m = MODAL;
+  if(m.type === 'letter'){
+    return '<div class="scrim" data-act="close-bg"><div class="sheet" role="dialog" aria-modal="true" aria-label="字母详情"><div class="sheet-h"><h2>字母 '+LETTER[m.k].u+'</h2><button class="link" data-act="close" data-autofocus>关闭</button></div>'+letterCard(m.k)+'</div></div>';
+  }
+  if(m.type === 'msg'){
+    return '<div class="scrim" data-act="close-bg"><div class="sheet" role="dialog" aria-modal="true"><div class="sheet-h"><h2>'+esc(m.h)+'</h2><button class="link" data-act="close" data-autofocus>好的</button></div><p class="muted">'+esc(m.b)+'</p></div></div>';
+  }
+  if(m.type === 'settings'){
+    return '<div class="scrim" data-act="close-bg"><div class="sheet" role="dialog" aria-modal="true" aria-label="设置"><div class="sheet-h"><h2>设置</h2><button class="link" data-act="close" data-autofocus>完成</button></div>'+
+      '<div class="field"><label for="set-name">你的名字（用在自我介绍里）</label><input id="set-name" type="text" maxlength="24" placeholder="Li Hua" value="'+esc(P.name||'')+'"></div>'+
+      '<div class="field"><div class="switch"><label for="set-color">元音上色（蓝 = 粗，橙 = 细）</label><input id="set-color" type="checkbox" '+(P.color?'checked':'')+'></div></div>'+
+      '<div class="field"><div class="switch"><label for="set-free">试玩模式：解锁全部关卡</label><input id="set-free" type="checkbox" '+(P.free?'checked':'')+'></div><span class="tiny">正式学习时建议关闭，按顺序一层一层来。</span></div>'+
+      '<div class="field"><label>重置进度</label><div><button class="btn sm '+(RESET_ARMED?'bad':'ghost')+'" data-act="reset">'+(RESET_ARMED?'再点一次，确认清空全部进度':'清空星星、复习篮和名字')+'</button></div></div>'+
+      '<div class="field" style="border-bottom:0"><label>关于</label><p class="tiny">发音音频：本版暂未内置。浏览器没有土库曼语语音，计划用 Meta 开源的 MMS 土库曼语语音模型生成后嵌入。现在每个字母和单词都附有国际音标、汉语近似音和口型提示。</p><p class="tiny" style="margin-top:6px">内容依据维基百科、SIL 与 Webonary 土库曼语语法、Peace Corps 教材等，详见配套的顶层设计文档。</p></div>'+
+    '</div></div>';
+  }
+  return '';
+}
+
+/* ---------- interaction ---------- */
+function onClick(e){
+  const el = e.target.closest('[data-act]');
+  if(!el) return;
+  const act = el.dataset.act;
+  if(act === 'close-bg' && e.target !== el) return; // clicks inside sheet
+  const q = (VIEW === 'level' && SES && SES.phase === 'quiz') ? curQ() : null;
+  switch(act){
+    case 'home': SES = null; go('home'); break;
+    case 'open': startLevel(el.dataset.id); break;
+    case 'go-abc': go('abc'); break;
+    case 'go-words': go('words'); break;
+    case 'review': startReview(); break;
+    case 'settings': RESET_ARMED = false; MODAL = {type:'settings'}; render(); break;
+    case 'close': case 'close-bg': MODAL = null; RESET_ARMED = false; render(); break;
+    case 'letter': MODAL = {type:'letter', k:el.dataset.k}; render(); break;
+    case 'reset':
+      if(!RESET_ARMED){ RESET_ARMED = true; render(); }
+      else { P.stars = {}; P.review = []; P.name = ''; RESET_ARMED = false; save(); MODAL = null; go('home'); }
+      break;
+    case 'save-name-card': { const inp = document.getElementById('name-card'); if(inp){ P.name = inp.value.slice(0,24); save(); render(); } break; }
+    case 'prev-card': if(SES.card > 0){ SES.card--; render(); window.scrollTo(0,0);} break;
+    case 'next-card': if(SES.card < SES.lv.learn.length-1){ SES.card++; render(); window.scrollTo(0,0);} break;
+    case 'start-quiz': case 'skip-learn': initQuiz(); render(); window.scrollTo(0,0); break;
+    case 'retry': startLevel(SES.lv.id, true); break;
+    case 'continue': onContinue(); break;
+    case 'pick': if(q && !QS.state){ const i = +el.dataset.i; QS.picked = i; settle(QS.opts[i].ok); } break;
+    case 'mt': if(q && !QS.state) onMatch(q, el.dataset.side, +el.dataset.i); break;
+    case 'bin': if(q && !QS.state) onBin(q, +el.dataset.b); break;
+    case 'tile': if(q && !QS.state){ QS.seq.push(+el.dataset.i); render(); } break;
+    case 'unslot': if(q && !QS.state){ QS.seq.splice(+el.dataset.j, 1); render(); } break;
+    case 'back': if(q && !QS.state){ QS.seq.pop(); render(); } break;
+    case 'clear': if(q && !QS.state){ QS.seq = []; render(); } break;
+    case 'block': if(q && !QS.state){ QS.seq.push(q.blocks[+el.dataset.i]); render(); } break;
+    case 'unbuild': if(q && !QS.state){ QS.seq.splice(+el.dataset.j); render(); } break;
+    case 'ord': if(q && !QS.state){ QS.seq.push(+el.dataset.i); render(); } break;
+    case 'unorder': if(q && !QS.state){ QS.seq.splice(+el.dataset.j, 1); render(); } break;
+    case 'check': if(q && !QS.state) onCheck(q); break;
+  }
+}
+function onMatch(q, side, i){
+  if(!QS.sel || QS.sel.side === side){ QS.sel = {side, i}; QS.bad = null; render(); return; }
+  const l = side === 'l' ? i : QS.sel.i, r = side === 'r' ? i : QS.sel.i;
+  QS.sel = null;
+  if(l === r){ QS.done.add(l); QS.bad = null; }
+  else { QS.mist++; QS.bad = {l, r}; }
+  if(QS.done.size === q.pairs.length){ settle(QS.mist === 0); return; }
+  render();
+}
+function onBin(q, b){
+  const it = q.items[QS.order[QS.k]];
+  const right = it[1];
+  const label = q.tk ? tk(it[0]) : fmt(it[0]);
+  if(b === right){ QS.note = ''; }
+  else { QS.mist++; QS.note = '<span style="color:var(--bad)">上一个 '+label+' 应该放进「'+fmt(q.bins[right])+'」</span>'; }
+  QS.placed[right].push(it[0]);
+  QS.k++;
+  if(QS.k >= q.items.length){ settle(QS.mist === 0); return; }
+  render();
+}
+function onCheck(q){
+  if(q.q === 'spell'){ const w = QS.seq.map(i => QS.tiles[i]).join(''); if(w.length !== q.a.length) return; settle(w === q.a); }
+  else if(q.q === 'build'){ if(!QS.seq.length) return; settle(QS.seq.join('|') === q.a.join('|')); }
+  else if(q.q === 'order'){ if(QS.seq.length !== QS.pool.length) return; settle(QS.seq.map(i => QS.pool[i]).join(' ') === q.w.map(nameSub).join(' ')); }
+}
+function onKey(e){
+  if(e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
+  if(e.target && e.target.tagName === 'BUTTON' && (e.key === 'Enter' || e.key === ' ')) return;
+  if(e.key === 'Escape' && MODAL){ MODAL = null; render(); return; }
+  if(VIEW !== 'level' || !SES || MODAL) return;
+  if(SES.phase === 'quiz'){
+    const q = curQ();
+    if(!QS.state && (q.q === 'choice' || q.q === 'dialog') && /^[1-4]$/.test(e.key)){
+      const i = +e.key - 1; if(i < QS.opts.length){ QS.picked = i; settle(QS.opts[i].ok); e.preventDefault(); }
+      return;
+    }
+    if(e.key === 'Enter' && QS.state){ e.preventDefault(); onContinue(); return; }
+    if(e.key === 'Enter' && !QS.state && ['spell','build','order'].includes(q.q)){ e.preventDefault(); onCheck(q); return; }
+    if(e.key === 'Backspace' && !QS.state && q.q === 'spell'){ QS.seq.pop(); render(); e.preventDefault(); return; }
+    if(!QS.state && q.q === 'spell' && e.key.length === 1){
+      const idx = QS.tiles.findIndex((t,i) => t === e.key.toLowerCase() && !QS.seq.includes(i));
+      if(idx >= 0){ QS.seq.push(idx); render(); e.preventDefault(); }
+    }
+  } else if(SES.phase === 'learn'){
+    if(e.key === 'ArrowRight' || e.key === 'Enter'){ e.preventDefault(); if(SES.card < SES.lv.learn.length-1){ SES.card++; render(); } else if(e.key === 'Enter'){ initQuiz(); render(); } }
+    if(e.key === 'ArrowLeft'){ if(SES.card > 0){ SES.card--; render(); } }
+  }
+}
+function onInput(e){
+  const t = e.target;
+  if(t.id === 'set-name'){ P.name = t.value.slice(0,24); save(); }
+  if(t.id === 'wq'){ WQUERY = t.value; const pos = t.selectionStart; render(); const n = document.getElementById('wq'); if(n){ n.focus(); try{ n.setSelectionRange(pos,pos); }catch(_){} } }
+}
+function onChange(e){
+  const t = e.target;
+  if(t.id === 'set-color'){ P.color = t.checked; save(); render(); }
+  if(t.id === 'set-free'){ P.free = t.checked; save(); render(); }
+  if(t.id === 'wall'){ WALL = t.checked; render(); }
+}
+
+/* ---------- boot ---------- */
+let started = false;
+function start(){
+  if(started) return; started = true;
+  load();
+  document.addEventListener('click', onClick);
+  document.addEventListener('keydown', onKey);
+  document.addEventListener('input', onInput);
+  document.addEventListener('change', onChange);
+  render();
+}
+window.__haly = {S:() => SES, Q:() => QS, P:() => P, ALL};
+const hot = window.claude && window.claude.hot;
+if(hot && typeof hot.ready === 'function'){ try{ hot.ready(start); }catch(e){ start(); } setTimeout(start, 1500); }
+else start();
+})();
+
+</script>
+
+</body>
+</html>

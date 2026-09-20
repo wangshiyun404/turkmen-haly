@@ -1,0 +1,588 @@
+/* ================= ENGINE ================= */
+(function(){
+'use strict';
+
+/* ---------- persistence (per-viewer convenience only) ---------- */
+const KEY = 'haly-tk-v1';
+const P = {stars:{}, review:[], name:'', color:true, free:false};
+function load(){
+  try{ const raw = localStorage.getItem(KEY); if(raw){ Object.assign(P, JSON.parse(raw)); } }catch(e){}
+  if(!P.stars || typeof P.stars !== 'object') P.stars = {};
+  if(!Array.isArray(P.review)) P.review = [];
+}
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(P)); }catch(e){} }
+
+/* ---------- helpers ---------- */
+const $app = () => document.getElementById('app');
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const BACK = 'aouyAOUY', FRONT = 'eäiöüEÄIÖÜ';
+const playerName = () => (P.name && P.name.trim()) ? P.name.trim() : 'Li Hua';
+function tkColor(s){
+  let out = '';
+  for(const ch of String(s)){
+    if(BACK.includes(ch)) out += '<span class="vb">'+ch+'</span>';
+    else if(FRONT.includes(ch)) out += '<span class="vf">'+ch+'</span>';
+    else out += esc(ch);
+  }
+  return out;
+}
+const NAME_MARK = '\u0001NAME\u0001';
+function withName(html){ return html.split(NAME_MARK).join('<span class="nm">'+esc(playerName())+'</span>'); }
+// Turkmen string that may contain {NAME} and [ipa]
+function tk(s){
+  const parts = String(s).replace(/\{NAME\}/g, NAME_MARK).split(/(\[[^\]]+\])/);
+  const html = parts.map(p => /^\[.*\]$/.test(p) ? '<span class="ipa">'+esc(p)+'</span>' : tkColor(p)).join('');
+  return withName('<span class="tk">'+html+'</span>');
+}
+// mixed Chinese/HTML text with {turkmen} and [ipa]
+function fmt(s){
+  if(s == null) return '';
+  let t = String(s).replace(/\{NAME\}/g, NAME_MARK);
+  t = t.replace(/\{([^{}]+)\}/g, (_, w) => '<span class="tk">'+tkColor(w)+'</span>');
+  t = t.replace(/\[([^\]<>]+)\]/g, (_, w) => '<span class="ipa">['+w+']</span>');
+  return withName(t);
+}
+const G2P = {a:'ɑ',b:'b',ç:'tʃ',d:'d',e:'e',ä:'æː',f:'f',g:'g',h:'h',i:'i',j:'dʒ',ž:'ʒ',k:'k',l:'l',m:'m',n:'n',ň:'ŋ',o:'o',ö:'ø',p:'p',r:'r',s:'θ',ş:'ʃ',t:'t',u:'u',ü:'y',w:'w',y:'ɯ',ý:'j',z:'ð'};
+function ipaOf(word){
+  const w = word.toLowerCase();
+  if(!/^[a-zäçňöşüýž]+$/.test(w)) return '';
+  return '/' + [...w].map(c => G2P[c] || '').join('') + '/';
+}
+function shuffle(a){ const b = a.slice(); for(let i=b.length-1;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); [b[i],b[j]]=[b[j],b[i]]; } return b; }
+function shuffleNot(a, orig){ // shuffle, avoid returning the original order when possible
+  if(a.length < 2) return a.slice();
+  for(let t=0;t<8;t++){ const s = shuffle(a); if(s.some((x,i)=>x!==orig[i])) return s; }
+  return shuffle(a);
+}
+const LETTER = Object.fromEntries(LETTERS.map(l => [l.l, l]));
+const ALL = [];
+LAYERS.forEach((L, li) => L.levels.forEach((lv, i) => ALL.push(Object.assign(lv, {layer:L, li, idx:ALL.length}))));
+const LV = id => ALL.find(l => l.id === id);
+const isDone = lv => (P.stars[lv.id] || 0) > 0;
+const isOpen = lv => P.free || lv.idx === 0 || isDone(ALL[lv.idx-1]) || isDone(lv);
+const nextLevel = () => ALL.find(l => !isDone(l) && isOpen(l)) || null;
+const totalStars = () => ALL.reduce((s,l) => s + (P.stars[l.id]||0), 0);
+const doneCount = () => ALL.filter(isDone).length;
+const WHO = {'Aýna':'Aýna · 阿依娜','Merdan':'Merdan · 梅尔丹','Satyjy':'Satyjy · 卖家','Adam':'Adam · 路人','ME':'你'};
+const PRAISE = ['Dogry!','Örän gowy!','Dogry!','Berekella!'];
+const SHORT = {'2-2':'复数词缀','2-4':'问句小尾巴','3-2':'在哪儿','3-3':'从哪儿来','3-4':'到哪儿去','4-1':'我是 / 不是','4-2':'有 / 没有','4-4':'动词压轴','5-1':'动词原形','5-4':'否定与请求'};
+const shortOf = lv => SHORT[lv.id] || lv.title;
+
+/* ---------- gul (carpet medallion) ---------- */
+const INK = '#1C2346';
+const OCT = 'M26 3 H94 L117 22 V58 L94 77 H26 L3 58 V22 Z';
+function gul(pal, state, cls){
+  cls = cls || '';
+  if(state !== 'done'){
+    const op = state === 'open' ? 0.95 : 0.55;
+    return '<svg viewBox="0 0 120 80" class="'+cls+'" aria-hidden="true">'+
+      '<path d="'+OCT+'" fill="none" stroke="#F2E8D5" stroke-opacity="'+op+'" stroke-width="2" stroke-dasharray="'+(state==='open'?'0':'5 4')+'"/>'+
+      '<path d="M60 8 V72 M8 40 H112" fill="none" stroke="#F2E8D5" stroke-opacity="'+(op*0.6)+'" stroke-width="1.2" stroke-dasharray="3 4"/>'+
+      '<path d="M60 28 L72 40 L60 52 L48 40 Z" fill="none" stroke="#F2E8D5" stroke-opacity="'+(op*0.7)+'" stroke-width="1.2" stroke-dasharray="3 3"/>'+
+    '</svg>';
+  }
+  const [A,B,C] = pal;
+  const dia = (x,y,f) => '<path d="M'+x+' '+(y-7)+' L'+(x+7)+' '+y+' L'+x+' '+(y+7)+' L'+(x-7)+' '+y+' Z" fill="'+f+'" stroke="'+INK+'" stroke-width="1"/>';
+  return '<svg viewBox="0 0 120 80" class="'+cls+'" aria-hidden="true">'+
+    '<g class="fillin">'+
+      '<path d="'+OCT+'" fill="'+A+'"/>'+
+      '<path d="M26 3 H60 V40 H3 V22 Z" fill="'+B+'"/>'+
+      '<path d="M60 40 H117 V58 L94 77 H60 Z" fill="'+B+'"/>'+
+      dia(32,22,A)+dia(88,22,B)+dia(32,58,B)+dia(88,58,A)+
+      '<path d="M60 24 L76 40 L60 56 L44 40 Z" fill="'+C+'" stroke="'+INK+'" stroke-width="2"/>'+
+      '<path d="M60 33 L67 40 L60 47 L53 40 Z" fill="'+INK+'"/>'+
+    '</g>'+
+    '<path class="o" d="'+OCT+'" fill="none" stroke="'+INK+'" stroke-width="3.2" stroke-linejoin="round"/>'+
+    '<path class="o" d="M60 3 V77 M3 40 H117" fill="none" stroke="'+INK+'" stroke-width="1.4" stroke-opacity=".55"/>'+
+  '</svg>';
+}
+
+/* ---------- state ---------- */
+let VIEW = 'home';          // home | level | abc | words
+let SES = null;             // current session
+let QS = null;              // current question state
+let MODAL = null;           // {type, ...}
+let RESET_ARMED = false;
+
+/* ---------- render root ---------- */
+function render(){
+  document.documentElement.classList.toggle('plain', !P.color);
+  let html = '';
+  if(VIEW === 'home') html = viewHome();
+  else if(VIEW === 'level') html = viewLevel();
+  else if(VIEW === 'abc') html = viewAbc();
+  else if(VIEW === 'words') html = viewWords();
+  if(MODAL) html += viewModal();
+  $app().innerHTML = html;
+  const auto = document.querySelector('[data-autofocus]');
+  if(auto) try{ auto.focus({preventScroll:true}); }catch(e){}
+}
+function go(view){ VIEW = view; MODAL = null; render(); window.scrollTo(0,0); }
+
+/* ---------- HOME ---------- */
+function viewHome(){
+  const nx = nextLevel();
+  const done = doneCount(), stars = totalStars();
+  const cta = nx ? (done === 0 ? '开始第 1 关：'+esc(shortOf(nx)) : '继续 '+nx.id+'：'+esc(shortOf(nx))) : '全部织完！再逛逛';
+  const rows = LAYERS.map(L => {
+    const allDone = L.levels.every(isDone);
+    const guls = L.levels.map(lv => {
+      const open = isOpen(lv), d = isDone(lv), st = P.stars[lv.id]||0;
+      const state = d ? 'done' : (open ? 'open' : 'locked');
+      const isNext = nx && nx.id === lv.id;
+      return '<button class="gbtn'+(isNext?' next':'')+'" data-act="open" data-id="'+lv.id+'" '+(open?'':'disabled')+' aria-label="'+lv.id+' '+esc(lv.title)+(d?'，'+st+' 星':open?'，可以开始':'，未解锁')+'">'+
+        gul(L.pal, state)+
+        '<span class="code">'+lv.id+'</span><span class="nm2">'+esc(shortOf(lv))+'</span>'+
+        '<span class="st">'+(d ? '★'.repeat(st) : '')+'</span></button>';
+    }).join('');
+    return '<div class="rug-row"><div class="row-label"><span class="n">LAYER '+L.n+'</span><b>'+esc(L.name)+'</b><span>'+esc(L.analog)+' · <span class="tk">'+esc(L.tkname)+'</span></span>'+(allDone?'<span class="lk">本行已织完</span>':'')+'</div><div class="guls">'+guls+'</div></div>';
+  }).join('');
+  const rv = P.review.length;
+  return '<div class="wrap">'+
+    '<header class="top"><div class="brand">'+gul(LAYERS[0].pal,'done')+'<div><h1>织毯学土库曼语</h1><p>Haly · Türkmen dili · 零基础</p></div></div>'+
+      '<nav class="nav" aria-label="工具"><button class="link" data-act="go-abc">字母表</button><button class="link" data-act="go-words">词库</button><button class="link" data-act="review">复习篮'+(rv?'<span class="badge">'+rv+'</span>':'')+'</button><button class="link" data-act="settings">设置</button></nav></header>'+
+    '<section class="hero"><div><p class="thesis">土库曼语的“拼音”，就是它的 <em>30 个字母</em>。<br>一层一层学，一行一行织。</p>'+
+      '<p class="hero-sub">6 层 29 关：字母发音 → 元音和谐 → 词缀积木 → 句型骨架 → 动词时态 → 场景会话。每过一关，地毯上就织出一个纹样（göl）。</p></div>'+
+      '<div class="hero-side"><div class="meter"><div><b>'+done+'<small style="font-size:14px;color:var(--ink-3)"> / '+ALL.length+'</small></b><span>已织纹样</span></div><div><b>'+stars+'</b><span>星星</span></div><div><b>'+rv+'</b><span>复习篮</span></div></div>'+
+      (nx ? '<button class="btn" data-act="open" data-id="'+nx.id+'">'+cta+' →</button>' : '<button class="btn" data-act="go-words">'+cta+'</button>')+'</div></section>'+
+    '<p class="legend"><span><i class="vb">a o u y</i> 蓝色 = 粗元音（ýogyn）</span><span><i class="vf">e ä i ö ü</i> 橙色 = 细元音（inçe）</span>'+(P.free?'<span>· 试玩模式：全部关卡已解锁</span>':'')+'</p>'+
+    '<section class="rug-frame" aria-label="学习地毯"><div class="rug-inner">'+rows+'</div></section>'+
+    '<footer class="home-foot"><p class="proverb">'+tk(PROVERB.tk)+' <span class="muted">—— '+esc(PROVERB.zh)+'</span></p><p>进度只保存在这台设备的浏览器里。</p></footer>'+
+  '</div>';
+}
+
+/* ---------- LEARN CARDS ---------- */
+function letterCard(k, compact){
+  const L = LETTER[k];
+  const big = '<span class="'+(L.kind==='v' ? (L.h==='b'?'vb':'vf') : '')+'">'+L.u+L.l+'</span>';
+  const tags = '<div class="tags"><span class="chip tag-'+L.grp+'">'+GROUP_NAME[L.grp]+'</span><span class="chip">'+(L.kind==='v' ? (L.h==='b'?'粗元音 · 舌头靠后':'细元音 · 舌头靠前')+(L.r?' · 圆唇':'') : '辅音')+'</span></div>';
+  return '<div class="lc"><div class="lc-big" aria-label="字母 '+L.u+'">'+big+'</div>'+
+    '<div class="lc-meta">'+tags+'<span class="ipa">['+esc(L.ipa)+']</span><span class="lc-zh">'+esc(L.zh)+'</span><span class="lc-tip">'+fmt(L.tip)+'</span></div>'+
+    '<div class="lc-word">'+(L.w[2]?'<span class="em" aria-hidden="true">'+L.w[2]+'</span>':'')+'<div>'+tk(L.w[0])+' <span class="ipa">'+ipaOf(L.w[0])+'</span><div class="muted">'+esc(L.w[1])+'</div></div></div></div>';
+}
+function tkWithIpa(s){ return tk(s); }
+function viewCard(c){
+  switch(c.t){
+    case 'letter': return '<div class="card">'+letterCard(c.k)+'</div>';
+    case 'intro': return '<div class="card"><h2>'+fmt(c.h)+'</h2><div class="body">'+fmt(c.b)+'</div></div>';
+    case 'chart':
+      return '<div class="card"><h2>'+fmt(c.h)+'</h2><div class="body">'+fmt(c.b)+'</div>'+
+        '<div class="chart"><div class="h"></div><div class="h">不圆唇</div><div class="h">圆唇</div>'+
+        '<div class="h">粗 ýogyn<br>舌头靠后</div><div class="v">'+tkColor('a y')+'</div><div class="v">'+tkColor('o u')+'</div>'+
+        '<div class="h">细 inçe<br>舌头靠前</div><div class="v">'+tkColor('e ä i')+'</div><div class="v">'+tkColor('ö ü')+'</div></div></div>';
+    case 'grid':
+      return '<div class="card"><h2>'+fmt(c.h)+'</h2><div class="lgrid">'+c.letters.map(k => { const L = LETTER[k]; return '<div><b>'+L.u+L.l+'</b> <span class="ipa">['+esc(L.ipa)+']</span>'+tk(L.w[0])+'<span class="tiny">'+(L.w[2]||'')+' '+esc(L.w[1])+'</span></div>'; }).join('')+'</div></div>';
+    case 'pairs':
+      return '<div class="card"><h2>'+fmt(c.h)+'</h2>'+(c.b?'<div class="body">'+fmt(c.b)+'</div>':'')+'<div class="pairs">'+c.items.map(it => '<div>'+tkWithIpa(it[0])+'<span>'+fmt(it[1])+'</span></div>').join('')+'</div></div>';
+    case 'table':
+      return '<div class="card"><h2>'+fmt(c.h)+'</h2>'+(c.b?'<div class="body">'+fmt(c.b)+'</div>':'')+'<div class="tbl-wrap"><table class="tbl"><thead><tr>'+c.head.map(h => '<th>'+fmt(h)+'</th>').join('')+'</tr></thead><tbody>'+c.rows.map(r => '<tr>'+r.map((v,i) => '<td>'+(i===0?esc(v):tk(v))+'</td>').join('')+'</tr>').join('')+'</tbody></table></div></div>';
+    case 'blend':
+      return '<div class="card"><h2>'+fmt(c.h)+'</h2><div class="blend">'+c.items.map(it => '<div>'+it[0].map(ch => '<span class="lt">'+tkColor(ch)+'</span>').join('<span class="arrow">+</span>')+'<span class="arrow">→</span><span class="res tk">'+tkColor(it[1])+'</span> <span class="ipa">'+ipaOf(it[1])+'</span> <span class="muted">'+it[2]+' '+esc(it[3])+'</span></div>').join('')+'</div></div>';
+    case 'chain':
+      return '<div class="card"><h2>'+fmt(c.h)+'</h2><div class="chain">'+c.parts.map((p,i) => '<div class="'+(i===0?'root':'')+'"><b class="tk">'+tkColor(p[0])+'</b><span>'+esc(p[1])+'</span></div>').join('<div style="border:0;background:none;justify-content:center;padding:0 2px">+</div>')+'</div><p class="body" style="margin-top:14px">= '+tk(c.result)+' <span class="muted">'+esc(c.zh)+'</span></p></div>';
+    case 'dialog':
+      return '<div class="card"><h2>'+fmt(c.h)+'</h2><div class="dlg">'+c.lines.map(l => '<div class="say'+(l[0]==='ME'?' me':'')+'"><small>'+esc(WHO[l[0]]||l[0])+'</small>'+tk(l[1])+'<span class="zh">'+fmt(l[2].replace(/\{NAME\}/g,'{NAME}'))+'</span></div>').join('')+'</div></div>';
+    case 'name':
+      return '<div class="card"><h2>先告诉我你的名字</h2><div class="body"><p>下面的对话和练习会用上它。不填就用“'+esc('Li Hua')+'”（没错，就是那位李华）。</p></div>'+
+        '<div class="name-in"><label class="sr" for="name-card">你的名字</label><input id="name-card" type="text" maxlength="24" placeholder="例如：Li Hua" value="'+esc(P.name||'')+'"><button class="btn sm" data-act="save-name-card">保存</button></div>'+
+        '<p class="tiny" style="margin-top:8px">当前：'+esc(playerName())+'</p></div>';
+  }
+  return '';
+}
+
+/* ---------- LEVEL ---------- */
+function startLevel(id, skipLearn){
+  const lv = LV(id);
+  SES = {mode:'level', lv, phase: skipLearn ? 'quiz' : 'learn', card:0};
+  if(skipLearn) initQuiz();
+  go('level');
+}
+function initQuiz(){
+  const lv = SES.lv;
+  SES.phase = 'quiz';
+  SES.queue = lv.quiz.map((q,i) => ({lid:lv.id, qi:i}));
+  prepSession();
+}
+function startReview(){
+  if(!P.review.length){ MODAL = {type:'msg', h:'复习篮是空的', b:'答错的题会自动放进复习篮。先去地毯上玩几关吧。'}; render(); return; }
+  const picks = shuffle(P.review).slice(0,10).map(k => { const [lid,qi] = k.split('#'); return {lid, qi:+qi}; }).filter(it => LV(it.lid) && LV(it.lid).quiz[it.qi]);
+  SES = {mode:'review', lv:null, phase:'quiz', queue:picks};
+  prepSession();
+  go('level');
+}
+function prepSession(){
+  SES.pos = 0; SES.first = {}; SES.done = new Set(); SES.requeued = {};
+  SES.total = new Set(SES.queue.map(k => k.lid+'#'+k.qi)).size;
+  startQ();
+}
+const curItem = () => SES.queue[SES.pos];
+const curQ = () => { const it = curItem(); return LV(it.lid).quiz[it.qi]; };
+const keyOf = it => it.lid+'#'+it.qi;
+function nameSub(s){ return String(s).replace(/\{NAME\}/g, playerName()); }
+
+function startQ(){
+  const q = curQ();
+  QS = {state:null};
+  if(q.q === 'choice' || q.q === 'dialog'){
+    QS.opts = shuffle(q.o.map((o,i) => ({o, ok:i===0})));
+    QS.picked = null;
+  } else if(q.q === 'match'){
+    const n = q.pairs.length;
+    QS.L = shuffle([...Array(n).keys()]); QS.R = shuffleNot([...Array(n).keys()], QS.L);
+    QS.sel = null; QS.done = new Set(); QS.mist = 0; QS.bad = null;
+  } else if(q.q === 'sort'){
+    QS.order = shuffle([...q.items.keys()]); QS.k = 0; QS.placed = [[],[]]; QS.mist = 0; QS.note = '';
+  } else if(q.q === 'spell'){
+    const letters = [...q.a].concat([...(q.extra||'')]);
+    QS.tiles = shuffle(letters); QS.seq = [];
+  } else if(q.q === 'build'){
+    QS.seq = [];
+  } else if(q.q === 'order'){
+    const toks = q.w.map(nameSub).concat(q.extra||[]);
+    QS.pool = shuffleNot(toks, toks); QS.seq = [];
+  }
+}
+
+function viewLevel(){
+  const s = SES;
+  const isReview = s.mode === 'review';
+  const title = isReview ? '复习篮' : s.lv.id+' · '+s.lv.title;
+  const sub = isReview ? '把答错过的题再做一遍' : s.lv.layer.name+'（'+s.lv.layer.analog+'）';
+  let pct = 0;
+  if(s.phase === 'quiz') pct = Math.round(100 * s.done.size / Math.max(1,s.total));
+  if(s.phase === 'result') pct = 100;
+  const skip = (!isReview && s.phase === 'learn') ? '<button class="link" data-act="skip-learn">跳到练习 →</button>' : '';
+  let head = '<div class="lv-head"><div class="wrap"><div class="lv-row"><button class="link" data-act="home" aria-label="回到地毯">← 地毯</button><div class="lv-title"><b>'+esc(title)+'</b><span>'+esc(sub)+'</span></div>'+skip+'</div>'+
+    (s.phase !== 'learn' ? '<div class="band" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="'+pct+'"><i style="width:'+pct+'%"></i></div>' : '')+'</div></div>';
+  let body = '', bar = '';
+  if(s.phase === 'learn'){
+    const cards = s.lv.learn, i = s.card;
+    body = '<p class="phase">学 · '+(i+1)+' / '+cards.length+'</p>'+viewCard(cards[i])+
+      '<div class="dots" aria-hidden="true">'+cards.map((_,j) => '<i class="'+(j===i?'on':'')+'"></i>').join('')+'</div>';
+    bar = '<div class="bar"><div class="bar-in">'+
+      '<button class="btn ghost" data-act="prev-card" '+(i===0?'disabled':'')+'>上一张</button>'+
+      (i < cards.length-1 ? '<button class="btn" data-act="next-card">下一张</button>' : '<button class="btn" data-act="start-quiz">开始练习 →</button>')+
+      '</div></div>';
+  } else if(s.phase === 'quiz'){
+    body = '<p class="phase">'+(isReview ? '复习 · 来自 '+esc(curItem().lid) : '练')+' · 第 '+(s.pos+1)+' 题'+(s.pos >= s.total ? '（回炉）' : '')+'</p><div class="card">'+viewQ()+'</div>';
+    bar = viewBar();
+  } else if(s.phase === 'result'){
+    body = viewResult();
+  }
+  return head+'<main class="stage">'+body+'</main>'+bar;
+}
+
+/* ---------- QUESTIONS ---------- */
+function optHTML(q, o){ return q.tk ? tk(o) : fmt(o); }
+function tokHTML(t){ return t === playerName() ? '<span class="nm">'+esc(t)+'</span>' : tk(t); }
+function viewQ(){
+  const q = curQ(), st = QS.state;
+  if(q.q === 'choice' || q.q === 'dialog'){
+    const long = QS.opts.some(o => String(o.o).replace(/[{}]/g,'').length > 16);
+    let top = '';
+    if(q.q === 'dialog'){
+      top = '<div class="npc"><div class="av" aria-hidden="true">'+esc((q.who||'?')[0])+'</div><div class="say"><small>'+esc(WHO[q.who]||q.who)+'</small>'+tk(q.line)+'<span class="zh">'+esc(q.lineZh||'')+'</span></div></div><p class="q-prompt">'+fmt(q.p)+'</p>';
+    } else {
+      top = '<p class="q-prompt">'+fmt(q.p)+'</p>'+(q.emoji?'<div class="q-emoji" aria-hidden="true">'+q.emoji+'</div>':'');
+    }
+    return top+'<div class="opts'+(long?' one':'')+'">'+QS.opts.map((o,i) => {
+      let cls = '';
+      if(st){ if(o.ok) cls = ' ok'; else if(QS.picked === i) cls = ' bad'; }
+      return '<button class="opt'+cls+'" data-act="pick" data-i="'+i+'" '+(st?'disabled':'')+'><span class="k">'+(i+1)+'</span><span>'+optHTML(q,o.o)+'</span></button>';
+    }).join('')+'</div>';
+  }
+  if(q.q === 'match'){
+    const tile = (side, idx) => {
+      const done = QS.done.has(idx);
+      const sel = QS.sel && QS.sel.side === side && QS.sel.i === idx;
+      const bad = QS.bad && QS.bad[side] === idx;
+      const label = side === 'l' ? tk(q.pairs[idx][0]) : fmt(q.pairs[idx][1]);
+      return '<button class="mt'+(done?' done':'')+(sel?' sel':'')+(bad?' bad':'')+'" data-act="mt" data-side="'+side+'" data-i="'+idx+'" '+(done||st?'disabled':'')+'>'+label+'</button>';
+    };
+    return '<p class="q-prompt">'+fmt(q.p)+'</p><p class="q-hint">先点左边，再点右边。</p><div class="match"><div class="mcol">'+QS.L.map(i => tile('l',i)).join('')+'</div><div class="mcol">'+QS.R.map(i => tile('r',i)).join('')+'</div></div>';
+  }
+  if(q.q === 'sort'){
+    const cur = QS.k < q.items.length ? q.items[QS.order[QS.k]] : null;
+    const curHTML = cur ? (q.tk ? '<span class="tk">'+tkColor(cur[0])+'</span>' : '<span class="tk">'+fmt(cur[0])+'</span>') : '<span class="muted">分完了！</span>';
+    return '<p class="q-prompt">'+fmt(q.p)+'</p><p class="q-hint">第 '+Math.min(QS.k+1,q.items.length)+' / '+q.items.length+' 个</p>'+
+      '<div class="sort-cur">'+curHTML+(QS.note?'<div class="note">'+QS.note+'</div>':'')+'</div>'+
+      '<div class="bins">'+q.bins.map((b,bi) => '<button class="bin" data-act="bin" data-b="'+bi+'" '+(cur&&!st?'':'disabled')+'><b>'+fmt(b)+'</b><div class="got">'+QS.placed[bi].map(it => '<span>'+(q.tk?tk(it):fmt(it))+'</span>').join('')+'</div></button>').join('')+'</div>';
+  }
+  if(q.q === 'spell'){
+    const slots = QS.seq.length ? QS.seq.map((ti,j) => '<button class="slot" data-act="unslot" data-j="'+j+'" '+(st?'disabled':'')+' aria-label="移除 '+esc(QS.tiles[ti])+'">'+tkColor(QS.tiles[ti])+'</button>').join('') : '<span class="ph">点下面的字母拼出单词</span>';
+    const used = new Set(QS.seq);
+    return '<p class="q-prompt">拼出这个词</p><div class="q-emoji" aria-hidden="true">'+esc(q.hint.split(' ')[0])+'</div><p class="q-hint">'+esc(q.hint.split(' ').slice(1).join(' '))+'</p>'+
+      '<div class="slots" aria-live="polite">'+slots+'</div>'+
+      '<div class="tiles">'+QS.tiles.map((t,i) => '<button class="tile" data-act="tile" data-i="'+i+'" '+(used.has(i)||st?'disabled':'')+'>'+esc(t)+'</button>').join('')+'</div>'+
+      '<div class="q-tools"><button class="link" data-act="back" '+(st?'disabled':'')+'>⌫ 删一个</button><button class="link" data-act="clear" '+(st?'disabled':'')+'>清空</button></div>';
+  }
+  if(q.q === 'build'){
+    const line = '<span class="slot root">'+tkColor(q.root)+'</span>'+QS.seq.map((b,j) => '<span class="arrow" aria-hidden="true">+</span><button class="slot sfx" data-act="unbuild" data-j="'+j+'" '+(st?'disabled':'')+'>'+tkColor(b)+'</button>').join('');
+    return '<p class="q-prompt">'+fmt(q.p)+'</p><p class="q-hint">按顺序点词缀，挂到词根后面。点已挂上的词缀可以取下。</p>'+
+      '<div class="slots">'+line+'</div>'+
+      '<div class="tiles">'+q.blocks.map((b,i) => '<button class="tile word" data-act="block" data-i="'+i+'" '+(st?'disabled':'')+'>+'+tkColor(b)+'</button>').join('')+'</div>';
+  }
+  if(q.q === 'order'){
+    const used = new Set(QS.seq);
+    const slots = QS.seq.length ? QS.seq.map((pi,j) => '<button class="slot word" data-act="unorder" data-j="'+j+'" '+(st?'disabled':'')+'>'+tokHTML(QS.pool[pi])+'</button>').join('')+(st?'<span class="tk" style="font-size:20px">'+esc(q.end||'')+'</span>':'') : '<span class="ph">按顺序点下面的词</span>';
+    return '<p class="q-prompt">'+fmt(q.p)+'</p><p class="q-hint">记住：动词压轴。</p><div class="slots">'+slots+'</div>'+
+      '<div class="tiles">'+QS.pool.map((w,i) => '<button class="tile word" data-act="ord" data-i="'+i+'" '+(used.has(i)||st?'disabled':'')+'>'+tokHTML(w)+'</button>').join('')+'</div>';
+  }
+  return '';
+}
+function answerText(q){
+  if(q.q === 'choice' || q.q === 'dialog') return q.tk ? tk(q.o[0]) : fmt(q.o[0]);
+  if(q.q === 'spell') return tk(q.a)+' <span class="ipa">'+ipaOf(q.a)+'</span>';
+  if(q.q === 'build') return tk(q.root)+' + '+q.a.map(tkColor).join(' + ')+' → '+tk(q.forms[q.forms.length-1]);
+  if(q.q === 'order') return tk(q.w.map(nameSub).join(' ')+(q.end||''));
+  return '';
+}
+function viewBar(){
+  const q = curQ(), st = QS.state;
+  if(!st){
+    const need = (q.q === 'spell' && QS.seq.length === q.a.length) || (q.q === 'build' && QS.seq.length > 0) || (q.q === 'order' && QS.seq.length === QS.pool.length);
+    const checkable = ['spell','build','order'].includes(q.q);
+    return '<div class="bar"><div class="bar-in"><span class="tiny">'+(checkable?'完成后点“检查”':'选一个答案（也可以按数字键）')+'</span>'+(checkable?'<button class="btn" data-act="check" '+(need?'':'disabled')+'>检查</button>':'')+'</div></div>';
+  }
+  let title, why = '';
+  if(st === 'ok'){ title = PRAISE[Math.floor(Math.random()*PRAISE.length)]; if(q.x) why = '<div class="why">'+fmt(q.x)+'</div>'; if(q.q==='build') why = '<div class="ans">'+answerText(q)+'</div>'+why; }
+  else {
+    title = (q.q === 'match' || q.q === 'sort') ? '完成了，但出错 '+QS.mist+' 次' : 'Ýalňyş · 不对';
+    const at = answerText(q);
+    why = (at ? '<div class="ans">正确答案：'+at+'</div>' : '')+(q.x ? '<div class="why">'+fmt(q.x)+'</div>' : '')+((q.q==='match'||q.q==='sort')?'<div class="why tiny">这题已放进复习篮。</div>':'');
+  }
+  if(st === 'ok' && (q.q === 'match' || q.q === 'sort') && !q.x) why = '<div class="why">全部正确。</div>';
+  return '<div class="bar '+st+'" role="status"><div class="bar-in"><div class="fb"><b>'+title+'</b>'+why+'</div><button class="btn '+(st==='ok'?'ok':'bad')+'" data-act="continue">继续</button></div></div>';
+}
+function settle(ok){
+  QS.state = ok ? 'ok' : 'bad';
+  render();
+}
+function onContinue(){
+  const q = curQ(), it = curItem(), k = keyOf(it);
+  const ok = QS.state === 'ok';
+  if(!(k in SES.first)) SES.first[k] = ok;
+  const requeueable = !['match','sort'].includes(q.q);
+  if(ok || !requeueable){ SES.done.add(k); }
+  else {
+    SES.requeued[k] = (SES.requeued[k]||0) + 1;
+    if(SES.requeued[k] <= 2) SES.queue.push(it); else SES.done.add(k);
+  }
+  SES.pos++;
+  if(SES.pos >= SES.queue.length) finish();
+  else { startQ(); render(); window.scrollTo(0,0); }
+}
+function finish(){
+  const keys = Object.keys(SES.first);
+  const good = keys.filter(k => SES.first[k]).length;
+  SES.good = good; SES.n = keys.length;
+  if(SES.mode === 'level'){
+    const ratio = good / Math.max(1, keys.length);
+    const stars = ratio >= 0.9 ? 3 : ratio >= 0.7 ? 2 : 1;
+    const prev = P.stars[SES.lv.id] || 0;
+    SES.stars = stars; SES.best = Math.max(prev, stars); SES.firstTime = prev === 0;
+    P.stars[SES.lv.id] = SES.best;
+    keys.forEach(k => { if(!SES.first[k] && !P.review.includes(k)) P.review.push(k); });
+  } else {
+    keys.forEach(k => { if(SES.first[k]) P.review = P.review.filter(x => x !== k); });
+  }
+  save();
+  SES.phase = 'result';
+  render(); window.scrollTo(0,0);
+}
+function viewResult(){
+  if(SES.mode === 'review'){
+    return '<div class="result"><h2>复习完成</h2><p class="stat">首次答对 '+SES.good+' / '+SES.n+'，复习篮还剩 '+P.review.length+' 题。</p>'+
+      '<div class="acts">'+(P.review.length?'<button class="btn" data-act="review">再复习一轮</button>':'')+'<button class="btn ghost" data-act="home">回到地毯</button></div></div>';
+  }
+  const lv = SES.lv, L = lv.layer;
+  const nx = ALL[lv.idx+1];
+  const layerDone = L.levels.every(isDone);
+  const allDone = ALL.every(isDone);
+  const starHTML = [1,2,3].map(i => i <= SES.stars ? '★' : '<span class="off">★</span>').join('');
+  let extra = '';
+  if(allDone) extra = '<p class="body" style="margin-top:14px">29 个纹样全部织完，这张地毯是你的了。<br>'+tk(PROVERB.tk)+'<br><span class="muted">'+esc(PROVERB.zh)+'</span></p>';
+  else if(layerDone && lv.idx === L.levels[L.levels.length-1].idx && nx) extra = '<p class="body" style="margin-top:14px">第 '+L.n+' 层织完！下一层：<b>'+esc(nx.layer.name)+'</b>（'+esc(nx.layer.analog)+'）</p>';
+  return '<div class="result"><p class="phase">'+lv.id+'</p><h2>'+(SES.firstTime ? '织好了一个纹样' : '又织了一遍')+'</h2>'+
+    '<div class="weave">'+gul(L.pal,'done','gul-big')+'</div>'+
+    '<div class="stars" aria-label="'+SES.stars+' 颗星">'+starHTML+'</div>'+
+    '<p class="stat">首次答对 '+SES.good+' / '+SES.n+(SES.best > SES.stars ? '（最好成绩 '+SES.best+' 星）' : '')+'</p>'+extra+
+    '<div class="acts">'+(nx ? '<button class="btn" data-act="open" data-id="'+nx.id+'">下一关：'+esc(shortOf(nx))+' →</button>' : '')+
+    '<button class="btn ghost" data-act="retry">再练一次</button><button class="btn ghost" data-act="home">回到地毯</button></div></div>';
+}
+
+/* ---------- ALPHABET ---------- */
+function viewAbc(){
+  const tiles = LETTERS.map(L => '<button class="lt2 '+L.grp+'" data-act="letter" data-k="'+L.l+'" aria-label="字母 '+L.u+'，'+GROUP_NAME[L.grp]+'"><b><span class="'+(L.kind==='v'?(L.h==='b'?'vb':'vf'):'')+'">'+L.u+L.l+'</span></b><span class="ipa">['+esc(L.ipa)+']</span><span class="g">'+GROUP_NAME[L.grp]+'</span></button>').join('');
+  const cnt = g => LETTERS.filter(l => l.grp === g).length;
+  return '<div class="wrap"><div class="page-head"><button class="link" data-act="home">← 地毯</button><h2>30 个字母</h2></div>'+
+    '<p class="muted">土库曼语字母表按这个顺序排列：'+tk(LETTERS.map(l=>l.l).join(' '))+'。点任意字母看读法。</p>'+
+    '<div class="abc-legend"><span><span class="chip tag-friend">老朋友 '+cnt('friend')+'</span> 读法和拼音 / 英语基本一样</span><span><span class="chip tag-hat">戴帽子 '+cnt('hat')+'</span> 新面孔</span><span><span class="chip tag-trap">伪装者 '+cnt('trap')+'</span> 长得眼熟、读法不同（右上角红角）</span></div>'+
+    '<div class="abc">'+tiles+'</div><p class="tiny" style="padding-block:16px 30px">元音按颜色区分：蓝 = 粗元音，橙 = 细元音；辅音不上色。音标为宽式标音。</p></div>';
+}
+
+/* ---------- WORD BANK ---------- */
+let WQUERY = '', WALL = false;
+function viewWords(){
+  const seen = new Set();
+  let total = 0, got = 0;
+  const groups = LAYERS.map(L => {
+    const rows = [];
+    L.levels.forEach(lv => {
+      lv.words.forEach(w => {
+        const key = w[0]+'|'+w[1];
+        if(seen.has(key)) return; seen.add(key); total++;
+        const have = isDone(lv);
+        if(have) got++;
+        if(!have && !WALL) return;
+        const q = WQUERY.trim().toLowerCase();
+        if(q && !(w[0].toLowerCase().includes(q) || w[1].includes(q))) return;
+        rows.push('<div class="wrow"><span class="em" aria-hidden="true">'+(w[2]||'')+'</span>'+tk(w[0])+'<span class="ipa">'+ipaOf(w[0])+'</span><span class="muted">'+esc(w[1])+'<span class="tiny"> · '+lv.id+'</span></span></div>');
+      });
+    });
+    return rows.length ? '<div class="wl"><h3>第 '+L.n+' 层 · '+esc(L.name)+'</h3>'+rows.join('')+'</div>' : '';
+  }).join('');
+  return '<div class="wrap"><div class="page-head"><button class="link" data-act="home">← 地毯</button><h2>词库</h2><span class="tiny">已收集 '+got+' / '+total+'</span></div>'+
+    '<label class="sr" for="wq">搜索单词</label><input id="wq" class="search" type="search" placeholder="搜土库曼语或中文，如 suw、茶" value="'+esc(WQUERY)+'">'+
+    '<div class="switch" style="margin-bottom:12px"><label for="wall" class="muted">显示还没学到的词</label><input id="wall" type="checkbox" '+(WALL?'checked':'')+'></div>'+
+    (groups || '<div class="empty">'+(got ? '没有找到匹配的词。' : '完成关卡后，学过的词会收进这里。也可以打开上面的开关先看看全部。')+'</div>')+
+    '<p class="tiny" style="padding-block:10px 30px">斜线里的音标按字母直读生成，不标长短音。</p></div>';
+}
+
+/* ---------- MODALS ---------- */
+function viewModal(){
+  const m = MODAL;
+  if(m.type === 'letter'){
+    return '<div class="scrim" data-act="close-bg"><div class="sheet" role="dialog" aria-modal="true" aria-label="字母详情"><div class="sheet-h"><h2>字母 '+LETTER[m.k].u+'</h2><button class="link" data-act="close" data-autofocus>关闭</button></div>'+letterCard(m.k)+'</div></div>';
+  }
+  if(m.type === 'msg'){
+    return '<div class="scrim" data-act="close-bg"><div class="sheet" role="dialog" aria-modal="true"><div class="sheet-h"><h2>'+esc(m.h)+'</h2><button class="link" data-act="close" data-autofocus>好的</button></div><p class="muted">'+esc(m.b)+'</p></div></div>';
+  }
+  if(m.type === 'settings'){
+    return '<div class="scrim" data-act="close-bg"><div class="sheet" role="dialog" aria-modal="true" aria-label="设置"><div class="sheet-h"><h2>设置</h2><button class="link" data-act="close" data-autofocus>完成</button></div>'+
+      '<div class="field"><label for="set-name">你的名字（用在自我介绍里）</label><input id="set-name" type="text" maxlength="24" placeholder="Li Hua" value="'+esc(P.name||'')+'"></div>'+
+      '<div class="field"><div class="switch"><label for="set-color">元音上色（蓝 = 粗，橙 = 细）</label><input id="set-color" type="checkbox" '+(P.color?'checked':'')+'></div></div>'+
+      '<div class="field"><div class="switch"><label for="set-free">试玩模式：解锁全部关卡</label><input id="set-free" type="checkbox" '+(P.free?'checked':'')+'></div><span class="tiny">正式学习时建议关闭，按顺序一层一层来。</span></div>'+
+      '<div class="field"><label>重置进度</label><div><button class="btn sm '+(RESET_ARMED?'bad':'ghost')+'" data-act="reset">'+(RESET_ARMED?'再点一次，确认清空全部进度':'清空星星、复习篮和名字')+'</button></div></div>'+
+      '<div class="field" style="border-bottom:0"><label>关于</label><p class="tiny">发音音频：本版暂未内置。浏览器没有土库曼语语音，计划用 Meta 开源的 MMS 土库曼语语音模型生成后嵌入。现在每个字母和单词都附有国际音标、汉语近似音和口型提示。</p><p class="tiny" style="margin-top:6px">内容依据维基百科、SIL 与 Webonary 土库曼语语法、Peace Corps 教材等，详见配套的顶层设计文档。</p></div>'+
+    '</div></div>';
+  }
+  return '';
+}
+
+/* ---------- interaction ---------- */
+function onClick(e){
+  const el = e.target.closest('[data-act]');
+  if(!el) return;
+  const act = el.dataset.act;
+  if(act === 'close-bg' && e.target !== el) return; // clicks inside sheet
+  const q = (VIEW === 'level' && SES && SES.phase === 'quiz') ? curQ() : null;
+  switch(act){
+    case 'home': SES = null; go('home'); break;
+    case 'open': startLevel(el.dataset.id); break;
+    case 'go-abc': go('abc'); break;
+    case 'go-words': go('words'); break;
+    case 'review': startReview(); break;
+    case 'settings': RESET_ARMED = false; MODAL = {type:'settings'}; render(); break;
+    case 'close': case 'close-bg': MODAL = null; RESET_ARMED = false; render(); break;
+    case 'letter': MODAL = {type:'letter', k:el.dataset.k}; render(); break;
+    case 'reset':
+      if(!RESET_ARMED){ RESET_ARMED = true; render(); }
+      else { P.stars = {}; P.review = []; P.name = ''; RESET_ARMED = false; save(); MODAL = null; go('home'); }
+      break;
+    case 'save-name-card': { const inp = document.getElementById('name-card'); if(inp){ P.name = inp.value.slice(0,24); save(); render(); } break; }
+    case 'prev-card': if(SES.card > 0){ SES.card--; render(); window.scrollTo(0,0);} break;
+    case 'next-card': if(SES.card < SES.lv.learn.length-1){ SES.card++; render(); window.scrollTo(0,0);} break;
+    case 'start-quiz': case 'skip-learn': initQuiz(); render(); window.scrollTo(0,0); break;
+    case 'retry': startLevel(SES.lv.id, true); break;
+    case 'continue': onContinue(); break;
+    case 'pick': if(q && !QS.state){ const i = +el.dataset.i; QS.picked = i; settle(QS.opts[i].ok); } break;
+    case 'mt': if(q && !QS.state) onMatch(q, el.dataset.side, +el.dataset.i); break;
+    case 'bin': if(q && !QS.state) onBin(q, +el.dataset.b); break;
+    case 'tile': if(q && !QS.state){ QS.seq.push(+el.dataset.i); render(); } break;
+    case 'unslot': if(q && !QS.state){ QS.seq.splice(+el.dataset.j, 1); render(); } break;
+    case 'back': if(q && !QS.state){ QS.seq.pop(); render(); } break;
+    case 'clear': if(q && !QS.state){ QS.seq = []; render(); } break;
+    case 'block': if(q && !QS.state){ QS.seq.push(q.blocks[+el.dataset.i]); render(); } break;
+    case 'unbuild': if(q && !QS.state){ QS.seq.splice(+el.dataset.j); render(); } break;
+    case 'ord': if(q && !QS.state){ QS.seq.push(+el.dataset.i); render(); } break;
+    case 'unorder': if(q && !QS.state){ QS.seq.splice(+el.dataset.j, 1); render(); } break;
+    case 'check': if(q && !QS.state) onCheck(q); break;
+  }
+}
+function onMatch(q, side, i){
+  if(!QS.sel || QS.sel.side === side){ QS.sel = {side, i}; QS.bad = null; render(); return; }
+  const l = side === 'l' ? i : QS.sel.i, r = side === 'r' ? i : QS.sel.i;
+  QS.sel = null;
+  if(l === r){ QS.done.add(l); QS.bad = null; }
+  else { QS.mist++; QS.bad = {l, r}; }
+  if(QS.done.size === q.pairs.length){ settle(QS.mist === 0); return; }
+  render();
+}
+function onBin(q, b){
+  const it = q.items[QS.order[QS.k]];
+  const right = it[1];
+  const label = q.tk ? tk(it[0]) : fmt(it[0]);
+  if(b === right){ QS.note = ''; }
+  else { QS.mist++; QS.note = '<span style="color:var(--bad)">上一个 '+label+' 应该放进「'+fmt(q.bins[right])+'」</span>'; }
+  QS.placed[right].push(it[0]);
+  QS.k++;
+  if(QS.k >= q.items.length){ settle(QS.mist === 0); return; }
+  render();
+}
+function onCheck(q){
+  if(q.q === 'spell'){ const w = QS.seq.map(i => QS.tiles[i]).join(''); if(w.length !== q.a.length) return; settle(w === q.a); }
+  else if(q.q === 'build'){ if(!QS.seq.length) return; settle(QS.seq.join('|') === q.a.join('|')); }
+  else if(q.q === 'order'){ if(QS.seq.length !== QS.pool.length) return; settle(QS.seq.map(i => QS.pool[i]).join(' ') === q.w.map(nameSub).join(' ')); }
+}
+function onKey(e){
+  if(e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
+  if(e.target && e.target.tagName === 'BUTTON' && (e.key === 'Enter' || e.key === ' ')) return;
+  if(e.key === 'Escape' && MODAL){ MODAL = null; render(); return; }
+  if(VIEW !== 'level' || !SES || MODAL) return;
+  if(SES.phase === 'quiz'){
+    const q = curQ();
+    if(!QS.state && (q.q === 'choice' || q.q === 'dialog') && /^[1-4]$/.test(e.key)){
+      const i = +e.key - 1; if(i < QS.opts.length){ QS.picked = i; settle(QS.opts[i].ok); e.preventDefault(); }
+      return;
+    }
+    if(e.key === 'Enter' && QS.state){ e.preventDefault(); onContinue(); return; }
+    if(e.key === 'Enter' && !QS.state && ['spell','build','order'].includes(q.q)){ e.preventDefault(); onCheck(q); return; }
+    if(e.key === 'Backspace' && !QS.state && q.q === 'spell'){ QS.seq.pop(); render(); e.preventDefault(); return; }
+    if(!QS.state && q.q === 'spell' && e.key.length === 1){
+      const idx = QS.tiles.findIndex((t,i) => t === e.key.toLowerCase() && !QS.seq.includes(i));
+      if(idx >= 0){ QS.seq.push(idx); render(); e.preventDefault(); }
+    }
+  } else if(SES.phase === 'learn'){
+    if(e.key === 'ArrowRight' || e.key === 'Enter'){ e.preventDefault(); if(SES.card < SES.lv.learn.length-1){ SES.card++; render(); } else if(e.key === 'Enter'){ initQuiz(); render(); } }
+    if(e.key === 'ArrowLeft'){ if(SES.card > 0){ SES.card--; render(); } }
+  }
+}
+function onInput(e){
+  const t = e.target;
+  if(t.id === 'set-name'){ P.name = t.value.slice(0,24); save(); }
+  if(t.id === 'wq'){ WQUERY = t.value; const pos = t.selectionStart; render(); const n = document.getElementById('wq'); if(n){ n.focus(); try{ n.setSelectionRange(pos,pos); }catch(_){} } }
+}
+function onChange(e){
+  const t = e.target;
+  if(t.id === 'set-color'){ P.color = t.checked; save(); render(); }
+  if(t.id === 'set-free'){ P.free = t.checked; save(); render(); }
+  if(t.id === 'wall'){ WALL = t.checked; render(); }
+}
+
+/* ---------- boot ---------- */
+let started = false;
+function start(){
+  if(started) return; started = true;
+  load();
+  document.addEventListener('click', onClick);
+  document.addEventListener('keydown', onKey);
+  document.addEventListener('input', onInput);
+  document.addEventListener('change', onChange);
+  render();
+}
+window.__haly = {S:() => SES, Q:() => QS, P:() => P, ALL};
+const hot = window.claude && window.claude.hot;
+if(hot && typeof hot.ready === 'function'){ try{ hot.ready(start); }catch(e){ start(); } setTimeout(start, 1500); }
+else start();
+})();
