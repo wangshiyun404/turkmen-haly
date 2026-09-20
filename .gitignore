@@ -2,3 +2,5 @@ test/shots/
 __pycache__/
 *.pyc
 .DS_Store
+audio/tk.wav
+audio/gen.log

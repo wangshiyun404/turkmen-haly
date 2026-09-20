@@ -351,11 +351,62 @@ table.tbl{border-collapse:collapse;width:100%;min-width:420px;font-variant-numer
   .weave .fillin{opacity:1}
 }
 
+/* ============ Audio ============ */
+.spk{display:inline-flex;align-items:center;justify-content:center;gap:6px;vertical-align:middle;border:1.5px solid var(--line);background:var(--surface);color:var(--madder);border-radius:999px;width:34px;height:34px;padding:0;margin-left:6px;flex:none;transition:background .15s,border-color .15s,transform .08s}
+.spk:hover{border-color:var(--madder);background:color-mix(in srgb,var(--madder) 8%,var(--surface))}
+.spk:active{transform:scale(.94)}
+.spk.sm{width:28px;height:28px;margin-left:4px}
+.spk.sm svg{width:15px;height:15px}
+.spk.lc-play{width:auto;height:40px;padding:0 14px 0 10px;border-radius:12px;font-weight:700;font-size:15px;background:var(--madder);color:var(--on-madder);border-color:transparent;margin:2px 0 4px;align-self:flex-start}
+.spk.lc-play:hover{background:var(--madder-2)}
+.spk.lc-play svg{width:20px;height:20px}
+.spk.playing,.btn.playing{box-shadow:0 0 0 3px color-mix(in srgb,var(--madder) 35%,transparent)}
+.spk.playing svg{animation:pulse .9s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.18)}}
+.tap{cursor:pointer;text-decoration:underline dotted color-mix(in srgb,currentColor 55%,transparent);text-decoration-thickness:1.5px;text-underline-offset:3px;border-radius:4px}
+.tap:hover{background:color-mix(in srgb,var(--madder) 9%,transparent)}
+.tap.playing{background:color-mix(in srgb,var(--madder) 16%,transparent)}
+.lt.tap{text-decoration:none}
+.pairs .pl{display:inline-flex;align-items:center;flex-wrap:wrap;gap:2px}
+.listen{display:flex;align-items:center;gap:12px;margin:6px 0 16px;flex-wrap:wrap}
+.listen-btn{min-height:56px;font-size:18px;padding:12px 26px}
+.listen-btn svg{width:24px;height:24px}
+.bar-in .btn.ghost.sm{margin-left:auto}
+.bar .btn.ghost.sm svg{width:16px;height:16px}
+@media (max-width:520px){
+  .bar-in .btn.ghost.sm{width:auto;margin-left:0}
+}
+
 </style>
 </head>
 <body>
 <div id="app"><p style="padding:24px;font-family:sans-serif">正在铺开地毯……</p></div>
 <noscript><p style="padding:24px">这个游戏需要开启 JavaScript。</p></noscript>
+<script>
+/* Shared between the game and the audio generator: turns any Turkmen string
+   (with {braces}, [ipa], {NAME}, punctuation, Chinese glosses) into the key used
+   to look up its clip in the audio sprite. */
+function akey(s){
+  if(s == null) return '';
+  let t = String(s);
+  t = t.replace(/\{NAME\}/g, ' ');
+  t = t.replace(/\[[^\]]*\]/g, ' ');
+  t = t.replace(/[{}]/g, '');
+  t = t.toLowerCase();
+  t = t.replace(/[^a-zäçňöşüýž'\- ]+/g, ' ');
+  t = t.replace(/\s+/g, ' ').trim();
+  t = t.split(' ').map(w => w.replace(/^-+|-+$/g, '')).filter(Boolean).join(' ');
+  return t;
+}
+const LETTER_NAME = {a:'a',e:'e',ä:'ä',i:'i',y:'y',o:'o',ö:'ö',u:'u',ü:'ü',
+  b:'be',ç:'çe',d:'de',f:'fe',g:'ge',h:'he',j:'je',ž:'že',k:'ke',l:'le',m:'me',n:'ne',ň:'eň',p:'pe',r:'re',s:'se',ş:'şe',t:'te',w:'we',ý:'ýe',z:'ze'};
+/* text actually sent to the synthesizer for a key */
+function asynth(key){
+  if(key.length === 1 && LETTER_NAME[key]) return LETTER_NAME[key] + ' ' + LETTER_NAME[key];
+  return key.replace(/-/g, '');
+}
+
+</script>
 <script>
 /* ================= DATA =================
    Markup inside strings:
@@ -421,7 +472,11 @@ const LAYERS = [
       {q:'sort', p:'把元音分进两派', bins:['粗元音（靠后）','细元音（靠前）'], items:[['a',0],['e',1],['o',0],['ü',1],['y',0],['ä',1],['u',0],['i',1],['ö',1]], tk:true, x:'粗元音：a o u y；细元音：e ä i ö ü。'},
       {q:'match', p:'配对：字母 ↔ 近似音', pairs:[['a','啊'],['i','衣'],['u','乌'],['ü','鱼（ü）'],['o','哦']]},
       {q:'choice', p:'下面哪个是圆唇元音？', o:['ö','ä','e','y'], tk:true, x:'圆唇元音有 4 个：{o} {ö} {u} {ü}。'},
-      {q:'choice', p:'看图选词：葡萄', emoji:'🍇', o:['üzüm','uzum','yzym','özöm'], tk:true, x:'{üzüm}：两个都是 {ü}。'}
+      {q:'choice', p:'看图选词：葡萄', emoji:'🍇', o:['üzüm','uzum','yzym','özöm'], tk:true, x:'{üzüm}：两个都是 {ü}。'},
+      {q:'listen', key:'ü', o:['ü','u','y','i'], tk:true, x:'{ü}：舌位像“衣”，嘴唇收圆。'},
+      {q:'listen', key:'y', o:['y','i','ü','e'], tk:true, x:'{y}：舌头靠后，嘴唇不圆。'},
+      {q:'listen', key:'ä', o:['ä','e','a','ö'], tk:true, x:'{ä} 嘴张得比 {e} 大，通常读长音。'},
+      {q:'listen', key:'ö', o:['ö','o','ü','e'], tk:true, x:'{ö}：舌位像“诶”，嘴唇收圆。'}
     ]},
   { id:'1-2', title:'辅音老朋友', sub:'12 个辅音，和拼音几乎一样',
     words:[['balyk','鱼','🐟'],['düýe','骆驼','🐫'],['futbol','足球','⚽'],['gawun','甜瓜','🍈'],['haly','地毯','🧶'],['kitap','书','📖'],['limon','柠檬','🍋'],['maşyn','汽车','🚗'],['nahar','饭菜','🍲'],['palaw','抓饭','🍛'],['tüwi','米饭','🍚'],['wagt','时间','⏰']],
@@ -439,7 +494,9 @@ const LAYERS = [
       {q:'match', p:'配对：单词 ↔ 意思', pairs:[['düýe','骆驼 🐫'],['tüwi','米饭 🍚'],['haly','地毯 🧶'],['wagt','时间 ⏰'],['kitap','书 📖']]},
       {q:'choice', p:'哪个字母多出现在外来词里？', o:['f','b','d','m'], tk:true, x:'{f} 多见于外来词，比如 {futbol}（足球）。'},
       {q:'choice', p:'{gawun} 里的 {g} 为什么发得更靠后？', o:['因为旁边是粗元音 a','因为它在词首','因为 g 永远靠后','因为后面有 w'], x:'{g}、{k} 碰上粗元音（a o u y）就往后缩。'},
-      {q:'spell', hint:'📖 书', a:'kitap', extra:'bgy'}
+      {q:'spell', hint:'📖 书', a:'kitap', extra:'bgy'},
+      {q:'listen', key:'balyk', o:['balyk','palaw','haly','maşyn'], tk:true, x:'{balyk} = 鱼。'},
+      {q:'listen', key:'gawun', o:['gawun','kitap','limon','tüwi'], tk:true, x:'{gawun} = 甜瓜。'}
     ]},
   { id:'1-3', title:'戴帽子的辅音', sub:'ç ş ž ň ý：帽子一戴，读音就变',
     words:[['çaý','茶','🍵'],['çörek','馕、面包','🫓'],['deňiz','海','🌊'],['şäher','城市','🏙️'],['ýyldyz','星星','⭐'],['žurnal','杂志','📰'],['meniň','我的','']],
@@ -457,7 +514,9 @@ const LAYERS = [
       {q:'match', p:'配对：字母 ↔ 发音', pairs:[['ç','ch（church）'],['ş','sh（she）'],['ž','s（measure）'],['ň','ng（sing）'],['ý','y（yes）']]},
       {q:'choice', p:'{ý} 和 {y}，哪个是辅音？', o:['{ý}','{y}','两个都是','两个都不是'], x:'带尖帽的 {ý} 是辅音，{y} 是元音。'},
       {q:'spell', hint:'🌊 海', a:'deňiz', extra:'ng'},
-      {q:'choice', p:'看图选词：馕、面包', emoji:'🫓', o:['çörek','çorek','şörek','çörük'], tk:true, x:'{çörek}。馕在土库曼人心中很神圣，不能随意丢弃。'}
+      {q:'choice', p:'看图选词：馕、面包', emoji:'🫓', o:['çörek','çorek','şörek','çörük'], tk:true, x:'{çörek}。馕在土库曼人心中很神圣，不能随意丢弃。'},
+      {q:'listen', key:'ç', o:['ç','ş','j','ž'], tk:true, x:'{ç} = ch。'},
+      {q:'listen', key:'ýyldyz', o:['ýyldyz','deňiz','çaý','şäher'], tk:true, x:'{ýyldyz} = 星星。'}
     ]},
   { id:'1-4', title:'伪装者', sub:'s z r j e y：长得眼熟，读法不同',
     words:[['suw','水','💧'],['salam','你好','👋'],['göz','眼睛','👁️'],['jaý','房屋、建筑','🏢'],['garpyz','西瓜','🍉'],['sary','黄色','🟡'],['duz','盐','🧂'],['şeker','糖','🍬']],
@@ -476,7 +535,10 @@ const LAYERS = [
       {q:'sort', p:'它读咬舌音吗？', bins:['读咬舌音（s / z）','不读咬舌音'], items:[['suw',0],['şäher',1],['sary',0],['çaý',1],['duz',0],['jaý',1]], tk:true, x:'只有 {s} 和 {z} 读咬舌音；{ş} {ç} {j} 都不是。'},
       {q:'match', p:'配对：伪装者 ↔ 真实读音', pairs:[['s','[θ] think'],['z','[ð] this'],['j','[dʒ] jeep'],['r','大舌颤音'],['y','[ɯ] 元音']]},
       {q:'choice', p:'{e} 的正确读法：', o:['[e]，像“诶”','[ɤ]，像“饿”','[a]，像“啊”','[i]，像“衣”'], x:'拼音 e 是“饿”，土库曼语的 {e} 是“诶”。'},
-      {q:'choice', p:'看图选词：西瓜', emoji:'🍉', o:['garpyz','karpyz','garpiz','garbyz'], tk:true, x:'{garpyz}：{r} 要颤，结尾的 {z} 咬舌。'}
+      {q:'choice', p:'看图选词：西瓜', emoji:'🍉', o:['garpyz','karpyz','garpiz','garbyz'], tk:true, x:'{garpyz}：{r} 要颤，结尾的 {z} 咬舌。'},
+      {q:'listen', key:'s', o:['s','ş','z','ç'], tk:true, x:'{s} 是咬舌音 [θ]。'},
+      {q:'listen', key:'z', o:['z','s','ž','j'], tk:true, x:'{z} 是浊咬舌音 [ð]。'},
+      {q:'listen', key:'suw', o:['suw','şeker','duz','çaý'], tk:true, x:'{suw} = 水，开头是咬舌音。'}
     ]},
   { id:'1-5', title:'拼读', sub:'一字一音，像拼拼音一样',
     words:[['suw','水','💧'],['gyz','女孩','👧'],['öý','家','🏠'],['üzüm','葡萄','🍇'],['alma','苹果','🍎']],
@@ -494,7 +556,9 @@ const LAYERS = [
       {q:'choice', p:'{garpyz}（西瓜）有几个音节？', o:['2','3','1','4'], x:'有几个元音就有几个音节：{gar-pyz}。'},
       {q:'spell', hint:'🍇 葡萄', a:'üzüm', extra:'uy'},
       {q:'spell', hint:'🍎 苹果', a:'alma', extra:'e'},
-      {q:'choice', p:'{ýyldyz}（星星）有几个音节？', o:['2','3','1','4'], x:'{ýyl-dyz}：两个元音 {y}，两个音节。'}
+      {q:'choice', p:'{ýyldyz}（星星）有几个音节？', o:['2','3','1','4'], x:'{ýyl-dyz}：两个元音 {y}，两个音节。'},
+      {q:'listen', key:'gyz', o:['gyz','göz','gök','gawun'], tk:true, x:'{gyz} = 女孩。'},
+      {q:'listen', key:'üzüm', o:['üzüm','üç','alma','öý'], tk:true, x:'{üzüm} = 葡萄。'}
     ]},
   { id:'1-6', title:'长短音与重音', sub:'写不出来的区别，就像声调',
     words:[['at','马（短音）','🐎'],['at','名字（长音）','🏷️'],['ot','草（短音）','🌿'],['ot','火（长音）','🔥'],['ak','白色（长音）','⚪']],
@@ -512,7 +576,8 @@ const LAYERS = [
       {q:'choice', p:'加上词缀后，{kitaplar} 的重音在？', o:['kitap-LAR','KI-taplar','ki-TAP-lar','没有重音'], x:'重音随词缀后移，落在最后一个音节。'},
       {q:'choice', p:'哪个元音永远是短音？', o:['e','ä','a','o'], tk:true, x:'{e} 永远短；{ä} 通常长。'},
       {q:'choice', p:'“火”怎么读？', emoji:'🔥', o:['[oːt]（长音）','[ot]（短音）','[ɑːt]（长音）','[ɑt]（短音）'], x:'火 = {ot} [oːt]，长音。'},
-      {q:'choice', p:'“马”怎么读？', emoji:'🐎', o:['[ɑt]（短音）','[ɑːt]（长音）','[ot]（短音）','[oːt]（长音）'], x:'马 = {at} [ɑt]，短音。'}
+      {q:'choice', p:'“马”怎么读？', emoji:'🐎', o:['[ɑt]（短音）','[ɑːt]（长音）','[ot]（短音）','[oːt]（长音）'], x:'马 = {at} [ɑt]，短音。'},
+      {q:'listen', key:'salam', o:['salam','alma','haly','sary'], tk:true, x:'{salam}：重音在最后一个音节。'}
     ]}
   ]},
 
@@ -916,13 +981,17 @@ const PROVERB = {tk:'Okan ozar, okamadyk tozar.', zh:'学习的人向前走，�
 
 </script>
 <script>
+const AUDIO_MAP = {"a":[0.0,0.512],"alma":[0.862,0.643],"b":[1.855,1.173],"balyk":[3.378,0.808],"ç":[4.536,0.877],"çaý":[5.763,0.608],"d":[6.721,0.741],"düýe":[7.812,0.606],"e":[8.768,0.56],"et":[9.678,0.224],"ä":[10.252,0.608],"bäş":[11.21,0.672],"f":[12.232,0.75],"futbol":[13.333,0.926],"g":[14.608,0.901],"gawun":[15.859,1.296],"gyz":[17.505,0.509],"h":[18.364,0.786],"haly":[19.5,0.704],"i":[20.554,0.656],"it":[21.56,0.416],"j":[22.326,0.907],"jaý":[23.584,0.635],"ju":[24.569,0.688],"ž":[25.607,1.52],"žurnal":[27.477,1.536],"k":[29.363,1.277],"kitap":[30.99,0.662],"l":[32.002,0.932],"limon":[33.284,0.564],"m":[34.198,1.232],"maşyn":[35.779,0.686],"n":[36.816,1.328],"nahar":[38.494,0.917],"ň":[39.761,1.248],"deňiz":[41.358,1.44],"meniň":[43.148,0.611],"o":[44.109,0.928],"oba":[45.387,0.512],"ö":[46.249,0.832],"öý":[47.431,0.464],"p":[48.245,1.33],"palaw":[49.925,1.109],"kitabym":[51.385,0.886],"r":[52.62,1.277],"garpyz":[54.247,1.06],"s":[55.657,0.765],"suw":[56.772,0.368],"ş":[57.49,0.783],"şäher":[58.623,0.807],"t":[59.78,1.172],"tüwi":[61.303,0.384],"u":[62.037,0.912],"uçar":[63.299,0.656],"ü":[64.305,0.528],"üzüm":[65.183,0.981],"w":[66.513,1.285],"wagt":[68.148,0.816],"y":[69.314,0.544],"ý":[70.208,0.667],"ýyldyz":[71.225,0.67],"ýa":[72.246,0.448],"ýo":[73.044,0.256],"z":[73.65,1.18],"göz":[75.18,0.45],"harplar we sesler":[75.979,1.296],"ýogyn":[77.625,0.615],"inçe":[78.59,0.672],"çörek":[79.612,0.697],"salam":[80.659,1.284],"sary":[82.292,0.64],"duz":[83.282,0.59],"şeker":[84.222,0.76],"al-ma":[0.862,0.643],"ü-züm":[65.183,0.981],"sa-lam":[80.659,1.284],"gar-pyz":[54.247,1.06],"ýyl-dyz":[71.225,0.67],"sa":[85.332,0.352],"lam":[86.034,0.672],"at":[87.056,0.544],"ot":[87.95,0.288],"ak":[88.588,0.32],"meniň adym":[89.258,0.896],"ki-tap":[30.99,0.662],"kitap-lar":[90.505,0.847],"kitaplar-da":[91.701,1.022],"my":[93.074,0.448],"mi":[93.872,0.48],"kitaplar":[90.505,0.847],"ýogyn we inçe":[94.702,1.746],"iki":[96.798,0.416],"alty":[97.564,0.943],"ýedi":[98.857,0.656],"sekiz":[99.863,0.752],"dokuz":[100.965,1.039],"on":[102.354,0.4],"gara":[103.104,0.608],"gyzyl":[104.062,0.4],"ýaşyl":[104.812,1.006],"gök":[106.168,0.4],"uly":[106.918,0.507],"kiçi":[107.774,0.83],"itler":[108.954,0.64],"gyzlar":[109.944,0.844],"öýler":[111.139,0.724],"gözler":[112.212,0.67],"üç":[113.232,0.442],"lar":[114.024,0.607],"ler":[114.981,0.976],"iki kitap":[116.307,0.923],"bäş alma":[117.58,1.105],"atlar":[119.036,1.244],"üç kitap":[120.629,0.995],"düýeler":[121.974,0.829],"telefon":[123.153,0.816],"kompýuter":[124.319,1.623],"restoran":[126.291,0.874],"inžener":[127.515,1.664],"muzeý":[129.529,0.559],"mugallym":[130.438,0.725],"türkmenistan":[131.513,1.227],"kitap kitaplar":[133.091,1.451],"telefon telefonlar":[134.892,1.753],"kompýuter kompýuterler":[136.995,2.387],"inžener inženerler":[139.732,2.608],"restoran restoranlar":[142.69,1.808],"türkmenistanda":[144.848,1.644],"telefonlar":[146.842,0.918],"kompýuterler":[148.109,1.69],"da":[150.149,0.416],"mugallymlar":[150.915,1.098],"inženerler":[152.363,2.0],"bu":[154.713,0.496],"hawa":[155.559,0.821],"ýok":[156.73,0.592],"talyp":[157.672,0.705],"bu çaý":[158.727,1.073],"bu çaýmy":[160.15,0.917],"bu et":[161.418,0.955],"bu etmi":[162.722,1.6],"hawa bu çaý":[164.672,1.717],"ýok bu çaý däl":[166.74,1.365],"suwmy":[168.455,0.674],"kitapmy":[169.479,1.497],"üzümmi":[171.326,1.123],"bu kitapmy":[172.799,1.356],"sen talypmy":[174.504,1.769],"bu üzümmi":[176.623,0.862],"goşulmalar":[177.835,1.801],"adym":[179.986,0.944],"adyň":[181.28,0.464],"maşynym":[182.094,0.671],"kaka":[183.115,1.032],"kakam":[184.498,1.013],"eje":[185.86,0.656],"ejäm":[186.866,0.72],"agaç":[187.936,1.042],"näme":[189.328,1.016],"ym":[190.695,0.304],"im":[191.349,0.384],"yň":[192.083,0.8],"iň":[193.233,0.784],"maşynyň":[194.367,0.809],"kakaň":[195.525,1.27],"maşyny":[197.145,0.718],"kakasy":[198.213,1.417],"maşynymyz":[199.98,0.84],"kakamyz":[201.169,0.816],"maşynyňyz":[202.335,1.376],"kakaňyz":[204.061,1.174],"çöregim":[205.585,0.742],"agajym":[206.677,1.422],"itim":[208.449,0.384],"gijäňiz rahat bolsun":[209.183,1.722],"gijäňiz":[211.255,1.491],"gije":[213.095,0.606],"ňiz":[214.051,0.583],"adyňyz":[214.983,0.991],"adyňyz näme":[216.325,1.66],"öýde":[218.335,0.571],"bazar":[219.256,1.205],"bazarda":[220.811,1.069],"mekdep":[222.229,0.76],"mekdepde":[223.339,1.204],"aşgabat":[224.893,1.084],"hytaý":[226.327,0.923],"pekin":[227.6,1.126],"dükan":[229.076,0.96],"aşgabatda":[230.386,1.162],"de":[231.898,0.368],"mekdebe":[232.616,1.167],"hytaýda":[234.134,1.441],"men aşgabatda":[235.925,1.533],"maşynymda":[237.808,0.86],"hytaýdan":[239.018,0.98],"öýden":[240.348,0.572],"pekinden":[241.271,0.883],"nireden":[242.504,0.792],"men hytaýdan":[243.646,0.983],"siz nireden":[244.979,1.19],"sen nireden":[246.519,1.102],"aşgabatdan":[247.971,1.057],"aşgabada":[249.378,1.111],"dan":[250.839,0.784],"nire":[251.973,1.152],"den":[253.475,0.362],"obalardan":[254.187,1.571],"obalar":[256.108,1.037],"bazara":[257.495,1.484],"öýe":[259.329,0.544],"maňa":[260.223,1.152],"saňa":[261.725,1.232],"hoş geldiňiz":[263.307,1.529],"şähere":[265.186,0.842],"türkmenistana hoş geldiňiz":[266.378,2.102],"oňa":[268.83,0.928],"bize":[270.108,0.808],"size":[271.265,0.57],"türkmenistana":[272.186,1.46],"da de":[273.996,0.701],"dan den":[275.047,1.4],"a e":[276.797,0.496],"lar ler":[277.643,1.281],"ym im":[279.273,0.666],"men":[280.289,0.432],"kitaplarym":[281.072,0.858],"kitaplarymda":[282.279,1.097],"öýlerde":[283.726,0.907],"şäherlerden":[284.983,1.17],"şäherler":[286.503,1.319],"kitap lar ym da":[288.172,1.591],"maşynymdan":[290.113,0.873],"sözlemler":[291.336,0.763],"sen":[292.45,0.832],"ol":[293.632,0.368],"biz":[294.35,0.757],"siz":[295.457,0.564],"olar":[296.371,0.958],"däl":[297.679,0.466],"lukman":[298.495,0.686],"syýahatçy":[299.531,1.381],"men talyp":[301.262,0.864],"ol mugallym":[302.476,0.853],"men talyp däl":[303.678,1.039],"bu çaý däl":[305.067,0.974],"dyr":[306.39,0.485],"dir":[307.226,0.368],"aşgabat ulydyr":[307.944,1.491],"ol lukman":[309.785,0.876],"men mugallym däl":[311.011,1.479],"men syýahatçy":[312.839,1.558],"bar":[314.747,0.966],"mende":[316.063,1.296],"manat":[317.709,1.08],"meniň kitabym bar":[319.139,1.479],"onuň maşyny ýok":[320.968,1.507],"mende çörek bar":[322.825,1.408],"barmy":[324.583,0.759],"suw barmy":[325.691,0.917],"hawa bar":[326.958,0.929],"meniň wagtym ýok":[328.237,1.548],"çaý barmy":[330.135,1.058],"mende manat bar":[331.543,1.825],"meniň maşynym bar":[333.718,1.958],"onuň":[336.026,1.088],"wagtym":[337.464,1.465],"ýok meniň maşynym ýok":[339.279,2.477],"seniň maşynyň barmy":[342.106,1.779],"kim":[344.235,0.528],"nirede":[345.113,1.456],"näçe":[346.919,1.264],"haçan":[348.533,0.962],"nähili":[349.845,0.743],"hajathana":[350.938,1.34],"bu näme":[352.628,0.798],"ol merdan":[353.776,1.335],"ol kim":[355.461,0.757],"bazar nirede":[356.568,1.486],"bu näçe":[358.404,0.96],"ýagdaýlaryňyz nähili":[359.714,1.944],"hajathana nirede":[362.008,1.801],"içýärin":[364.159,0.864],"okaýaryn":[365.373,1.023],"ýaşaýaryn":[366.746,1.571],"iýýär":[368.667,0.766],"türkmençe":[369.783,1.165],"men çaý içýärin":[371.298,2.08],"men aşgabatda ýaşaýaryn":[373.728,1.909],"gyzyl alma":[375.987,0.914],"uly şäher":[377.251,0.989],"men kitap okaýaryn":[378.59,1.855],"ol palaw iýýär":[380.795,1.434],"biz türkmençe gürleýäris":[382.579,2.013],"işlikler":[384.942,0.999],"okamak":[386.291,0.978],"ýazmak":[387.62,0.828],"içmek":[388.798,0.641],"iýmek":[389.788,0.679],"gelmek":[390.817,0.788],"gitmek":[391.955,0.738],"bilmek":[393.043,0.788],"görmek":[394.181,0.738],"gürlemek":[395.269,0.904],"ýaşamak":[396.523,0.967],"işlemek":[397.84,0.818],"öwrenmek":[399.007,0.901],"halamak":[400.259,0.825],"düşünmek":[401.434,0.8],"mak":[402.583,0.448],"mek":[403.381,0.432],"oka":[404.163,0.528],"gel":[405.041,0.491],"ýaz":[405.882,0.59],"iç":[406.823,0.368],"ýaşa":[407.541,0.813],"gör":[408.703,0.56],"git":[409.613,0.608],"diňlemek":[410.571,0.724],"hala":[411.646,1.072],"gelýärin":[413.068,0.806],"gidýärin":[414.224,1.073],"iýýärin":[415.647,0.891],"iňlisçe":[416.888,1.316],"türkmen dili":[418.553,1.361],"ýar":[420.264,0.631],"ýär":[421.245,0.582],"okaýarsyň":[422.177,1.502],"gelýärsiň":[424.029,1.078],"okaýar":[425.456,0.908],"gelýär":[426.715,0.849],"okaýarys":[427.913,1.149],"gelýäris":[429.412,0.893],"okaýarsyňyz":[430.655,1.3],"gelýärsiňiz":[432.305,1.26],"okaýarlar":[433.916,1.135],"gelýärler":[435.401,1.062],"gelýärsiňmi":[436.813,1.345],"yn":[438.509,0.4],"siň":[439.259,0.96],"is":[440.569,0.448],"içýäris":[441.367,1.147],"in":[442.864,0.4],"işleýärler":[443.614,1.849],"men mekdebe gidýärin":[445.812,1.62],"siňiz":[447.782,1.191],"siz iňlisçe gürleýärsiňizmi":[449.323,2.049],"men türkmen dilini öwrenýärin":[451.722,2.144],"geldim":[454.216,0.59],"okadym":[455.156,0.848],"düşündim":[456.354,0.786],"ýadadym":[457.49,0.883],"gördüm":[458.723,0.624],"okadyň":[459.697,0.916],"geldiň":[460.963,0.632],"okady":[461.945,0.798],"geldi":[463.093,0.71],"okadyk":[464.153,0.822],"geldik":[465.325,0.63],"okadyňyz":[466.305,1.139],"geldiňiz":[467.794,1.372],"okadylar":[469.517,0.912],"geldiler":[470.779,0.938],"men hytaýdan geldim":[472.067,1.275],"men ýadadym":[473.692,0.824],"di":[474.865,0.576],"ýadamak":[475.791,1.069],"dy":[477.21,0.464],"düşünýärin":[478.024,1.03],"gelmeýärin":[479.405,1.042],"düşünemok":[480.796,1.088],"bilemok":[482.235,0.8],"gaýtalaň":[483.385,1.024],"haýal aýdyň":[484.758,1.072],"oturyň":[486.181,0.709],"okamaýaryn":[487.239,1.025],"okamadym":[488.614,0.961],"gelmedim":[489.925,0.706],"düşünmeýärin":[490.982,1.107],"bilmeýärin":[492.438,1.032],"geliň":[493.82,0.592],"otur":[494.762,1.136],"me":[496.248,0.386],"içmeýärin":[496.984,0.975],"dim":[498.31,0.46],"görmedim":[499.119,0.67],"gaýtala":[500.14,0.978],"haýal":[501.468,1.008],"tiz":[502.825,0.622],"gelme":[503.797,0.896],"gelmeýär":[505.043,1.052],"gündelik gürrüň":[506.445,1.262],"gowy":[508.057,0.416],"sag boluň":[508.823,0.972],"köp sag boluň":[510.144,1.112],"ertiriňiz haýyrly bolsun":[511.606,2.068],"agşamyňyz haýyrly bolsun":[514.024,1.895],"bagyşlaň":[516.27,1.544],"ertir duşuşarys":[518.164,1.876],"gowy sag boluň siz nähili":[520.39,2.583],"sag":[523.323,0.56],"sag bol":[524.233,0.818],"salam ýagdaýlaryňyz nähili":[525.401,2.713],"ertir":[528.464,0.831],"köp":[529.645,0.48],"boluň":[530.475,0.755],"tanyşanyma şat":[531.58,1.645],"men hem şat":[533.575,1.389],"salam meniň adym aýna adyňyz näme":[535.314,3.623],"salam meniň adym":[539.288,2.4],"men hytaýdan men syýahatçy":[542.038,2.811],"men pekinde ýaşaýaryn":[545.199,2.39],"şat":[547.939,0.636],"name":[548.925,1.616],"hem":[550.891,0.423],"bir":[551.664,0.638],"dört":[552.652,1.232],"ýigrimi":[554.234,0.664],"otuz":[555.248,0.779],"kyrk":[556.377,0.56],"elli":[557.287,0.452],"altmyş":[558.089,0.921],"ýetmiş":[559.36,0.976],"segsen":[560.686,0.99],"togsan":[562.026,0.997],"ýüz":[563.374,0.848],"müň":[564.572,0.8],"on bir":[565.722,0.895],"ýigrimi bäş":[566.966,0.928],"ýüz elli":[568.245,0.779],"iki ýüz":[569.373,1.23],"üç müň":[570.954,0.626],"on bäş":[571.93,0.629],"näçeden":[572.909,1.744],"gymmat":[575.003,0.892],"arzan":[576.244,1.19],"bolýar":[577.785,0.885],"beriň":[579.02,0.603],"satyjy":[579.973,0.799],"salam size näme gerek":[581.121,2.312],"salam bu gawun näçe":[583.783,2.072],"on manat":[586.205,1.727],"bolýar sekiz manat":[588.282,2.318],"bolýar iki gawun beriň":[590.951,2.196],"alyň":[593.497,0.701],"iki gawun":[594.547,0.866],"iki gawun beriň":[595.764,1.167],"bu gawun näçe":[597.281,1.492],"bolýar sag boluň":[599.123,1.872],"işdäňiz açyk bolsun":[601.345,1.981],"tagamly":[603.676,1.67],"süýt":[605.696,0.601],"gök çaý":[606.647,1.113],"gara çaý":[608.11,1.776],"dograma":[610.236,0.812],"çal":[611.397,0.679],"saçak":[612.426,0.977],"maňa gök çaý beriň":[613.753,1.869],"men et iýmeýärin":[615.972,1.627],"iý":[617.949,0.416],"çep":[618.715,0.597],"göni":[619.662,0.625],"sagda":[620.637,0.96],"çepde":[621.947,1.488],"myhmanhana":[623.785,1.602],"howa menzili":[625.737,1.418],"men düşünemok":[627.505,1.025],"kömek ediň":[628.88,0.694],"sag sagda":[629.924,1.437],"çep çepde":[631.711,1.705],"bagyşlaň bazar nirede":[633.766,2.236],"bagyşlaň hajathana nirede":[636.352,3.441],"muzeý sagda":[640.143,1.13],"kömek":[641.623,0.621],"dogry":[642.593,0.771],"örän gowy":[643.714,0.854],"berekella":[644.918,0.905],"okan ozar okamadyk tozar":[646.173,2.386]};
+const AUDIO_SRC = 'audio/tk.mp3';
+</script>
+<script>
 /* ================= ENGINE ================= */
 (function(){
 'use strict';
 
 /* ---------- persistence (per-viewer convenience only) ---------- */
 const KEY = 'haly-tk-v1';
-const P = {stars:{}, review:[], name:'', color:true, free:false};
+const P = {stars:{}, review:[], name:'', color:true, free:false, sound:true, autoplay:true};
 function load(){
   try{ const raw = localStorage.getItem(KEY); if(raw){ Object.assign(P, JSON.parse(raw)); } }catch(e){}
   if(!P.stars || typeof P.stars !== 'object') P.stars = {};
@@ -947,16 +1016,20 @@ function tkColor(s){
 const NAME_MARK = '\u0001NAME\u0001';
 function withName(html){ return html.split(NAME_MARK).join('<span class="nm">'+esc(playerName())+'</span>'); }
 // Turkmen string that may contain {NAME} and [ipa]
-function tk(s){
-  const parts = String(s).replace(/\{NAME\}/g, NAME_MARK).split(/(\[[^\]]+\])/);
-  const html = parts.map(p => /^\[.*\]$/.test(p) ? '<span class="ipa">'+esc(p)+'</span>' : tkColor(p)).join('');
-  return withName('<span class="tk">'+html+'</span>');
+let QUIET = false;   // set while rendering an unanswered question: no tappable words
+function sayAttrs(key){ return (key && hasAudio(key)) ? ' tap" data-say="'+esc(key)+'" role="button" tabindex="0" title="点击听发音' : ''; }
+function tk(s, quiet){
+  const raw = String(s);
+  const piece = chunk => chunk.split(/(\[[^\]]+\])/).map(p => /^\[.*\]$/.test(p) ? '<span class="ipa">'+esc(p)+'</span>' : tkColor(p)).join('');
+  const html = raw.split('{NAME}').map(piece).join('<span class="nm">'+esc(playerName())+'</span>');
+  const key = (quiet || QUIET || raw.includes('[')) ? '' : akey(raw);
+  return '<span class="tk'+sayAttrs(key)+'">'+html+'</span>';
 }
 // mixed Chinese/HTML text with {turkmen} and [ipa]
-function fmt(s){
+function fmt(s, quiet){
   if(s == null) return '';
   let t = String(s).replace(/\{NAME\}/g, NAME_MARK);
-  t = t.replace(/\{([^{}]+)\}/g, (_, w) => '<span class="tk">'+tkColor(w)+'</span>');
+  t = t.replace(/\{([^{}]+)\}/g, (_, w) => '<span class="tk'+sayAttrs((quiet || QUIET) ? '' : akey(w))+'">'+tkColor(w)+'</span>');
   t = t.replace(/\[([^\]<>]+)\]/g, (_, w) => '<span class="ipa">['+w+']</span>');
   return withName(t);
 }
@@ -972,9 +1045,86 @@ function shuffleNot(a, orig){ // shuffle, avoid returning the original order whe
   for(let t=0;t<8;t++){ const s = shuffle(a); if(s.some((x,i)=>x!==orig[i])) return s; }
   return shuffle(a);
 }
+/* ---------- audio (one MP3 sprite + offset map, generated by tools/gen_audio.py) ---------- */
+const AUD = {map:(typeof AUDIO_MAP !== 'undefined' ? AUDIO_MAP : {}), src:(typeof AUDIO_SRC !== 'undefined' ? AUDIO_SRC : 'audio/tk.mp3'), el:null, end:null, timer:null, queue:[], cur:null, failed:false};
+const hasAudio = key => !!(key && AUD.map[key]);
+const ICON_SPK = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M15.5 8.5a4.5 4.5 0 0 1 0 7M18 6a8 8 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
+function spk(text, cls, label){
+  const key = akey(text);
+  if(!hasAudio(key)) return '';
+  return '<button class="spk'+(cls?' '+cls:'')+'" data-act="say" data-key="'+esc(key)+'" aria-label="朗读'+(label?' '+esc(label):'')+'" title="听发音">'+ICON_SPK+'</button>';
+}
+function audioEl(){
+  if(AUD.el) return AUD.el;
+  const a = new Audio();
+  a.preload = 'auto';
+  a.src = AUD.src;
+  a.addEventListener('timeupdate', () => { if(AUD.end != null && a.currentTime >= AUD.end - 0.01) stopAudio(); });
+  a.addEventListener('playing', () => {
+    if(AUD.end == null) return;
+    if(AUD.start != null && a.currentTime < AUD.start - 0.3){ try{ a.currentTime = AUD.start; }catch(e){} }
+    clearTimeout(AUD.timer);
+    AUD.timer = setTimeout(stopAudio, Math.max(0, AUD.end - a.currentTime) * 1000 + 40);
+  });
+  a.addEventListener('ended', stopAudio);
+  a.addEventListener('error', () => { AUD.failed = true; stopAudio(); });
+  AUD.el = a;
+  return a;
+}
+function markPlaying(el){
+  if(AUD.cur && AUD.cur !== el) AUD.cur.classList.remove('playing');
+  AUD.cur = el || null;
+  if(el) el.classList.add('playing');
+}
+function stopAudio(){
+  clearTimeout(AUD.timer); AUD.timer = null; AUD.end = null; AUD.start = null;
+  const a = AUD.el; if(a && !a.paused) a.pause();
+  markPlaying(null);
+  const nx = AUD.queue.shift();
+  if(nx) AUD.timer = setTimeout(() => playKey(nx.key, nx.btn, true), 240);
+}
+function playKey(key, btn, fromQueue){
+  const seg = AUD.map[key];
+  if(!seg || !P.sound) return false;
+  const a = audioEl();
+  clearTimeout(AUD.timer); AUD.timer = null;
+  if(!fromQueue) AUD.queue = [];
+  if(!a.paused) a.pause();
+  const begin = () => {
+    try{ a.currentTime = seg[0]; }catch(e){}
+    AUD.start = seg[0]; AUD.end = seg[0] + seg[1];
+    markPlaying(btn);
+    AUD.timer = setTimeout(stopAudio, seg[1] * 1000 + 4000);
+    const p = a.play();
+    if(p && p.catch) p.catch(() => stopAudio());
+  };
+  if(a.readyState >= 1) begin();
+  else { a.addEventListener('loadedmetadata', begin, {once:true}); try{ a.load(); }catch(e){} }
+  return true;
+}
+function playSeq(keys, btn){
+  const ks = keys.filter(hasAudio);
+  if(!ks.length) return false;
+  const ok = playKey(ks[0], btn);
+  if(ok) AUD.queue = ks.slice(1).map(k => ({key:k, btn}));
+  return ok;
+}
+let PENDING_PLAY = null;   // keys to auto-play right after the next render
+function autoPlay(keys){ if(P.autoplay && P.sound) PENDING_PLAY = keys; }
+
 const LETTER = Object.fromEntries(LETTERS.map(l => [l.l, l]));
 const ALL = [];
 LAYERS.forEach((L, li) => L.levels.forEach((lv, i) => ALL.push(Object.assign(lv, {layer:L, li, idx:ALL.length}))));
+LAYERS.forEach(L => { if(L.n === 1) return; L.levels.forEach(lv => {
+  const uniq = [...new Set(lv.words.map(w => w[0]).filter(w => !/\{NAME\}/.test(w) && hasAudio(akey(w))))];
+  if(uniq.length < 4) return;
+  [0, Math.floor(uniq.length/2)].forEach(pi => {
+    const ans = uniq[pi], ds = [];
+    for(let k = 1; ds.length < 3 && k < uniq.length; k++){ const c = uniq[(pi+k) % uniq.length]; if(c !== ans && !ds.includes(c)) ds.push(c); }
+    const meaning = (lv.words.find(w => w[0] === ans) || [])[1] || '';
+    lv.quiz.push({q:'listen', key:akey(ans), o:[ans].concat(ds), tk:true, x:'{'+ans+'}：'+meaning, auto:true});
+  });
+}); });
 const LV = id => ALL.find(l => l.id === id);
 const isDone = lv => (P.stars[lv.id] || 0) > 0;
 const isOpen = lv => P.free || lv.idx === 0 || isDone(ALL[lv.idx-1]) || isDone(lv);
@@ -1034,6 +1184,7 @@ function render(){
   $app().innerHTML = html;
   const auto = document.querySelector('[data-autofocus]');
   if(auto) try{ auto.focus({preventScroll:true}); }catch(e){}
+  if(PENDING_PLAY){ const ks = PENDING_PLAY; PENDING_PLAY = null; playSeq(ks, document.querySelector('.spk.lc-play') || null); }
 }
 function go(view){ VIEW = view; MODAL = null; render(); window.scrollTo(0,0); }
 
@@ -1074,9 +1225,11 @@ function letterCard(k, compact){
   const L = LETTER[k];
   const big = '<span class="'+(L.kind==='v' ? (L.h==='b'?'vb':'vf') : '')+'">'+L.u+L.l+'</span>';
   const tags = '<div class="tags"><span class="chip tag-'+L.grp+'">'+GROUP_NAME[L.grp]+'</span><span class="chip">'+(L.kind==='v' ? (L.h==='b'?'粗元音 · 舌头靠后':'细元音 · 舌头靠前')+(L.r?' · 圆唇':'') : '辅音')+'</span></div>';
+  const nm = LETTER_NAME[L.l] || L.l;
+  const playBtn = hasAudio(L.l) ? '<button class="spk lc-play" data-act="say-seq" data-keys="'+esc(L.l)+'|'+esc(akey(L.w[0]))+'" aria-label="朗读字母 '+L.u+' 和例词">'+ICON_SPK+'<span>听：'+esc(nm)+'</span></button>' : '';
   return '<div class="lc"><div class="lc-big" aria-label="字母 '+L.u+'">'+big+'</div>'+
-    '<div class="lc-meta">'+tags+'<span class="ipa">['+esc(L.ipa)+']</span><span class="lc-zh">'+esc(L.zh)+'</span><span class="lc-tip">'+fmt(L.tip)+'</span></div>'+
-    '<div class="lc-word">'+(L.w[2]?'<span class="em" aria-hidden="true">'+L.w[2]+'</span>':'')+'<div>'+tk(L.w[0])+' <span class="ipa">'+ipaOf(L.w[0])+'</span><div class="muted">'+esc(L.w[1])+'</div></div></div></div>';
+    '<div class="lc-meta">'+tags+playBtn+'<span class="ipa">['+esc(L.ipa)+']</span><span class="lc-zh">'+esc(L.zh)+'</span><span class="lc-tip">'+fmt(L.tip)+'</span></div>'+
+    '<div class="lc-word">'+(L.w[2]?'<span class="em" aria-hidden="true">'+L.w[2]+'</span>':'')+'<div>'+tk(L.w[0])+' '+spk(L.w[0], '', L.w[0])+' <span class="ipa">'+ipaOf(L.w[0])+'</span><div class="muted">'+esc(L.w[1])+'</div></div></div></div>';
 }
 function tkWithIpa(s){ return tk(s); }
 function viewCard(c){
@@ -1089,17 +1242,17 @@ function viewCard(c){
         '<div class="h">粗 ýogyn<br>舌头靠后</div><div class="v">'+tkColor('a y')+'</div><div class="v">'+tkColor('o u')+'</div>'+
         '<div class="h">细 inçe<br>舌头靠前</div><div class="v">'+tkColor('e ä i')+'</div><div class="v">'+tkColor('ö ü')+'</div></div></div>';
     case 'grid':
-      return '<div class="card"><h2>'+fmt(c.h)+'</h2><div class="lgrid">'+c.letters.map(k => { const L = LETTER[k]; return '<div><b>'+L.u+L.l+'</b> <span class="ipa">['+esc(L.ipa)+']</span>'+tk(L.w[0])+'<span class="tiny">'+(L.w[2]||'')+' '+esc(L.w[1])+'</span></div>'; }).join('')+'</div></div>';
+      return '<div class="card"><h2>'+fmt(c.h)+'</h2><div class="lgrid">'+c.letters.map(k => { const L = LETTER[k]; return '<div><b class="tk'+sayAttrs(L.l)+'">'+L.u+L.l+'</b> <span class="ipa">['+esc(L.ipa)+']</span>'+tk(L.w[0])+spk(L.w[0], 'sm')+'<span class="tiny">'+(L.w[2]||'')+' '+esc(L.w[1])+'</span></div>'; }).join('')+'</div></div>';
     case 'pairs':
-      return '<div class="card"><h2>'+fmt(c.h)+'</h2>'+(c.b?'<div class="body">'+fmt(c.b)+'</div>':'')+'<div class="pairs">'+c.items.map(it => '<div>'+tkWithIpa(it[0])+'<span>'+fmt(it[1])+'</span></div>').join('')+'</div></div>';
+      return '<div class="card"><h2>'+fmt(c.h)+'</h2>'+(c.b?'<div class="body">'+fmt(c.b)+'</div>':'')+'<div class="pairs">'+c.items.map(it => '<div><span class="pl">'+tkWithIpa(it[0])+spk(it[0], 'sm')+'</span><span>'+fmt(it[1])+'</span></div>').join('')+'</div></div>';
     case 'table':
-      return '<div class="card"><h2>'+fmt(c.h)+'</h2>'+(c.b?'<div class="body">'+fmt(c.b)+'</div>':'')+'<div class="tbl-wrap"><table class="tbl"><thead><tr>'+c.head.map(h => '<th>'+fmt(h)+'</th>').join('')+'</tr></thead><tbody>'+c.rows.map(r => '<tr>'+r.map((v,i) => '<td>'+(i===0?esc(v):tk(v))+'</td>').join('')+'</tr>').join('')+'</tbody></table></div></div>';
+      return '<div class="card"><h2>'+fmt(c.h)+'</h2>'+(c.b?'<div class="body">'+fmt(c.b)+'</div>':'')+'<div class="tbl-wrap"><table class="tbl"><thead><tr>'+c.head.map(h => '<th>'+fmt(h)+'</th>').join('')+'</tr></thead><tbody>'+c.rows.map(r => '<tr>'+r.map((v,i) => '<td>'+(i===0?esc(v):tk(v)+spk(v, 'sm'))+'</td>').join('')+'</tr>').join('')+'</tbody></table></div></div>';
     case 'blend':
-      return '<div class="card"><h2>'+fmt(c.h)+'</h2><div class="blend">'+c.items.map(it => '<div>'+it[0].map(ch => '<span class="lt">'+tkColor(ch)+'</span>').join('<span class="arrow">+</span>')+'<span class="arrow">→</span><span class="res tk">'+tkColor(it[1])+'</span> <span class="ipa">'+ipaOf(it[1])+'</span> <span class="muted">'+it[2]+' '+esc(it[3])+'</span></div>').join('')+'</div></div>';
+      return '<div class="card"><h2>'+fmt(c.h)+'</h2><div class="blend">'+c.items.map(it => '<div>'+it[0].map(ch => '<span class="lt'+sayAttrs(ch)+'">'+tkColor(ch)+'</span>').join('<span class="arrow">+</span>')+'<span class="arrow">→</span><span class="res tk'+sayAttrs(akey(it[1]))+'">'+tkColor(it[1])+'</span>'+spk(it[1], 'sm')+' <span class="ipa">'+ipaOf(it[1])+'</span> <span class="muted">'+it[2]+' '+esc(it[3])+'</span></div>').join('')+'</div></div>';
     case 'chain':
-      return '<div class="card"><h2>'+fmt(c.h)+'</h2><div class="chain">'+c.parts.map((p,i) => '<div class="'+(i===0?'root':'')+'"><b class="tk">'+tkColor(p[0])+'</b><span>'+esc(p[1])+'</span></div>').join('<div style="border:0;background:none;justify-content:center;padding:0 2px">+</div>')+'</div><p class="body" style="margin-top:14px">= '+tk(c.result)+' <span class="muted">'+esc(c.zh)+'</span></p></div>';
+      return '<div class="card"><h2>'+fmt(c.h)+'</h2><div class="chain">'+c.parts.map((p,i) => '<div class="'+(i===0?'root':'')+'"><b class="tk'+sayAttrs(akey(p[0]))+'">'+tkColor(p[0])+'</b><span>'+esc(p[1])+'</span></div>').join('<div style="border:0;background:none;justify-content:center;padding:0 2px">+</div>')+'</div><p class="body" style="margin-top:14px">= '+tk(c.result)+spk(c.result, 'sm')+' <span class="muted">'+esc(c.zh)+'</span></p></div>';
     case 'dialog':
-      return '<div class="card"><h2>'+fmt(c.h)+'</h2><div class="dlg">'+c.lines.map(l => '<div class="say'+(l[0]==='ME'?' me':'')+'"><small>'+esc(WHO[l[0]]||l[0])+'</small>'+tk(l[1])+'<span class="zh">'+fmt(l[2].replace(/\{NAME\}/g,'{NAME}'))+'</span></div>').join('')+'</div></div>';
+      return '<div class="card"><h2>'+fmt(c.h)+'</h2><div class="dlg">'+c.lines.map(l => '<div class="say'+(l[0]==='ME'?' me':'')+'"><small>'+esc(WHO[l[0]]||l[0])+'</small>'+tk(l[1])+spk(l[1], 'sm')+'<span class="zh">'+fmt(l[2].replace(/\{NAME\}/g,'{NAME}'))+'</span></div>').join('')+'</div></div>';
     case 'name':
       return '<div class="card"><h2>先告诉我你的名字</h2><div class="body"><p>下面的对话和练习会用上它。不填就用“'+esc('Li Hua')+'”（没错，就是那位李华）。</p></div>'+
         '<div class="name-in"><label class="sr" for="name-card">你的名字</label><input id="name-card" type="text" maxlength="24" placeholder="例如：Li Hua" value="'+esc(P.name||'')+'"><button class="btn sm" data-act="save-name-card">保存</button></div>'+
@@ -1141,9 +1294,11 @@ function nameSub(s){ return String(s).replace(/\{NAME\}/g, playerName()); }
 function startQ(){
   const q = curQ();
   QS = {state:null};
-  if(q.q === 'choice' || q.q === 'dialog'){
+  if(q.q === 'choice' || q.q === 'dialog' || q.q === 'listen'){
     QS.opts = shuffle(q.o.map((o,i) => ({o, ok:i===0})));
     QS.picked = null;
+    if(q.q === 'listen') autoPlay([q.key]);
+    if(q.q === 'dialog') autoPlay([akey(q.line)]);
   } else if(q.q === 'match'){
     const n = q.pairs.length;
     QS.L = shuffle([...Array(n).keys()]); QS.R = shuffleNot([...Array(n).keys()], QS.L);
@@ -1175,7 +1330,8 @@ function viewLevel(){
   let body = '', bar = '';
   if(s.phase === 'learn'){
     const cards = s.lv.learn, i = s.card;
-    body = '<p class="phase">学 · '+(i+1)+' / '+cards.length+'</p>'+viewCard(cards[i])+
+    if(cards[i].t === 'letter' && hasAudio(cards[i].k)) autoPlay([cards[i].k, akey(LETTER[cards[i].k].w[0])]);
+    body = '<p class="phase">学 · '+(i+1)+' / '+cards.length+(Object.keys(AUD.map).length && i === 0 ? '<span class="tiny" style="margin-left:10px;font-weight:400;letter-spacing:0;text-transform:none">点喇叭或带下划线的词可以听发音</span>' : '')+'</p>'+viewCard(cards[i])+
       '<div class="dots" aria-hidden="true">'+cards.map((_,j) => '<i class="'+(j===i?'on':'')+'"></i>').join('')+'</div>';
     bar = '<div class="bar"><div class="bar-in">'+
       '<button class="btn ghost" data-act="prev-card" '+(i===0?'disabled':'')+'>上一张</button>'+
@@ -1194,12 +1350,21 @@ function viewLevel(){
 function optHTML(q, o){ return q.tk ? tk(o) : fmt(o); }
 function tokHTML(t){ return t === playerName() ? '<span class="nm">'+esc(t)+'</span>' : tk(t); }
 function viewQ(){
+  QUIET = true;   // words inside option/tile buttons are never tappable; the feedback bar and the NPC line are
+  try{ return viewQInner(); } finally { QUIET = false; }
+}
+function viewQInner(){
   const q = curQ(), st = QS.state;
-  if(q.q === 'choice' || q.q === 'dialog'){
+  if(q.q === 'choice' || q.q === 'dialog' || q.q === 'listen'){
     const long = QS.opts.some(o => String(o.o).replace(/[{}]/g,'').length > 16);
     let top = '';
     if(q.q === 'dialog'){
-      top = '<div class="npc"><div class="av" aria-hidden="true">'+esc((q.who||'?')[0])+'</div><div class="say"><small>'+esc(WHO[q.who]||q.who)+'</small>'+tk(q.line)+'<span class="zh">'+esc(q.lineZh||'')+'</span></div></div><p class="q-prompt">'+fmt(q.p)+'</p>';
+      QUIET = false;
+      top = '<div class="npc"><div class="av" aria-hidden="true">'+esc((q.who||'?')[0])+'</div><div class="say"><small>'+esc(WHO[q.who]||q.who)+'</small>'+tk(q.line)+spk(q.line, 'sm')+'<span class="zh">'+esc(q.lineZh||'')+'</span></div></div>';
+      QUIET = true;
+      top += '<p class="q-prompt">'+fmt(q.p)+'</p>';
+    } else if(q.q === 'listen'){
+      top = '<p class="q-prompt">'+fmt(q.p || '听发音，选出你听到的')+'</p><div class="listen"><button class="btn listen-btn" data-act="say" data-key="'+esc(q.key)+'" aria-label="播放发音">'+ICON_SPK+' 播放</button><span class="tiny">可以反复听</span></div>';
     } else {
       top = '<p class="q-prompt">'+fmt(q.p)+'</p>'+(q.emoji?'<div class="q-emoji" aria-hidden="true">'+q.emoji+'</div>':'');
     }
@@ -1248,8 +1413,16 @@ function viewQ(){
   }
   return '';
 }
+function answerKey(q){
+  if(q.q === 'listen') return q.key;
+  if(q.q === 'choice' || q.q === 'dialog'){ if(q.tk) return akey(q.o[0]); const m = String(q.o[0]).match(/\{([^{}]+)\}/); return m ? akey(m[1]) : ''; }
+  if(q.q === 'spell') return akey(q.a);
+  if(q.q === 'build') return akey(q.forms[q.forms.length-1]);
+  if(q.q === 'order') return akey(q.w.join(' '));
+  return '';
+}
 function answerText(q){
-  if(q.q === 'choice' || q.q === 'dialog') return q.tk ? tk(q.o[0]) : fmt(q.o[0]);
+  if(q.q === 'choice' || q.q === 'dialog' || q.q === 'listen') return q.tk ? tk(q.o[0]) : fmt(q.o[0]);
   if(q.q === 'spell') return tk(q.a)+' <span class="ipa">'+ipaOf(q.a)+'</span>';
   if(q.q === 'build') return tk(q.root)+' + '+q.a.map(tkColor).join(' + ')+' → '+tk(q.forms[q.forms.length-1]);
   if(q.q === 'order') return tk(q.w.map(nameSub).join(' ')+(q.end||''));
@@ -1270,10 +1443,14 @@ function viewBar(){
     why = (at ? '<div class="ans">正确答案：'+at+'</div>' : '')+(q.x ? '<div class="why">'+fmt(q.x)+'</div>' : '')+((q.q==='match'||q.q==='sort')?'<div class="why tiny">这题已放进复习篮。</div>':'');
   }
   if(st === 'ok' && (q.q === 'match' || q.q === 'sort') && !q.x) why = '<div class="why">全部正确。</div>';
-  return '<div class="bar '+st+'" role="status"><div class="bar-in"><div class="fb"><b>'+title+'</b>'+why+'</div><button class="btn '+(st==='ok'?'ok':'bad')+'" data-act="continue">继续</button></div></div>';
+  const ak = answerKey(q);
+  const again = hasAudio(ak) ? '<button class="btn ghost sm" data-act="say" data-key="'+esc(ak)+'" aria-label="再听一遍">'+ICON_SPK+' 再听</button>' : '';
+  return '<div class="bar '+st+'" role="status"><div class="bar-in"><div class="fb"><b>'+title+'</b>'+why+'</div>'+again+'<button class="btn '+(st==='ok'?'ok':'bad')+'" data-act="continue">继续</button></div></div>';
 }
 function settle(ok){
   QS.state = ok ? 'ok' : 'bad';
+  const ak = answerKey(curQ());
+  if(hasAudio(ak) && curQ().q !== 'listen') autoPlay([ak]);
   render();
 }
 function onContinue(){
@@ -1306,6 +1483,7 @@ function finish(){
   }
   save();
   SES.phase = 'result';
+  autoPlay([SES.mode === 'level' && SES.stars === 3 ? 'berekella' : 'örän gowy']);
   render(); window.scrollTo(0,0);
 }
 function viewResult(){
@@ -1355,7 +1533,7 @@ function viewWords(){
         if(!have && !WALL) return;
         const q = WQUERY.trim().toLowerCase();
         if(q && !(w[0].toLowerCase().includes(q) || w[1].includes(q))) return;
-        rows.push('<div class="wrow"><span class="em" aria-hidden="true">'+(w[2]||'')+'</span>'+tk(w[0])+'<span class="ipa">'+ipaOf(w[0])+'</span><span class="muted">'+esc(w[1])+'<span class="tiny"> · '+lv.id+'</span></span></div>');
+        rows.push('<div class="wrow"><span class="em" aria-hidden="true">'+(w[2]||'')+'</span><span>'+tk(w[0])+spk(w[0], 'sm')+'</span><span class="ipa">'+ipaOf(w[0])+'</span><span class="muted">'+esc(w[1])+'<span class="tiny"> · '+lv.id+'</span></span></div>');
       });
     });
     return rows.length ? '<div class="wl"><h3>第 '+L.n+' 层 · '+esc(L.name)+'</h3>'+rows.join('')+'</div>' : '';
@@ -1371,6 +1549,7 @@ function viewWords(){
 function viewModal(){
   const m = MODAL;
   if(m.type === 'letter'){
+    if(hasAudio(m.k) && !m.played){ m.played = true; autoPlay([m.k, akey(LETTER[m.k].w[0])]); }
     return '<div class="scrim" data-act="close-bg"><div class="sheet" role="dialog" aria-modal="true" aria-label="字母详情"><div class="sheet-h"><h2>字母 '+LETTER[m.k].u+'</h2><button class="link" data-act="close" data-autofocus>关闭</button></div>'+letterCard(m.k)+'</div></div>';
   }
   if(m.type === 'msg'){
@@ -1379,10 +1558,12 @@ function viewModal(){
   if(m.type === 'settings'){
     return '<div class="scrim" data-act="close-bg"><div class="sheet" role="dialog" aria-modal="true" aria-label="设置"><div class="sheet-h"><h2>设置</h2><button class="link" data-act="close" data-autofocus>完成</button></div>'+
       '<div class="field"><label for="set-name">你的名字（用在自我介绍里）</label><input id="set-name" type="text" maxlength="24" placeholder="Li Hua" value="'+esc(P.name||'')+'"></div>'+
+      '<div class="field"><div class="switch"><label for="set-sound">发音</label><input id="set-sound" type="checkbox" '+(P.sound?'checked':'')+'></div></div>'+
+      '<div class="field"><div class="switch"><label for="set-autoplay">自动朗读（翻到字母卡、听力题和对话时自动播放）</label><input id="set-autoplay" type="checkbox" '+(P.autoplay?'checked':'')+'></div></div>'+
       '<div class="field"><div class="switch"><label for="set-color">元音上色（蓝 = 粗，橙 = 细）</label><input id="set-color" type="checkbox" '+(P.color?'checked':'')+'></div></div>'+
       '<div class="field"><div class="switch"><label for="set-free">试玩模式：解锁全部关卡</label><input id="set-free" type="checkbox" '+(P.free?'checked':'')+'></div><span class="tiny">正式学习时建议关闭，按顺序一层一层来。</span></div>'+
       '<div class="field"><label>重置进度</label><div><button class="btn sm '+(RESET_ARMED?'bad':'ghost')+'" data-act="reset">'+(RESET_ARMED?'再点一次，确认清空全部进度':'清空星星、复习篮和名字')+'</button></div></div>'+
-      '<div class="field" style="border-bottom:0"><label>关于</label><p class="tiny">发音音频：本版暂未内置。浏览器没有土库曼语语音，计划用 Meta 开源的 MMS 土库曼语语音模型生成后嵌入。现在每个字母和单词都附有国际音标、汉语近似音和口型提示。</p><p class="tiny" style="margin-top:6px">内容依据维基百科、SIL 与 Webonary 土库曼语语法、Peace Corps 教材等，详见配套的顶层设计文档。</p></div>'+
+      '<div class="field" style="border-bottom:0"><label>关于</label><p class="tiny">发音：由 Meta 开源的 MMS 土库曼语语音模型（facebook/mms-tts-tuk-script_latin，训练自母语者朗读）合成，共 '+Object.keys(AUD.map).length+' 条，随游戏离线播放。字母卡上的字母读两遍，辅音带一个 e（be、çe），ň 读作 eň。机器合成难免有个别不准，请以母语者为准。</p><p class="tiny" style="margin-top:6px">内容依据维基百科、SIL 与 Webonary 土库曼语语法、Peace Corps 教材等，详见配套的顶层设计文档。</p></div>'+
     '</div></div>';
   }
   return '';
@@ -1390,6 +1571,8 @@ function viewModal(){
 
 /* ---------- interaction ---------- */
 function onClick(e){
+  const sayEl = e.target.closest('[data-say]');
+  if(sayEl){ e.preventDefault(); playKey(sayEl.dataset.say, sayEl); return; }
   const el = e.target.closest('[data-act]');
   if(!el) return;
   const act = el.dataset.act;
@@ -1426,13 +1609,15 @@ function onClick(e){
     case 'ord': if(q && !QS.state){ QS.seq.push(+el.dataset.i); render(); } break;
     case 'unorder': if(q && !QS.state){ QS.seq.splice(+el.dataset.j, 1); render(); } break;
     case 'check': if(q && !QS.state) onCheck(q); break;
+    case 'say': playKey(el.dataset.key, el); break;
+    case 'say-seq': playSeq(el.dataset.keys.split('|'), el); break;
   }
 }
 function onMatch(q, side, i){
   if(!QS.sel || QS.sel.side === side){ QS.sel = {side, i}; QS.bad = null; render(); return; }
   const l = side === 'l' ? i : QS.sel.i, r = side === 'r' ? i : QS.sel.i;
   QS.sel = null;
-  if(l === r){ QS.done.add(l); QS.bad = null; }
+  if(l === r){ QS.done.add(l); QS.bad = null; playKey(akey(q.pairs[l][0])); }
   else { QS.mist++; QS.bad = {l, r}; }
   if(QS.done.size === q.pairs.length){ settle(QS.mist === 0); return; }
   render();
@@ -1444,6 +1629,7 @@ function onBin(q, b){
   if(b === right){ QS.note = ''; }
   else { QS.mist++; QS.note = '<span style="color:var(--bad)">上一个 '+label+' 应该放进「'+fmt(q.bins[right])+'」</span>'; }
   QS.placed[right].push(it[0]);
+  if(q.tk) playKey(akey(it[0]));
   QS.k++;
   if(QS.k >= q.items.length){ settle(QS.mist === 0); return; }
   render();
@@ -1456,11 +1642,12 @@ function onCheck(q){
 function onKey(e){
   if(e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
   if(e.target && e.target.tagName === 'BUTTON' && (e.key === 'Enter' || e.key === ' ')) return;
+  if(e.target && e.target.dataset && e.target.dataset.say && (e.key === 'Enter' || e.key === ' ')){ e.preventDefault(); playKey(e.target.dataset.say, e.target); return; }
   if(e.key === 'Escape' && MODAL){ MODAL = null; render(); return; }
   if(VIEW !== 'level' || !SES || MODAL) return;
   if(SES.phase === 'quiz'){
     const q = curQ();
-    if(!QS.state && (q.q === 'choice' || q.q === 'dialog') && /^[1-4]$/.test(e.key)){
+    if(!QS.state && (q.q === 'choice' || q.q === 'dialog' || q.q === 'listen') && /^[1-4]$/.test(e.key)){
       const i = +e.key - 1; if(i < QS.opts.length){ QS.picked = i; settle(QS.opts[i].ok); e.preventDefault(); }
       return;
     }
@@ -1484,6 +1671,8 @@ function onInput(e){
 function onChange(e){
   const t = e.target;
   if(t.id === 'set-color'){ P.color = t.checked; save(); render(); }
+  if(t.id === 'set-sound'){ P.sound = t.checked; if(!P.sound) stopAudio(); save(); render(); }
+  if(t.id === 'set-autoplay'){ P.autoplay = t.checked; save(); }
   if(t.id === 'set-free'){ P.free = t.checked; save(); render(); }
   if(t.id === 'wall'){ WALL = t.checked; render(); }
 }
@@ -1498,8 +1687,9 @@ function start(){
   document.addEventListener('input', onInput);
   document.addEventListener('change', onChange);
   render();
+  if(Object.keys(AUD.map).length) try{ audioEl(); }catch(e){}
 }
-window.__haly = {S:() => SES, Q:() => QS, P:() => P, ALL};
+window.__haly = {S:() => SES, Q:() => QS, P:() => P, ALL, AUD, playKey, akey};
 const hot = window.claude && window.claude.hot;
 if(hot && typeof hot.ready === 'function'){ try{ hot.ready(start); }catch(e){ start(); } setTimeout(start, 1500); }
 else start();

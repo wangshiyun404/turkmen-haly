@@ -1,5 +1,5 @@
 """Automated playthrough: answers every question in all 29 levels (plus some wrong answers),
-checks the review basket, layout overflow and dark mode, and saves screenshots to test/shots/.
+checks the review basket, audio sprite, layout overflow and dark mode, and saves screenshots to test/shots/.
 Run: pip install playwright && python -m playwright install chromium && python3 test/run.py"""
 import json, sys, pathlib
 from playwright.sync_api import sync_playwright
@@ -20,6 +20,11 @@ with sync_playwright() as p:
     page.goto(URL)
     page.wait_for_timeout(600)
     shot(page, '01-home-mobile', full=True)
+    print('audio keys:', page.evaluate('() => Object.keys(window.__haly.AUD.map).length'))
+    # sprite element loads and can seek
+    page.evaluate("() => { const a = window.__haly.AUD.el || (window.__haly.AUD.el = new Audio(window.__haly.AUD.src)); return true; }")
+    page.wait_for_function("() => window.__haly.AUD.el && window.__haly.AUD.el.readyState >= 1", timeout=15000)
+    print('sprite duration:', page.evaluate('() => Math.round(window.__haly.AUD.el.duration)'), 'failed:', page.evaluate('() => window.__haly.AUD.failed'))
     results = []
     wrong_done = False
     for li in range(29):
@@ -47,8 +52,10 @@ with sync_playwright() as p:
                 errors.append(('expected ok', info))
             if wrong and info.get('state') != 'bad':
                 errors.append(('expected bad', info))
+            if info.get('type') == 'listen' and not any(r == (lid,'listen') for r in results):
+                pass
             key = (lid, info.get('type'))
-            if key in {('1-1','choice'),('1-1','sort'),('1-2','spell'),('2-2','build'),('4-4','order'),('6-2','dialog'),('3-1','build'),('1-1','match')} and not any(r == key for r in results):
+            if key in {('1-1','choice'),('1-1','sort'),('1-2','spell'),('2-2','build'),('4-4','order'),('6-2','dialog'),('3-1','build'),('1-1','match'),('1-1','listen'),('6-4','listen')} and not any(r == key for r in results):
                 results.append(key)
                 shot(page, '04-q-%s-%s-%s' % (lid, info.get('type'), 'bad' if wrong else 'ok'), full=True)
             page.click('[data-act=continue]')
@@ -58,6 +65,9 @@ with sync_playwright() as p:
         print(lid, 'stars', stars, 'learn cards', n+1)
         page.click('[data-act=home]')
         if lid == '1-3': shot(page, '06-home-progress-mobile', full=True)
+    # audio state machine: play a key, confirm it stops inside its segment
+    st = page.evaluate('''async () => { const H = window.__haly; const seg = H.AUD.map['salam']; H.playKey('salam'); await new Promise(r => setTimeout(r, 400)); const a = H.AUD.el; const mid = {paused:a.paused, t:a.currentTime, end:H.AUD.end}; await new Promise(r => setTimeout(r, (seg[1]*1000)+900)); return {seg, mid, after:{paused:a.paused, t:a.currentTime, end:H.AUD.end}}; }''')
+    print('playback check:', st)
     print('review basket:', page.evaluate('() => window.__haly.P().review'))
     # review session
     page.click('[data-act=review]')

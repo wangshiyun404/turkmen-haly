@@ -62,7 +62,11 @@ const LAYERS = [
       {q:'sort', p:'把元音分进两派', bins:['粗元音（靠后）','细元音（靠前）'], items:[['a',0],['e',1],['o',0],['ü',1],['y',0],['ä',1],['u',0],['i',1],['ö',1]], tk:true, x:'粗元音：a o u y；细元音：e ä i ö ü。'},
       {q:'match', p:'配对：字母 ↔ 近似音', pairs:[['a','啊'],['i','衣'],['u','乌'],['ü','鱼（ü）'],['o','哦']]},
       {q:'choice', p:'下面哪个是圆唇元音？', o:['ö','ä','e','y'], tk:true, x:'圆唇元音有 4 个：{o} {ö} {u} {ü}。'},
-      {q:'choice', p:'看图选词：葡萄', emoji:'🍇', o:['üzüm','uzum','yzym','özöm'], tk:true, x:'{üzüm}：两个都是 {ü}。'}
+      {q:'choice', p:'看图选词：葡萄', emoji:'🍇', o:['üzüm','uzum','yzym','özöm'], tk:true, x:'{üzüm}：两个都是 {ü}。'},
+      {q:'listen', key:'ü', o:['ü','u','y','i'], tk:true, x:'{ü}：舌位像“衣”，嘴唇收圆。'},
+      {q:'listen', key:'y', o:['y','i','ü','e'], tk:true, x:'{y}：舌头靠后，嘴唇不圆。'},
+      {q:'listen', key:'ä', o:['ä','e','a','ö'], tk:true, x:'{ä} 嘴张得比 {e} 大，通常读长音。'},
+      {q:'listen', key:'ö', o:['ö','o','ü','e'], tk:true, x:'{ö}：舌位像“诶”，嘴唇收圆。'}
     ]},
   { id:'1-2', title:'辅音老朋友', sub:'12 个辅音，和拼音几乎一样',
     words:[['balyk','鱼','🐟'],['düýe','骆驼','🐫'],['futbol','足球','⚽'],['gawun','甜瓜','🍈'],['haly','地毯','🧶'],['kitap','书','📖'],['limon','柠檬','🍋'],['maşyn','汽车','🚗'],['nahar','饭菜','🍲'],['palaw','抓饭','🍛'],['tüwi','米饭','🍚'],['wagt','时间','⏰']],
@@ -80,7 +84,9 @@ const LAYERS = [
       {q:'match', p:'配对：单词 ↔ 意思', pairs:[['düýe','骆驼 🐫'],['tüwi','米饭 🍚'],['haly','地毯 🧶'],['wagt','时间 ⏰'],['kitap','书 📖']]},
       {q:'choice', p:'哪个字母多出现在外来词里？', o:['f','b','d','m'], tk:true, x:'{f} 多见于外来词，比如 {futbol}（足球）。'},
       {q:'choice', p:'{gawun} 里的 {g} 为什么发得更靠后？', o:['因为旁边是粗元音 a','因为它在词首','因为 g 永远靠后','因为后面有 w'], x:'{g}、{k} 碰上粗元音（a o u y）就往后缩。'},
-      {q:'spell', hint:'📖 书', a:'kitap', extra:'bgy'}
+      {q:'spell', hint:'📖 书', a:'kitap', extra:'bgy'},
+      {q:'listen', key:'balyk', o:['balyk','palaw','haly','maşyn'], tk:true, x:'{balyk} = 鱼。'},
+      {q:'listen', key:'gawun', o:['gawun','kitap','limon','tüwi'], tk:true, x:'{gawun} = 甜瓜。'}
     ]},
   { id:'1-3', title:'戴帽子的辅音', sub:'ç ş ž ň ý：帽子一戴，读音就变',
     words:[['çaý','茶','🍵'],['çörek','馕、面包','🫓'],['deňiz','海','🌊'],['şäher','城市','🏙️'],['ýyldyz','星星','⭐'],['žurnal','杂志','📰'],['meniň','我的','']],
@@ -98,7 +104,9 @@ const LAYERS = [
       {q:'match', p:'配对：字母 ↔ 发音', pairs:[['ç','ch（church）'],['ş','sh（she）'],['ž','s（measure）'],['ň','ng（sing）'],['ý','y（yes）']]},
       {q:'choice', p:'{ý} 和 {y}，哪个是辅音？', o:['{ý}','{y}','两个都是','两个都不是'], x:'带尖帽的 {ý} 是辅音，{y} 是元音。'},
       {q:'spell', hint:'🌊 海', a:'deňiz', extra:'ng'},
-      {q:'choice', p:'看图选词：馕、面包', emoji:'🫓', o:['çörek','çorek','şörek','çörük'], tk:true, x:'{çörek}。馕在土库曼人心中很神圣，不能随意丢弃。'}
+      {q:'choice', p:'看图选词：馕、面包', emoji:'🫓', o:['çörek','çorek','şörek','çörük'], tk:true, x:'{çörek}。馕在土库曼人心中很神圣，不能随意丢弃。'},
+      {q:'listen', key:'ç', o:['ç','ş','j','ž'], tk:true, x:'{ç} = ch。'},
+      {q:'listen', key:'ýyldyz', o:['ýyldyz','deňiz','çaý','şäher'], tk:true, x:'{ýyldyz} = 星星。'}
     ]},
   { id:'1-4', title:'伪装者', sub:'s z r j e y：长得眼熟，读法不同',
     words:[['suw','水','💧'],['salam','你好','👋'],['göz','眼睛','👁️'],['jaý','房屋、建筑','🏢'],['garpyz','西瓜','🍉'],['sary','黄色','🟡'],['duz','盐','🧂'],['şeker','糖','🍬']],
@@ -117,7 +125,10 @@ const LAYERS = [
       {q:'sort', p:'它读咬舌音吗？', bins:['读咬舌音（s / z）','不读咬舌音'], items:[['suw',0],['şäher',1],['sary',0],['çaý',1],['duz',0],['jaý',1]], tk:true, x:'只有 {s} 和 {z} 读咬舌音；{ş} {ç} {j} 都不是。'},
       {q:'match', p:'配对：伪装者 ↔ 真实读音', pairs:[['s','[θ] think'],['z','[ð] this'],['j','[dʒ] jeep'],['r','大舌颤音'],['y','[ɯ] 元音']]},
       {q:'choice', p:'{e} 的正确读法：', o:['[e]，像“诶”','[ɤ]，像“饿”','[a]，像“啊”','[i]，像“衣”'], x:'拼音 e 是“饿”，土库曼语的 {e} 是“诶”。'},
-      {q:'choice', p:'看图选词：西瓜', emoji:'🍉', o:['garpyz','karpyz','garpiz','garbyz'], tk:true, x:'{garpyz}：{r} 要颤，结尾的 {z} 咬舌。'}
+      {q:'choice', p:'看图选词：西瓜', emoji:'🍉', o:['garpyz','karpyz','garpiz','garbyz'], tk:true, x:'{garpyz}：{r} 要颤，结尾的 {z} 咬舌。'},
+      {q:'listen', key:'s', o:['s','ş','z','ç'], tk:true, x:'{s} 是咬舌音 [θ]。'},
+      {q:'listen', key:'z', o:['z','s','ž','j'], tk:true, x:'{z} 是浊咬舌音 [ð]。'},
+      {q:'listen', key:'suw', o:['suw','şeker','duz','çaý'], tk:true, x:'{suw} = 水，开头是咬舌音。'}
     ]},
   { id:'1-5', title:'拼读', sub:'一字一音，像拼拼音一样',
     words:[['suw','水','💧'],['gyz','女孩','👧'],['öý','家','🏠'],['üzüm','葡萄','🍇'],['alma','苹果','🍎']],
@@ -135,7 +146,9 @@ const LAYERS = [
       {q:'choice', p:'{garpyz}（西瓜）有几个音节？', o:['2','3','1','4'], x:'有几个元音就有几个音节：{gar-pyz}。'},
       {q:'spell', hint:'🍇 葡萄', a:'üzüm', extra:'uy'},
       {q:'spell', hint:'🍎 苹果', a:'alma', extra:'e'},
-      {q:'choice', p:'{ýyldyz}（星星）有几个音节？', o:['2','3','1','4'], x:'{ýyl-dyz}：两个元音 {y}，两个音节。'}
+      {q:'choice', p:'{ýyldyz}（星星）有几个音节？', o:['2','3','1','4'], x:'{ýyl-dyz}：两个元音 {y}，两个音节。'},
+      {q:'listen', key:'gyz', o:['gyz','göz','gök','gawun'], tk:true, x:'{gyz} = 女孩。'},
+      {q:'listen', key:'üzüm', o:['üzüm','üç','alma','öý'], tk:true, x:'{üzüm} = 葡萄。'}
     ]},
   { id:'1-6', title:'长短音与重音', sub:'写不出来的区别，就像声调',
     words:[['at','马（短音）','🐎'],['at','名字（长音）','🏷️'],['ot','草（短音）','🌿'],['ot','火（长音）','🔥'],['ak','白色（长音）','⚪']],
@@ -153,7 +166,8 @@ const LAYERS = [
       {q:'choice', p:'加上词缀后，{kitaplar} 的重音在？', o:['kitap-LAR','KI-taplar','ki-TAP-lar','没有重音'], x:'重音随词缀后移，落在最后一个音节。'},
       {q:'choice', p:'哪个元音永远是短音？', o:['e','ä','a','o'], tk:true, x:'{e} 永远短；{ä} 通常长。'},
       {q:'choice', p:'“火”怎么读？', emoji:'🔥', o:['[oːt]（长音）','[ot]（短音）','[ɑːt]（长音）','[ɑt]（短音）'], x:'火 = {ot} [oːt]，长音。'},
-      {q:'choice', p:'“马”怎么读？', emoji:'🐎', o:['[ɑt]（短音）','[ɑːt]（长音）','[ot]（短音）','[oːt]（长音）'], x:'马 = {at} [ɑt]，短音。'}
+      {q:'choice', p:'“马”怎么读？', emoji:'🐎', o:['[ɑt]（短音）','[ɑːt]（长音）','[ot]（短音）','[oːt]（长音）'], x:'马 = {at} [ɑt]，短音。'},
+      {q:'listen', key:'salam', o:['salam','alma','haly','sary'], tk:true, x:'{salam}：重音在最后一个音节。'}
     ]}
   ]},
 

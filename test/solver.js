@@ -9,7 +9,7 @@
   const click = sel => { const el = $(sel); if(!el) throw new Error('missing '+sel+' in '+it.lid+'#'+it.qi+' '+q.q); el.click(); };
   const name = (H.P().name && H.P().name.trim()) ? H.P().name.trim() : 'Li Hua';
   const info = {lid:it.lid, qi:it.qi, type:q.q};
-  if(q.q === 'choice' || q.q === 'dialog'){
+  if(q.q === 'choice' || q.q === 'dialog' || q.q === 'listen'){
     let idx = H.Q().opts.findIndex(o => o.ok);
     if(wrong) idx = H.Q().opts.findIndex(o => !o.ok);
     click('[data-act=pick][data-i="'+idx+'"]');

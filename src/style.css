@@ -339,3 +339,29 @@ table.tbl{border-collapse:collapse;width:100%;min-width:420px;font-variant-numer
   .weave path.o{stroke-dashoffset:0}
   .weave .fillin{opacity:1}
 }
+
+/* ============ Audio ============ */
+.spk{display:inline-flex;align-items:center;justify-content:center;gap:6px;vertical-align:middle;border:1.5px solid var(--line);background:var(--surface);color:var(--madder);border-radius:999px;width:34px;height:34px;padding:0;margin-left:6px;flex:none;transition:background .15s,border-color .15s,transform .08s}
+.spk:hover{border-color:var(--madder);background:color-mix(in srgb,var(--madder) 8%,var(--surface))}
+.spk:active{transform:scale(.94)}
+.spk.sm{width:28px;height:28px;margin-left:4px}
+.spk.sm svg{width:15px;height:15px}
+.spk.lc-play{width:auto;height:40px;padding:0 14px 0 10px;border-radius:12px;font-weight:700;font-size:15px;background:var(--madder);color:var(--on-madder);border-color:transparent;margin:2px 0 4px;align-self:flex-start}
+.spk.lc-play:hover{background:var(--madder-2)}
+.spk.lc-play svg{width:20px;height:20px}
+.spk.playing,.btn.playing{box-shadow:0 0 0 3px color-mix(in srgb,var(--madder) 35%,transparent)}
+.spk.playing svg{animation:pulse .9s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.18)}}
+.tap{cursor:pointer;text-decoration:underline dotted color-mix(in srgb,currentColor 55%,transparent);text-decoration-thickness:1.5px;text-underline-offset:3px;border-radius:4px}
+.tap:hover{background:color-mix(in srgb,var(--madder) 9%,transparent)}
+.tap.playing{background:color-mix(in srgb,var(--madder) 16%,transparent)}
+.lt.tap{text-decoration:none}
+.pairs .pl{display:inline-flex;align-items:center;flex-wrap:wrap;gap:2px}
+.listen{display:flex;align-items:center;gap:12px;margin:6px 0 16px;flex-wrap:wrap}
+.listen-btn{min-height:56px;font-size:18px;padding:12px 26px}
+.listen-btn svg{width:24px;height:24px}
+.bar-in .btn.ghost.sm{margin-left:auto}
+.bar .btn.ghost.sm svg{width:16px;height:16px}
+@media (max-width:520px){
+  .bar-in .btn.ghost.sm{width:auto;margin-left:0}
+}
