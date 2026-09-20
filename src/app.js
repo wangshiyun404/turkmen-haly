@@ -84,6 +84,70 @@ function audioEl(){
   AUD.el = a;
   return a;
 }
+/* Web Audio path: the sprite's bytes are fetched once; each clip is cut out of the MP3 at
+   frame boundaries and decoded on demand, so playback is sample-accurate and does not depend
+   on <audio> seeking (or on the tab being visible). Falls back to the <audio> element. */
+const WA = {ctx:null, bytes:null, frames:null, cache:new Map(), src:null, loading:null, token:0};
+function mp3Frames(d){
+  let p = 0;
+  if(d[0] === 0x49 && d[1] === 0x44 && d[2] === 0x33){ p = 10 + (((d[6]&0x7f)<<21)|((d[7]&0x7f)<<14)|((d[8]&0x7f)<<7)|(d[9]&0x7f)); if(d[5] & 0x10) p += 10; }
+  const BR1 = [0,32,40,48,56,64,80,96,112,128,160,192,224,256,320], BR2 = [0,8,16,24,32,40,48,56,64,80,96,112,128,144,160];
+  const SR = [[44100,48000,32000],[22050,24000,16000],[11025,12000,8000]];
+  const offs = []; let sr = 16000, spf = 576;
+  while(p + 4 <= d.length){
+    if(d[p] !== 0xFF || (d[p+1] & 0xE0) !== 0xE0){ p++; continue; }
+    const ver = (d[p+1] >> 3) & 3, layer = (d[p+1] >> 1) & 3, bri = d[p+2] >> 4, sri = (d[p+2] >> 2) & 3, pad = (d[p+2] >> 1) & 1;
+    if(layer !== 1 || bri === 0 || bri === 15 || sri === 3 || ver === 1){ p++; continue; }
+    const v1 = ver === 3;
+    const br = (v1 ? BR1 : BR2)[bri] * 1000;
+    sr = SR[v1 ? 0 : (ver === 2 ? 1 : 2)][sri]; spf = v1 ? 1152 : 576;
+    const len = Math.floor((v1 ? 144 : 72) * br / sr) + pad;
+    if(len < 24) { p++; continue; }
+    offs.push(p); p += len;
+  }
+  // drop the LAME "Info"/"Xing" header frame so frame k starts at k * spf / sr
+  if(offs.length){ const f0 = offs[0], txt = String.fromCharCode.apply(null, d.subarray(f0 + 4, f0 + 40)); if(txt.indexOf('Info') >= 0 || txt.indexOf('Xing') >= 0) offs.shift(); }
+  return {offs, sr, spf};
+}
+function waInit(){
+  const AC = window.AudioContext || window.webkitAudioContext;
+  if(!AC || !window.fetch || location.protocol === 'file:' || !Object.keys(AUD.map).length) return;
+  WA.loading = fetch(AUD.src).then(r => { if(!r.ok) throw new Error(r.status); return r.arrayBuffer(); })
+    .then(buf => { const d = new Uint8Array(buf); const f = mp3Frames(d); if(f.offs.length < 10) throw new Error('no frames'); WA.bytes = d; WA.frames = f; })
+    .catch(() => { WA.bytes = null; WA.frames = null; })
+    .then(() => { WA.done = true; });
+}
+function waCtx(){
+  const AC = window.AudioContext || window.webkitAudioContext;
+  if(!WA.ctx) WA.ctx = new AC();
+  if(WA.ctx.state === 'suspended'){ try{ WA.ctx.resume(); }catch(e){} }
+  return WA.ctx;
+}
+function waStop(){ if(WA.src){ try{ WA.src.onended = null; WA.src.stop(); }catch(e){} WA.src = null; } }
+function waPlay(seg, btn){
+  const ctx = waCtx();
+  const token = ++WA.token;
+  const f = WA.frames, fps = f.sr / f.spf, delay = 0.07;
+  const k0 = Math.max(0, Math.floor((seg[0] + delay) * fps) - 4);
+  const k1 = Math.min(f.offs.length, Math.ceil((seg[0] + seg[1] + delay) * fps) + 3);
+  const key = k0 + ':' + k1;
+  const start = buf => {
+    if(token !== WA.token) return;
+    const src = ctx.createBufferSource(); src.buffer = buf; src.connect(ctx.destination);
+    const lead = 2 * f.spf / f.sr;
+    const dur = Math.max(0.05, Math.min(buf.duration - lead, seg[1] + 0.18));
+    src.onended = () => { if(WA.src === src){ WA.src = null; stopAudio(); } };
+    WA.src = src; markPlaying(btn);
+    AUD.timer = setTimeout(stopAudio, dur * 1000 + 500);
+    src.start(0, lead, dur);
+  };
+  const cached = WA.cache.get(key);
+  if(cached){ start(cached); return; }
+  const slice = WA.bytes.slice(f.offs[k0], k1 < f.offs.length ? f.offs[k1] : WA.bytes.length);
+  const done = buf => { WA.cache.set(key, buf); if(WA.cache.size > 80) WA.cache.delete(WA.cache.keys().next().value); start(buf); };
+  const fail = () => { if(token === WA.token){ WA.bytes = null; playKey(AUD.lastKey, btn, true); } };
+  try{ const p = ctx.decodeAudioData(slice.buffer, done, fail); if(p && p.then) p.then(done, fail); }catch(e){ fail(); }
+}
 function markPlaying(el){
   if(AUD.cur && AUD.cur !== el) AUD.cur.classList.remove('playing');
   AUD.cur = el || null;
@@ -91,6 +155,7 @@ function markPlaying(el){
 }
 function stopAudio(){
   clearTimeout(AUD.timer); AUD.timer = null; AUD.end = null; AUD.start = null;
+  waStop();
   const a = AUD.el; if(a && !a.paused) a.pause();
   markPlaying(null);
   const nx = AUD.queue.shift();
@@ -99,9 +164,19 @@ function stopAudio(){
 function playKey(key, btn, fromQueue){
   const seg = AUD.map[key];
   if(!seg || !P.sound) return false;
-  const a = audioEl();
   clearTimeout(AUD.timer); AUD.timer = null;
   if(!fromQueue) AUD.queue = [];
+  AUD.lastKey = key;
+  waStop(); if(AUD.el && !AUD.el.paused) AUD.el.pause(); AUD.end = null;
+  if(WA.bytes){ waPlay(seg, btn); return true; }
+  if(WA.loading && !WA.done){
+    // sprite still downloading for the Web Audio path: play as soon as it lands
+    const token = ++WA.token; waCtx();
+    WA.loading.then(() => { if(token === WA.token && WA.bytes){ waPlay(seg, btn); } else if(token === WA.token) playKey(key, btn, true); });
+    markPlaying(btn);
+    return true;
+  }
+  const a = audioEl();
   if(!a.paused) a.pause();
   const begin = () => {
     try{ a.currentTime = seg[0]; }catch(e){}
@@ -700,9 +775,9 @@ function start(){
   document.addEventListener('input', onInput);
   document.addEventListener('change', onChange);
   render();
-  if(Object.keys(AUD.map).length) try{ audioEl(); }catch(e){}
+  if(Object.keys(AUD.map).length){ try{ waInit(); }catch(e){} if(!WA.loading) try{ audioEl(); }catch(e){} }
 }
-window.__haly = {S:() => SES, Q:() => QS, P:() => P, ALL, AUD, playKey, akey};
+window.__haly = {S:() => SES, Q:() => QS, P:() => P, ALL, AUD, WA, playKey, akey};
 const hot = window.claude && window.claude.hot;
 if(hot && typeof hot.ready === 'function'){ try{ hot.ready(start); }catch(e){ start(); } setTimeout(start, 1500); }
 else start();
