@@ -1,2828 +1,4109 @@
 [
-[
-"a a",
-"letter",
-0.51,
-""
-],
-[
-"alma",
-"word",
-0.64,
-""
-],
-[
-"be be",
-"letter",
-1.17,
-""
-],
-[
-"balyk",
-"word",
-0.81,
-""
-],
-[
-"çe çe",
-"letter",
-0.88,
-""
-],
-[
-"çaý",
-"word",
-0.61,
-""
-],
-[
-"de de",
-"letter",
-0.74,
-""
-],
-[
-"düýe",
-"word",
-0.61,
-""
-],
-[
-"e e",
-"letter",
-0.56,
-""
-],
-[
-"et",
-"word",
-0.22,
-""
-],
-[
-"ä ä",
-"letter",
-0.61,
-""
-],
-[
-"bäş",
-"word",
-0.67,
-""
-],
-[
-"fe fe",
-"letter",
-0.75,
-""
-],
-[
-"futbol",
-"word",
-0.93,
-""
-],
-[
-"ge ge",
-"letter",
-0.9,
-""
-],
-[
-"gawun",
-"word",
-1.3,
-""
-],
-[
-"gyz",
-"word",
-0.51,
-""
-],
-[
-"he he",
-"letter",
-0.79,
-""
-],
-[
-"haly",
-"word",
-0.7,
-""
-],
-[
-"i i",
-"letter",
-0.66,
-""
-],
-[
-"it",
-"word",
-0.42,
-""
-],
-[
-"je je",
-"letter",
-0.91,
-""
-],
-[
-"jaý",
-"word",
-0.64,
-""
-],
-[
-"ju",
-"word",
-0.69,
-""
-],
-[
-"že že",
-"letter",
-1.52,
-""
-],
-[
-"žurnal",
-"word",
-1.54,
-""
-],
-[
-"ke ke",
-"letter",
-1.28,
-""
-],
-[
-"kitap",
-"word",
-0.66,
-""
-],
-[
-"le le",
-"letter",
-0.93,
-""
-],
-[
-"limon",
-"word",
-0.56,
-""
-],
-[
-"me me",
-"letter",
-1.23,
-""
-],
-[
-"maşyn",
-"word",
-0.69,
-""
-],
-[
-"ne ne",
-"letter",
-1.33,
-""
-],
-[
-"nahar",
-"word",
-0.92,
-""
-],
-[
-"eň eň",
-"letter",
-1.25,
-""
-],
-[
-"deňiz",
-"word",
-1.44,
-""
-],
-[
-"meniň",
-"word",
-0.61,
-""
-],
-[
-"o o",
-"letter",
-0.93,
-""
-],
-[
-"oba",
-"word",
-0.51,
-""
-],
-[
-"ö ö",
-"letter",
-0.83,
-""
-],
-[
-"öý",
-"word",
-0.46,
-""
-],
-[
-"pe pe",
-"letter",
-1.33,
-""
-],
-[
-"palaw",
-"word",
-1.11,
-""
-],
-[
-"kitabym",
-"word",
-0.89,
-""
-],
-[
-"re re",
-"letter",
-1.28,
-""
-],
-[
-"garpyz",
-"word",
-1.06,
-""
-],
-[
-"se se",
-"letter",
-0.76,
-""
-],
-[
-"suw",
-"word",
-0.37,
-""
-],
-[
-"şe şe",
-"letter",
-0.78,
-""
-],
-[
-"şäher",
-"word",
-0.81,
-""
-],
-[
-"te te",
-"letter",
-1.17,
-""
-],
-[
-"tüwi",
-"word",
-0.38,
-""
-],
-[
-"u u",
-"letter",
-0.91,
-""
-],
-[
-"uçar",
-"word",
-0.66,
-""
-],
-[
-"ü ü",
-"letter",
-0.53,
-""
-],
-[
-"üzüm",
-"word",
-0.98,
-""
-],
-[
-"we we",
-"letter",
-1.28,
-""
-],
-[
-"wagt",
-"word",
-0.82,
-""
-],
-[
-"y y",
-"letter",
-0.54,
-""
-],
-[
-"ýe ýe",
-"word",
-0.67,
-""
-],
-[
-"ýyldyz",
-"word",
-0.67,
-""
-],
-[
-"ýa",
-"word",
-0.45,
-""
-],
-[
-"ýo",
-"word",
-0.26,
-""
-],
-[
-"ze ze",
-"letter",
-1.18,
-""
-],
-[
-"göz",
-"word",
-0.45,
-""
-],
-[
-"harplar we sesler",
-"phrase",
-1.3,
-""
-],
-[
-"ýogyn",
-"word",
-0.61,
-""
-],
-[
-"inçe",
-"word",
-0.67,
-""
-],
-[
-"çörek",
-"word",
-0.7,
-""
-],
-[
-"salam",
-"word",
-1.28,
-""
-],
-[
-"sary",
-"word",
-0.64,
-""
-],
-[
-"duz",
-"word",
-0.59,
-""
-],
-[
-"şeker",
-"word",
-0.76,
-""
-],
-[
-"sa",
-"word",
-0.35,
-""
-],
-[
-"lam",
-"word",
-0.67,
-""
-],
-[
-"at",
-"word",
-0.54,
-""
-],
-[
-"ot",
-"word",
-0.29,
-""
-],
-[
-"ak",
-"word",
-0.32,
-""
-],
-[
-"meniň adym",
-"phrase",
-0.9,
-""
-],
-[
-"kitaplar",
-"word",
-0.85,
-""
-],
-[
-"kitaplarda",
-"word",
-1.02,
-""
-],
-[
-"my",
-"word",
-0.45,
-""
-],
-[
-"mi",
-"word",
-0.48,
-""
-],
-[
-"ýogyn we inçe",
-"phrase",
-1.75,
-""
-],
-[
-"iki",
-"word",
-0.42,
-""
-],
-[
-"alty",
-"word",
-0.94,
-""
-],
-[
-"ýedi",
-"word",
-0.66,
-""
-],
-[
-"sekiz",
-"word",
-0.75,
-""
-],
-[
-"dokuz",
-"word",
-1.04,
-""
-],
-[
-"on",
-"word",
-0.4,
-""
-],
-[
-"gara",
-"word",
-0.61,
-""
-],
-[
-"gyzyl",
-"word",
-0.4,
-""
-],
-[
-"ýaşyl",
-"word",
-1.01,
-""
-],
-[
-"gök",
-"word",
-0.4,
-""
-],
-[
-"uly",
-"word",
-0.51,
-""
-],
-[
-"kiçi",
-"word",
-0.83,
-""
-],
-[
-"itler",
-"word",
-0.64,
-""
-],
-[
-"gyzlar",
-"word",
-0.84,
-""
-],
-[
-"öýler",
-"word",
-0.72,
-""
-],
-[
-"gözler",
-"word",
-0.67,
-""
-],
-[
-"üç",
-"word",
-0.44,
-""
-],
-[
-"lar",
-"word",
-0.61,
-""
-],
-[
-"ler",
-"word",
-0.98,
-""
-],
-[
-"iki kitap",
-"phrase",
-0.92,
-""
-],
-[
-"bäş alma",
-"phrase",
-1.11,
-""
-],
-[
-"atlar",
-"word",
-1.24,
-""
-],
-[
-"üç kitap",
-"phrase",
-0.99,
-""
-],
-[
-"düýeler",
-"word",
-0.83,
-""
-],
-[
-"telefon",
-"word",
-0.82,
-""
-],
-[
-"kompýuter",
-"word",
-1.62,
-""
-],
-[
-"restoran",
-"word",
-0.87,
-""
-],
-[
-"inžener",
-"word",
-1.66,
-""
-],
-[
-"muzeý",
-"word",
-0.56,
-""
-],
-[
-"mugallym",
-"word",
-0.72,
-""
-],
-[
-"türkmenistan",
-"word",
-1.23,
-""
-],
-[
-"kitap kitaplar",
-"phrase",
-1.45,
-""
-],
-[
-"telefon telefonlar",
-"phrase",
-1.75,
-""
-],
-[
-"kompýuter kompýuterler",
-"phrase",
-2.39,
-""
-],
-[
-"inžener inženerler",
-"phrase",
-2.61,
-""
-],
-[
-"restoran restoranlar",
-"phrase",
-1.81,
-""
-],
-[
-"türkmenistanda",
-"word",
-1.64,
-""
-],
-[
-"telefonlar",
-"word",
-0.92,
-""
-],
-[
-"kompýuterler",
-"word",
-1.69,
-""
-],
-[
-"da",
-"word",
-0.42,
-""
-],
-[
-"mugallymlar",
-"word",
-1.1,
-""
-],
-[
-"inženerler",
-"word",
-2.0,
-""
-],
-[
-"bu",
-"word",
-0.5,
-""
-],
-[
-"hawa",
-"word",
-0.82,
-""
-],
-[
-"ýok",
-"word",
-0.59,
-""
-],
-[
-"talyp",
-"word",
-0.71,
-""
-],
-[
-"bu çaý",
-"phrase",
-1.07,
-""
-],
-[
-"bu çaýmy",
-"phrase",
-0.92,
-""
-],
-[
-"bu et",
-"phrase",
-0.95,
-""
-],
-[
-"bu etmi",
-"phrase",
-1.6,
-""
-],
-[
-"hawa bu çaý",
-"phrase",
-1.72,
-""
-],
-[
-"ýok bu çaý däl",
-"phrase",
-1.37,
-""
-],
-[
-"suwmy",
-"word",
-0.67,
-""
-],
-[
-"kitapmy",
-"word",
-1.5,
-""
-],
-[
-"üzümmi",
-"word",
-1.12,
-""
-],
-[
-"bu kitapmy",
-"phrase",
-1.36,
-""
-],
-[
-"sen talypmy",
-"phrase",
-1.77,
-""
-],
-[
-"bu üzümmi",
-"phrase",
-0.86,
-""
-],
-[
-"goşulmalar",
-"phrase",
-1.8,
-""
-],
-[
-"adym",
-"word",
-0.94,
-""
-],
-[
-"adyň",
-"word",
-0.46,
-""
-],
-[
-"maşynym",
-"word",
-0.67,
-""
-],
-[
-"kaka",
-"word",
-1.03,
-""
-],
-[
-"kakam",
-"word",
-1.01,
-""
-],
-[
-"eje",
-"word",
-0.66,
-""
-],
-[
-"ejäm",
-"word",
-0.72,
-""
-],
-[
-"agaç",
-"word",
-1.04,
-""
-],
-[
-"näme",
-"word",
-1.02,
-""
-],
-[
-"ym",
-"word",
-0.3,
-""
-],
-[
-"im",
-"word",
-0.38,
-""
-],
-[
-"yň",
-"word",
-0.8,
-""
-],
-[
-"iň",
-"word",
-0.78,
-""
-],
-[
-"maşynyň",
-"word",
-0.81,
-""
-],
-[
-"kakaň",
-"word",
-1.27,
-""
-],
-[
-"maşyny",
-"word",
-0.72,
-""
-],
-[
-"kakasy",
-"word",
-1.42,
-""
-],
-[
-"maşynymyz",
-"word",
-0.84,
-""
-],
-[
-"kakamyz",
-"word",
-0.82,
-""
-],
-[
-"maşynyňyz",
-"word",
-1.38,
-""
-],
-[
-"kakaňyz",
-"word",
-1.17,
-""
-],
-[
-"çöregim",
-"word",
-0.74,
-""
-],
-[
-"agajym",
-"word",
-1.42,
-""
-],
-[
-"itim",
-"word",
-0.38,
-""
-],
-[
-"gijäňiz rahat bolsun",
-"phrase",
-1.72,
-""
-],
-[
-"gijäňiz",
-"word",
-1.49,
-""
-],
-[
-"gije",
-"word",
-0.61,
-""
-],
-[
-"ňiz",
-"word",
-0.58,
-""
-],
-[
-"adyňyz",
-"word",
-0.99,
-""
-],
-[
-"adyňyz näme",
-"phrase",
-1.66,
-""
-],
-[
-"öýde",
-"word",
-0.57,
-""
-],
-[
-"bazar",
-"word",
-1.2,
-""
-],
-[
-"bazarda",
-"word",
-1.07,
-""
-],
-[
-"mekdep",
-"word",
-0.76,
-""
-],
-[
-"mekdepde",
-"word",
-1.2,
-""
-],
-[
-"aşgabat",
-"word",
-1.08,
-""
-],
-[
-"hytaý",
-"word",
-0.92,
-""
-],
-[
-"pekin",
-"word",
-1.13,
-""
-],
-[
-"dükan",
-"word",
-0.96,
-""
-],
-[
-"aşgabatda",
-"word",
-1.16,
-""
-],
-[
-"de",
-"word",
-0.37,
-""
-],
-[
-"mekdebe",
-"word",
-1.17,
-""
-],
-[
-"hytaýda",
-"word",
-1.44,
-""
-],
-[
-"men aşgabatda",
-"phrase",
-1.53,
-""
-],
-[
-"maşynymda",
-"word",
-0.86,
-""
-],
-[
-"hytaýdan",
-"word",
-0.98,
-""
-],
-[
-"öýden",
-"word",
-0.57,
-""
-],
-[
-"pekinden",
-"word",
-0.88,
-""
-],
-[
-"nireden",
-"word",
-0.79,
-""
-],
-[
-"men hytaýdan",
-"phrase",
-0.98,
-""
-],
-[
-"siz nireden",
-"phrase",
-1.19,
-""
-],
-[
-"sen nireden",
-"phrase",
-1.1,
-""
-],
-[
-"aşgabatdan",
-"word",
-1.06,
-""
-],
-[
-"aşgabada",
-"word",
-1.11,
-""
-],
-[
-"dan",
-"word",
-0.78,
-""
-],
-[
-"nire",
-"word",
-1.15,
-""
-],
-[
-"den",
-"word",
-0.36,
-""
-],
-[
-"obalardan",
-"word",
-1.57,
-""
-],
-[
-"obalar",
-"word",
-1.04,
-""
-],
-[
-"bazara",
-"word",
-1.48,
-""
-],
-[
-"öýe",
-"word",
-0.54,
-""
-],
-[
-"maňa",
-"word",
-1.15,
-""
-],
-[
-"saňa",
-"word",
-1.23,
-""
-],
-[
-"hoş geldiňiz",
-"phrase",
-1.53,
-""
-],
-[
-"şähere",
-"word",
-0.84,
-""
-],
-[
-"türkmenistana hoş geldiňiz",
-"phrase",
-2.1,
-""
-],
-[
-"oňa",
-"word",
-0.93,
-""
-],
-[
-"bize",
-"word",
-0.81,
-""
-],
-[
-"size",
-"word",
-0.57,
-""
-],
-[
-"türkmenistana",
-"word",
-1.46,
-""
-],
-[
-"da de",
-"phrase",
-0.7,
-""
-],
-[
-"dan den",
-"phrase",
-1.4,
-""
-],
-[
-"a e",
-"phrase",
-0.5,
-""
-],
-[
-"lar ler",
-"phrase",
-1.28,
-""
-],
-[
-"ym im",
-"phrase",
-0.67,
-""
-],
-[
-"men",
-"word",
-0.43,
-""
-],
-[
-"kitaplarym",
-"word",
-0.86,
-""
-],
-[
-"kitaplarymda",
-"word",
-1.1,
-""
-],
-[
-"öýlerde",
-"word",
-0.91,
-""
-],
-[
-"şäherlerden",
-"word",
-1.17,
-""
-],
-[
-"şäherler",
-"word",
-1.32,
-""
-],
-[
-"kitap lar ym da",
-"phrase",
-1.59,
-""
-],
-[
-"maşynymdan",
-"word",
-0.87,
-""
-],
-[
-"sözlemler",
-"phrase",
-0.76,
-""
-],
-[
-"sen",
-"word",
-0.83,
-""
-],
-[
-"ol",
-"word",
-0.37,
-""
-],
-[
-"biz",
-"word",
-0.76,
-""
-],
-[
-"siz",
-"word",
-0.56,
-""
-],
-[
-"olar",
-"word",
-0.96,
-""
-],
-[
-"däl",
-"word",
-0.47,
-""
-],
-[
-"lukman",
-"word",
-0.69,
-""
-],
-[
-"syýahatçy",
-"word",
-1.38,
-""
-],
-[
-"men talyp",
-"phrase",
-0.86,
-""
-],
-[
-"ol mugallym",
-"phrase",
-0.85,
-""
-],
-[
-"men talyp däl",
-"phrase",
-1.04,
-""
-],
-[
-"bu çaý däl",
-"phrase",
-0.97,
-""
-],
-[
-"dyr",
-"word",
-0.49,
-""
-],
-[
-"dir",
-"word",
-0.37,
-""
-],
-[
-"aşgabat ulydyr",
-"phrase",
-1.49,
-""
-],
-[
-"ol lukman",
-"phrase",
-0.88,
-""
-],
-[
-"men mugallym däl",
-"phrase",
-1.48,
-""
-],
-[
-"men syýahatçy",
-"phrase",
-1.56,
-""
-],
-[
-"bar",
-"word",
-0.97,
-""
-],
-[
-"mende",
-"word",
-1.3,
-""
-],
-[
-"manat",
-"word",
-1.08,
-""
-],
-[
-"meniň kitabym bar",
-"phrase",
-1.48,
-""
-],
-[
-"onuň maşyny ýok",
-"phrase",
-1.51,
-""
-],
-[
-"mende çörek bar",
-"phrase",
-1.41,
-""
-],
-[
-"barmy",
-"word",
-0.76,
-""
-],
-[
-"suw barmy",
-"phrase",
-0.92,
-""
-],
-[
-"hawa bar",
-"phrase",
-0.93,
-""
-],
-[
-"meniň wagtym ýok",
-"phrase",
-1.55,
-""
-],
-[
-"çaý barmy",
-"phrase",
-1.06,
-""
-],
-[
-"mende manat bar",
-"phrase",
-1.83,
-""
-],
-[
-"meniň maşynym bar",
-"phrase",
-1.96,
-""
-],
-[
-"onuň",
-"word",
-1.09,
-""
-],
-[
-"wagtym",
-"word",
-1.46,
-""
-],
-[
-"ýok meniň maşynym ýok",
-"phrase",
-2.48,
-""
-],
-[
-"seniň maşynyň barmy",
-"phrase",
-1.78,
-""
-],
-[
-"kim",
-"word",
-0.53,
-""
-],
-[
-"nirede",
-"word",
-1.46,
-""
-],
-[
-"näçe",
-"word",
-1.26,
-""
-],
-[
-"haçan",
-"word",
-0.96,
-""
-],
-[
-"nähili",
-"word",
-0.74,
-""
-],
-[
-"hajathana",
-"word",
-1.34,
-""
-],
-[
-"bu näme",
-"phrase",
-0.8,
-""
-],
-[
-"ol merdan",
-"phrase",
-1.34,
-""
-],
-[
-"ol kim",
-"phrase",
-0.76,
-""
-],
-[
-"bazar nirede",
-"phrase",
-1.49,
-""
-],
-[
-"bu näçe",
-"phrase",
-0.96,
-""
-],
-[
-"ýagdaýlaryňyz nähili",
-"phrase",
-1.94,
-""
-],
-[
-"hajathana nirede",
-"phrase",
-1.8,
-""
-],
-[
-"içýärin",
-"word",
-0.86,
-""
-],
-[
-"okaýaryn",
-"word",
-1.02,
-""
-],
-[
-"ýaşaýaryn",
-"word",
-1.57,
-""
-],
-[
-"iýýär",
-"word",
-0.77,
-""
-],
-[
-"türkmençe",
-"word",
-1.16,
-""
-],
-[
-"men çaý içýärin",
-"phrase",
-2.08,
-""
-],
-[
-"men aşgabatda ýaşaýaryn",
-"phrase",
-1.91,
-""
-],
-[
-"gyzyl alma",
-"phrase",
-0.91,
-""
-],
-[
-"uly şäher",
-"phrase",
-0.99,
-""
-],
-[
-"men kitap okaýaryn",
-"phrase",
-1.86,
-""
-],
-[
-"ol palaw iýýär",
-"phrase",
-1.43,
-""
-],
-[
-"biz türkmençe gürleýäris",
-"phrase",
-2.01,
-""
-],
-[
-"işlikler",
-"phrase",
-1.0,
-""
-],
-[
-"okamak",
-"word",
-0.98,
-""
-],
-[
-"ýazmak",
-"word",
-0.83,
-""
-],
-[
-"içmek",
-"word",
-0.64,
-""
-],
-[
-"iýmek",
-"word",
-0.68,
-""
-],
-[
-"gelmek",
-"word",
-0.79,
-""
-],
-[
-"gitmek",
-"word",
-0.74,
-""
-],
-[
-"bilmek",
-"word",
-0.79,
-""
-],
-[
-"görmek",
-"word",
-0.74,
-""
-],
-[
-"gürlemek",
-"word",
-0.9,
-""
-],
-[
-"ýaşamak",
-"word",
-0.97,
-""
-],
-[
-"işlemek",
-"word",
-0.82,
-""
-],
-[
-"öwrenmek",
-"word",
-0.9,
-""
-],
-[
-"halamak",
-"word",
-0.82,
-""
-],
-[
-"düşünmek",
-"word",
-0.8,
-""
-],
-[
-"mak",
-"word",
-0.45,
-""
-],
-[
-"mek",
-"word",
-0.43,
-""
-],
-[
-"oka",
-"word",
-0.53,
-""
-],
-[
-"gel",
-"word",
-0.49,
-""
-],
-[
-"ýaz",
-"word",
-0.59,
-""
-],
-[
-"iç",
-"word",
-0.37,
-""
-],
-[
-"ýaşa",
-"word",
-0.81,
-""
-],
-[
-"gör",
-"word",
-0.56,
-""
-],
-[
-"git",
-"word",
-0.61,
-""
-],
-[
-"diňlemek",
-"word",
-0.72,
-""
-],
-[
-"hala",
-"word",
-1.07,
-""
-],
-[
-"gelýärin",
-"word",
-0.81,
-""
-],
-[
-"gidýärin",
-"word",
-1.07,
-""
-],
-[
-"iýýärin",
-"word",
-0.89,
-""
-],
-[
-"iňlisçe",
-"word",
-1.32,
-""
-],
-[
-"türkmen dili",
-"phrase",
-1.36,
-""
-],
-[
-"ýar",
-"word",
-0.63,
-""
-],
-[
-"ýär",
-"word",
-0.58,
-""
-],
-[
-"okaýarsyň",
-"word",
-1.5,
-""
-],
-[
-"gelýärsiň",
-"word",
-1.08,
-""
-],
-[
-"okaýar",
-"word",
-0.91,
-""
-],
-[
-"gelýär",
-"word",
-0.85,
-""
-],
-[
-"okaýarys",
-"word",
-1.15,
-""
-],
-[
-"gelýäris",
-"word",
-0.89,
-""
-],
-[
-"okaýarsyňyz",
-"word",
-1.3,
-""
-],
-[
-"gelýärsiňiz",
-"word",
-1.26,
-""
-],
-[
-"okaýarlar",
-"word",
-1.14,
-""
-],
-[
-"gelýärler",
-"word",
-1.06,
-""
-],
-[
-"gelýärsiňmi",
-"word",
-1.35,
-""
-],
-[
-"yn",
-"word",
-0.4,
-""
-],
-[
-"siň",
-"word",
-0.96,
-""
-],
-[
-"is",
-"word",
-0.45,
-""
-],
-[
-"içýäris",
-"word",
-1.15,
-""
-],
-[
-"in",
-"word",
-0.4,
-""
-],
-[
-"işleýärler",
-"word",
-1.85,
-""
-],
-[
-"men mekdebe gidýärin",
-"phrase",
-1.62,
-""
-],
-[
-"siňiz",
-"word",
-1.19,
-""
-],
-[
-"siz iňlisçe gürleýärsiňizmi",
-"phrase",
-2.05,
-""
-],
-[
-"men türkmen dilini öwrenýärin",
-"phrase",
-2.14,
-""
-],
-[
-"geldim",
-"word",
-0.59,
-""
-],
-[
-"okadym",
-"word",
-0.85,
-""
-],
-[
-"düşündim",
-"word",
-0.79,
-""
-],
-[
-"ýadadym",
-"word",
-0.88,
-""
-],
-[
-"gördüm",
-"word",
-0.62,
-""
-],
-[
-"okadyň",
-"word",
-0.92,
-""
-],
-[
-"geldiň",
-"word",
-0.63,
-""
-],
-[
-"okady",
-"word",
-0.8,
-""
-],
-[
-"geldi",
-"word",
-0.71,
-""
-],
-[
-"okadyk",
-"word",
-0.82,
-""
-],
-[
-"geldik",
-"word",
-0.63,
-""
-],
-[
-"okadyňyz",
-"word",
-1.14,
-""
-],
-[
-"geldiňiz",
-"word",
-1.37,
-""
-],
-[
-"okadylar",
-"word",
-0.91,
-""
-],
-[
-"geldiler",
-"word",
-0.94,
-""
-],
-[
-"men hytaýdan geldim",
-"phrase",
-1.27,
-""
-],
-[
-"men ýadadym",
-"phrase",
-0.82,
-""
-],
-[
-"di",
-"word",
-0.58,
-"retry2"
-],
-[
-"ýadamak",
-"word",
-1.07,
-""
-],
-[
-"dy",
-"word",
-0.46,
-""
-],
-[
-"düşünýärin",
-"word",
-1.03,
-""
-],
-[
-"gelmeýärin",
-"word",
-1.04,
-""
-],
-[
-"düşünemok",
-"word",
-1.09,
-""
-],
-[
-"bilemok",
-"word",
-0.8,
-""
-],
-[
-"gaýtalaň",
-"word",
-1.02,
-""
-],
-[
-"haýal aýdyň",
-"phrase",
-1.07,
-""
-],
-[
-"oturyň",
-"word",
-0.71,
-""
-],
-[
-"okamaýaryn",
-"word",
-1.02,
-""
-],
-[
-"okamadym",
-"word",
-0.96,
-""
-],
-[
-"gelmedim",
-"word",
-0.71,
-""
-],
-[
-"düşünmeýärin",
-"word",
-1.11,
-""
-],
-[
-"bilmeýärin",
-"word",
-1.03,
-""
-],
-[
-"geliň",
-"word",
-0.59,
-""
-],
-[
-"otur",
-"word",
-1.14,
-""
-],
-[
-"me",
-"word",
-0.39,
-""
-],
-[
-"içmeýärin",
-"word",
-0.98,
-""
-],
-[
-"dim",
-"word",
-0.46,
-""
-],
-[
-"görmedim",
-"word",
-0.67,
-""
-],
-[
-"gaýtala",
-"word",
-0.98,
-""
-],
-[
-"haýal",
-"word",
-1.01,
-""
-],
-[
-"tiz",
-"word",
-0.62,
-""
-],
-[
-"gelme",
-"word",
-0.9,
-""
-],
-[
-"gelmeýär",
-"word",
-1.05,
-""
-],
-[
-"gündelik gürrüň",
-"phrase",
-1.26,
-""
-],
-[
-"gowy",
-"word",
-0.42,
-""
-],
-[
-"sag boluň",
-"phrase",
-0.97,
-""
-],
-[
-"köp sag boluň",
-"phrase",
-1.11,
-""
-],
-[
-"ertiriňiz haýyrly bolsun",
-"phrase",
-2.07,
-""
-],
-[
-"agşamyňyz haýyrly bolsun",
-"phrase",
-1.9,
-""
-],
-[
-"bagyşlaň",
-"word",
-1.54,
-""
-],
-[
-"ertir duşuşarys",
-"phrase",
-1.88,
-""
-],
-[
-"gowy sag boluň siz nähili",
-"phrase",
-2.58,
-""
-],
-[
-"sag",
-"word",
-0.56,
-""
-],
-[
-"sag bol",
-"phrase",
-0.82,
-""
-],
-[
-"salam ýagdaýlaryňyz nähili",
-"phrase",
-2.71,
-""
-],
-[
-"ertir",
-"word",
-0.83,
-""
-],
-[
-"köp",
-"word",
-0.48,
-""
-],
-[
-"boluň",
-"word",
-0.76,
-""
-],
-[
-"tanyşanyma şat",
-"phrase",
-1.65,
-""
-],
-[
-"men hem şat",
-"phrase",
-1.39,
-""
-],
-[
-"salam meniň adym aýna adyňyz näme",
-"phrase",
-3.62,
-""
-],
-[
-"salam meniň adym",
-"phrase",
-2.4,
-""
-],
-[
-"men hytaýdan men syýahatçy",
-"phrase",
-2.81,
-""
-],
-[
-"men pekinde ýaşaýaryn",
-"phrase",
-2.39,
-""
-],
-[
-"şat",
-"word",
-0.64,
-""
-],
-[
-"name",
-"word",
-1.62,
-""
-],
-[
-"hem",
-"word",
-0.42,
-""
-],
-[
-"bir",
-"word",
-0.64,
-""
-],
-[
-"dört",
-"word",
-1.23,
-""
-],
-[
-"ýigrimi",
-"word",
-0.66,
-""
-],
-[
-"otuz",
-"word",
-0.78,
-""
-],
-[
-"kyrk",
-"word",
-0.56,
-""
-],
-[
-"elli",
-"word",
-0.45,
-""
-],
-[
-"altmyş",
-"word",
-0.92,
-""
-],
-[
-"ýetmiş",
-"word",
-0.98,
-""
-],
-[
-"segsen",
-"word",
-0.99,
-""
-],
-[
-"togsan",
-"word",
-1.0,
-""
-],
-[
-"ýüz",
-"word",
-0.85,
-""
-],
-[
-"müň",
-"word",
-0.8,
-""
-],
-[
-"on bir",
-"phrase",
-0.89,
-""
-],
-[
-"ýigrimi bäş",
-"phrase",
-0.93,
-""
-],
-[
-"ýüz elli",
-"phrase",
-0.78,
-""
-],
-[
-"iki ýüz",
-"phrase",
-1.23,
-""
-],
-[
-"üç müň",
-"phrase",
-0.63,
-""
-],
-[
-"on bäş",
-"phrase",
-0.63,
-""
-],
-[
-"näçeden",
-"word",
-1.74,
-""
-],
-[
-"gymmat",
-"word",
-0.89,
-""
-],
-[
-"arzan",
-"word",
-1.19,
-""
-],
-[
-"bolýar",
-"word",
-0.89,
-""
-],
-[
-"beriň",
-"word",
-0.6,
-""
-],
-[
-"satyjy",
-"word",
-0.8,
-""
-],
-[
-"salam size näme gerek",
-"phrase",
-2.31,
-""
-],
-[
-"salam bu gawun näçe",
-"phrase",
-2.07,
-""
-],
-[
-"on manat",
-"phrase",
-1.73,
-""
-],
-[
-"bolýar sekiz manat",
-"phrase",
-2.32,
-""
-],
-[
-"bolýar iki gawun beriň",
-"phrase",
-2.2,
-""
-],
-[
-"alyň",
-"word",
-0.7,
-""
-],
-[
-"iki gawun",
-"phrase",
-0.87,
-""
-],
-[
-"iki gawun beriň",
-"phrase",
-1.17,
-""
-],
-[
-"bu gawun näçe",
-"phrase",
-1.49,
-""
-],
-[
-"bolýar sag boluň",
-"phrase",
-1.87,
-""
-],
-[
-"işdäňiz açyk bolsun",
-"phrase",
-1.98,
-""
-],
-[
-"tagamly",
-"word",
-1.67,
-""
-],
-[
-"süýt",
-"word",
-0.6,
-""
-],
-[
-"gök çaý",
-"phrase",
-1.11,
-""
-],
-[
-"gara çaý",
-"phrase",
-1.78,
-""
-],
-[
-"dograma",
-"word",
-0.81,
-""
-],
-[
-"çal",
-"word",
-0.68,
-""
-],
-[
-"saçak",
-"word",
-0.98,
-""
-],
-[
-"maňa gök çaý beriň",
-"phrase",
-1.87,
-""
-],
-[
-"men et iýmeýärin",
-"phrase",
-1.63,
-""
-],
-[
-"iý",
-"word",
-0.42,
-""
-],
-[
-"çep",
-"word",
-0.6,
-""
-],
-[
-"göni",
-"word",
-0.62,
-""
-],
-[
-"sagda",
-"word",
-0.96,
-""
-],
-[
-"çepde",
-"word",
-1.49,
-""
-],
-[
-"myhmanhana",
-"word",
-1.6,
-""
-],
-[
-"howa menzili",
-"phrase",
-1.42,
-""
-],
-[
-"men düşünemok",
-"phrase",
-1.02,
-""
-],
-[
-"kömek ediň",
-"phrase",
-0.69,
-""
-],
-[
-"sag sagda",
-"phrase",
-1.44,
-""
-],
-[
-"çep çepde",
-"phrase",
-1.7,
-""
-],
-[
-"bagyşlaň bazar nirede",
-"phrase",
-2.24,
-""
-],
-[
-"bagyşlaň hajathana nirede",
-"phrase",
-3.44,
-""
-],
-[
-"muzeý sagda",
-"phrase",
-1.13,
-""
-],
-[
-"kömek",
-"word",
-0.62,
-""
-],
-[
-"dogry",
-"word",
-0.77,
-""
-],
-[
-"örän gowy",
-"phrase",
-0.85,
-""
-],
-[
-"berekella",
-"word",
-0.9,
-""
-],
-[
-"okan ozar okamadyk tozar",
-"phrase",
-2.39,
-""
-]
+{
+"key": "a",
+"kind": "letter",
+"dur": 0.66,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "ak",
+"kind": "word",
+"dur": 0.78,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 9-11"
+},
+{
+"key": "b",
+"kind": "letter",
+"dur": 0.71,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "balyk",
+"kind": "word",
+"dur": 0.74,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 9-11"
+},
+{
+"key": "ç",
+"kind": "letter",
+"dur": 0.74,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "çaý",
+"kind": "word",
+"dur": 0.88,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 9-11"
+},
+{
+"key": "d",
+"kind": "letter",
+"dur": 0.69,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "dört",
+"kind": "word",
+"dur": 0.92,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "e",
+"kind": "letter",
+"dur": 0.71,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "et",
+"kind": "word",
+"dur": 0.6,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 9-11"
+},
+{
+"key": "ä",
+"kind": "letter",
+"dur": 0.66,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "bäş",
+"kind": "word",
+"dur": 0.89,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "f",
+"kind": "letter",
+"dur": 0.56,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "futbol",
+"kind": "word",
+"dur": 0.98,
+"src": "mms",
+"seed": 69457,
+"note": "retried",
+"score": 0.329
+},
+{
+"key": "g",
+"kind": "letter",
+"dur": 0.67,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "gowy",
+"kind": "word",
+"dur": 1.09,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 6-8"
+},
+{
+"key": "gyz",
+"kind": "word",
+"dur": 0.42,
+"src": "mms",
+"seed": 756,
+"note": "",
+"score": 0.465
+},
+{
+"key": "gara",
+"kind": "word",
+"dur": 1.41,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 9-11"
+},
+{
+"key": "sag",
+"kind": "word",
+"dur": 0.64,
+"src": "mms",
+"seed": 19061,
+"note": "",
+"score": 0.043
+},
+{
+"key": "h",
+"kind": "letter",
+"dur": 0.68,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "haly",
+"kind": "word",
+"dur": 0.81,
+"src": "mms",
+"seed": 88866,
+"note": "",
+"score": 0.085
+},
+{
+"key": "i",
+"kind": "letter",
+"dur": 0.65,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "iki",
+"kind": "word",
+"dur": 1.11,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "j",
+"kind": "letter",
+"dur": 0.67,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "jaý",
+"kind": "word",
+"dur": 1.22,
+"src": "mms",
+"seed": 10983,
+"note": "",
+"score": 0.299
+},
+{
+"key": "ju",
+"kind": "word",
+"dur": 0.51,
+"src": "mms",
+"seed": 56191,
+"note": "",
+"score": 0.084
+},
+{
+"key": "ž",
+"kind": "letter",
+"dur": 0.73,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "žurnal",
+"kind": "word",
+"dur": 1.7,
+"src": "mms",
+"seed": 85886,
+"note": "",
+"score": 0.104
+},
+{
+"key": "k",
+"kind": "letter",
+"dur": 0.74,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "kartoşka",
+"kind": "word",
+"dur": 1.15,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 9-11"
+},
+{
+"key": "l",
+"kind": "letter",
+"dur": 0.67,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "limon",
+"kind": "word",
+"dur": 0.68,
+"src": "mms",
+"seed": 9104,
+"note": "",
+"score": 0.212
+},
+{
+"key": "m",
+"kind": "letter",
+"dur": 0.64,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "men",
+"kind": "word",
+"dur": 0.76,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 9-11"
+},
+{
+"key": "n",
+"kind": "letter",
+"dur": 0.74,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "nahar",
+"kind": "word",
+"dur": 0.77,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 9-11"
+},
+{
+"key": "ň",
+"kind": "letter",
+"dur": 0.71,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "bagyşlaň",
+"kind": "word",
+"dur": 1.2,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 12"
+},
+{
+"key": "deňiz",
+"kind": "word",
+"dur": 1.44,
+"src": "mms",
+"seed": 86247,
+"note": "",
+"score": 0.224
+},
+{
+"key": "meniň",
+"kind": "word",
+"dur": 0.61,
+"src": "mms",
+"seed": 58115,
+"note": "",
+"score": 0.009
+},
+{
+"key": "o",
+"kind": "letter",
+"dur": 0.68,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "on",
+"kind": "word",
+"dur": 0.82,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "ö",
+"kind": "letter",
+"dur": 0.74,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "çörek",
+"kind": "word",
+"dur": 0.74,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 9-11"
+},
+{
+"key": "p",
+"kind": "letter",
+"dur": 0.66,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "palaw",
+"kind": "word",
+"dur": 0.98,
+"src": "mms",
+"seed": 63112,
+"note": "",
+"score": 0.229
+},
+{
+"key": "kitap",
+"kind": "word",
+"dur": 0.92,
+"src": "mms",
+"seed": 69677,
+"note": "retried",
+"score": 0.449
+},
+{
+"key": "kitabym",
+"kind": "word",
+"dur": 0.86,
+"src": "mms",
+"seed": 62187,
+"note": "",
+"score": 0.039
+},
+{
+"key": "r",
+"kind": "letter",
+"dur": 0.65,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "bir",
+"kind": "word",
+"dur": 0.99,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "s",
+"kind": "letter",
+"dur": 0.65,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "salam",
+"kind": "word",
+"dur": 0.7,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "ş",
+"kind": "letter",
+"dur": 0.82,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "şeýlemi",
+"kind": "word",
+"dur": 1.5,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 12"
+},
+{
+"key": "t",
+"kind": "letter",
+"dur": 0.68,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "süýt",
+"kind": "word",
+"dur": 0.83,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 9-11"
+},
+{
+"key": "u",
+"kind": "letter",
+"dur": 0.66,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "suw",
+"kind": "word",
+"dur": 0.82,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 9-11"
+},
+{
+"key": "ü",
+"kind": "letter",
+"dur": 0.68,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "üç",
+"kind": "word",
+"dur": 0.64,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "w",
+"kind": "letter",
+"dur": 0.55,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "hawa",
+"kind": "word",
+"dur": 1.58,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 12"
+},
+{
+"key": "y",
+"kind": "letter",
+"dur": 0.65,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "gyzyl",
+"kind": "word",
+"dur": 1.33,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 9-11"
+},
+{
+"key": "ý",
+"kind": "word",
+"dur": 0.57,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "ýok",
+"kind": "word",
+"dur": 1.08,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 12"
+},
+{
+"key": "ýa",
+"kind": "word",
+"dur": 0.35,
+"src": "mms",
+"seed": 51974,
+"note": "",
+"score": 0.177
+},
+{
+"key": "ýo",
+"kind": "word",
+"dur": 0.34,
+"src": "mms",
+"seed": 35982,
+"note": "",
+"score": 0.177
+},
+{
+"key": "z",
+"kind": "letter",
+"dur": 0.73,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "dokuz",
+"kind": "word",
+"dur": 1.19,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "harplar we sesler",
+"kind": "phrase",
+"dur": 1.57,
+"src": "mms",
+"seed": 93286,
+"note": "",
+"score": 0.152
+},
+{
+"key": "alma",
+"kind": "word",
+"dur": 0.64,
+"src": "mms",
+"seed": 81926,
+"note": "",
+"score": 0.267
+},
+{
+"key": "it",
+"kind": "word",
+"dur": 0.42,
+"src": "mms",
+"seed": 54352,
+"note": "",
+"score": 0.134
+},
+{
+"key": "oba",
+"kind": "word",
+"dur": 0.53,
+"src": "mms",
+"seed": 16746,
+"note": "",
+"score": 0.131
+},
+{
+"key": "öý",
+"kind": "word",
+"dur": 0.69,
+"src": "mms",
+"seed": 20121,
+"note": "",
+"score": 0.448
+},
+{
+"key": "uçar",
+"kind": "word",
+"dur": 0.71,
+"src": "mms",
+"seed": 26281,
+"note": "",
+"score": -0.073
+},
+{
+"key": "üzüm",
+"kind": "word",
+"dur": 0.85,
+"src": "mms",
+"seed": 39766,
+"note": "",
+"score": 0.114
+},
+{
+"key": "ýogyn",
+"kind": "word",
+"dur": 0.61,
+"src": "mms",
+"seed": 58442,
+"note": "",
+"score": 0.133
+},
+{
+"key": "inçe",
+"kind": "word",
+"dur": 0.66,
+"src": "mms",
+"seed": 37815,
+"note": "",
+"score": 0.27
+},
+{
+"key": "düýe",
+"kind": "word",
+"dur": 1.15,
+"src": "mms",
+"seed": 16335,
+"note": "",
+"score": 0.197
+},
+{
+"key": "gawun",
+"kind": "word",
+"dur": 1.18,
+"src": "mms",
+"seed": 41007,
+"note": "",
+"score": 0.036
+},
+{
+"key": "maşyn",
+"kind": "word",
+"dur": 0.69,
+"src": "mms",
+"seed": 23064,
+"note": "",
+"score": -0.06
+},
+{
+"key": "tüwi",
+"kind": "word",
+"dur": 0.8,
+"src": "mms",
+"seed": 21480,
+"note": "retried",
+"score": 0.363
+},
+{
+"key": "wagt",
+"kind": "word",
+"dur": 1.05,
+"src": "mms",
+"seed": 28032,
+"note": "",
+"score": 0.098
+},
+{
+"key": "şäher",
+"kind": "word",
+"dur": 0.74,
+"src": "mms",
+"seed": 15623,
+"note": "",
+"score": 0.22
+},
+{
+"key": "ýyldyz",
+"kind": "word",
+"dur": 0.7,
+"src": "mms",
+"seed": 67286,
+"note": "",
+"score": 0.331
+},
+{
+"key": "göz",
+"kind": "word",
+"dur": 0.45,
+"src": "mms",
+"seed": 92863,
+"note": "",
+"score": 0.457
+},
+{
+"key": "garpyz",
+"kind": "word",
+"dur": 0.77,
+"src": "mms",
+"seed": 65231,
+"note": "",
+"score": 0.331
+},
+{
+"key": "sary",
+"kind": "word",
+"dur": 1.5,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 9-11"
+},
+{
+"key": "duz",
+"kind": "word",
+"dur": 0.8,
+"src": "mms",
+"seed": 87430,
+"note": "",
+"score": 0.361
+},
+{
+"key": "şeker",
+"kind": "word",
+"dur": 0.76,
+"src": "mms",
+"seed": 72198,
+"note": "",
+"score": 0.299
+},
+{
+"key": "al-ma",
+"kind": "word",
+"dur": 0.64,
+"src": "mms",
+"seed": 81926,
+"note": "",
+"score": 0.267
+},
+{
+"key": "ü-züm",
+"kind": "word",
+"dur": 0.85,
+"src": "mms",
+"seed": 39766,
+"note": "",
+"score": 0.114
+},
+{
+"key": "sa-lam",
+"kind": "word",
+"dur": 1.29,
+"src": "mms",
+"seed": 72071,
+"note": "",
+"score": 0.113
+},
+{
+"key": "gar-pyz",
+"kind": "word",
+"dur": 0.77,
+"src": "mms",
+"seed": 65231,
+"note": "",
+"score": 0.331
+},
+{
+"key": "ýyl-dyz",
+"kind": "word",
+"dur": 0.7,
+"src": "mms",
+"seed": 67286,
+"note": "",
+"score": 0.331
+},
+{
+"key": "sa",
+"kind": "word",
+"dur": 0.35,
+"src": "mms",
+"seed": 17843,
+"note": "",
+"score": -0.035
+},
+{
+"key": "lam",
+"kind": "word",
+"dur": 0.67,
+"src": "mms",
+"seed": 33282,
+"note": "",
+"score": 0.13
+},
+{
+"key": "at",
+"kind": "word",
+"dur": 0.48,
+"src": "mms",
+"seed": 49922,
+"note": "",
+"score": 0.069
+},
+{
+"key": "ot",
+"kind": "word",
+"dur": 0.45,
+"src": "mms",
+"seed": 33962,
+"note": "",
+"score": 0.174
+},
+{
+"key": "meniň adym",
+"kind": "phrase",
+"dur": 0.9,
+"src": "mms",
+"seed": 40225,
+"note": "",
+"score": 0.45
+},
+{
+"key": "ki-tap",
+"kind": "word",
+"dur": 0.92,
+"src": "mms",
+"seed": 69677,
+"note": "retried",
+"score": 0.449
+},
+{
+"key": "kitap-lar",
+"kind": "word",
+"dur": 0.81,
+"src": "mms",
+"seed": 87928,
+"note": "",
+"score": 0.381
+},
+{
+"key": "kitaplar-da",
+"kind": "word",
+"dur": 0.97,
+"src": "mms",
+"seed": 86631,
+"note": "",
+"score": 0.335
+},
+{
+"key": "my",
+"kind": "word",
+"dur": 0.48,
+"src": "mms",
+"seed": 46410,
+"note": "",
+"score": -0.032
+},
+{
+"key": "mi",
+"kind": "word",
+"dur": 0.48,
+"src": "mms",
+"seed": 41459,
+"note": "",
+"score": -0.005
+},
+{
+"key": "kitaplar",
+"kind": "word",
+"dur": 0.81,
+"src": "mms",
+"seed": 87928,
+"note": "",
+"score": 0.381
+},
+{
+"key": "ýogyn we inçe",
+"kind": "phrase",
+"dur": 1.75,
+"src": "mms",
+"seed": 69957,
+"note": "",
+"score": 0.144
+},
+{
+"key": "alty",
+"kind": "word",
+"dur": 1.07,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "ýedi",
+"kind": "word",
+"dur": 1.17,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "sekiz",
+"kind": "word",
+"dur": 1.53,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "ýaşyl",
+"kind": "word",
+"dur": 1.27,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 9-11"
+},
+{
+"key": "gök",
+"kind": "word",
+"dur": 0.9,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 9-11"
+},
+{
+"key": "uly",
+"kind": "word",
+"dur": 0.51,
+"src": "mms",
+"seed": 42639,
+"note": "",
+"score": 0.355
+},
+{
+"key": "kiçi",
+"kind": "word",
+"dur": 0.8,
+"src": "mms",
+"seed": 61390,
+"note": "",
+"score": 0.221
+},
+{
+"key": "itler",
+"kind": "word",
+"dur": 0.66,
+"src": "mms",
+"seed": 63030,
+"note": "",
+"score": 0.083
+},
+{
+"key": "gyzlar",
+"kind": "word",
+"dur": 0.84,
+"src": "mms",
+"seed": 6277,
+"note": "",
+"score": -0.023
+},
+{
+"key": "öýler",
+"kind": "word",
+"dur": 0.73,
+"src": "mms",
+"seed": 87176,
+"note": "",
+"score": 0.281
+},
+{
+"key": "gözler",
+"kind": "word",
+"dur": 0.67,
+"src": "mms",
+"seed": 54751,
+"note": "",
+"score": 0.09
+},
+{
+"key": "lar",
+"kind": "word",
+"dur": 0.93,
+"src": "mms",
+"seed": 86971,
+"note": "",
+"score": 0.032
+},
+{
+"key": "ler",
+"kind": "word",
+"dur": 0.98,
+"src": "mms",
+"seed": 70582,
+"note": "",
+"score": 0.111
+},
+{
+"key": "iki kitap",
+"kind": "phrase",
+"dur": 0.97,
+"src": "mms",
+"seed": 68772,
+"note": "",
+"score": 0.489
+},
+{
+"key": "bäş alma",
+"kind": "phrase",
+"dur": 1.11,
+"src": "mms",
+"seed": 75709,
+"note": "",
+"score": 0.214
+},
+{
+"key": "atlar",
+"kind": "word",
+"dur": 1.19,
+"src": "mms",
+"seed": 11679,
+"note": "",
+"score": -0.081
+},
+{
+"key": "üç kitap",
+"kind": "phrase",
+"dur": 1.01,
+"src": "mms",
+"seed": 49111,
+"note": "",
+"score": 0.414
+},
+{
+"key": "düýeler",
+"kind": "word",
+"dur": 0.83,
+"src": "mms",
+"seed": 71802,
+"note": "",
+"score": 0.162
+},
+{
+"key": "telefon",
+"kind": "word",
+"dur": 0.79,
+"src": "mms",
+"seed": 19632,
+"note": "",
+"score": 0.102
+},
+{
+"key": "kompýuter",
+"kind": "word",
+"dur": 1.62,
+"src": "mms",
+"seed": 3716,
+"note": "",
+"score": 0.207
+},
+{
+"key": "restoran",
+"kind": "word",
+"dur": 0.87,
+"src": "mms",
+"seed": 22259,
+"note": "",
+"score": 0.214
+},
+{
+"key": "inžener",
+"kind": "word",
+"dur": 1.66,
+"src": "mms",
+"seed": 65651,
+"note": "",
+"score": 0.226
+},
+{
+"key": "muzeý",
+"kind": "word",
+"dur": 0.7,
+"src": "mms",
+"seed": 93627,
+"note": "",
+"score": 0.104
+},
+{
+"key": "mugallym",
+"kind": "word",
+"dur": 0.72,
+"src": "mms",
+"seed": 10815,
+"note": "",
+"score": 0.28
+},
+{
+"key": "türkmenistan",
+"kind": "word",
+"dur": 1.23,
+"src": "mms",
+"seed": 81447,
+"note": "",
+"score": 0.216
+},
+{
+"key": "kitap kitaplar",
+"kind": "phrase",
+"dur": 1.44,
+"src": "mms",
+"seed": 93078,
+"note": "",
+"score": 0.177
+},
+{
+"key": "telefon telefonlar",
+"kind": "phrase",
+"dur": 1.75,
+"src": "mms",
+"seed": 94903,
+"note": "",
+"score": 0.17
+},
+{
+"key": "kompýuter kompýuterler",
+"kind": "phrase",
+"dur": 2.39,
+"src": "mms",
+"seed": 82220,
+"note": "",
+"score": 0.237
+},
+{
+"key": "inžener inženerler",
+"kind": "phrase",
+"dur": 2.75,
+"src": "mms",
+"seed": 93689,
+"note": "",
+"score": 0.27
+},
+{
+"key": "restoran restoranlar",
+"kind": "phrase",
+"dur": 1.81,
+"src": "mms",
+"seed": 99957,
+"note": "",
+"score": 0.405
+},
+{
+"key": "türkmenistanda",
+"kind": "word",
+"dur": 1.64,
+"src": "mms",
+"seed": 84529,
+"note": "",
+"score": 0.202
+},
+{
+"key": "telefonlar",
+"kind": "word",
+"dur": 0.92,
+"src": "mms",
+"seed": 12698,
+"note": "",
+"score": 0.212
+},
+{
+"key": "kompýuterler",
+"kind": "word",
+"dur": 2.02,
+"src": "mms",
+"seed": 79425,
+"note": "",
+"score": 0.114
+},
+{
+"key": "da",
+"kind": "word",
+"dur": 0.42,
+"src": "mms",
+"seed": 64356,
+"note": "",
+"score": 0.141
+},
+{
+"key": "mugallymlar",
+"kind": "word",
+"dur": 1.11,
+"src": "mms",
+"seed": 46026,
+"note": "",
+"score": 0.117
+},
+{
+"key": "inženerler",
+"kind": "word",
+"dur": 2.16,
+"src": "mms",
+"seed": 37475,
+"note": "",
+"score": 0.142
+},
+{
+"key": "bu",
+"kind": "word",
+"dur": 0.73,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 12"
+},
+{
+"key": "talyp",
+"kind": "word",
+"dur": 0.71,
+"src": "mms",
+"seed": 65941,
+"note": "",
+"score": 0.377
+},
+{
+"key": "bu çaý",
+"kind": "phrase",
+"dur": 1.15,
+"src": "mms",
+"seed": 73133,
+"note": "",
+"score": 0.433
+},
+{
+"key": "bu çaýmy",
+"kind": "phrase",
+"dur": 1.07,
+"src": "mms",
+"seed": 86570,
+"note": "retried",
+"score": 0.424
+},
+{
+"key": "bu et",
+"kind": "phrase",
+"dur": 0.94,
+"src": "mms",
+"seed": 91584,
+"note": "",
+"score": 0.107
+},
+{
+"key": "bu etmi",
+"kind": "phrase",
+"dur": 1.6,
+"src": "mms",
+"seed": 30370,
+"note": "",
+"score": 0.213
+},
+{
+"key": "hawa bu çaý",
+"kind": "phrase",
+"dur": 1.72,
+"src": "mms",
+"seed": 95989,
+"note": "",
+"score": 0.211
+},
+{
+"key": "ýok bu çaý däl",
+"kind": "phrase",
+"dur": 1.46,
+"src": "mms",
+"seed": 63896,
+"note": "",
+"score": 0.49
+},
+{
+"key": "suwmy",
+"kind": "word",
+"dur": 0.67,
+"src": "mms",
+"seed": 34197,
+"note": "",
+"score": 0.464
+},
+{
+"key": "kitapmy",
+"kind": "word",
+"dur": 1.51,
+"src": "mms",
+"seed": 66666,
+"note": "retried",
+"score": 0.267
+},
+{
+"key": "üzümmi",
+"kind": "word",
+"dur": 1.12,
+"src": "mms",
+"seed": 4852,
+"note": "",
+"score": 0.13
+},
+{
+"key": "bu kitapmy",
+"kind": "phrase",
+"dur": 1.16,
+"src": "mms",
+"seed": 58650,
+"note": "",
+"score": 0.328
+},
+{
+"key": "sen talypmy",
+"kind": "phrase",
+"dur": 1.77,
+"src": "mms",
+"seed": 38921,
+"note": "",
+"score": 0.133
+},
+{
+"key": "bu üzümmi",
+"kind": "phrase",
+"dur": 1.3,
+"src": "mms",
+"seed": 65775,
+"note": "",
+"score": 0.249
+},
+{
+"key": "goşulmalar",
+"kind": "phrase",
+"dur": 1.54,
+"src": "mms",
+"seed": 29675,
+"note": "",
+"score": 0.034
+},
+{
+"key": "adym",
+"kind": "word",
+"dur": 0.94,
+"src": "mms",
+"seed": 7281,
+"note": "",
+"score": 0.047
+},
+{
+"key": "adyň",
+"kind": "word",
+"dur": 0.57,
+"src": "mms",
+"seed": 80082,
+"note": "",
+"score": 0.107
+},
+{
+"key": "maşynym",
+"kind": "word",
+"dur": 0.72,
+"src": "mms",
+"seed": 39163,
+"note": "",
+"score": 0.177
+},
+{
+"key": "kaka",
+"kind": "word",
+"dur": 0.8,
+"src": "mms",
+"seed": 74326,
+"note": "",
+"score": 0.416
+},
+{
+"key": "kakam",
+"kind": "word",
+"dur": 1.45,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 6-8"
+},
+{
+"key": "eje",
+"kind": "word",
+"dur": 0.62,
+"src": "mms",
+"seed": 90644,
+"note": "",
+"score": 0.417
+},
+{
+"key": "ejäm",
+"kind": "word",
+"dur": 0.72,
+"src": "mms",
+"seed": 24898,
+"note": "",
+"score": 0.463
+},
+{
+"key": "agaç",
+"kind": "word",
+"dur": 0.9,
+"src": "mms",
+"seed": 57872,
+"note": "",
+"score": 0.163
+},
+{
+"key": "näme",
+"kind": "word",
+"dur": 1.0,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 12"
+},
+{
+"key": "ym",
+"kind": "word",
+"dur": 0.46,
+"src": "mms",
+"seed": 10177,
+"note": "",
+"score": 0.204
+},
+{
+"key": "im",
+"kind": "word",
+"dur": 0.45,
+"src": "mms",
+"seed": 80036,
+"note": "",
+"score": 0.183
+},
+{
+"key": "yň",
+"kind": "word",
+"dur": 0.59,
+"src": "mms",
+"seed": 33821,
+"note": "",
+"score": 0.041
+},
+{
+"key": "iň",
+"kind": "word",
+"dur": 0.78,
+"src": "mms",
+"seed": 81157,
+"note": "",
+"score": -0.007
+},
+{
+"key": "maşynyň",
+"kind": "word",
+"dur": 0.85,
+"src": "mms",
+"seed": 93534,
+"note": "",
+"score": 0.325
+},
+{
+"key": "kakaň",
+"kind": "word",
+"dur": 1.26,
+"src": "mms",
+"seed": 703,
+"note": "",
+"score": 0.227
+},
+{
+"key": "maşyny",
+"kind": "word",
+"dur": 0.72,
+"src": "mms",
+"seed": 82043,
+"note": "",
+"score": 0.341
+},
+{
+"key": "kakasy",
+"kind": "word",
+"dur": 1.38,
+"src": "mms",
+"seed": 5374,
+"note": "",
+"score": 0.201
+},
+{
+"key": "maşynymyz",
+"kind": "word",
+"dur": 0.85,
+"src": "mms",
+"seed": 33891,
+"note": "",
+"score": -0.056
+},
+{
+"key": "kakamyz",
+"kind": "word",
+"dur": 1.32,
+"src": "mms",
+"seed": 31650,
+"note": "",
+"score": 0.064
+},
+{
+"key": "maşynyňyz",
+"kind": "word",
+"dur": 1.25,
+"src": "mms",
+"seed": 44882,
+"note": "",
+"score": 0.005
+},
+{
+"key": "kakaňyz",
+"kind": "word",
+"dur": 1.35,
+"src": "mms",
+"seed": 24119,
+"note": "",
+"score": 0.256
+},
+{
+"key": "çöregim",
+"kind": "word",
+"dur": 0.83,
+"src": "mms",
+"seed": 16081,
+"note": "retried",
+"score": 0.257
+},
+{
+"key": "agajym",
+"kind": "word",
+"dur": 1.38,
+"src": "mms",
+"seed": 40712,
+"note": "",
+"score": 0.097
+},
+{
+"key": "itim",
+"kind": "word",
+"dur": 0.38,
+"src": "mms",
+"seed": 30952,
+"note": "retried",
+"score": 0.475
+},
+{
+"key": "gijäňiz rahat bolsun",
+"kind": "phrase",
+"dur": 1.58,
+"src": "mms",
+"seed": 85214,
+"note": "",
+"score": 0.103
+},
+{
+"key": "gijäňiz",
+"kind": "word",
+"dur": 1.49,
+"src": "mms",
+"seed": 82261,
+"note": "",
+"score": 0.09
+},
+{
+"key": "gije",
+"kind": "word",
+"dur": 0.54,
+"src": "mms",
+"seed": 25497,
+"note": "",
+"score": 0.436
+},
+{
+"key": "ňiz",
+"kind": "word",
+"dur": 0.58,
+"src": "mms",
+"seed": 39420,
+"note": "",
+"score": 0.239
+},
+{
+"key": "adyňyz",
+"kind": "word",
+"dur": 1.34,
+"src": "mms",
+"seed": 93854,
+"note": "",
+"score": 0.104
+},
+{
+"key": "adyňyz näme",
+"kind": "phrase",
+"dur": 1.67,
+"src": "mms",
+"seed": 4721,
+"note": "",
+"score": 0.143
+},
+{
+"key": "öýde",
+"kind": "word",
+"dur": 0.57,
+"src": "mms",
+"seed": 51485,
+"note": "retried",
+"score": 0.197
+},
+{
+"key": "bazar",
+"kind": "word",
+"dur": 1.2,
+"src": "mms",
+"seed": 59057,
+"note": "",
+"score": -0.05
+},
+{
+"key": "bazarda",
+"kind": "word",
+"dur": 1.05,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 9-11"
+},
+{
+"key": "mekdep",
+"kind": "word",
+"dur": 1.54,
+"src": "mms",
+"seed": 13038,
+"note": "retried",
+"score": 0.382
+},
+{
+"key": "mekdepde",
+"kind": "word",
+"dur": 1.25,
+"src": "mms",
+"seed": 96780,
+"note": "",
+"score": 0.401
+},
+{
+"key": "aşgabat",
+"kind": "word",
+"dur": 1.08,
+"src": "mms",
+"seed": 33894,
+"note": "",
+"score": 0.299
+},
+{
+"key": "hytaý",
+"kind": "word",
+"dur": 0.92,
+"src": "mms",
+"seed": 18154,
+"note": "",
+"score": 0.336
+},
+{
+"key": "pekin",
+"kind": "word",
+"dur": 1.13,
+"src": "mms",
+"seed": 46904,
+"note": "",
+"score": 0.151
+},
+{
+"key": "dükan",
+"kind": "word",
+"dur": 0.7,
+"src": "mms",
+"seed": 82842,
+"note": "",
+"score": 0.257
+},
+{
+"key": "aşgabatda",
+"kind": "word",
+"dur": 1.19,
+"src": "mms",
+"seed": 25794,
+"note": "",
+"score": 0.264
+},
+{
+"key": "de",
+"kind": "word",
+"dur": 0.43,
+"src": "mms",
+"seed": 28170,
+"note": "",
+"score": 0.102
+},
+{
+"key": "mekdebe",
+"kind": "word",
+"dur": 1.3,
+"src": "mms",
+"seed": 12142,
+"note": "retried",
+"score": 0.39
+},
+{
+"key": "hytaýda",
+"kind": "word",
+"dur": 1.14,
+"src": "mms",
+"seed": 28060,
+"note": "",
+"score": 0.319
+},
+{
+"key": "men aşgabatda",
+"kind": "phrase",
+"dur": 1.53,
+"src": "mms",
+"seed": 11520,
+"note": "",
+"score": 0.297
+},
+{
+"key": "maşynymda",
+"kind": "word",
+"dur": 0.86,
+"src": "mms",
+"seed": 15292,
+"note": "",
+"score": -0.072
+},
+{
+"key": "hytaýdan",
+"kind": "word",
+"dur": 0.98,
+"src": "mms",
+"seed": 87862,
+"note": "",
+"score": 0.325
+},
+{
+"key": "öýden",
+"kind": "word",
+"dur": 0.57,
+"src": "mms",
+"seed": 58207,
+"note": "",
+"score": 0.456
+},
+{
+"key": "pekinden",
+"kind": "word",
+"dur": 1.48,
+"src": "mms",
+"seed": 22827,
+"note": "",
+"score": 0.129
+},
+{
+"key": "nireden",
+"kind": "word",
+"dur": 1.15,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 6-8"
+},
+{
+"key": "men hytaýdan",
+"kind": "phrase",
+"dur": 1.12,
+"src": "mms",
+"seed": 90787,
+"note": "retried",
+"score": 0.22
+},
+{
+"key": "siz nireden",
+"kind": "phrase",
+"dur": 1.19,
+"src": "mms",
+"seed": 54215,
+"note": "",
+"score": 0.127
+},
+{
+"key": "sen nireden",
+"kind": "phrase",
+"dur": 1.89,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 6-8"
+},
+{
+"key": "aşgabatdan",
+"kind": "word",
+"dur": 0.99,
+"src": "mms",
+"seed": 65672,
+"note": "",
+"score": 0.218
+},
+{
+"key": "aşgabada",
+"kind": "word",
+"dur": 1.13,
+"src": "mms",
+"seed": 80866,
+"note": "",
+"score": 0.316
+},
+{
+"key": "dan",
+"kind": "word",
+"dur": 0.76,
+"src": "mms",
+"seed": 31228,
+"note": "",
+"score": 0.115
+},
+{
+"key": "nire",
+"kind": "word",
+"dur": 1.12,
+"src": "mms",
+"seed": 88249,
+"note": "",
+"score": 0.113
+},
+{
+"key": "den",
+"kind": "word",
+"dur": 0.72,
+"src": "mms",
+"seed": 1158,
+"note": "",
+"score": 0.271
+},
+{
+"key": "obalardan",
+"kind": "word",
+"dur": 1.57,
+"src": "mms",
+"seed": 98859,
+"note": "",
+"score": -0.096
+},
+{
+"key": "obalar",
+"kind": "word",
+"dur": 1.04,
+"src": "mms",
+"seed": 79660,
+"note": "",
+"score": 0.009
+},
+{
+"key": "bazara",
+"kind": "word",
+"dur": 1.0,
+"src": "mms",
+"seed": 82664,
+"note": "",
+"score": 0.035
+},
+{
+"key": "öýe",
+"kind": "word",
+"dur": 0.64,
+"src": "mms",
+"seed": 16875,
+"note": "",
+"score": 0.225
+},
+{
+"key": "maňa",
+"kind": "word",
+"dur": 1.2,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 12"
+},
+{
+"key": "saňa",
+"kind": "word",
+"dur": 1.22,
+"src": "mms",
+"seed": 69276,
+"note": "",
+"score": 0.098
+},
+{
+"key": "hoş geldiňiz",
+"kind": "phrase",
+"dur": 1.53,
+"src": "mms",
+"seed": 79180,
+"note": "",
+"score": 0.219
+},
+{
+"key": "şähere",
+"kind": "word",
+"dur": 0.84,
+"src": "mms",
+"seed": 32982,
+"note": "",
+"score": 0.243
+},
+{
+"key": "türkmenistana hoş geldiňiz",
+"kind": "phrase",
+"dur": 2.1,
+"src": "mms",
+"seed": 74078,
+"note": "",
+"score": 0.165
+},
+{
+"key": "oňa",
+"kind": "word",
+"dur": 0.93,
+"src": "mms",
+"seed": 20027,
+"note": "",
+"score": 0.168
+},
+{
+"key": "bize",
+"kind": "word",
+"dur": 0.81,
+"src": "mms",
+"seed": 66746,
+"note": "",
+"score": 0.369
+},
+{
+"key": "size",
+"kind": "word",
+"dur": 0.69,
+"src": "mms",
+"seed": 83421,
+"note": "retried",
+"score": 0.305
+},
+{
+"key": "türkmenistana",
+"kind": "word",
+"dur": 1.46,
+"src": "mms",
+"seed": 99460,
+"note": "",
+"score": 0.038
+},
+{
+"key": "da de",
+"kind": "phrase",
+"dur": 0.7,
+"src": "mms",
+"seed": 50935,
+"note": "",
+"score": 0.226
+},
+{
+"key": "dan den",
+"kind": "phrase",
+"dur": 1.4,
+"src": "mms",
+"seed": 93282,
+"note": "",
+"score": 0.146
+},
+{
+"key": "a e",
+"kind": "phrase",
+"dur": 0.56,
+"src": "mms",
+"seed": 72383,
+"note": "",
+"score": 0.181
+},
+{
+"key": "lar ler",
+"kind": "phrase",
+"dur": 1.46,
+"src": "mms",
+"seed": 84370,
+"note": "",
+"score": 0.018
+},
+{
+"key": "ym im",
+"kind": "phrase",
+"dur": 0.66,
+"src": "mms",
+"seed": 45431,
+"note": "",
+"score": 0.155
+},
+{
+"key": "kitaplarym",
+"kind": "word",
+"dur": 0.86,
+"src": "mms",
+"seed": 10388,
+"note": "",
+"score": 0.112
+},
+{
+"key": "kitaplarymda",
+"kind": "word",
+"dur": 1.13,
+"src": "mms",
+"seed": 54147,
+"note": "",
+"score": 0.412
+},
+{
+"key": "öýlerde",
+"kind": "word",
+"dur": 0.96,
+"src": "mms",
+"seed": 20250,
+"note": "",
+"score": 0.448
+},
+{
+"key": "şäherlerden",
+"kind": "word",
+"dur": 1.17,
+"src": "mms",
+"seed": 85426,
+"note": "",
+"score": -0.042
+},
+{
+"key": "şäherler",
+"kind": "word",
+"dur": 0.87,
+"src": "mms",
+"seed": 43830,
+"note": "",
+"score": 0.198
+},
+{
+"key": "kitap lar ym da",
+"kind": "phrase",
+"dur": 1.6,
+"src": "mms",
+"seed": 2685,
+"note": "",
+"score": 0.17
+},
+{
+"key": "maşynymdan",
+"kind": "word",
+"dur": 0.92,
+"src": "mms",
+"seed": 50654,
+"note": "",
+"score": 0.078
+},
+{
+"key": "sözlemler",
+"kind": "phrase",
+"dur": 0.74,
+"src": "mms",
+"seed": 29561,
+"note": "",
+"score": 0.28
+},
+{
+"key": "sen",
+"kind": "word",
+"dur": 0.99,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 9-11"
+},
+{
+"key": "ol",
+"kind": "word",
+"dur": 0.37,
+"src": "mms",
+"seed": 59988,
+"note": "",
+"score": 0.208
+},
+{
+"key": "biz",
+"kind": "word",
+"dur": 0.76,
+"src": "mms",
+"seed": 68418,
+"note": "",
+"score": 0.158
+},
+{
+"key": "siz",
+"kind": "word",
+"dur": 0.57,
+"src": "mms",
+"seed": 79789,
+"note": "retried lowscore",
+"score": 0.509
+},
+{
+"key": "olar",
+"kind": "word",
+"dur": 0.96,
+"src": "mms",
+"seed": 52860,
+"note": "",
+"score": -0.005
+},
+{
+"key": "däl",
+"kind": "word",
+"dur": 0.48,
+"src": "mms",
+"seed": 47588,
+"note": "",
+"score": 0.225
+},
+{
+"key": "lukman",
+"kind": "word",
+"dur": 0.67,
+"src": "mms",
+"seed": 82737,
+"note": "",
+"score": 0.45
+},
+{
+"key": "syýahatçy",
+"kind": "word",
+"dur": 1.31,
+"src": "mms",
+"seed": 81739,
+"note": "",
+"score": 0.061
+},
+{
+"key": "men talyp",
+"kind": "phrase",
+"dur": 0.86,
+"src": "mms",
+"seed": 65015,
+"note": "",
+"score": 0.216
+},
+{
+"key": "ol mugallym",
+"kind": "phrase",
+"dur": 0.84,
+"src": "mms",
+"seed": 23283,
+"note": "",
+"score": 0.128
+},
+{
+"key": "men talyp däl",
+"kind": "phrase",
+"dur": 1.02,
+"src": "mms",
+"seed": 16874,
+"note": "",
+"score": 0.141
+},
+{
+"key": "bu çaý däl",
+"kind": "phrase",
+"dur": 1.0,
+"src": "mms",
+"seed": 3103,
+"note": "",
+"score": 0.422
+},
+{
+"key": "dyr",
+"kind": "word",
+"dur": 0.46,
+"src": "mms",
+"seed": 58803,
+"note": "",
+"score": 0.204
+},
+{
+"key": "dir",
+"kind": "word",
+"dur": 0.74,
+"src": "mms",
+"seed": 73220,
+"note": "",
+"score": 0.06
+},
+{
+"key": "aşgabat ulydyr",
+"kind": "phrase",
+"dur": 1.49,
+"src": "mms",
+"seed": 30240,
+"note": "",
+"score": -0.008
+},
+{
+"key": "ol lukman",
+"kind": "phrase",
+"dur": 0.82,
+"src": "mms",
+"seed": 35512,
+"note": "",
+"score": 0.16
+},
+{
+"key": "men mugallym däl",
+"kind": "phrase",
+"dur": 1.48,
+"src": "mms",
+"seed": 44057,
+"note": "",
+"score": 0.147
+},
+{
+"key": "men syýahatçy",
+"kind": "phrase",
+"dur": 1.64,
+"src": "mms",
+"seed": 67874,
+"note": "",
+"score": 0.234
+},
+{
+"key": "bar",
+"kind": "word",
+"dur": 0.91,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 12"
+},
+{
+"key": "mende",
+"kind": "word",
+"dur": 0.85,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 9-11"
+},
+{
+"key": "manat",
+"kind": "word",
+"dur": 0.92,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 9-11"
+},
+{
+"key": "meniň kitabym bar",
+"kind": "phrase",
+"dur": 1.48,
+"src": "mms",
+"seed": 66260,
+"note": "",
+"score": 0.183
+},
+{
+"key": "onuň maşyny ýok",
+"kind": "phrase",
+"dur": 1.54,
+"src": "mms",
+"seed": 86288,
+"note": "",
+"score": 0.044
+},
+{
+"key": "mende çörek bar",
+"kind": "phrase",
+"dur": 1.41,
+"src": "mms",
+"seed": 74832,
+"note": "",
+"score": 0.034
+},
+{
+"key": "barmy",
+"kind": "word",
+"dur": 1.11,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 6-8"
+},
+{
+"key": "suw barmy",
+"kind": "phrase",
+"dur": 0.89,
+"src": "mms",
+"seed": 28742,
+"note": "",
+"score": 0.278
+},
+{
+"key": "hawa bar",
+"kind": "phrase",
+"dur": 1.46,
+"src": "mms",
+"seed": 34638,
+"note": "",
+"score": -0.024
+},
+{
+"key": "meniň wagtym ýok",
+"kind": "phrase",
+"dur": 1.51,
+"src": "mms",
+"seed": 78283,
+"note": "",
+"score": 0.283
+},
+{
+"key": "çaý barmy",
+"kind": "phrase",
+"dur": 1.03,
+"src": "mms",
+"seed": 88713,
+"note": "",
+"score": -0.004
+},
+{
+"key": "mende manat bar",
+"kind": "phrase",
+"dur": 2.35,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 9-11"
+},
+{
+"key": "meniň maşynym bar",
+"kind": "phrase",
+"dur": 1.96,
+"src": "mms",
+"seed": 38904,
+"note": "",
+"score": -0.049
+},
+{
+"key": "onuň",
+"kind": "word",
+"dur": 1.1,
+"src": "mms",
+"seed": 71528,
+"note": "",
+"score": 0.181
+},
+{
+"key": "wagtym",
+"kind": "word",
+"dur": 1.46,
+"src": "mms",
+"seed": 49542,
+"note": "",
+"score": 0.179
+},
+{
+"key": "ýok meniň maşynym ýok",
+"kind": "phrase",
+"dur": 2.53,
+"src": "mms",
+"seed": 81368,
+"note": "",
+"score": 0.044
+},
+{
+"key": "seniň maşynyň barmy",
+"kind": "phrase",
+"dur": 1.78,
+"src": "mms",
+"seed": 45454,
+"note": "",
+"score": 0.023
+},
+{
+"key": "kim",
+"kind": "word",
+"dur": 0.65,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 12"
+},
+{
+"key": "nirede",
+"kind": "word",
+"dur": 0.92,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 12"
+},
+{
+"key": "näçe",
+"kind": "word",
+"dur": 1.18,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 12"
+},
+{
+"key": "haçan",
+"kind": "word",
+"dur": 0.83,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 12"
+},
+{
+"key": "nähili",
+"kind": "word",
+"dur": 1.08,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "hajathana",
+"kind": "word",
+"dur": 1.34,
+"src": "mms",
+"seed": 79662,
+"note": "",
+"score": 0.307
+},
+{
+"key": "bu näme",
+"kind": "phrase",
+"dur": 1.86,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 12"
+},
+{
+"key": "ol merdan",
+"kind": "phrase",
+"dur": 1.34,
+"src": "mms",
+"seed": 28300,
+"note": "",
+"score": 0.171
+},
+{
+"key": "ol kim",
+"kind": "phrase",
+"dur": 0.78,
+"src": "mms",
+"seed": 73484,
+"note": "",
+"score": 0.171
+},
+{
+"key": "bazar nirede",
+"kind": "phrase",
+"dur": 1.68,
+"src": "mms",
+"seed": 58863,
+"note": "",
+"score": 0.067
+},
+{
+"key": "bu näçe",
+"kind": "phrase",
+"dur": 1.02,
+"src": "mms",
+"seed": 249,
+"note": "",
+"score": 0.251
+},
+{
+"key": "ýagdaýlaryňyz nähili",
+"kind": "phrase",
+"dur": 1.91,
+"src": "mms",
+"seed": 21358,
+"note": "",
+"score": 0.103
+},
+{
+"key": "hajathana nirede",
+"kind": "phrase",
+"dur": 1.8,
+"src": "mms",
+"seed": 87877,
+"note": "",
+"score": 0.068
+},
+{
+"key": "içýärin",
+"kind": "word",
+"dur": 0.96,
+"src": "mms",
+"seed": 21205,
+"note": "",
+"score": 0.096
+},
+{
+"key": "okaýaryn",
+"kind": "word",
+"dur": 0.95,
+"src": "mms",
+"seed": 18063,
+"note": "",
+"score": -0.004
+},
+{
+"key": "ýaşaýaryn",
+"kind": "word",
+"dur": 1.57,
+"src": "mms",
+"seed": 6444,
+"note": "",
+"score": 0.315
+},
+{
+"key": "iýýär",
+"kind": "word",
+"dur": 0.77,
+"src": "mms",
+"seed": 60529,
+"note": "",
+"score": 0.245
+},
+{
+"key": "türkmençe",
+"kind": "word",
+"dur": 1.97,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 12"
+},
+{
+"key": "men çaý içýärin",
+"kind": "phrase",
+"dur": 2.07,
+"src": "mms",
+"seed": 60525,
+"note": "",
+"score": 0.166
+},
+{
+"key": "men aşgabatda ýaşaýaryn",
+"kind": "phrase",
+"dur": 1.91,
+"src": "mms",
+"seed": 6835,
+"note": "",
+"score": 0.156
+},
+{
+"key": "gyzyl alma",
+"kind": "phrase",
+"dur": 0.83,
+"src": "mms",
+"seed": 58913,
+"note": "",
+"score": 0.176
+},
+{
+"key": "uly şäher",
+"kind": "phrase",
+"dur": 1.06,
+"src": "mms",
+"seed": 5327,
+"note": "",
+"score": 0.091
+},
+{
+"key": "men kitap okaýaryn",
+"kind": "phrase",
+"dur": 1.84,
+"src": "mms",
+"seed": 92804,
+"note": "",
+"score": 0.053
+},
+{
+"key": "ol palaw iýýär",
+"kind": "phrase",
+"dur": 1.86,
+"src": "mms",
+"seed": 44316,
+"note": "",
+"score": 0.066
+},
+{
+"key": "biz türkmençe gürleýäris",
+"kind": "phrase",
+"dur": 2.09,
+"src": "mms",
+"seed": 41298,
+"note": "",
+"score": 0.114
+},
+{
+"key": "işlikler",
+"kind": "phrase",
+"dur": 1.0,
+"src": "mms",
+"seed": 56733,
+"note": "",
+"score": 0.011
+},
+{
+"key": "okamak",
+"kind": "word",
+"dur": 0.97,
+"src": "mms",
+"seed": 5901,
+"note": "",
+"score": 0.358
+},
+{
+"key": "ýazmak",
+"kind": "word",
+"dur": 0.83,
+"src": "mms",
+"seed": 53431,
+"note": "",
+"score": 0.204
+},
+{
+"key": "içmek",
+"kind": "word",
+"dur": 0.76,
+"src": "mms",
+"seed": 89200,
+"note": "",
+"score": 0.275
+},
+{
+"key": "iýmek",
+"kind": "word",
+"dur": 0.68,
+"src": "mms",
+"seed": 57963,
+"note": "",
+"score": 0.252
+},
+{
+"key": "gelmek",
+"kind": "word",
+"dur": 0.72,
+"src": "mms",
+"seed": 43655,
+"note": "",
+"score": 0.273
+},
+{
+"key": "gitmek",
+"kind": "word",
+"dur": 0.67,
+"src": "mms",
+"seed": 6605,
+"note": "retried",
+"score": 0.252
+},
+{
+"key": "bilmek",
+"kind": "word",
+"dur": 0.79,
+"src": "mms",
+"seed": 57047,
+"note": "",
+"score": 0.279
+},
+{
+"key": "görmek",
+"kind": "word",
+"dur": 0.74,
+"src": "mms",
+"seed": 66427,
+"note": "",
+"score": 0.319
+},
+{
+"key": "gürlemek",
+"kind": "word",
+"dur": 0.95,
+"src": "mms",
+"seed": 85194,
+"note": "",
+"score": 0.071
+},
+{
+"key": "ýaşamak",
+"kind": "word",
+"dur": 0.97,
+"src": "mms",
+"seed": 81747,
+"note": "",
+"score": 0.13
+},
+{
+"key": "işlemek",
+"kind": "word",
+"dur": 0.79,
+"src": "mms",
+"seed": 47679,
+"note": "",
+"score": 0.141
+},
+{
+"key": "öwrenmek",
+"kind": "word",
+"dur": 0.95,
+"src": "mms",
+"seed": 71885,
+"note": "",
+"score": 0.465
+},
+{
+"key": "halamak",
+"kind": "word",
+"dur": 0.81,
+"src": "mms",
+"seed": 93849,
+"note": "",
+"score": 0.004
+},
+{
+"key": "düşünmek",
+"kind": "word",
+"dur": 0.81,
+"src": "mms",
+"seed": 2351,
+"note": "",
+"score": 0.402
+},
+{
+"key": "mak",
+"kind": "word",
+"dur": 0.7,
+"src": "mms",
+"seed": 55470,
+"note": "",
+"score": 0.079
+},
+{
+"key": "mek",
+"kind": "word",
+"dur": 0.34,
+"src": "mms",
+"seed": 25298,
+"note": "",
+"score": 0.362
+},
+{
+"key": "oka",
+"kind": "word",
+"dur": 0.56,
+"src": "mms",
+"seed": 43301,
+"note": "",
+"score": 0.293
+},
+{
+"key": "gel",
+"kind": "word",
+"dur": 0.51,
+"src": "mms",
+"seed": 50254,
+"note": "",
+"score": 0.46
+},
+{
+"key": "ýaz",
+"kind": "word",
+"dur": 0.59,
+"src": "mms",
+"seed": 51387,
+"note": "",
+"score": 0.045
+},
+{
+"key": "iç",
+"kind": "word",
+"dur": 0.37,
+"src": "mms",
+"seed": 53022,
+"note": "",
+"score": 0.346
+},
+{
+"key": "ýaşa",
+"kind": "word",
+"dur": 0.76,
+"src": "mms",
+"seed": 913,
+"note": "",
+"score": 0.219
+},
+{
+"key": "gör",
+"kind": "word",
+"dur": 0.78,
+"src": "mms",
+"seed": 33111,
+"note": "retried",
+"score": 0.131
+},
+{
+"key": "git",
+"kind": "word",
+"dur": 0.64,
+"src": "mms",
+"seed": 86990,
+"note": "",
+"score": -0.03
+},
+{
+"key": "diňlemek",
+"kind": "word",
+"dur": 0.73,
+"src": "mms",
+"seed": 78290,
+"note": "",
+"score": 0.444
+},
+{
+"key": "hala",
+"kind": "word",
+"dur": 0.69,
+"src": "mms",
+"seed": 37721,
+"note": "",
+"score": -0.03
+},
+{
+"key": "gelýärin",
+"kind": "word",
+"dur": 0.81,
+"src": "mms",
+"seed": 93923,
+"note": "",
+"score": 0.383
+},
+{
+"key": "gidýärin",
+"kind": "word",
+"dur": 1.0,
+"src": "mms",
+"seed": 34477,
+"note": "",
+"score": 0.227
+},
+{
+"key": "iýýärin",
+"kind": "word",
+"dur": 0.8,
+"src": "mms",
+"seed": 45583,
+"note": "",
+"score": 0.119
+},
+{
+"key": "iňlisçe",
+"kind": "word",
+"dur": 1.32,
+"src": "mms",
+"seed": 49167,
+"note": "",
+"score": 0.178
+},
+{
+"key": "türkmen dili",
+"kind": "phrase",
+"dur": 1.36,
+"src": "mms",
+"seed": 72772,
+"note": "",
+"score": 0.18
+},
+{
+"key": "ýar",
+"kind": "word",
+"dur": 0.57,
+"src": "mms",
+"seed": 39360,
+"note": "",
+"score": 0.143
+},
+{
+"key": "ýär",
+"kind": "word",
+"dur": 0.58,
+"src": "mms",
+"seed": 61380,
+"note": "",
+"score": 0.281
+},
+{
+"key": "okaýarsyň",
+"kind": "word",
+"dur": 1.16,
+"src": "mms",
+"seed": 66136,
+"note": "",
+"score": 0.046
+},
+{
+"key": "gelýärsiň",
+"kind": "word",
+"dur": 1.07,
+"src": "mms",
+"seed": 41724,
+"note": "",
+"score": 0.169
+},
+{
+"key": "okaýar",
+"kind": "word",
+"dur": 0.91,
+"src": "mms",
+"seed": 37042,
+"note": "",
+"score": 0.035
+},
+{
+"key": "gelýär",
+"kind": "word",
+"dur": 0.9,
+"src": "mms",
+"seed": 39077,
+"note": "",
+"score": -0.087
+},
+{
+"key": "okaýarys",
+"kind": "word",
+"dur": 1.15,
+"src": "mms",
+"seed": 46624,
+"note": "",
+"score": 0.047
+},
+{
+"key": "gelýäris",
+"kind": "word",
+"dur": 0.92,
+"src": "mms",
+"seed": 63758,
+"note": "",
+"score": -0.11
+},
+{
+"key": "okaýarsyňyz",
+"kind": "word",
+"dur": 1.3,
+"src": "mms",
+"seed": 3591,
+"note": "",
+"score": 0.037
+},
+{
+"key": "gelýärsiňiz",
+"kind": "word",
+"dur": 1.34,
+"src": "mms",
+"seed": 74003,
+"note": "",
+"score": 0.112
+},
+{
+"key": "okaýarlar",
+"kind": "word",
+"dur": 1.17,
+"src": "mms",
+"seed": 59830,
+"note": "",
+"score": 0.153
+},
+{
+"key": "gelýärler",
+"kind": "word",
+"dur": 1.06,
+"src": "mms",
+"seed": 50464,
+"note": "",
+"score": 0.0
+},
+{
+"key": "gelýärsiňmi",
+"kind": "word",
+"dur": 1.43,
+"src": "mms",
+"seed": 11525,
+"note": "",
+"score": 0.183
+},
+{
+"key": "yn",
+"kind": "word",
+"dur": 0.4,
+"src": "mms",
+"seed": 59803,
+"note": "",
+"score": 0.086
+},
+{
+"key": "siň",
+"kind": "word",
+"dur": 0.91,
+"src": "mms",
+"seed": 24688,
+"note": "",
+"score": 0.049
+},
+{
+"key": "is",
+"kind": "word",
+"dur": 0.46,
+"src": "mms",
+"seed": 43336,
+"note": "",
+"score": -0.146
+},
+{
+"key": "içýäris",
+"kind": "word",
+"dur": 1.15,
+"src": "mms",
+"seed": 8181,
+"note": "",
+"score": 0.037
+},
+{
+"key": "in",
+"kind": "word",
+"dur": 0.4,
+"src": "mms",
+"seed": 78249,
+"note": "",
+"score": -0.001
+},
+{
+"key": "işleýärler",
+"kind": "word",
+"dur": 1.85,
+"src": "mms",
+"seed": 48768,
+"note": "",
+"score": -0.002
+},
+{
+"key": "men mekdebe gidýärin",
+"kind": "phrase",
+"dur": 1.62,
+"src": "mms",
+"seed": 60940,
+"note": "",
+"score": 0.316
+},
+{
+"key": "siňiz",
+"kind": "word",
+"dur": 1.19,
+"src": "mms",
+"seed": 98836,
+"note": "",
+"score": 0.043
+},
+{
+"key": "siz iňlisçe gürleýärsiňizmi",
+"kind": "phrase",
+"dur": 2.1,
+"src": "mms",
+"seed": 37482,
+"note": "",
+"score": 0.447
+},
+{
+"key": "men türkmen dilini öwrenýärin",
+"kind": "phrase",
+"dur": 2.16,
+"src": "mms",
+"seed": 59118,
+"note": "",
+"score": 0.389
+},
+{
+"key": "geldim",
+"kind": "word",
+"dur": 0.56,
+"src": "mms",
+"seed": 25901,
+"note": "",
+"score": 0.281
+},
+{
+"key": "okadym",
+"kind": "word",
+"dur": 0.85,
+"src": "mms",
+"seed": 54760,
+"note": "",
+"score": 0.209
+},
+{
+"key": "düşündim",
+"kind": "word",
+"dur": 0.79,
+"src": "mms",
+"seed": 13747,
+"note": "",
+"score": 0.105
+},
+{
+"key": "ýadadym",
+"kind": "word",
+"dur": 1.9,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 12"
+},
+{
+"key": "gördüm",
+"kind": "word",
+"dur": 0.65,
+"src": "mms",
+"seed": 19675,
+"note": "",
+"score": 0.287
+},
+{
+"key": "okadyň",
+"kind": "word",
+"dur": 0.92,
+"src": "mms",
+"seed": 96547,
+"note": "",
+"score": 0.063
+},
+{
+"key": "geldiň",
+"kind": "word",
+"dur": 0.73,
+"src": "mms",
+"seed": 68466,
+"note": "",
+"score": 0.368
+},
+{
+"key": "okady",
+"kind": "word",
+"dur": 0.9,
+"src": "mms",
+"seed": 27576,
+"note": "",
+"score": 0.142
+},
+{
+"key": "geldi",
+"kind": "word",
+"dur": 0.71,
+"src": "mms",
+"seed": 21456,
+"note": "",
+"score": 0.238
+},
+{
+"key": "okadyk",
+"kind": "word",
+"dur": 0.85,
+"src": "mms",
+"seed": 14907,
+"note": "",
+"score": 0.45
+},
+{
+"key": "geldik",
+"kind": "word",
+"dur": 0.57,
+"src": "mms",
+"seed": 65750,
+"note": "",
+"score": 0.306
+},
+{
+"key": "okadyňyz",
+"kind": "word",
+"dur": 1.14,
+"src": "mms",
+"seed": 27964,
+"note": "",
+"score": 0.077
+},
+{
+"key": "geldiňiz",
+"kind": "word",
+"dur": 1.81,
+"src": "mms",
+"seed": 10904,
+"note": "",
+"score": 0.028
+},
+{
+"key": "okadylar",
+"kind": "word",
+"dur": 1.01,
+"src": "mms",
+"seed": 53928,
+"note": "",
+"score": 0.111
+},
+{
+"key": "geldiler",
+"kind": "word",
+"dur": 0.88,
+"src": "mms",
+"seed": 76697,
+"note": "",
+"score": 0.164
+},
+{
+"key": "men hytaýdan geldim",
+"kind": "phrase",
+"dur": 1.29,
+"src": "mms",
+"seed": 82057,
+"note": "",
+"score": 0.445
+},
+{
+"key": "men ýadadym",
+"kind": "phrase",
+"dur": 2.69,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 12"
+},
+{
+"key": "di",
+"kind": "word",
+"dur": 0.58,
+"src": "mms",
+"seed": 37791,
+"note": "",
+"score": 0.319
+},
+{
+"key": "ýadamak",
+"kind": "word",
+"dur": 1.07,
+"src": "mms",
+"seed": 73328,
+"note": "",
+"score": 0.184
+},
+{
+"key": "dy",
+"kind": "word",
+"dur": 0.35,
+"src": "mms",
+"seed": 11413,
+"note": "",
+"score": 0.048
+},
+{
+"key": "düşünýärin",
+"kind": "word",
+"dur": 1.07,
+"src": "mms",
+"seed": 63643,
+"note": "",
+"score": 0.118
+},
+{
+"key": "gelmeýärin",
+"kind": "word",
+"dur": 1.04,
+"src": "mms",
+"seed": 2870,
+"note": "",
+"score": 0.202
+},
+{
+"key": "düşünemok",
+"kind": "word",
+"dur": 1.83,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 12"
+},
+{
+"key": "bilemok",
+"kind": "word",
+"dur": 1.33,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 12"
+},
+{
+"key": "gaýtalaň",
+"kind": "word",
+"dur": 1.32,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 12"
+},
+{
+"key": "haýal aýdyň",
+"kind": "phrase",
+"dur": 2.42,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 12"
+},
+{
+"key": "oturyň",
+"kind": "word",
+"dur": 0.73,
+"src": "mms",
+"seed": 54283,
+"note": "",
+"score": -0.035
+},
+{
+"key": "okamaýaryn",
+"kind": "word",
+"dur": 1.02,
+"src": "mms",
+"seed": 46513,
+"note": "",
+"score": 0.075
+},
+{
+"key": "okamadym",
+"kind": "word",
+"dur": 1.02,
+"src": "mms",
+"seed": 59109,
+"note": "",
+"score": 0.229
+},
+{
+"key": "gelmedim",
+"kind": "word",
+"dur": 0.71,
+"src": "mms",
+"seed": 31687,
+"note": "",
+"score": -0.004
+},
+{
+"key": "düşünmeýärin",
+"kind": "word",
+"dur": 1.17,
+"src": "mms",
+"seed": 59540,
+"note": "",
+"score": 0.113
+},
+{
+"key": "bilmeýärin",
+"kind": "word",
+"dur": 0.98,
+"src": "mms",
+"seed": 75942,
+"note": "",
+"score": -0.029
+},
+{
+"key": "geliň",
+"kind": "word",
+"dur": 0.59,
+"src": "mms",
+"seed": 88453,
+"note": "",
+"score": 0.371
+},
+{
+"key": "otur",
+"kind": "word",
+"dur": 0.94,
+"src": "mms",
+"seed": 42169,
+"note": "",
+"score": 0.211
+},
+{
+"key": "me",
+"kind": "word",
+"dur": 0.34,
+"src": "mms",
+"seed": 27203,
+"note": "",
+"score": 0.2
+},
+{
+"key": "içmeýärin",
+"kind": "word",
+"dur": 1.11,
+"src": "mms",
+"seed": 84525,
+"note": "retried",
+"score": 0.04
+},
+{
+"key": "dim",
+"kind": "word",
+"dur": 0.64,
+"src": "mms",
+"seed": 55520,
+"note": "",
+"score": 0.343
+},
+{
+"key": "görmedim",
+"kind": "word",
+"dur": 0.67,
+"src": "mms",
+"seed": 71862,
+"note": "",
+"score": 0.364
+},
+{
+"key": "gaýtala",
+"kind": "word",
+"dur": 1.06,
+"src": "mms",
+"seed": 10147,
+"note": "",
+"score": 0.454
+},
+{
+"key": "haýal",
+"kind": "word",
+"dur": 1.1,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 12"
+},
+{
+"key": "tiz",
+"kind": "word",
+"dur": 0.81,
+"src": "mms",
+"seed": 30339,
+"note": "",
+"score": 0.147
+},
+{
+"key": "gelme",
+"kind": "word",
+"dur": 0.89,
+"src": "mms",
+"seed": 33405,
+"note": "retried",
+"score": 0.313
+},
+{
+"key": "gelmeýär",
+"kind": "word",
+"dur": 1.12,
+"src": "mms",
+"seed": 54484,
+"note": "",
+"score": -0.061
+},
+{
+"key": "gündelik gürrüň",
+"kind": "phrase",
+"dur": 1.33,
+"src": "mms",
+"seed": 53094,
+"note": "",
+"score": 0.436
+},
+{
+"key": "sag boluň",
+"kind": "phrase",
+"dur": 0.97,
+"src": "mms",
+"seed": 60168,
+"note": "",
+"score": 0.145
+},
+{
+"key": "köp sag boluň",
+"kind": "phrase",
+"dur": 1.06,
+"src": "mms",
+"seed": 809,
+"note": "",
+"score": 0.224
+},
+{
+"key": "ertiriňiz haýyrly bolsun",
+"kind": "phrase",
+"dur": 2.07,
+"src": "mms",
+"seed": 69409,
+"note": "",
+"score": -0.061
+},
+{
+"key": "agşamyňyz haýyrly bolsun",
+"kind": "phrase",
+"dur": 1.73,
+"src": "mms",
+"seed": 50551,
+"note": "",
+"score": 0.055
+},
+{
+"key": "ertir duşuşarys",
+"kind": "phrase",
+"dur": 1.88,
+"src": "mms",
+"seed": 49031,
+"note": "",
+"score": 0.123
+},
+{
+"key": "gowy sag boluň siz nähili",
+"kind": "phrase",
+"dur": 2.58,
+"src": "mms",
+"seed": 49263,
+"note": "",
+"score": 0.337
+},
+{
+"key": "sag bol",
+"kind": "phrase",
+"dur": 0.7,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "salam ýagdaýlaryňyz nähili",
+"kind": "phrase",
+"dur": 3.1,
+"src": "mms",
+"seed": 65441,
+"note": "",
+"score": -0.006
+},
+{
+"key": "ertir",
+"kind": "word",
+"dur": 0.71,
+"src": "mms",
+"seed": 40651,
+"note": "",
+"score": 0.498
+},
+{
+"key": "köp",
+"kind": "word",
+"dur": 0.5,
+"src": "mms",
+"seed": 90916,
+"note": "retried",
+"score": 0.344
+},
+{
+"key": "boluň",
+"kind": "word",
+"dur": 0.78,
+"src": "mms",
+"seed": 80404,
+"note": "",
+"score": 0.199
+},
+{
+"key": "tanyşanyma şat",
+"kind": "phrase",
+"dur": 1.54,
+"src": "mms",
+"seed": 85219,
+"note": "",
+"score": -0.079
+},
+{
+"key": "men hem şat",
+"kind": "phrase",
+"dur": 1.39,
+"src": "mms",
+"seed": 54189,
+"note": "",
+"score": -0.026
+},
+{
+"key": "salam meniň adym aýna adyňyz näme",
+"kind": "phrase",
+"dur": 4.11,
+"src": "mms",
+"seed": 48411,
+"note": "",
+"score": -0.05
+},
+{
+"key": "salam meniň adym",
+"kind": "phrase",
+"dur": 2.55,
+"src": "mms",
+"seed": 99105,
+"note": "",
+"score": -0.007
+},
+{
+"key": "men hytaýdan men syýahatçy",
+"kind": "phrase",
+"dur": 3.12,
+"src": "mms",
+"seed": 23084,
+"note": "",
+"score": 0.049
+},
+{
+"key": "men pekinde ýaşaýaryn",
+"kind": "phrase",
+"dur": 2.6,
+"src": "mms",
+"seed": 23146,
+"note": "",
+"score": 0.141
+},
+{
+"key": "şat",
+"kind": "word",
+"dur": 0.68,
+"src": "mms",
+"seed": 64822,
+"note": "",
+"score": 0.214
+},
+{
+"key": "hem",
+"kind": "word",
+"dur": 0.42,
+"src": "mms",
+"seed": 90889,
+"note": "",
+"score": 0.185
+},
+{
+"key": "ýigrimi",
+"kind": "word",
+"dur": 1.05,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 6-8"
+},
+{
+"key": "otuz",
+"kind": "word",
+"dur": 0.9,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "kyrk",
+"kind": "word",
+"dur": 0.69,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "elli",
+"kind": "word",
+"dur": 0.94,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "altmyş",
+"kind": "word",
+"dur": 1.2,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "ýetmiş",
+"kind": "word",
+"dur": 1.19,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "segsen",
+"kind": "word",
+"dur": 1.67,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "togsan",
+"kind": "word",
+"dur": 1.24,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "ýüz",
+"kind": "word",
+"dur": 0.78,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "müň",
+"kind": "word",
+"dur": 1.59,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "on bir",
+"kind": "phrase",
+"dur": 1.12,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 3-5"
+},
+{
+"key": "ýigrimi bäş",
+"kind": "phrase",
+"dur": 0.96,
+"src": "mms",
+"seed": 91255,
+"note": "",
+"score": 0.349
+},
+{
+"key": "ýüz elli",
+"kind": "phrase",
+"dur": 0.78,
+"src": "mms",
+"seed": 71696,
+"note": "",
+"score": 0.413
+},
+{
+"key": "iki ýüz",
+"kind": "phrase",
+"dur": 1.22,
+"src": "mms",
+"seed": 60429,
+"note": "",
+"score": -0.006
+},
+{
+"key": "üç müň",
+"kind": "phrase",
+"dur": 0.56,
+"src": "mms",
+"seed": 84984,
+"note": "",
+"score": 0.484
+},
+{
+"key": "on bäş",
+"kind": "phrase",
+"dur": 0.66,
+"src": "mms",
+"seed": 55962,
+"note": "",
+"score": 0.251
+},
+{
+"key": "näçeden",
+"kind": "word",
+"dur": 1.13,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 9-11"
+},
+{
+"key": "gymmat",
+"kind": "word",
+"dur": 0.89,
+"src": "mms",
+"seed": 2905,
+"note": "",
+"score": 0.132
+},
+{
+"key": "arzan",
+"kind": "word",
+"dur": 0.9,
+"src": "mms",
+"seed": 51122,
+"note": "",
+"score": 0.101
+},
+{
+"key": "bolýar",
+"kind": "word",
+"dur": 0.9,
+"src": "mms",
+"seed": 54125,
+"note": "",
+"score": -0.042
+},
+{
+"key": "beriň",
+"kind": "word",
+"dur": 0.65,
+"src": "mms",
+"seed": 7983,
+"note": "",
+"score": 0.142
+},
+{
+"key": "satyjy",
+"kind": "word",
+"dur": 0.8,
+"src": "mms",
+"seed": 80634,
+"note": "",
+"score": 0.201
+},
+{
+"key": "salam size näme gerek",
+"kind": "phrase",
+"dur": 2.31,
+"src": "mms",
+"seed": 43797,
+"note": "",
+"score": 0.122
+},
+{
+"key": "salam bu gawun näçe",
+"kind": "phrase",
+"dur": 2.07,
+"src": "mms",
+"seed": 37567,
+"note": "",
+"score": 0.167
+},
+{
+"key": "on manat",
+"kind": "phrase",
+"dur": 1.73,
+"src": "mms",
+"seed": 59736,
+"note": "",
+"score": -0.012
+},
+{
+"key": "bolýar sekiz manat",
+"kind": "phrase",
+"dur": 2.32,
+"src": "mms",
+"seed": 25581,
+"note": "",
+"score": -0.048
+},
+{
+"key": "bolýar iki gawun beriň",
+"kind": "phrase",
+"dur": 2.29,
+"src": "mms",
+"seed": 16305,
+"note": "",
+"score": 0.277
+},
+{
+"key": "alyň",
+"kind": "word",
+"dur": 0.7,
+"src": "mms",
+"seed": 348,
+"note": "",
+"score": 0.041
+},
+{
+"key": "iki gawun",
+"kind": "phrase",
+"dur": 0.88,
+"src": "mms",
+"seed": 42997,
+"note": "",
+"score": 0.414
+},
+{
+"key": "iki gawun beriň",
+"kind": "phrase",
+"dur": 1.26,
+"src": "mms",
+"seed": 61425,
+"note": "",
+"score": 0.407
+},
+{
+"key": "bu gawun näçe",
+"kind": "phrase",
+"dur": 1.49,
+"src": "mms",
+"seed": 47365,
+"note": "",
+"score": 0.182
+},
+{
+"key": "bolýar sag boluň",
+"kind": "phrase",
+"dur": 1.78,
+"src": "mms",
+"seed": 97970,
+"note": "",
+"score": 0.057
+},
+{
+"key": "işdäňiz açyk bolsun",
+"kind": "phrase",
+"dur": 2.48,
+"src": "mms",
+"seed": 75289,
+"note": "",
+"score": 0.3
+},
+{
+"key": "tagamly",
+"kind": "word",
+"dur": 1.52,
+"src": "mms",
+"seed": 92650,
+"note": "",
+"score": 0.062
+},
+{
+"key": "gök çaý",
+"kind": "phrase",
+"dur": 1.08,
+"src": "mms",
+"seed": 54526,
+"note": "",
+"score": 0.361
+},
+{
+"key": "gara çaý",
+"kind": "phrase",
+"dur": 1.78,
+"src": "mms",
+"seed": 1720,
+"note": "",
+"score": 0.237
+},
+{
+"key": "dograma",
+"kind": "word",
+"dur": 0.8,
+"src": "mms",
+"seed": 41927,
+"note": "",
+"score": 0.197
+},
+{
+"key": "çal",
+"kind": "word",
+"dur": 0.68,
+"src": "mms",
+"seed": 95334,
+"note": "",
+"score": 0.029
+},
+{
+"key": "saçak",
+"kind": "word",
+"dur": 1.26,
+"src": "mms",
+"seed": 33700,
+"note": "",
+"score": 0.291
+},
+{
+"key": "maňa gök çaý beriň",
+"kind": "phrase",
+"dur": 1.79,
+"src": "mms",
+"seed": 74463,
+"note": "",
+"score": 0.253
+},
+{
+"key": "men et iýmeýärin",
+"kind": "phrase",
+"dur": 1.63,
+"src": "mms",
+"seed": 65080,
+"note": "",
+"score": 0.238
+},
+{
+"key": "iý",
+"kind": "word",
+"dur": 0.58,
+"src": "mms",
+"seed": 42569,
+"note": "",
+"score": 0.096
+},
+{
+"key": "çep",
+"kind": "word",
+"dur": 0.53,
+"src": "mms",
+"seed": 76679,
+"note": "",
+"score": 0.209
+},
+{
+"key": "göni",
+"kind": "word",
+"dur": 0.62,
+"src": "mms",
+"seed": 44215,
+"note": "",
+"score": 0.071
+},
+{
+"key": "sagda",
+"kind": "word",
+"dur": 1.11,
+"src": "mms",
+"seed": 11506,
+"note": "",
+"score": 0.146
+},
+{
+"key": "çepde",
+"kind": "word",
+"dur": 1.38,
+"src": "mms",
+"seed": 52666,
+"note": "",
+"score": 0.114
+},
+{
+"key": "myhmanhana",
+"kind": "word",
+"dur": 1.57,
+"src": "mms",
+"seed": 20110,
+"note": "",
+"score": 0.161
+},
+{
+"key": "howa menzili",
+"kind": "phrase",
+"dur": 1.44,
+"src": "mms",
+"seed": 27911,
+"note": "",
+"score": 0.091
+},
+{
+"key": "men düşünemok",
+"kind": "phrase",
+"dur": 2.59,
+"src": "native",
+"from": "Peace Corps Turkmen Lessons 12"
+},
+{
+"key": "kömek ediň",
+"kind": "phrase",
+"dur": 0.69,
+"src": "mms",
+"seed": 61750,
+"note": "",
+"score": 0.422
+},
+{
+"key": "sag sagda",
+"kind": "phrase",
+"dur": 1.42,
+"src": "mms",
+"seed": 46607,
+"note": "",
+"score": 0.28
+},
+{
+"key": "çep çepde",
+"kind": "phrase",
+"dur": 1.36,
+"src": "mms",
+"seed": 19727,
+"note": "",
+"score": 0.122
+},
+{
+"key": "bagyşlaň bazar nirede",
+"kind": "phrase",
+"dur": 2.24,
+"src": "mms",
+"seed": 14013,
+"note": "",
+"score": -0.028
+},
+{
+"key": "bagyşlaň hajathana nirede",
+"kind": "phrase",
+"dur": 3.44,
+"src": "mms",
+"seed": 82537,
+"note": "",
+"score": 0.118
+},
+{
+"key": "muzeý sagda",
+"kind": "phrase",
+"dur": 1.13,
+"src": "mms",
+"seed": 70317,
+"note": "",
+"score": 0.285
+},
+{
+"key": "kömek",
+"kind": "word",
+"dur": 0.68,
+"src": "mms",
+"seed": 70554,
+"note": "retried",
+"score": 0.309
+},
+{
+"key": "dogry",
+"kind": "word",
+"dur": 0.74,
+"src": "mms",
+"seed": 42397,
+"note": "",
+"score": 0.233
+},
+{
+"key": "örän gowy",
+"kind": "phrase",
+"dur": 0.99,
+"src": "mms",
+"seed": 30498,
+"note": "retried",
+"score": 0.15
+},
+{
+"key": "berekella",
+"kind": "word",
+"dur": 0.86,
+"src": "mms",
+"seed": 76076,
+"note": "",
+"score": 0.128
+},
+{
+"key": "okan ozar okamadyk tozar",
+"kind": "phrase",
+"dur": 2.39,
+"src": "mms",
+"seed": 99612,
+"note": "",
+"score": 0.16
+}
 ]

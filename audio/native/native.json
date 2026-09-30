@@ -1,0 +1,1454 @@
+{
+ "a": {
+  "file": "letter_a.wav",
+  "kind": "letter",
+  "name": "a",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 5.87,
+  "end": 6.53
+ },
+ "b": {
+  "file": "letter_b.wav",
+  "kind": "letter",
+  "name": "be",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 6.975,
+  "end": 7.69
+ },
+ "ç": {
+  "file": "letter_ç.wav",
+  "kind": "letter",
+  "name": "çe",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 8.18,
+  "end": 8.92
+ },
+ "d": {
+  "file": "letter_d.wav",
+  "kind": "letter",
+  "name": "de",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 9.44,
+  "end": 10.13
+ },
+ "e": {
+  "file": "letter_e.wav",
+  "kind": "letter",
+  "name": "e",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 10.76,
+  "end": 11.47
+ },
+ "ä": {
+  "file": "letter_ä.wav",
+  "kind": "letter",
+  "name": "ä",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 12.145,
+  "end": 12.805
+ },
+ "f": {
+  "file": "letter_f.wav",
+  "kind": "letter",
+  "name": "ef",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 13.585,
+  "end": 14.15
+ },
+ "g": {
+  "file": "letter_g.wav",
+  "kind": "letter",
+  "name": "ge",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 14.92,
+  "end": 15.59
+ },
+ "h": {
+  "file": "letter_h.wav",
+  "kind": "letter",
+  "name": "he",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 16.355,
+  "end": 17.03
+ },
+ "i": {
+  "file": "letter_i.wav",
+  "kind": "letter",
+  "name": "i",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 17.76,
+  "end": 18.41
+ },
+ "j": {
+  "file": "letter_j.wav",
+  "kind": "letter",
+  "name": "je",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 19.255,
+  "end": 19.925
+ },
+ "ž": {
+  "file": "letter_ž.wav",
+  "kind": "letter",
+  "name": "že",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 20.76,
+  "end": 21.495
+ },
+ "k": {
+  "file": "letter_k.wav",
+  "kind": "letter",
+  "name": "ke",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 22.335,
+  "end": 23.08
+ },
+ "l": {
+  "file": "letter_l.wav",
+  "kind": "letter",
+  "name": "el",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 23.9,
+  "end": 24.565
+ },
+ "m": {
+  "file": "letter_m.wav",
+  "kind": "letter",
+  "name": "em",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 25.38,
+  "end": 26.02
+ },
+ "n": {
+  "file": "letter_n.wav",
+  "kind": "letter",
+  "name": "en",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 26.92,
+  "end": 27.665
+ },
+ "ň": {
+  "file": "letter_ň.wav",
+  "kind": "letter",
+  "name": "eň",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 28.56,
+  "end": 29.275
+ },
+ "o": {
+  "file": "letter_o.wav",
+  "kind": "letter",
+  "name": "o",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 30.055,
+  "end": 30.73
+ },
+ "ö": {
+  "file": "letter_ö.wav",
+  "kind": "letter",
+  "name": "ö",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 31.435,
+  "end": 32.175
+ },
+ "p": {
+  "file": "letter_p.wav",
+  "kind": "letter",
+  "name": "pe",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 33.07,
+  "end": 33.73
+ },
+ "r": {
+  "file": "letter_r.wav",
+  "kind": "letter",
+  "name": "er",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 34.6,
+  "end": 35.25
+ },
+ "s": {
+  "file": "letter_s.wav",
+  "kind": "letter",
+  "name": "es",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 36.21,
+  "end": 36.855
+ },
+ "ş": {
+  "file": "letter_ş.wav",
+  "kind": "letter",
+  "name": "şe",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 37.665,
+  "end": 38.485
+ },
+ "t": {
+  "file": "letter_t.wav",
+  "kind": "letter",
+  "name": "te",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 39.38,
+  "end": 40.06
+ },
+ "u": {
+  "file": "letter_u.wav",
+  "kind": "letter",
+  "name": "u",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 41.0,
+  "end": 41.66
+ },
+ "ü": {
+  "file": "letter_ü.wav",
+  "kind": "letter",
+  "name": "ü",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 42.53,
+  "end": 43.205
+ },
+ "w": {
+  "file": "letter_w.wav",
+  "kind": "letter",
+  "name": "we",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 44.06,
+  "end": 44.605
+ },
+ "y": {
+  "file": "letter_y.wav",
+  "kind": "letter",
+  "name": "y",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 45.645,
+  "end": 46.295
+ },
+ "ý": {
+  "file": "letter_ý.wav",
+  "kind": "letter",
+  "name": "ýe",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 47.21,
+  "end": 47.78
+ },
+ "z": {
+  "file": "letter_z.wav",
+  "kind": "letter",
+  "name": "ze",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 48.67,
+  "end": 49.405
+ },
+ "kim": {
+  "file": "kim.wav",
+  "kind": "word",
+  "text": "Kim",
+  "source": "Peace Corps Turkmen Lessons 12",
+  "start": 4.87,
+  "end": 5.52,
+  "type": "single",
+  "gop": 0.472
+ },
+ "näme": {
+  "file": "näme.wav",
+  "kind": "word",
+  "text": "Näme",
+  "source": "Peace Corps Turkmen Lessons 12",
+  "start": 7.81,
+  "end": 8.81,
+  "type": "single",
+  "gop": 0.036
+ },
+ "haçan": {
+  "file": "haçan.wav",
+  "kind": "word",
+  "text": "Haçan",
+  "source": "Peace Corps Turkmen Lessons 12",
+  "start": 11.0,
+  "end": 11.83,
+  "type": "single",
+  "gop": 0.268
+ },
+ "nirede": {
+  "file": "nirede.wav",
+  "kind": "word",
+  "text": "Nirede",
+  "source": "Peace Corps Turkmen Lessons 12",
+  "start": 14.125,
+  "end": 15.05,
+  "type": "single",
+  "gop": 0.074
+ },
+ "näme üçin": {
+  "file": "näme_üçin.wav",
+  "kind": "phrase",
+  "text": "Näme üçin",
+  "source": "Peace Corps Turkmen Lessons 12",
+  "start": 17.31,
+  "end": 18.49,
+  "type": "single",
+  "gop": 0.463
+ },
+ "näçe": {
+  "file": "näçe.wav",
+  "kind": "word",
+  "text": "Näçe",
+  "source": "Peace Corps Turkmen Lessons 12",
+  "start": 20.635,
+  "end": 21.815,
+  "type": "single",
+  "gop": 0.163
+ },
+ "hawa": {
+  "file": "hawa.wav",
+  "kind": "word",
+  "text": "Hawa",
+  "source": "Peace Corps Turkmen Lessons 12",
+  "start": 26.2,
+  "end": 27.785,
+  "type": "absorb",
+  "gop": 0.028
+ },
+ "ýok": {
+  "file": "ýok.wav",
+  "kind": "word",
+  "text": "Ýok",
+  "source": "Peace Corps Turkmen Lessons 12",
+  "start": 29.98,
+  "end": 31.06,
+  "type": "single",
+  "gop": 0.083
+ },
+ "bagyşlaň": {
+  "file": "bagyşlaň.wav",
+  "kind": "word",
+  "text": "Bagyşlaň",
+  "source": "Peace Corps Turkmen Lessons 12",
+  "start": 33.34,
+  "end": 34.54,
+  "type": "single",
+  "gop": -0.031
+ },
+ "şeýlemi": {
+  "file": "şeýlemi.wav",
+  "kind": "word",
+  "text": "Şeýlemi",
+  "source": "Peace Corps Turkmen Lessons 12",
+  "start": 36.99,
+  "end": 38.485,
+  "type": "single",
+  "gop": 0.121
+ },
+ "maňa gerek": {
+  "file": "maňa_gerek.wav",
+  "kind": "phrase",
+  "text": "Maňa gerek",
+  "source": "Peace Corps Turkmen Lessons 12",
+  "start": 44.175,
+  "end": 46.67,
+  "type": "absorb",
+  "gop": 0.088
+ },
+ "men ýadadym": {
+  "file": "men_ýadadym.wav",
+  "kind": "phrase",
+  "text": "Men ýadadym",
+  "source": "Peace Corps Turkmen Lessons 12",
+  "start": 49.185,
+  "end": 51.87,
+  "type": "absorb",
+  "gop": 0.106
+ },
+ "men düşünemok": {
+  "file": "men_düşünemok.wav",
+  "kind": "phrase",
+  "text": "Men düşünemok",
+  "source": "Peace Corps Turkmen Lessons 12",
+  "start": 54.465,
+  "end": 57.055,
+  "type": "absorb",
+  "gop": 0.164
+ },
+ "men türkmençe gowy bilemok": {
+  "file": "men_türkmençe_gowy_bilemok.wav",
+  "kind": "phrase",
+  "text": "Men Türkmençe gowy bilemok",
+  "source": "Peace Corps Turkmen Lessons 12",
+  "start": 60.94,
+  "end": 66.345,
+  "type": "absorb",
+  "gop": 0.165
+ },
+ "gaýtalaň": {
+  "file": "gaýtalaň.wav",
+  "kind": "word",
+  "text": "Gaýtalaň",
+  "source": "Peace Corps Turkmen Lessons 12",
+  "start": 69.91,
+  "end": 71.23,
+  "type": "single",
+  "gop": 0.034
+ },
+ "haýal aýdyň": {
+  "file": "haýal_aýdyň.wav",
+  "kind": "phrase",
+  "text": "Haýal aýdyň",
+  "source": "Peace Corps Turkmen Lessons 12",
+  "start": 75.085,
+  "end": 77.51,
+  "type": "absorb",
+  "gop": 0.118
+ },
+ "bu näme": {
+  "file": "bu_näme.wav",
+  "kind": "phrase",
+  "text": "Bu näme",
+  "source": "Peace Corps Turkmen Lessons 12",
+  "start": 79.835,
+  "end": 81.7,
+  "type": "single",
+  "gop": 0.184
+ },
+ "bu türkmençe näme": {
+  "file": "bu_türkmençe_näme.wav",
+  "kind": "phrase",
+  "text": "Bu türkmençe näme",
+  "source": "Peace Corps Turkmen Lessons 12",
+  "start": 85.185,
+  "end": 88.395,
+  "type": "absorb",
+  "gop": 0.071
+ },
+ "bar": {
+  "file": "bar.wav",
+  "kind": "word",
+  "text": "Bar",
+  "source": "Peace Corps Turkmen Lessons 12",
+  "start": 91.555,
+  "end": 92.46,
+  "type": "single",
+  "gop": 0.032
+ },
+ "salam": {
+  "file": "salam.wav",
+  "kind": "word",
+  "text": "Salam",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 60.98,
+  "end": 61.685,
+  "type": "single",
+  "gop": -0.066
+ },
+ "nähili": {
+  "file": "nähili.wav",
+  "kind": "word",
+  "text": "Nähili",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 63.86,
+  "end": 64.94,
+  "type": "single",
+  "gop": 0.087
+ },
+ "erbet": {
+  "file": "erbet.wav",
+  "kind": "word",
+  "text": "Erbet",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 70.115,
+  "end": 70.86,
+  "type": "single",
+  "gop": 0.053
+ },
+ "sag bol": {
+  "file": "sag_bol.wav",
+  "kind": "phrase",
+  "text": "Sag bol",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 72.915,
+  "end": 73.61,
+  "type": "single",
+  "gop": 0.085
+ },
+ "nul": {
+  "file": "nul.wav",
+  "kind": "word",
+  "text": "nul",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 77.895,
+  "end": 78.72,
+  "type": "single",
+  "gop": 0.118
+ },
+ "bir": {
+  "file": "bir.wav",
+  "kind": "word",
+  "text": "bir",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 80.58,
+  "end": 81.575,
+  "type": "single",
+  "gop": 0.053
+ },
+ "iki": {
+  "file": "iki.wav",
+  "kind": "word",
+  "text": "iki",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 82.58,
+  "end": 83.695,
+  "type": "single",
+  "gop": 0.059
+ },
+ "üç": {
+  "file": "üç.wav",
+  "kind": "word",
+  "text": "üç",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 85.305,
+  "end": 85.94,
+  "type": "single",
+  "gop": 0.261
+ },
+ "dört": {
+  "file": "dört.wav",
+  "kind": "word",
+  "text": "dört",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 87.28,
+  "end": 88.195,
+  "type": "single",
+  "gop": 0.201
+ },
+ "bäş": {
+  "file": "bäş.wav",
+  "kind": "word",
+  "text": "bäş",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 89.495,
+  "end": 90.385,
+  "type": "single",
+  "gop": 0.028
+ },
+ "alty": {
+  "file": "alty.wav",
+  "kind": "word",
+  "text": "alty",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 91.745,
+  "end": 92.82,
+  "type": "single",
+  "gop": 0.093
+ },
+ "ýedi": {
+  "file": "ýedi.wav",
+  "kind": "word",
+  "text": "ýedi",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 93.995,
+  "end": 95.165,
+  "type": "single",
+  "gop": 0.308
+ },
+ "sekiz": {
+  "file": "sekiz.wav",
+  "kind": "word",
+  "text": "sekiz",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 96.585,
+  "end": 98.12,
+  "type": "absorb",
+  "gop": 0.247
+ },
+ "dokuz": {
+  "file": "dokuz.wav",
+  "kind": "word",
+  "text": "dokuz",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 99.01,
+  "end": 100.195,
+  "type": "single",
+  "gop": 0.219
+ },
+ "on": {
+  "file": "on.wav",
+  "kind": "word",
+  "text": "on",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 101.69,
+  "end": 102.51,
+  "type": "single",
+  "gop": 0.175
+ },
+ "on bir": {
+  "file": "on_bir.wav",
+  "kind": "phrase",
+  "text": "on bir",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 104.32,
+  "end": 105.44,
+  "type": "single",
+  "gop": 0.208
+ },
+ "on dokuz": {
+  "file": "on_dokuz.wav",
+  "kind": "phrase",
+  "text": "on dokuz",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 107.715,
+  "end": 109.31,
+  "type": "single",
+  "gop": 0.209
+ },
+ "otuz": {
+  "file": "otuz.wav",
+  "kind": "word",
+  "text": "otuz",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 115.06,
+  "end": 115.96,
+  "type": "single",
+  "gop": 0.138
+ },
+ "kyrk": {
+  "file": "kyrk.wav",
+  "kind": "word",
+  "text": "kyrk",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 118.235,
+  "end": 118.925,
+  "type": "single",
+  "gop": 0.214
+ },
+ "elli": {
+  "file": "elli.wav",
+  "kind": "word",
+  "text": "elli",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 121.25,
+  "end": 122.195,
+  "type": "single",
+  "gop": 0.464
+ },
+ "altmyş": {
+  "file": "altmyş.wav",
+  "kind": "word",
+  "text": "altmyş",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 123.815,
+  "end": 125.01,
+  "type": "single",
+  "gop": 0.282
+ },
+ "ýetmiş": {
+  "file": "ýetmiş.wav",
+  "kind": "word",
+  "text": "ýetmiş",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 127.13,
+  "end": 128.32,
+  "type": "single",
+  "gop": 0.025
+ },
+ "segsen": {
+  "file": "segsen.wav",
+  "kind": "word",
+  "text": "segsen",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 130.24,
+  "end": 131.91,
+  "type": "merged",
+  "gop": 0.226
+ },
+ "togsan": {
+  "file": "togsan.wav",
+  "kind": "word",
+  "text": "togsan",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 133.62,
+  "end": 134.86,
+  "type": "single",
+  "gop": 0.269
+ },
+ "togsan bir": {
+  "file": "togsan_bir.wav",
+  "kind": "phrase",
+  "text": "togsan bir",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 137.045,
+  "end": 138.845,
+  "type": "absorb",
+  "gop": 0.241
+ },
+ "ýüz": {
+  "file": "ýüz.wav",
+  "kind": "word",
+  "text": "ýüz",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 141.12,
+  "end": 141.9,
+  "type": "single",
+  "gop": 0.323
+ },
+ "müň": {
+  "file": "müň.wav",
+  "kind": "word",
+  "text": "müň",
+  "source": "Peace Corps Turkmen Lessons 3-5",
+  "start": 143.885,
+  "end": 145.475,
+  "type": "absorb",
+  "gop": 0.165
+ },
+ "sen nähili": {
+  "file": "sen_nähili.wav",
+  "kind": "phrase",
+  "text": "Sen nähili",
+  "source": "Peace Corps Turkmen Lessons 6-8",
+  "start": 43.915,
+  "end": 45.115,
+  "type": "single",
+  "gop": 0.196
+ },
+ "ata": {
+  "file": "ata.wav",
+  "kind": "word",
+  "text": "Ata",
+  "source": "Peace Corps Turkmen Lessons 6-8",
+  "start": 53.83,
+  "end": 54.645,
+  "type": "single",
+  "gop": 0.124
+ },
+ "seň adyň näme": {
+  "file": "seň_adyň_näme.wav",
+  "kind": "phrase",
+  "text": "Seň adyň näme",
+  "source": "Peace Corps Turkmen Lessons 6-8",
+  "start": 55.04,
+  "end": 57.0,
+  "type": "single",
+  "gop": 0.118
+ },
+ "zöhre": {
+  "file": "zöhre.wav",
+  "kind": "word",
+  "text": "Zöhre",
+  "source": "Peace Corps Turkmen Lessons 6-8",
+  "start": 57.1,
+  "end": 58.715,
+  "type": "absorb",
+  "gop": 0.185
+ },
+ "men amerikadan": {
+  "file": "men_amerikadan.wav",
+  "kind": "phrase",
+  "text": "Men Amerikadan",
+  "source": "Peace Corps Turkmen Lessons 6-8",
+  "start": 60.7,
+  "end": 62.53,
+  "type": "single",
+  "gop": 0.035
+ },
+ "gowy": {
+  "file": "gowy.wav",
+  "kind": "word",
+  "text": "Gowy",
+  "source": "Peace Corps Turkmen Lessons 6-8",
+  "start": 62.625,
+  "end": 63.72,
+  "type": "single",
+  "gop": 0.133
+ },
+ "meň adym zöhre": {
+  "file": "meň_adym_zöhre.wav",
+  "kind": "phrase",
+  "text": "Meň adym Zöhre",
+  "source": "Peace Corps Turkmen Lessons 6-8",
+  "start": 69.565,
+  "end": 71.5,
+  "type": "absorb",
+  "gop": 0.279
+ },
+ "meň adym ata": {
+  "file": "meň_adym_ata.wav",
+  "kind": "phrase",
+  "text": "Meň adym Ata",
+  "source": "Peace Corps Turkmen Lessons 6-8",
+  "start": 74.09,
+  "end": 76.0,
+  "type": "single",
+  "gop": 0.077
+ },
+ "ata nähili": {
+  "file": "ata_nähili.wav",
+  "kind": "phrase",
+  "text": "Ata, nähili",
+  "source": "Peace Corps Turkmen Lessons 6-8",
+  "start": 76.725,
+  "end": 78.22,
+  "type": "single",
+  "gop": -0.021
+ },
+ "sen nireden": {
+  "file": "sen_nireden.wav",
+  "kind": "phrase",
+  "text": "Sen nireden",
+  "source": "Peace Corps Turkmen Lessons 6-8",
+  "start": 79.77,
+  "end": 81.66,
+  "type": "absorb",
+  "gop": 0.188
+ },
+ "sen näçe ýaşyňda": {
+  "file": "sen_näçe_ýaşyňda.wav",
+  "kind": "phrase",
+  "text": "Sen näçe ýaşyňda",
+  "source": "Peace Corps Turkmen Lessons 6-8",
+  "start": 84.34,
+  "end": 86.575,
+  "type": "single",
+  "gop": 0.09
+ },
+ "ýigrimi": {
+  "file": "ýigrimi.wav",
+  "kind": "word",
+  "text": "Ýigrimi",
+  "source": "Peace Corps Turkmen Lessons 6-8",
+  "start": 86.71,
+  "end": 87.765,
+  "type": "single",
+  "gop": 0.157
+ },
+ "seň maşgalaň barmy": {
+  "file": "seň_maşgalaň_barmy.wav",
+  "kind": "phrase",
+  "text": "Seň maşgalaň barmy",
+  "source": "Peace Corps Turkmen Lessons 6-8",
+  "start": 95.46,
+  "end": 98.185,
+  "type": "single",
+  "gop": 0.074
+ },
+ "bu meň maşgalam": {
+  "file": "bu_meň_maşgalam.wav",
+  "kind": "phrase",
+  "text": "Bu meň maşgalam",
+  "source": "Peace Corps Turkmen Lessons 6-8",
+  "start": 101.225,
+  "end": 103.975,
+  "type": "absorb",
+  "gop": 0.062
+ },
+ "meň kakam": {
+  "file": "meň_kakam.wav",
+  "kind": "phrase",
+  "text": "Meň kakam",
+  "source": "Peace Corps Turkmen Lessons 6-8",
+  "start": 106.735,
+  "end": 108.93,
+  "type": "absorb",
+  "gop": 0.08
+ },
+ "meň ejem": {
+  "file": "meň_ejem.wav",
+  "kind": "phrase",
+  "text": "Meň ejem",
+  "source": "Peace Corps Turkmen Lessons 6-8",
+  "start": 111.005,
+  "end": 113.145,
+  "type": "absorb",
+  "gop": 0.108
+ },
+ "meň doganym": {
+  "file": "meň_doganym.wav",
+  "kind": "phrase",
+  "text": "Meň doganym",
+  "source": "Peace Corps Turkmen Lessons 6-8",
+  "start": 115.62,
+  "end": 117.75,
+  "type": "absorb",
+  "gop": 0.139
+ },
+ "meň oglum": {
+  "file": "meň_oglum.wav",
+  "kind": "phrase",
+  "text": "Meň oglum",
+  "source": "Peace Corps Turkmen Lessons 6-8",
+  "start": 120.24,
+  "end": 122.17,
+  "type": "absorb",
+  "gop": 0.19
+ },
+ "meň gyzym": {
+  "file": "meň_gyzym.wav",
+  "kind": "phrase",
+  "text": "Meň gyzym",
+  "source": "Peace Corps Turkmen Lessons 6-8",
+  "start": 124.11,
+  "end": 126.205,
+  "type": "absorb",
+  "gop": 0.137
+ },
+ "çörek": {
+  "file": "çörek.wav",
+  "kind": "word",
+  "text": "Çörek",
+  "source": "Peace Corps Turkmen Lessons 9-11",
+  "start": 8.44,
+  "end": 9.185,
+  "type": "single",
+  "gop": 0.241
+ },
+ "et": {
+  "file": "et.wav",
+  "kind": "word",
+  "text": "Et",
+  "source": "Peace Corps Turkmen Lessons 9-11",
+  "start": 11.52,
+  "end": 12.125,
+  "type": "single",
+  "gop": 0.136
+ },
+ "kartoşka": {
+  "file": "kartoşka.wav",
+  "kind": "word",
+  "text": "Kartoşka",
+  "source": "Peace Corps Turkmen Lessons 9-11",
+  "start": 17.22,
+  "end": 18.365,
+  "type": "single",
+  "gop": 0.127
+ },
+ "balyk": {
+  "file": "balyk.wav",
+  "kind": "word",
+  "text": "Balyk",
+  "source": "Peace Corps Turkmen Lessons 9-11",
+  "start": 20.4,
+  "end": 21.14,
+  "type": "single",
+  "gop": 0.03
+ },
+ "süýt": {
+  "file": "süýt.wav",
+  "kind": "word",
+  "text": "Süýt",
+  "source": "Peace Corps Turkmen Lessons 9-11",
+  "start": 23.23,
+  "end": 24.065,
+  "type": "single",
+  "gop": 0.045
+ },
+ "nahar": {
+  "file": "nahar.wav",
+  "kind": "word",
+  "text": "Nahar",
+  "source": "Peace Corps Turkmen Lessons 9-11",
+  "start": 26.135,
+  "end": 26.9,
+  "type": "single",
+  "gop": 0.01
+ },
+ "men çaý halamok": {
+  "file": "men_çaý_halamok.wav",
+  "kind": "phrase",
+  "text": "Men çaý halamok",
+  "source": "Peace Corps Turkmen Lessons 9-11",
+  "start": 34.79,
+  "end": 36.89,
+  "type": "absorb",
+  "gop": 0.237
+ },
+ "bazarda": {
+  "file": "bazarda.wav",
+  "kind": "word",
+  "text": "Bazarda",
+  "source": "Peace Corps Turkmen Lessons 9-11",
+  "start": 49.665,
+  "end": 50.72,
+  "type": "single",
+  "gop": 0.209
+ },
+ "näçeden": {
+  "file": "näçeden.wav",
+  "kind": "word",
+  "text": "Näçeden",
+  "source": "Peace Corps Turkmen Lessons 9-11",
+  "start": 53.735,
+  "end": 54.865,
+  "type": "single",
+  "gop": 0.195
+ },
+ "bu gymmat": {
+  "file": "bu_gymmat.wav",
+  "kind": "phrase",
+  "text": "Bu gymmat",
+  "source": "Peace Corps Turkmen Lessons 9-11",
+  "start": 58.315,
+  "end": 59.835,
+  "type": "single",
+  "gop": 0.166
+ },
+ "mende dollar ýok": {
+  "file": "mende_dollar_ýok.wav",
+  "kind": "phrase",
+  "text": "Mende dollar ýok",
+  "source": "Peace Corps Turkmen Lessons 9-11",
+  "start": 63.23,
+  "end": 65.5,
+  "type": "single",
+  "gop": 0.113
+ },
+ "mende manat bar": {
+  "file": "mende_manat_bar.wav",
+  "kind": "phrase",
+  "text": "Mende manat bar",
+  "source": "Peace Corps Turkmen Lessons 9-11",
+  "start": 68.31,
+  "end": 70.655,
+  "type": "absorb",
+  "gop": 0.074
+ },
+ "gyzyl": {
+  "file": "gyzyl.wav",
+  "kind": "word",
+  "text": "Gyzyl",
+  "source": "Peace Corps Turkmen Lessons 9-11",
+  "start": 74.63,
+  "end": 75.965,
+  "type": "single",
+  "gop": 0.139
+ },
+ "gara": {
+  "file": "gara.wav",
+  "kind": "word",
+  "text": "Gara",
+  "source": "Peace Corps Turkmen Lessons 9-11",
+  "start": 78.005,
+  "end": 79.415,
+  "type": "single",
+  "gop": -0.01
+ },
+ "sary": {
+  "file": "sary.wav",
+  "kind": "word",
+  "text": "Sary",
+  "source": "Peace Corps Turkmen Lessons 9-11",
+  "start": 81.315,
+  "end": 82.82,
+  "type": "single",
+  "gop": 0.176
+ },
+ "gök": {
+  "file": "gök.wav",
+  "kind": "word",
+  "text": "Gök",
+  "source": "Peace Corps Turkmen Lessons 9-11",
+  "start": 84.6,
+  "end": 85.5,
+  "type": "manual",
+  "gop": 0.352
+ },
+ "ak": {
+  "file": "ak.wav",
+  "kind": "word",
+  "text": "Ak",
+  "source": "Peace Corps Turkmen Lessons 9-11",
+  "start": 87.465,
+  "end": 88.24,
+  "type": "single",
+  "gop": 0.119
+ },
+ "ýaşyl": {
+  "file": "ýaşyl.wav",
+  "kind": "word",
+  "text": "Ýaşyl",
+  "source": "Peace Corps Turkmen Lessons 9-11",
+  "start": 89.955,
+  "end": 91.23,
+  "type": "single",
+  "gop": 0.044
+ },
+ "sen nirede ýaşaýaň": {
+  "file": "sen_nirede_ýaşaýaň.wav",
+  "kind": "phrase",
+  "text": "Sen nirede ýaşaýaň",
+  "source": "Peace Corps Turkmen Lessons 9-11",
+  "start": 97.935,
+  "end": 100.23,
+  "type": "single",
+  "gop": 0.053
+ },
+ "mir köçe otuz dört": {
+  "file": "mir_köçe_otuz_dört.wav",
+  "kind": "phrase",
+  "text": "Mir köçe, otuz dört",
+  "source": "Peace Corps Turkmen Lessons 9-11",
+  "start": 104.31,
+  "end": 107.61,
+  "type": "absorb",
+  "gop": 0.147
+ },
+ "telefonyň näçe": {
+  "file": "telefonyň_näçe.wav",
+  "kind": "phrase",
+  "text": "Telefonyň näçe",
+  "source": "Peace Corps Turkmen Lessons 9-11",
+  "start": 111.235,
+  "end": 113.185,
+  "type": "single",
+  "gop": 0.313
+ },
+ "tualet nirede": {
+  "file": "tualet_nirede.wav",
+  "kind": "phrase",
+  "text": "Tualet nirede",
+  "source": "Peace Corps Turkmen Lessons 9-11",
+  "start": 116.125,
+  "end": 117.795,
+  "type": "single",
+  "gop": 0.124
+ },
+ "men meýletinçi": {
+  "file": "men_meýletinçi.wav",
+  "kind": "phrase",
+  "text": "Men meýletinçi",
+  "source": "Peace Corps Turkmen Lessons 9-11",
+  "start": 123.855,
+  "end": 127.405,
+  "type": "absorb",
+  "gop": 0.065
+ },
+ "parahatçylyk korpusy": {
+  "file": "parahatçylyk_korpusy.wav",
+  "kind": "phrase",
+  "text": "Parahatçylyk Korpusy",
+  "source": "Peace Corps Turkmen Lessons 9-11",
+  "start": 130.515,
+  "end": 133.65,
+  "type": "absorb",
+  "gop": 0.141
+ },
+ "men iňlis dili mugallymy": {
+  "file": "men_iňlis_dili_mugallymy.wav",
+  "kind": "phrase",
+  "text": "Men Iňlis dili mugallymy",
+  "source": "Peace Corps Turkmen Lessons 9-11",
+  "start": 137.08,
+  "end": 141.175,
+  "type": "absorb",
+  "gop": 0.153
+ },
+ "men saglyk mugallymy": {
+  "file": "men_saglyk_mugallymy.wav",
+  "kind": "phrase",
+  "text": "Men saglyk mugallymy",
+  "source": "Peace Corps Turkmen Lessons 9-11",
+  "start": 144.26,
+  "end": 147.515,
+  "type": "absorb",
+  "gop": 0.222
+ },
+ "sen näme halaýaň": {
+  "file": "sen_näme_halaýaň.wav",
+  "kind": "phrase",
+  "text": "Sen näme halaýaň",
+  "source": "Peace Corps Turkmen Lessons 9-11",
+  "start": 153.1,
+  "end": 155.75,
+  "type": "absorb",
+  "gop": 0.08
+ },
+ "suw": {
+  "file": "suw.wav",
+  "kind": "word",
+  "text": "Suw",
+  "source": "Peace Corps Turkmen Lessons 9-11",
+  "start": 156.535,
+  "end": 157.355,
+  "type": "single",
+  "gop": 0.263
+ },
+ "çaý": {
+  "file": "çaý.wav",
+  "kind": "word",
+  "text": "Çaý",
+  "source": "Peace Corps Turkmen Lessons 9-11",
+  "start": 157.485,
+  "end": 158.36,
+  "type": "single",
+  "gop": 0.032
+ },
+ "men çaý halaýan": {
+  "file": "men_çaý_halaýan.wav",
+  "kind": "phrase",
+  "text": "Men çaý halaýan",
+  "source": "Peace Corps Turkmen Lessons 9-11",
+  "start": 158.775,
+  "end": 161.195,
+  "type": "absorb",
+  "gop": 0.04
+ },
+ "men balyk halaýan": {
+  "file": "men_balyk_halaýan.wav",
+  "kind": "phrase",
+  "text": "Men balyk halaýan",
+  "source": "Peace Corps Turkmen Lessons 9-11",
+  "start": 168.5,
+  "end": 170.7,
+  "type": "single",
+  "gop": -0.003
+ },
+ "men et halamok": {
+  "file": "men_et_halamok.wav",
+  "kind": "phrase",
+  "text": "Men et halamok",
+  "source": "Peace Corps Turkmen Lessons 9-11",
+  "start": 171.065,
+  "end": 173.07,
+  "type": "single",
+  "gop": 0.055
+ },
+ "maňa": {
+  "file": "maňa.wav",
+  "kind": "word",
+  "text": "maňa",
+  "source": "Peace Corps Turkmen Lessons 12",
+  "start": 44.175,
+  "end": 45.37,
+  "type": "subword",
+  "gop": 0.02,
+  "from": "maňa gerek"
+ },
+ "gerek": {
+  "file": "gerek.wav",
+  "kind": "word",
+  "text": "gerek",
+  "source": "Peace Corps Turkmen Lessons 12",
+  "start": 45.32,
+  "end": 46.67,
+  "type": "subword",
+  "gop": 0.123,
+  "from": "maňa gerek"
+ },
+ "ýadadym": {
+  "file": "ýadadym.wav",
+  "kind": "word",
+  "text": "ýadadym",
+  "source": "Peace Corps Turkmen Lessons 12",
+  "start": 49.97,
+  "end": 51.87,
+  "type": "subword",
+  "gop": 0.097,
+  "from": "men ýadadym"
+ },
+ "düşünemok": {
+  "file": "düşünemok.wav",
+  "kind": "word",
+  "text": "düşünemok",
+  "source": "Peace Corps Turkmen Lessons 12",
+  "start": 55.22,
+  "end": 57.055,
+  "type": "subword",
+  "gop": 0.074,
+  "from": "men düşünemok"
+ },
+ "türkmençe": {
+  "file": "türkmençe.wav",
+  "kind": "word",
+  "text": "türkmençe",
+  "source": "Peace Corps Turkmen Lessons 12",
+  "start": 61.815,
+  "end": 63.785,
+  "type": "subword",
+  "gop": 0.139,
+  "from": "men türkmençe gowy bilemok"
+ },
+ "bilemok": {
+  "file": "bilemok.wav",
+  "kind": "word",
+  "text": "bilemok",
+  "source": "Peace Corps Turkmen Lessons 12",
+  "start": 65.015,
+  "end": 66.345,
+  "type": "subword",
+  "gop": 0.093,
+  "from": "men türkmençe gowy bilemok"
+ },
+ "haýal": {
+  "file": "haýal.wav",
+  "kind": "word",
+  "text": "haýal",
+  "source": "Peace Corps Turkmen Lessons 12",
+  "start": 75.085,
+  "end": 76.185,
+  "type": "subword",
+  "gop": 0.186,
+  "from": "haýal aýdyň"
+ },
+ "aýdyň": {
+  "file": "aýdyň.wav",
+  "kind": "word",
+  "text": "aýdyň",
+  "source": "Peace Corps Turkmen Lessons 12",
+  "start": 76.135,
+  "end": 77.51,
+  "type": "subword",
+  "gop": 0.041,
+  "from": "haýal aýdyň"
+ },
+ "bu": {
+  "file": "bu.wav",
+  "kind": "word",
+  "text": "bu",
+  "source": "Peace Corps Turkmen Lessons 12",
+  "start": 85.185,
+  "end": 85.92,
+  "type": "subword",
+  "gop": 0.048,
+  "from": "bu türkmençe näme"
+ },
+ "meň": {
+  "file": "meň.wav",
+  "kind": "word",
+  "text": "meň",
+  "source": "Peace Corps Turkmen Lessons 6-8",
+  "start": 74.09,
+  "end": 74.65,
+  "type": "subword",
+  "gop": -0.019,
+  "from": "meň adym ata"
+ },
+ "nireden": {
+  "file": "nireden.wav",
+  "kind": "word",
+  "text": "nireden",
+  "source": "Peace Corps Turkmen Lessons 6-8",
+  "start": 80.51,
+  "end": 81.66,
+  "type": "subword",
+  "gop": 0.143,
+  "from": "sen nireden"
+ },
+ "seň": {
+  "file": "seň.wav",
+  "kind": "word",
+  "text": "seň",
+  "source": "Peace Corps Turkmen Lessons 6-8",
+  "start": 95.46,
+  "end": 96.155,
+  "type": "subword",
+  "gop": 0.109,
+  "from": "seň maşgalaň barmy"
+ },
+ "barmy": {
+  "file": "barmy.wav",
+  "kind": "word",
+  "text": "barmy",
+  "source": "Peace Corps Turkmen Lessons 6-8",
+  "start": 97.075,
+  "end": 98.185,
+  "type": "subword",
+  "gop": 0.021,
+  "from": "seň maşgalaň barmy"
+ },
+ "kakam": {
+  "file": "kakam.wav",
+  "kind": "word",
+  "text": "kakam",
+  "source": "Peace Corps Turkmen Lessons 6-8",
+  "start": 107.48,
+  "end": 108.93,
+  "type": "subword",
+  "gop": -0.016,
+  "from": "meň kakam"
+ },
+ "ejem": {
+  "file": "ejem.wav",
+  "kind": "word",
+  "text": "ejem",
+  "source": "Peace Corps Turkmen Lessons 6-8",
+  "start": 111.82,
+  "end": 113.145,
+  "type": "subword",
+  "gop": 0.039,
+  "from": "meň ejem"
+ },
+ "men": {
+  "file": "men.wav",
+  "kind": "word",
+  "text": "men",
+  "source": "Peace Corps Turkmen Lessons 9-11",
+  "start": 34.79,
+  "end": 35.55,
+  "type": "subword",
+  "gop": -0.001,
+  "from": "men çaý halamok"
+ },
+ "mende": {
+  "file": "mende.wav",
+  "kind": "word",
+  "text": "mende",
+  "source": "Peace Corps Turkmen Lessons 9-11",
+  "start": 63.23,
+  "end": 64.085,
+  "type": "subword",
+  "gop": -0.033,
+  "from": "mende dollar ýok"
+ },
+ "dollar": {
+  "file": "dollar.wav",
+  "kind": "word",
+  "text": "dollar",
+  "source": "Peace Corps Turkmen Lessons 9-11",
+  "start": 64.035,
+  "end": 64.95,
+  "type": "subword",
+  "gop": 0.123,
+  "from": "mende dollar ýok"
+ },
+ "manat": {
+  "file": "manat.wav",
+  "kind": "word",
+  "text": "manat",
+  "source": "Peace Corps Turkmen Lessons 9-11",
+  "start": 69.03,
+  "end": 69.945,
+  "type": "subword",
+  "gop": 0.14,
+  "from": "mende manat bar"
+ },
+ "sen": {
+  "file": "sen.wav",
+  "kind": "word",
+  "text": "sen",
+  "source": "Peace Corps Turkmen Lessons 9-11",
+  "start": 153.1,
+  "end": 154.09,
+  "type": "subword",
+  "gop": 0.058,
+  "from": "sen näme halaýaň"
+ },
+ "halaýan": {
+  "file": "halaýan.wav",
+  "kind": "word",
+  "text": "halaýan",
+  "source": "Peace Corps Turkmen Lessons 9-11",
+  "start": 160.09,
+  "end": 161.195,
+  "type": "subword",
+  "gop": 0.018,
+  "from": "men çaý halaýan"
+ },
+ "halamok": {
+  "file": "halamok.wav",
+  "kind": "word",
+  "text": "halamok",
+  "source": "Peace Corps Turkmen Lessons 9-11",
+  "start": 172.135,
+  "end": 173.07,
+  "type": "subword",
+  "gop": 0.149,
+  "from": "men et halamok"
+ }
+}

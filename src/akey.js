@@ -14,7 +14,7 @@ function akey(s){
   return t;
 }
 const LETTER_NAME = {a:'a',e:'e',ä:'ä',i:'i',y:'y',o:'o',ö:'ö',u:'u',ü:'ü',
-  b:'be',ç:'çe',d:'de',f:'fe',g:'ge',h:'he',j:'je',ž:'že',k:'ke',l:'le',m:'me',n:'ne',ň:'eň',p:'pe',r:'re',s:'se',ş:'şe',t:'te',w:'we',ý:'ýe',z:'ze'};
+  b:'be',ç:'çe',d:'de',f:'ef',g:'ge',h:'he',j:'je',ž:'že',k:'ke',l:'el',m:'em',n:'en',ň:'eň',p:'pe',r:'er',s:'es',ş:'şe',t:'te',w:'we',ý:'ýe',z:'ze'};
 /* text actually sent to the synthesizer for a key */
 function asynth(key){
   if(key.length === 1 && LETTER_NAME[key]) return LETTER_NAME[key] + ' ' + LETTER_NAME[key];

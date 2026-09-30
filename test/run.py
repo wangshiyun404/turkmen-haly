@@ -1,13 +1,10 @@
-"""Automated playthrough: answers every question in all 29 levels (plus some wrong answers),
-checks the review basket, audio sprite, layout overflow and dark mode, and saves screenshots to test/shots/.
-Run: pip install playwright && python -m playwright install chromium && python3 test/run.py"""
 import json, sys, pathlib
 from playwright.sync_api import sync_playwright
 ROOT = pathlib.Path(__file__).parent
 URL = (ROOT.parent / 'index.html').resolve().as_uri()
 SOLVER = (ROOT/'solver.js').read_text()
 errors = []
-shots = ROOT/'shots'; shots.mkdir(exist_ok=True)
+shots = ROOT/'shots'
 def shot(page, name, full=False):
     page.screenshot(path=str(shots/(name+'.png')), full_page=full)
 
